@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peg Solitaire: Clone Wars Edition — Sala de Guerra</title>
+  
+  <!-- Estilos del Sistema -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/botones.css">
+  <link rel="stylesheet" href="css/components/formularios.css">
+  <link rel="stylesheet" href="css/components/navegacion.css">
+  <link rel="stylesheet" href="css/components/cards.css">
+  <link rel="stylesheet" href="css/components/carrusel.css">
+  <link rel="stylesheet" href="css/components/breadcrumbs.css">
+  <link rel="stylesheet" href="css/components/comentarios.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ====================================================================
+       BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR REUTILIZADA)
+       ==================================================================== -->
+  <header class="nav-principal">
+    <div class="nav-contenedor">
+      
+      <div class="nav-izquierda">
+        <button class="btn-hamburguesa" id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
+          <img src="assets/icons/menu.svg" alt="Menú lateral">
+        </button>
+        <a href="index.html" class="nav-logo" title="Volver al catálogo principal">
+          <img src="assets/logo.png" alt="Logotipo Plataforma de Juegos">
+        </a>
+      </div>
+
+      <div class="nav-centro">
+        <form class="barra-busqueda" role="search" onsubmit="event.preventDefault();">
+          <input 
+            type="search" 
+            class="input-busqueda" 
+            placeholder="Buscar juegos, géneros o batallas..." 
+            aria-label="Buscar juegos"
+          >
+          <button type="submit" class="btn-busqueda-icono" aria-label="Ejecutar búsqueda">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="nav-derecha">
+        <a href="login.html" class="btn-perfil" title="Panel de usuario">
+          <img src="assets/images/avatar_user.jpg" alt="Avatar del soldado" class="avatar-usuario">
+          <span class="nombre-usuario">Soldado CT-7567</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- SIDEBAR OFF-CANVAS -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="assets/logo.png" alt="Logo" style="height: 36px;">
+      <button class="btn-cerrar-sidebar" id="btn-cerrar-sidebar" aria-label="Cerrar menú">
+        <img src="assets/icons/icon-x.svg" alt="Cerrar">
+      </button>
+    </div>
+    <span class="sidebar-titulo-seccion">Navegación</span>
+    <ul class="sidebar-menu">
+      <li class="sidebar-item"><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
+      <li class="sidebar-item"><a href="index.html#top-juegos"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
+      <li class="sidebar-item activo"><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
+      <li class="sidebar-divider"></li>
+      <li class="sidebar-item"><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
+      <li class="sidebar-item"><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- ====================================================================
+       CONTENIDO PRINCIPAL DE LA PÁGINA DE JUEGO
+       ==================================================================== -->
+  <main class="pagina-juego-main">
+
+    <!-- Barra Superior: Breadcrumbs y Botón de Retorno -->
+    <div class="barra-navegacion-superior-juego">
+      
+      <!-- Migas de Pan (Nielsen H1) -->
+      <nav class="breadcrumbs" aria-label="Ubicación en el sitio">
+        <div class="breadcrumb-item">
+          <a href="index.html" class="breadcrumb-link">Inicio</a>
+          <span class="breadcrumb-separador">
+            <img src="assets/icons/icon-breadcrumb.svg" alt=">">
+          </span>
+        </div>
+        <div class="breadcrumb-item">
+          <a href="index.html#premium" class="breadcrumb-link">Premium</a>
+          <span class="breadcrumb-separador">
+            <img src="assets/icons/icon-breadcrumb.svg" alt=">">
+          </span>
+        </div>
+        <div class="breadcrumb-item">
+          <span class="breadcrumb-actual" aria-current="page">Peg Solitaire: Clone Wars Edition</span>
+        </div>
+      </nav>
+
+      <!-- Salida de Emergencia Visible (Nielsen H3) -->
+      <a href="index.html" class="btn-volver-home" title="Volver al catálogo principal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Volver al Catálogo
+      </a>
+
+    </div>
+
+    <!-- ====================================================================
+         ÁREA DE EJECUCIÓN DEL JUEGO (1190 x 480 con splash y controles)
+         ==================================================================== -->
+    <section class="area-ejecucion-juego" aria-label="Contenedor de Ejecución de Juego">
+      
+      <div class="pantalla-juego-contenedor">
+        <!-- Splash / Panel de Inicio de Partida -->
+        <div class="caja-controles-juego">
+          <h2>Peg Solitaire</h2>
+          <span class="badge-categoria badge-premium">Edición Oficial Clone Wars</span>
+          <p>
+            Elimina a los batallones enemigos saltando sobre sus posiciones. Deja únicamente al comandante en el centro del tablero para asegurar la victoria de la República.
+          </p>
+          <button class="btn btn-primario btn-iniciar-partida" id="btn-iniciar-partida">
+            <img src="assets/icons/icon-play.svg" alt="Play" style="width: 20px; height: 20px;">
+            INICIAR MISIÓN
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Ejecución Inferior -->
+      <div class="barra-ejecucion">
+        <div class="barra-ejecucion-info">
+          <span class="barra-ejecucion-titulo">Peg Solitaire: Clone Wars Edition</span>
+          <span class="badge-categoria badge-gratis">Verificado</span>
+        </div>
+
+        <div class="barra-ejecucion-logo">
+          <img src="assets/logo.png" alt="Insignia República">
+        </div>
+
+        <div class="barra-ejecucion-botonera">
+          <!-- Botón Compartir (Glow Hover en Etapa 2) -->
+          <button class="btn btn-compartir" id="btn-compartir-juego" title="Compartir con tu escuadrón">
+            <img src="assets/icons/icon-share.svg" alt="Compartir">
+            <span>Compartir</span>
+          </button>
+
+          <!-- Botón Favoritos -->
+          <button class="btn-icono" id="btn-guardar-juego" aria-label="Guardar juego en favoritos">
+            <img src="assets/icons/icon-save.svg" alt="Guardar">
+          </button>
+
+          <!-- Botón Pantalla Completa -->
+          <button class="btn-icono" id="btn-fullscreen" aria-label="Modo Pantalla Completa">
+            <img src="assets/icons/icon-fullscreen.svg" alt="Pantalla Completa">
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN: CÓMO JUGAR Y GALERÍA MULTIMEDIA
+         ==================================================================== -->
+    <section class="seccion-about-juego" aria-label="Instrucciones y Galería del Juego">
+      
+      <!-- 5 Reglas Reales del Juego (Texto exacto del Figma) -->
+      <div class="contenedor-instrucciones">
+        <h2 class="instrucciones-titulo">¿CÓMO JUGAR?</h2>
+        
+        <div class="lista-reglas">
+          <article class="item-regla">
+            <h3>1. El objetivo final</h3>
+            <p>Tenés que eliminar la mayor cantidad de fichas posibles hasta que quede solo una en todo el tablero (idealmente, justo en el centro).</p>
+          </article>
+
+          <article class="item-regla">
+            <h3>2. Movete con estrategia</h3>
+            <p>Elegí una ficha y hacela saltar por encima de otra ficha adyacente para caer en un espacio vacío.</p>
+          </article>
+
+          <article class="item-regla">
+            <h3>3. Solo en línea recta</h3>
+            <p>Los saltos pueden ser horizontales o verticales. ¡No están permitidos los movimientos en diagonal!</p>
+          </article>
+
+          <article class="item-regla">
+            <h3>4. Captura y limpia</h3>
+            <p>Cada vez que tu ficha salta sobre otra, la ficha que quedó abajo es capturada y desaparece del tablero.</p>
+          </article>
+
+          <article class="item-regla">
+            <h3>5. Fin del juego</h3>
+            <p>La partida termina cuando lográs dejar una sola ficha (¡victoria!) o cuando ya no te quedan saltos válidos posibles.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Galería Multimedia 2x2 -->
+      <div class="contenedor-galeria">
+        <h2 class="galeria-titulo">GALERÍA Y CAPTURAS</h2>
+        
+        <div class="galeria-grilla">
+          <div class="galeria-item">
+            <img src="assets/images/peg_solitaire_hero.jpg" alt="Tablero Peg Solitaire Clone Wars">
+          </div>
+          <div class="galeria-item galeria-item-video">
+            <img src="assets/images/game_solitaire_1.jpg" alt="Video de jugada táctica">
+            <div class="btn-play-video-overlay" title="Ver tráiler táctico">
+              <img src="assets/icons/icon-play.svg" alt="Play">
+            </div>
+          </div>
+          <div class="galeria-item">
+            <img src="assets/images/game_scifi_2.jpg" alt="Escuadrón Clon en combate">
+          </div>
+          <div class="galeria-item">
+            <img src="assets/images/game_action_1.jpg" alt="Estrategia defensiva">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN: COMENTARIOS Y COMUNIDAD
+         ==================================================================== -->
+    <section class="seccion-comentarios" aria-label="Comentarios de la Comunidad">
+      <h2 class="comentarios-titulo">COMENTARIOS DE LA COMUNIDAD</h2>
+
+      <!-- Formulario de Comentario Interactivo -->
+      <form class="comentario-form" id="form-nuevo-comentario" onsubmit="event.preventDefault();">
+        <img src="assets/images/avatar_user.jpg" alt="Avatar usuario" class="comentario-avatar-autor">
+        <input 
+          type="text" 
+          id="input-comentario" 
+          class="comentario-input" 
+          placeholder="Escribe un análisis táctico o comparte tu estrategia..." 
+          required
+        >
+        <button type="submit" class="btn-enviar-comentario" aria-label="Publicar comentario">
+          <img src="assets/icons/icon-send.svg" alt="Enviar">
+        </button>
+      </form>
+
+      <!-- Lista de Comentarios Existentes -->
+      <div class="comentarios-lista" id="lista-comentarios">
+        
+        <article class="comentario-card">
+          <img src="assets/images/avatar_clone.jpg" alt="Avatar Aitor" class="comentario-avatar">
+          <div class="comentario-cuerpo">
+            <div class="comentario-header-meta">
+              <span class="comentario-autor">Aitor Holzmann</span>
+              <span class="comentario-fecha">Hace 2 horas</span>
+            </div>
+            <p class="comentario-texto">
+              ¡Hola soldado! Excelente adaptación temática de Peg Solitaire. El desafío de dejar la última ficha en el centro del crucero es muy adictivo y desafiante.
+            </p>
+          </div>
+        </article>
+
+        <article class="comentario-card">
+          <img src="assets/images/avatar_user.jpg" alt="Avatar Capitan Rex" class="comentario-avatar">
+          <div class="comentario-cuerpo">
+            <div class="comentario-header-meta">
+              <span class="comentario-autor">Capitán Rex (CT-7567)</span>
+              <span class="comentario-fecha">Hace 5 horas</span>
+            </div>
+            <p class="comentario-texto">
+              Estrategia pura para entrenar a los cadetes clon antes de saltar al hiperespacio. Una sola mala maniobra y quedas acorralado sin saltos válidos.
+            </p>
+          </div>
+        </article>
+
+        <article class="comentario-card">
+          <img src="assets/images/avatar_clone.jpg" alt="Avatar Soldado 501" class="comentario-avatar">
+          <div class="comentario-cuerpo">
+            <div class="comentario-header-meta">
+              <span class="comentario-autor">Soldado Fives</span>
+              <span class="comentario-fecha">Ayer</span>
+            </div>
+            <p class="comentario-texto">
+              ME ENCANTA DISEÑAR INTERFACES Y COMBATIR EN EL TABLERO. ¡Por la República y por el batallón 501!
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         JUEGOS RECOMENDADOS (MINI CARRUSEL)
+         ==================================================================== -->
+    <section class="seccion-categoria" style="padding: 0; margin-top: 20px;">
+      <div class="categoria-header">
+        <div class="categoria-titulo-grupo">
+          <img src="assets/icons/icon-strategy.svg" alt="" class="categoria-icono">
+          <h2 class="categoria-titulo">Misiones Recomendadas</h2>
+        </div>
+      </div>
+
+      <div class="carrusel-viewport">
+        <div class="carrusel-pista" style="padding-bottom: 5px;">
+          
+          <article class="card-juego">
+            <div class="card-media">
+              <span class="badge-categoria badge-premium">$4.99</span>
+              <img src="assets/images/game_sniper_1.jpg" alt="Sniper Ghost" class="card-img" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h3 class="card-titulo" title="Sniper Ghost Vanguard Elite">Sniper Ghost Vanguard Elite</h3>
+              <div class="card-detalles"><span>Táctico</span><span class="card-rating">★ 4.9</span></div>
+              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
+            </div>
+          </article>
+
+          <article class="card-juego">
+            <div class="card-media">
+              <span class="badge-categoria badge-gratis">Gratis</span>
+              <img src="assets/images/game_strategy_1.jpg" alt="Galactic Warfare" class="card-img" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h3 class="card-titulo" title="Galactic Warfare Empire">Galactic Warfare Empire</h3>
+              <div class="card-detalles"><span>Estrategia</span><span class="card-rating">★ 4.8</span></div>
+              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
+            </div>
+          </article>
+
+          <article class="card-juego">
+            <div class="card-media">
+              <span class="badge-categoria badge-gratis">Gratis</span>
+              <img src="assets/images/game_action_2.jpg" alt="Iron Siege" class="card-img" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h3 class="card-titulo" title="Iron Siege: Frontline">Iron Siege: Frontline</h3>
+              <div class="card-detalles"><span>Acción</span><span class="card-rating">★ 4.6</span></div>
+              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
+            </div>
+          </article>
+
+          <article class="card-juego">
+            <div class="card-media">
+              <span class="badge-categoria badge-gratis">Gratis</span>
+              <img src="assets/images/game_tank_1.jpg" alt="Tank Fury" class="card-img" loading="lazy">
+            </div>
+            <div class="card-info">
+              <h3 class="card-titulo" title="Tank Fury: Blitzkrieg">Tank Fury: Blitzkrieg</h3>
+              <div class="card-detalles"><span>Bélico</span><span class="card-rating">★ 4.5</span></div>
+              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       FAT FOOTER INSTITUCIONAL (REUTILIZADO)
+       ==================================================================== -->
+  <footer class="footer-principal">
+    <div class="footer-contenedor">
+      
+      <div class="footer-marca">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logotipo Plataforma">
+        </div>
+        <p class="footer-descripcion">
+          Portal de entretenimiento táctico y juegos web online de alta intensidad. Inspirado en la saga galáctica Clone Wars, desarrollado bajo estándares estrictos de UX/UI para la cátedra de Diseño de Interfaces.
+        </p>
+      </div>
+
+      <div class="footer-seccion">
+        <h4>Información</h4>
+        <ul class="footer-links">
+          <li><a href="#">Sobre Nosotros</a></li>
+          <li><a href="#">Base de Operaciones</a></li>
+          <li><a href="#">Novedades del Frente</a></li>
+          <li><a href="#">Comunidad Discord</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-seccion">
+        <h4>Categorías</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#top-juegos">Top Juegos</a></li>
+          <li><a href="index.html#premium">Juegos Premium</a></li>
+          <li><a href="index.html#accion">Acción Táctica</a></li>
+          <li><a href="index.html#estrategia">Estrategia Militar</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-seccion">
+        <h4>Ayuda y Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Centro de Soporte</a></li>
+          <li><a href="#">Términos del Servicio</a></li>
+          <li><a href="#">Privacidad de Datos</a></li>
+        </ul>
+
+        <div class="footer-redes">
+          <a href="#" class="btn-red-social" aria-label="Instagram">
+            <img src="assets/icons/icon-instagram.svg" alt="Instagram">
+          </a>
+          <a href="#" class="btn-red-social" aria-label="TikTok">
+            <img src="assets/icons/icon-tiktok.svg" alt="TikTok">
+          </a>
+          <a href="#" class="btn-red-social" aria-label="X / Twitter">
+            <img src="assets/icons/icon-x.svg" alt="X">
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-contenido">
+        <p>© 2026 Plataforma de Juegos Online — Entregable Nº 2 (Diseño de Interfaces - TUDAI / UNCPBA)</p>
+        <p>Desarrollado por <strong>Aitor Holzmann</strong> | Pair Programming con Antigravity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+

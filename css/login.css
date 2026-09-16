@@ -1,0 +1,154 @@
+/* ==========================================================================
+   PÁGINA: LOGIN Y REGISTRO (login.css)
+   Diseño de fidelidad máxima al prototipo de Figma (File Key: LI86LH8D4OyOSsgXW0ePn2)
+   - Panel central: 415px con linear-gradient(134deg, #4B5320, rgba(0,0,0,0.65))
+   - Sombra exterior difusa: 0 0 25px 8px rgba(255,255,255,0.12)
+   - Border radius: 5px
+   ========================================================================== */
+
+.pagina-auth {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.8) 25%, rgba(102, 102, 102, 0.2) 100%),
+                    url('../assets/fondo_login.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 20px;
+  position: relative;
+}
+
+/* --- Panel Central --- */
+.panel-auth {
+  width: 100%;
+  max-width: 440px;
+  background: var(--gradiente-login);
+  border: 1px solid var(--color-primario-claro2);
+  border-radius: var(--radio-sm);
+  box-shadow: var(--sombra-panel-login);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Encabezado del Formulario (Logo + Título) --- */
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.auth-logo {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.auth-titulo {
+  font-size: 1.4rem;
+  color: var(--color-blanco);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.auth-subtitulo {
+  font-size: var(--tamano-small);
+  color: var(--color-claro);
+  margin-top: -4px;
+}
+
+/* --- Formularios --- */
+.formulario-auth {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-fila-doble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.auth-enlace-olvido {
+  align-self: flex-end;
+  font-size: var(--tamano-micro);
+  color: var(--color-claro);
+  text-decoration: underline;
+  margin-top: -6px;
+  margin-bottom: 16px;
+  transition: color 0.2s ease;
+}
+
+.auth-enlace-olvido:hover {
+  color: var(--color-acento-claro);
+}
+
+.btn-auth-submit {
+  width: 100%;
+  margin-top: 6px;
+  font-size: var(--tamano-body);
+}
+
+/* --- Separador "O continuar con" --- */
+.auth-separador {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 16px 0;
+  color: var(--color-gris-texto);
+  font-size: var(--tamano-micro);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.auth-separador::before,
+.auth-separador::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-primario-claro2);
+}
+
+.auth-separador span {
+  padding: 0 12px;
+}
+
+/* --- Botones Sociales de Login --- */
+.auth-social-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* --- Enlace Alternar Login / Registro --- */
+.auth-toggle-footer {
+  margin-top: 14px;
+  font-size: var(--tamano-small);
+  color: var(--color-claro);
+  text-align: center;
+}
+
+.auth-toggle-link {
+  color: var(--color-acento-claro);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.auth-toggle-link:hover {
+  color: var(--color-blanco);
+}
+

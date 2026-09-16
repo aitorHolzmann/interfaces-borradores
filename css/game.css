@@ -1,0 +1,277 @@
+/* ==========================================================================
+   PÁGINA: EJECUCIÓN DE JUEGO (game.css)
+   Ficha técnica y contenedor de juego para "Peg Solitaire: Clone Wars Edition"
+   Basado en el diseño exacto del prototipo de Figma (File Key: LI86LH8D4OyOSsgXW0ePn2)
+   ========================================================================== */
+
+.pagina-juego-main {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* --- Botón Volver Rápido a Home --- */
+.barra-navegacion-superior-juego {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn-volver-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-superficie-oscura);
+  border: 1px solid var(--color-primario-claro2);
+  border-radius: var(--radio-md);
+  font-size: var(--tamano-small);
+  color: var(--color-claro);
+  transition: all 0.2s ease;
+}
+
+.btn-volver-home:hover {
+  background-color: var(--color-superficie);
+  border-color: var(--color-acento);
+  color: var(--color-acento-claro);
+  transform: translateX(-4px);
+}
+
+.btn-volver-home svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Área de Ejecución del Juego --- */
+.area-ejecucion-juego {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-primario);
+}
+
+.pantalla-juego-contenedor {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background-image: var(--gradiente-overlay-juego),
+                    url('../assets/images/peg_solitaire_hero.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Caja de Controles / Splash Inicial del Juego */
+.caja-controles-juego {
+  background-color: rgba(20, 23, 20, 0.9);
+  border: 1px solid var(--color-primario-claro2);
+  border-radius: var(--radio-md);
+  padding: 36px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--sombra-panel-login);
+  max-width: 520px;
+}
+
+.caja-controles-juego h2 {
+  font-size: 1.8rem;
+  color: var(--color-blanco);
+  text-transform: uppercase;
+}
+
+.caja-controles-juego p {
+  font-size: var(--tamano-small);
+  color: var(--color-gris-texto);
+  line-height: 1.5;
+}
+
+.btn-iniciar-partida {
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+}
+
+/* Barra de Ejecución Inferior (Metadatos y Acciones) */
+.barra-ejecucion {
+  height: 64px;
+  background-color: var(--color-superficie-oscura);
+  border-top: 1px solid var(--color-primario-oscuro);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+.barra-ejecucion-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.barra-ejecucion-titulo {
+  font-size: var(--tamano-body);
+  font-weight: 700;
+  color: var(--color-blanco);
+}
+
+.barra-ejecucion-logo img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.barra-ejecucion-botonera {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* --- Sección "CÓMO JUGAR?" y Galería Multimedia --- */
+.seccion-about-juego {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  background-color: var(--color-superficie);
+  border: 1px solid rgba(130, 142, 59, 0.3);
+  border-radius: var(--radio-lg);
+  padding: 36px 30px;
+  box-shadow: var(--sombra-card);
+}
+
+@media (min-width: 900px) {
+  .seccion-about-juego {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    padding: 44px 40px;
+  }
+}
+
+/* Reglas e Instrucciones */
+.contenedor-instrucciones {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.instrucciones-titulo {
+  font-size: 1.6rem;
+  color: var(--color-primario-claro);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lista-reglas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item-regla {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 16px;
+  border-left: 3px solid var(--color-acento);
+}
+
+.item-regla h3 {
+  font-size: 1.1rem;
+  color: var(--color-blanco);
+}
+
+.item-regla p {
+  font-size: var(--tamano-small);
+  color: var(--color-gris-texto);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Galería 2x2 y Video */
+.contenedor-galeria {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.galeria-titulo {
+  font-size: 1.6rem;
+  color: var(--color-primario-claro);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.galeria-grilla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.galeria-item {
+  position: relative;
+  height: 150px;
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  border: 1px solid var(--color-primario);
+  background-color: var(--color-superficie-oscura);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.galeria-item:hover {
+  transform: scale(1.03);
+  border-color: var(--color-acento);
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.galeria-item-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.btn-play-video-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radio-redondo);
+  background-color: var(--color-acento);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: var(--sombra-glow-acento);
+}
+
+.btn-play-video-overlay img,
+.btn-play-video-overlay svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
+

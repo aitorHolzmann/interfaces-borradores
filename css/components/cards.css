@@ -1,0 +1,161 @@
+/* ==========================================================================
+   COMPONENTE: CARDS DE JUEGOS
+   Diseñado según las especificaciones del Design System de Figma
+   - Border radius de 25px en imágenes
+   - Títulos con text-overflow: ellipsis para títulos largos
+   - Badges de estado (Premium / Gratis / Top)
+   ========================================================================== */
+
+.card-juego {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-superficie-card);
+  border-radius: var(--radio-card);
+  overflow: hidden;
+  box-shadow: var(--sombra-card);
+  border: 1px solid rgba(130, 142, 59, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  min-width: 220px;
+  max-width: 280px;
+  flex: 0 0 auto;
+}
+
+.card-juego:hover {
+  border-color: var(--color-primario-claro);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(130, 142, 59, 0.3);
+}
+
+/* --- Contenedor de Imagen y Badges --- */
+.card-media {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  border-radius: var(--radio-card) var(--radio-card) 0 0;
+  background-color: var(--color-superficie-oscura);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-juego:hover .card-img {
+  transform: scale(1.05);
+}
+
+/* --- Badges y Etiquetas Superpuestas --- */
+.badge-categoria {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: var(--radio-lg);
+  font-size: var(--tamano-micro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.badge-premium {
+  background-color: rgba(229, 184, 11, 0.9);
+  color: #141714;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.badge-gratis {
+  background-color: rgba(75, 83, 32, 0.9);
+  color: var(--color-blanco);
+}
+
+.badge-top {
+  background-color: rgba(255, 107, 0, 0.9);
+  color: var(--color-blanco);
+}
+
+/* --- Botón Guardar Rápido (Bookmark) --- */
+.btn-guardar-card {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radio-redondo);
+  background: rgba(20, 23, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-guardar-card img,
+.btn-guardar-card svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-guardar-card:hover {
+  background: var(--color-acento);
+  transform: scale(1.1);
+}
+
+/* --- Contenido de la Card: Título, Metadatos y Acción --- */
+.card-info {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.card-titulo {
+  font-size: var(--tamano-body);
+  font-weight: 700;
+  color: var(--color-blanco);
+  /* Manejo estricto de textos largos (Req. 6) */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.card-detalles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--tamano-small);
+  color: var(--color-gris-texto);
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-premium);
+  font-weight: 700;
+}
+
+.card-acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.card-btn-jugar {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 14px;
+  font-size: var(--tamano-small);
+}
+

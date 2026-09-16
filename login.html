@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso Táctico — Base de Operaciones</title>
+  
+  <!-- Estilos del Sistema -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/botones.css">
+  <link rel="stylesheet" href="css/components/formularios.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="pagina-auth">
+
+  <main class="panel-auth" id="panel-autenticacion">
+    
+    <!-- Encabezado con Logo Oficial de la Plataforma -->
+    <header class="auth-header">
+      <img src="assets/logo.png" alt="Logotipo Plataforma de Juegos Militares" class="auth-logo">
+      <h1 class="auth-titulo" id="auth-titulo">Iniciar Sesión</h1>
+      <p class="auth-subtitulo" id="auth-subtitulo">Identifícate soldado para acceder al catálogo</p>
+    </header>
+
+    <!-- ====================================================================
+         1. FORMULARIO DE INICIO DE SESIÓN
+         ==================================================================== -->
+    <form id="form-login" class="formulario-auth" action="index.html" method="GET" novalidate>
+      
+      <!-- Campo: Correo Electrónico -->
+      <div class="grupo-formulario">
+        <label for="login-email" class="label-formulario">
+          Correo Electrónico <span class="campo-requerido">*</span>
+        </label>
+        <div class="contenedor-input">
+          <input 
+            type="email" 
+            id="login-email" 
+            name="email" 
+            class="input-formulario" 
+            placeholder="soldado@baseclon.com" 
+            required 
+            autocomplete="email"
+          >
+        </div>
+        <span class="mensaje-feedback" id="feedback-login-email"></span>
+      </div>
+
+      <!-- Campo: Contraseña -->
+      <div class="grupo-formulario">
+        <label for="login-password" class="label-formulario">
+          Código de Acceso / Clave <span class="campo-requerido">*</span>
+        </label>
+        <div class="contenedor-input">
+          <input 
+            type="password" 
+            id="login-password" 
+            name="password" 
+            class="input-formulario" 
+            placeholder="••••••••••••" 
+            required 
+            minlength="8" 
+            autocomplete="current-password"
+          >
+          <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="login-password">
+            <img src="assets/icons/icon-eye.svg" alt="Mostrar/Ocultar clave">
+          </button>
+        </div>
+        <span class="mensaje-feedback" id="feedback-login-password"></span>
+      </div>
+
+      <!-- Recuperar Contraseña -->
+      <a href="#" class="auth-enlace-olvido">¿Olvidaste tu contraseña?</a>
+
+      <!-- Botón de Envío -->
+      <button type="submit" class="btn btn-primario btn-auth-submit" id="btn-submit-login">
+        Iniciar Sesión
+      </button>
+
+      <!-- Separador O Continuar Con -->
+      <div class="auth-separador">
+        <span>O continuar con</span>
+      </div>
+
+      <!-- Botones de Social Login -->
+      <div class="auth-social-botones">
+        <button type="button" class="btn btn-social btn-google">
+          <img src="assets/icons/icon-google.svg" alt="Google Logo">
+          Continuar con Google
+        </button>
+        <button type="button" class="btn btn-social btn-facebook">
+          <img src="assets/icons/icon-facebook.svg" alt="Facebook Logo">
+          Continuar con Facebook
+        </button>
+      </div>
+
+      <!-- Alternar hacia Modo Registro -->
+      <p class="auth-toggle-footer">
+        ¿No tienes cuenta? 
+        <a href="#registro" id="link-ir-registro" class="auth-toggle-link">Regístrate</a>
+      </p>
+
+    </form>
+
+    <!-- ====================================================================
+         2. FORMULARIO DE REGISTRO
+         ==================================================================== -->
+    <form id="form-registro" class="formulario-auth oculto" action="index.html" method="GET" novalidate>
+      
+      <!-- Fila: Nombre y Apellido -->
+      <div class="auth-fila-doble">
+        <div class="grupo-formulario">
+          <label for="reg-nombre" class="label-formulario">
+            Nombre <span class="campo-requerido">*</span>
+          </label>
+          <div class="contenedor-input">
+            <input type="text" id="reg-nombre" name="nombre" class="input-formulario" placeholder="Rex" required>
+          </div>
+          <span class="mensaje-feedback" id="feedback-reg-nombre"></span>
+        </div>
+
+        <div class="grupo-formulario">
+          <label for="reg-apellido" class="label-formulario">
+            Apellido <span class="campo-requerido">*</span>
+          </label>
+          <div class="contenedor-input">
+            <input type="text" id="reg-apellido" name="apellido" class="input-formulario" placeholder="CT-7567" required>
+          </div>
+          <span class="mensaje-feedback" id="feedback-reg-apellido"></span>
+        </div>
+      </div>
+
+      <!-- Fila: Edad y Nickname -->
+      <div class="auth-fila-doble">
+        <div class="grupo-formulario">
+          <label for="reg-edad" class="label-formulario">
+            Edad <span class="campo-requerido">*</span>
+          </label>
+          <div class="contenedor-input">
+            <input type="number" id="reg-edad" name="edad" class="input-formulario" min="13" max="99" placeholder="20" required>
+          </div>
+          <span class="mensaje-feedback" id="feedback-reg-edad"></span>
+        </div>
+
+        <div class="grupo-formulario">
+          <label for="reg-nickname" class="label-formulario">
+            Nickname (Opcional)
+          </label>
+          <div class="contenedor-input">
+            <input type="text" id="reg-nickname" name="nickname" class="input-formulario" placeholder="CapitanRex">
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo: Correo Electrónico -->
+      <div class="grupo-formulario">
+        <label for="reg-email" class="label-formulario">
+          Correo Electrónico <span class="campo-requerido">*</span>
+        </label>
+        <div class="contenedor-input">
+          <input type="email" id="reg-email" name="email" class="input-formulario" placeholder="rex@legion501.com" required>
+        </div>
+        <span class="mensaje-feedback" id="feedback-reg-email"></span>
+      </div>
+
+      <!-- Campo: Contraseña -->
+      <div class="grupo-formulario">
+        <label for="reg-password" class="label-formulario">
+          Contraseña <span class="campo-requerido">*</span>
+        </label>
+        <div class="contenedor-input">
+          <input type="password" id="reg-password" name="password" class="input-formulario" placeholder="Mínimo 8 caracteres" required minlength="8">
+          <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="reg-password">
+            <img src="assets/icons/icon-eye.svg" alt="Mostrar/Ocultar clave">
+          </button>
+        </div>
+        <span class="mensaje-feedback" id="feedback-reg-password"></span>
+      </div>
+
+      <!-- Campo: Repetir Contraseña -->
+      <div class="grupo-formulario">
+        <label for="reg-password-repeat" class="label-formulario">
+          Repetir Contraseña <span class="campo-requerido">*</span>
+        </label>
+        <div class="contenedor-input">
+          <input type="password" id="reg-password-repeat" name="password_repeat" class="input-formulario" placeholder="Repite tu contraseña" required minlength="8">
+          <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="reg-password-repeat">
+            <img src="assets/icons/icon-eye.svg" alt="Mostrar/Ocultar clave">
+          </button>
+        </div>
+        <span class="mensaje-feedback" id="feedback-reg-password-repeat"></span>
+      </div>
+
+      <!-- Checkbox de Términos y Condiciones -->
+      <label class="grupo-checkbox">
+        <input type="checkbox" id="reg-terminos" required>
+        <span>Acepto los <a href="#">Términos de Servicio</a> y la <a href="#">Política de Privacidad</a> <span class="campo-requerido">*</span></span>
+      </label>
+
+      <!-- Tarjeta ReCaptcha Visual (Prototipo Figma) -->
+      <div class="recaptcha-card">
+        <label class="recaptcha-check">
+          <input type="checkbox" id="recaptcha-mock" required>
+          <span>No soy un droide</span>
+        </label>
+        <div class="recaptcha-brand">
+          <img src="assets/icons/recaptcha.svg" alt="reCAPTCHA">
+          <span>reCAPTCHA</span>
+        </div>
+      </div>
+
+      <!-- Botón Registrarse -->
+      <button type="submit" class="btn btn-primario btn-auth-submit" id="btn-submit-registro">
+        Registrarse
+      </button>
+
+      <!-- Alternar hacia Modo Login -->
+      <p class="auth-toggle-footer">
+        ¿Ya tienes cuenta? 
+        <a href="#login" id="link-ir-login" class="auth-toggle-link">Inicia sesión</a>
+      </p>
+
+    </form>
+
+  </main>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,206 @@
+/* ==========================================================================
+   COMPONENTE: FORMULARIOS E INPUTS
+   Estilos base para inputs, labels, validación visual y componentes de form
+   ========================================================================== */
+
+.grupo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-bottom: 14px;
+  position: relative;
+  text-align: left;
+}
+
+.label-formulario {
+  font-family: var(--fuente-secundaria);
+  font-size: var(--tamano-small);
+  color: var(--color-claro);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label-formulario .campo-requerido {
+  color: var(--color-acento);
+}
+
+.contenedor-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-formulario {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  background-color: var(--color-superficie-oscura);
+  border: 1px solid var(--color-primario-claro2);
+  border-radius: var(--radio-md);
+  color: var(--color-blanco);
+  font-family: var(--fuente-principal);
+  font-size: var(--tamano-body);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.input-formulario::placeholder {
+  color: var(--color-gris-apagado);
+  font-size: var(--tamano-small);
+}
+
+.input-formulario:focus {
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.25);
+}
+
+/* --- Estados de Validación Visual --- */
+.input-formulario.valido {
+  border-color: var(--color-exito);
+}
+
+.input-formulario.invalido {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.2);
+}
+
+.mensaje-feedback {
+  font-size: var(--tamano-micro);
+  min-height: 16px;
+  margin-top: 2px;
+  font-family: var(--fuente-secundaria);
+  transition: opacity 0.2s ease;
+}
+
+.mensaje-feedback.error {
+  color: var(--color-error);
+}
+
+.mensaje-feedback.exito {
+  color: var(--color-exito);
+}
+
+/* --- Input con Botón / Icono Adyacente (Ej: Ver Contraseña) --- */
+.contenedor-input .btn-toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gris-apagado);
+}
+
+.contenedor-input .btn-toggle-password img,
+.contenedor-input .btn-toggle-password svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+
+.contenedor-input .btn-toggle-password:hover img,
+.contenedor-input .btn-toggle-password:hover svg {
+  opacity: 1;
+}
+
+/* --- Checkbox Términos y Condiciones --- */
+.grupo-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--fuente-secundaria);
+  font-size: var(--tamano-small);
+  color: var(--color-gris-texto);
+  margin-bottom: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.grupo-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 1px solid var(--color-primario-claro2);
+  border-radius: var(--radio-sm);
+  background-color: var(--color-superficie-oscura);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: all 0.2s ease;
+}
+
+.grupo-checkbox input[type="checkbox"]:checked {
+  background-color: var(--color-acento);
+  border-color: var(--color-acento-borde);
+}
+
+.grupo-checkbox input[type="checkbox"]:checked::before {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid var(--color-blanco);
+  border-bottom: 2px solid var(--color-blanco);
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.grupo-checkbox a {
+  color: var(--color-acento-claro);
+  text-decoration: underline;
+}
+
+/* --- Tarjeta Visual ReCaptcha (Estilo Figma) --- */
+.recaptcha-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+  background-color: #222522;
+  border: 1px solid #3A423A;
+  border-radius: var(--radio-sm);
+  padding: 10px 14px;
+  margin: 10px auto 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.recaptcha-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--fuente-secundaria);
+  font-size: var(--tamano-small);
+  color: var(--color-claro);
+}
+
+.recaptcha-check input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #666;
+  border-radius: 3px;
+  background-color: #111;
+  cursor: pointer;
+}
+
+.recaptcha-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  color: var(--color-gris-apagado);
+}
+
+.recaptcha-brand img,
+.recaptcha-brand svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 2px;
+}
+

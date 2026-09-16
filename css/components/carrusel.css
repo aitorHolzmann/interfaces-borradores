@@ -1,0 +1,219 @@
+/* ==========================================================================
+   COMPONENTE: CARRUSELES (HERO Y CATEGORÍAS)
+   Estructura base para sliders y carruseles horizontales
+   (Transiciones translateX avanzadas y control JS se configuran en Etapa 2)
+   ========================================================================== */
+
+/* --- 1. Carrusel Hero (Juegos en Tendencia) --- */
+.seccion-hero {
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin: 20px auto 40px;
+  padding: 0 20px;
+  position: relative;
+}
+
+.hero-titulo {
+  font-size: 1.6rem;
+  color: var(--color-primario-claro);
+  text-align: center;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-carrusel-contenedor {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radio-xl);
+  background-color: var(--color-superficie-oscura);
+  border: 1px solid var(--color-primario);
+}
+
+.hero-pista {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 380px;
+}
+
+.hero-slide {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 40px;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(20, 23, 20, 0.95) 10%, rgba(20, 23, 20, 0.2) 60%, transparent 100%);
+  z-index: 1;
+}
+
+.hero-info {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-info h2 {
+  font-size: 2rem;
+  color: var(--color-blanco);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-info p {
+  font-size: var(--tamano-body);
+  color: var(--color-claro);
+  line-height: 1.4;
+}
+
+.hero-btn-jugar {
+  margin-top: 10px;
+  font-size: var(--tamano-body);
+  padding: 14px 32px;
+}
+
+/* --- Flechas del Hero --- */
+.hero-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(20, 23, 20, 0.7);
+  border: 1px solid var(--color-primario-claro2);
+  color: var(--color-blanco);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radio-redondo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-flecha:hover {
+  background-color: var(--color-acento);
+  border-color: var(--color-acento-borde);
+  box-shadow: var(--sombra-glow-acento);
+}
+
+.hero-flecha.izquierda {
+  left: 15px;
+}
+
+.hero-flecha.derecha {
+  right: 15px;
+}
+
+.hero-flecha img,
+.hero-flecha svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- 2. Carruseles de Categorías Temáticas --- */
+.seccion-categoria {
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.categoria-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(130, 142, 59, 0.3);
+}
+
+.categoria-titulo-grupo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.categoria-icono {
+  width: 32px;
+  height: 32px;
+}
+
+.categoria-titulo {
+  font-size: 1.5rem;
+  color: var(--color-primario-claro);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.categoria-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-carrusel-nav {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie-oscura);
+  border: 1px solid var(--color-primario-claro2);
+  color: var(--color-blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-carrusel-nav:hover {
+  background-color: var(--color-superficie);
+  border-color: var(--color-acento);
+}
+
+.btn-carrusel-nav img,
+.btn-carrusel-nav svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Pista del Carrusel de Cards --- */
+.carrusel-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.carrusel-pista {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 10px;
+}
+
+.carrusel-pista::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+

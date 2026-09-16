@@ -1,0 +1,113 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN — ENFOQUE MOBILE FIRST (HOME)
+   Requerimiento Mandatorio Nº 5 de Cátedra:
+   - Mobile First estricto: estilos base móviles progresando con min-width.
+   ========================================================================== */
+
+/* --- TABLET Y PANTALLAS MEDIANAS (min-width: 768px) --- */
+@media (min-width: 768px) {
+  /* Tipografía fluida */
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  /* Hero */
+  .hero-pista {
+    min-height: 420px;
+  }
+
+  .hero-slide {
+    height: 420px;
+    padding: 50px;
+  }
+
+  .hero-info h2 {
+    font-size: 2.5rem;
+  }
+
+  /* Footer en 2 Columnas */
+  .footer-contenedor {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
+  }
+
+  .footer-bottom-contenido {
+    flex-direction: row;
+  }
+}
+
+/* --- DESKTOP Y PANTALLAS GRANDES (min-width: 1024px) --- */
+@media (min-width: 1024px) {
+  /* Tipografía desktop completa */
+  h1 {
+    font-size: var(--tamano-h1); /* 64px */
+  }
+
+  h2 {
+    font-size: var(--tamano-h2); /* 48px */
+  }
+
+  /* Navegación Desktop */
+  .nav-principal {
+    padding: 0 40px;
+  }
+
+  .nav-centro {
+    display: block;
+  }
+
+  /* Footer en 4 Columnas completas */
+  .footer-contenedor {
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    padding: 60px 40px 40px;
+  }
+
+  /* Hero carrusel más amplio */
+  .hero-pista {
+    min-height: 460px;
+  }
+
+  .hero-slide {
+    height: 460px;
+    padding: 60px 80px;
+  }
+
+  /* Categorías */
+  .seccion-categoria {
+    padding: 0 40px;
+  }
+}
+
+/* --- AJUSTES PARA PANTALLAS MUY PEQUEÑAS (max-width: 480px) --- */
+@media (max-width: 480px) {
+  .nav-centro {
+    display: none; /* Se activa mediante botón en mobile extremo */
+  }
+
+  .nombre-usuario {
+    display: none;
+  }
+
+  .hero-slide {
+    padding: 24px 16px;
+    height: 340px;
+  }
+
+  .hero-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .card-juego {
+    min-width: 180px;
+  }
+
+  .card-media {
+    height: 140px;
+  }
+}
+

@@ -1,0 +1,50 @@
+/* ==========================================================================
+   COMPONENTE: BREADCRUMBS (MIGAS DE PAN)
+   Nielsen H1: Visibilidad del estado del sistema
+   Nielsen H3: Control y libertad del usuario (retorno ágil)
+   ========================================================================== */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 0;
+  font-size: var(--tamano-small);
+  color: var(--color-gris-texto);
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.breadcrumb-link {
+  color: var(--color-gris-texto);
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-acento-claro);
+  text-decoration: underline;
+}
+
+.breadcrumb-separador {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-primario-claro2);
+}
+
+.breadcrumb-separador img,
+.breadcrumb-separador svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.breadcrumb-actual {
+  color: var(--color-primario-claro);
+  font-weight: 700;
+}
+

@@ -1,0 +1,81 @@
+/* ==========================================================================
+   VARIABLES Y TOKENS DE DISEÑO — ESTÉTICA MILITAR / CLONE WARS
+   Basado en el Design System de Figma (File Key: LI86LH8D4OyOSsgXW0ePn2)
+   ========================================================================== */
+
+:root {
+  /* --- Paleta Cromática Primaria (Verde Militar) --- */
+  --color-primario: #4B5320;
+  --color-primario-claro: #828E3B;
+  --color-primario-claro2: #66702D;
+  --color-primario-oscuro: #3B4119;
+  --color-primario-oscuro2: #2D3213;
+
+  /* --- Paleta de Acento (Naranja Táctico) --- */
+  --color-acento: #FF6B00;
+  --color-acento-claro: #FF8833;
+  --color-acento-hover: #C45200;
+  --color-acento-borde: #8F3C00;
+
+  /* --- Superficies y Fondos --- */
+  --color-fondo: #2A302A;
+  --color-fondo-transparente: rgba(42, 48, 42, 0.85);
+  --color-superficie: #424B42;
+  --color-superficie-oscura: #141714;
+  --color-superficie-card: #353D35;
+
+  /* --- Colores de Estado y Terceros --- */
+  --color-premium: #E5B80B;
+  --color-premium-hover: #CCA008;
+  --color-error: #E53935;
+  --color-exito: #4CAF50;
+  --color-facebook: #1877F2;
+  --color-google: #FFFFFF;
+
+  /* --- Colores Neutros y Textos --- */
+  --color-blanco: #FFFFFF;
+  --color-claro: #EAEAEA;
+  --color-gris-texto: #C0C8C0;
+  --color-gris-apagado: #8C968C;
+  --color-negro: #0A0D0A;
+
+  /* --- Tipografías --- */
+  --fuente-principal: 'JetBrains Mono', monospace;
+  --fuente-secundaria: 'Poppins', sans-serif;
+
+  /* --- Tamaños de Fuente --- */
+  --tamano-h1: 64px;
+  --tamano-h2: 48px;
+  --tamano-h3: 24px;
+  --tamano-body: 16px;
+  --tamano-small: 14px;
+  --tamano-micro: 12px;
+
+  /* --- Border Radius --- */
+  --radio-sm: 5px;
+  --radio-md: 8px;
+  --radio-lg: 16px;
+  --radio-xl: 24px;
+  --radio-card: 25px;
+  --radio-redondo: 50%;
+  --radio-pill: 50px;
+
+  /* --- Sombras --- */
+  --sombra-panel-login: 0 0 25px 8px rgba(255, 255, 255, 0.12);
+  --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.4);
+  --sombra-card-hover: 0 8px 25px rgba(0, 0, 0, 0.6);
+  --sombra-glow-acento: 0 0 15px rgba(255, 107, 0, 0.5);
+  --sombra-glow-verde: 0 0 15px rgba(130, 142, 59, 0.5);
+
+  /* --- Gradientes --- */
+  --gradiente-login: linear-gradient(134deg, #4B5320, rgba(0, 0, 0, 0.45));
+  --gradiente-tag: linear-gradient(90deg, rgba(42, 48, 42, 0.4), rgba(130, 142, 59, 0.4) 50%, rgba(42, 48, 42, 0.4));
+  --gradiente-overlay-juego: radial-gradient(circle, rgba(75, 83, 32, 0.75), rgba(42, 48, 42, 0.85));
+  --gradiente-hero: linear-gradient(180deg, rgba(20, 23, 20, 0.3) 0%, rgba(42, 48, 42, 0.95) 100%);
+
+  /* --- Dimensiones del Layout --- */
+  --ancho-maximo: 1440px;
+  --altura-nav: 81px;
+  --ancho-sidebar: 260px;
+}
+
