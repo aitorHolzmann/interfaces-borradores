@@ -1,30 +1,24 @@
 /* ==========================================================================
-   COMPONENTE: FORMULARIOS E INPUTS
-   Estilos base para inputs, labels, validación visual y componentes de form
+   COMPONENTE: FORMULARIOS E INPUTS (FIDELIDAD FIGMA)
+   Referencia: examples/login_original.png y examples/registrarse_original.png
+   - Inputs con fondo blanco y texto oscuro
+   - Border radius de 8px
    ========================================================================== */
 
 .grupo-formulario {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   width: 100%;
-  margin-bottom: 14px;
-  position: relative;
+  margin-bottom: 12px;
   text-align: left;
 }
 
 .label-formulario {
-  font-family: var(--fuente-secundaria);
+  font-family: var(--fuente-principal);
   font-size: var(--tamano-small);
   color: var(--color-claro);
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.label-formulario .campo-requerido {
-  color: var(--color-acento);
+  font-weight: 400;
 }
 
 .contenedor-input {
@@ -34,56 +28,32 @@
   width: 100%;
 }
 
+/* Input con fondo blanco del prototipo original */
 .input-formulario {
   width: 100%;
-  min-height: 44px;
-  padding: 10px 14px;
-  background-color: var(--color-superficie-oscura);
-  border: 1px solid var(--color-primario-claro2);
+  min-height: 42px;
+  padding: 8px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
   border-radius: var(--radio-md);
-  color: var(--color-blanco);
+  color: #1A1A1A;
   font-family: var(--fuente-principal);
-  font-size: var(--tamano-body);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  font-size: var(--tamano-small);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .input-formulario::placeholder {
-  color: var(--color-gris-apagado);
-  font-size: var(--tamano-small);
+  color: #777777;
+  font-family: var(--fuente-principal);
 }
 
 .input-formulario:focus {
   border-color: var(--color-acento);
-  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.25);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
 }
 
-/* --- Estados de Validación Visual --- */
-.input-formulario.valido {
-  border-color: var(--color-exito);
-}
-
-.input-formulario.invalido {
-  border-color: var(--color-error);
-  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.2);
-}
-
-.mensaje-feedback {
-  font-size: var(--tamano-micro);
-  min-height: 16px;
-  margin-top: 2px;
-  font-family: var(--fuente-secundaria);
-  transition: opacity 0.2s ease;
-}
-
-.mensaje-feedback.error {
-  color: var(--color-error);
-}
-
-.mensaje-feedback.exito {
-  color: var(--color-exito);
-}
-
-/* --- Input con Botón / Icono Adyacente (Ej: Ver Contraseña) --- */
+/* Icono ojo ver/ocultar contraseña dentro del input blanco */
 .contenedor-input .btn-toggle-password {
   position: absolute;
   right: 12px;
@@ -94,98 +64,69 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-gris-apagado);
 }
 
-.contenedor-input .btn-toggle-password img,
-.contenedor-input .btn-toggle-password svg {
+.contenedor-input .btn-toggle-password svg,
+.contenedor-input .btn-toggle-password img {
   width: 20px;
   height: 20px;
-  opacity: 0.7;
+  filter: invert(0.2); /* Icono oscuro dentro del input blanco */
 }
 
-.contenedor-input .btn-toggle-password:hover img,
-.contenedor-input .btn-toggle-password:hover svg {
-  opacity: 1;
-}
-
-/* --- Checkbox Términos y Condiciones --- */
+/* Checkbox de Términos (Registro) */
 .grupo-checkbox {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  font-family: var(--fuente-secundaria);
-  font-size: var(--tamano-small);
-  color: var(--color-gris-texto);
-  margin-bottom: 16px;
+  font-family: var(--fuente-principal);
+  font-size: var(--tamano-micro);
+  color: var(--color-claro);
+  margin: 10px 0 14px;
   cursor: pointer;
-  user-select: none;
+  line-height: 1.4;
 }
 
 .grupo-checkbox input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
-  border: 1px solid var(--color-primario-claro2);
-  border-radius: var(--radio-sm);
-  background-color: var(--color-superficie-oscura);
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 1px;
   cursor: pointer;
-  display: grid;
-  place-content: center;
-  transition: all 0.2s ease;
-}
-
-.grupo-checkbox input[type="checkbox"]:checked {
-  background-color: var(--color-acento);
-  border-color: var(--color-acento-borde);
-}
-
-.grupo-checkbox input[type="checkbox"]:checked::before {
-  content: "";
-  width: 10px;
-  height: 6px;
-  border-left: 2px solid var(--color-blanco);
-  border-bottom: 2px solid var(--color-blanco);
-  transform: rotate(-45deg) translate(1px, -1px);
+  accent-color: var(--color-acento);
 }
 
 .grupo-checkbox a {
-  color: var(--color-acento-claro);
+  color: var(--color-acento);
   text-decoration: underline;
+  font-weight: 500;
 }
 
-/* --- Tarjeta Visual ReCaptcha (Estilo Figma) --- */
+/* Mockup ReCaptcha en Registro */
 .recaptcha-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 320px;
-  background-color: #222522;
-  border: 1px solid #3A423A;
-  border-radius: var(--radio-sm);
-  padding: 10px 14px;
-  margin: 10px auto 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  max-width: 300px;
+  background-color: #F9F9F9;
+  border: 1px solid #D3D3D3;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 6px auto 14px;
 }
 
 .recaptcha-check {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-family: var(--fuente-secundaria);
-  font-size: var(--tamano-small);
-  color: var(--color-claro);
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #333333;
 }
 
 .recaptcha-check input[type="checkbox"] {
-  width: 24px;
-  height: 24px;
-  border: 2px solid #666;
-  border-radius: 3px;
-  background-color: #111;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
 }
 
@@ -193,14 +134,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 10px;
-  color: var(--color-gris-apagado);
+  font-size: 9px;
+  color: #666666;
+  font-family: Arial, sans-serif;
 }
 
-.recaptcha-brand img,
-.recaptcha-brand svg {
-  width: 28px;
-  height: 28px;
-  margin-bottom: 2px;
+.recaptcha-brand img {
+  width: 24px;
+  height: 24px;
 }
-

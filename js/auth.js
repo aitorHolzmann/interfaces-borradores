@@ -1,6 +1,6 @@
 /* ==========================================================================
    LÓGICA DE AUTENTICACIÓN — LOGIN Y REGISTRO
-   Alternancia de formularios y visor de contraseña (base Etapa 1)
+   Alternancia de formularios, cambio de fondo y visor de contraseña
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,27 +9,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const linkIrRegistro = document.getElementById('link-ir-registro');
   const linkIrLogin = document.getElementById('link-ir-login');
   const authTitulo = document.getElementById('auth-titulo');
-  const authSubtitulo = document.getElementById('auth-subtitulo');
+  const authSeccion = document.getElementById('auth-seccion');
 
-  // Alternar a Registro
+  // Alternar a Modo Registro
   if (linkIrRegistro) {
     linkIrRegistro.addEventListener('click', (e) => {
       e.preventDefault();
       formLogin.classList.add('oculto');
       formRegistro.classList.remove('oculto');
-      authTitulo.textContent = 'Crear Cuenta';
-      authSubtitulo.textContent = 'Únete al frente de batalla registrando tus datos';
+      if (authTitulo) authTitulo.innerHTML = 'Registrate<br>Soldado!';
+      if (authSeccion) {
+        authSeccion.classList.remove('modo-login');
+        authSeccion.classList.add('modo-registro');
+      }
     });
   }
 
-  // Alternar a Login
+  // Alternar a Modo Login
   if (linkIrLogin) {
     linkIrLogin.addEventListener('click', (e) => {
       e.preventDefault();
       formRegistro.classList.add('oculto');
       formLogin.classList.remove('oculto');
-      authTitulo.textContent = 'Iniciar Sesión';
-      authSubtitulo.textContent = 'Identifícate soldado para acceder al catálogo';
+      if (authTitulo) authTitulo.innerHTML = 'Inicia<br>Soldado!';
+      if (authSeccion) {
+        authSeccion.classList.remove('modo-registro');
+        authSeccion.classList.add('modo-login');
+      }
     });
   }
 
@@ -43,12 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (input.type === 'password') {
         input.type = 'text';
-        btn.style.opacity = '1';
       } else {
         input.type = 'password';
-        btn.style.opacity = '0.7';
       }
     });
   });
 });
-

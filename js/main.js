@@ -1,7 +1,7 @@
 /* ==========================================================================
    INTERACTIVIDAD GLOBAL — MAIN.JS
    - Control del menú lateral (Sidebar / Hamburguesa)
-   - Controles de desplazamiento horizontal en carruseles
+   - Controles de navegación en el tríptico del Hero
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sidebar && sidebarOverlay) {
       sidebar.classList.add('abierto');
       sidebarOverlay.classList.add('activo');
-      document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+      document.body.style.overflow = 'hidden';
     }
   }
 
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebarOverlay.addEventListener('click', cerrarSidebar);
   }
 
-  // Cerrar sidebar al clickear un enlace interno
   const sidebarLinks = document.querySelectorAll('.sidebar-item a');
   sidebarLinks.forEach((link) => {
     link.addEventListener('click', () => {
@@ -47,42 +46,83 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 2. Controles de Desplazamiento Horizontal de Carruseles ---
-  const botonesCarruselNav = document.querySelectorAll('.btn-carrusel-nav');
-  botonesCarruselNav.forEach((boton) => {
-    boton.addEventListener('click', () => {
-      const targetId = boton.getAttribute('data-target');
-      const carrusel = document.getElementById(targetId);
-      if (!carrusel) return;
+  // --- 2. Rotación de Juegos en el Tríptico del Hero ---
+  const heroJuegos = [
+    {
+      nombre: 'Peg Solitaire',
+      fotoIzq: 'assets/images/game_solitaire_1.jpg',
+      fotoCentro: 'assets/images/peg_solitaire_hero.jpg',
+      fotoDer: 'assets/images/game_scifi_2.jpg',
+      enlace: 'game.html'
+    },
+    {
+      nombre: 'Velocity',
+      fotoIzq: 'assets/images/game_flight_1.jpg',
+      fotoCentro: 'assets/images/game_racing_1.jpg',
+      fotoDer: 'assets/images/game_combat_1.jpg',
+      enlace: 'game.html'
+    }
+  ];
 
-      const cardWidth = 260; // Ancho promedio de card + gap
-      const esSiguiente = boton.classList.contains('btn-sig');
-      const desplazamiento = esSiguiente ? cardWidth * 2 : -cardWidth * 2;
+  let heroIndex = 0;
+  const heroBtnAnt = document.getElementById('hero-btn-ant');
+  const heroBtnSig = document.getElementById('hero-btn-sig');
+  const heroNombre = document.querySelector('.hero-juego-nombre');
+  const heroFotoCentral = document.querySelector('.hero-foto-central');
+  const heroFotoCentralImg = document.querySelector('.hero-foto-central img');
+  const heroFotoIzqImg = document.querySelector('.hero-foto-lateral:first-child img');
+  const heroFotoDerImg = document.querySelector('.hero-foto-lateral:last-child img');
 
-      carrusel.scrollBy({
-        left: desplazamiento,
-        behavior: 'smooth'
-      });
+  function actualizarHero(index) {
+    const juego = heroJuegos[index];
+    if (!juego) return;
+
+    if (heroNombre) heroNombre.textContent = juego.nombre;
+    if (heroFotoCentral) heroFotoCentral.href = juego.enlace;
+    if (heroFotoCentralImg) heroFotoCentralImg.src = juego.fotoCentro;
+    if (heroFotoIzqImg) heroFotoIzqImg.src = juego.fotoIzq;
+    if (heroFotoDerImg) heroFotoDerImg.src = juego.fotoDer;
+  }
+
+  if (heroBtnAnt) {
+    heroBtnAnt.addEventListener('click', () => {
+      heroIndex = (heroIndex - 1 + heroJuegos.length) % heroJuegos.length;
+      actualizarHero(heroIndex);
     });
-  });
+  }
 
-  // --- 3. Guardar en Favoritos (Feedback Visual) ---
-  const botonesGuardar = document.querySelectorAll('.btn-guardar-card');
-  botonesGuardar.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+  if (heroBtnSig) {
+    heroBtnSig.addEventListener('click', () => {
+      heroIndex = (heroIndex + 1) % heroJuegos.length;
+      actualizarHero(heroIndex);
+    });
+  }
+
+  // --- 3. Publicación interactiva de comentario (Ficha de Juego) ---
+  const formNuevoComentario = document.getElementById('form-nuevo-comentario');
+  const inputComentario = document.getElementById('input-comentario');
+  const listaComentarios = document.getElementById('lista-comentarios');
+
+  if (formNuevoComentario && inputComentario && listaComentarios) {
+    formNuevoComentario.addEventListener('submit', (e) => {
       e.preventDefault();
-      e.stopPropagation();
-      const img = btn.querySelector('img');
-      const esGuardado = btn.classList.toggle('activo');
-      
-      if (esGuardado) {
-        btn.style.backgroundColor = 'var(--color-acento)';
-        if (img) img.src = 'assets/icons/icon-saved.svg';
-      } else {
-        btn.style.backgroundColor = '';
-        if (img) img.src = 'assets/icons/icon-save.svg';
-      }
-    });
-  });
-});
+      const texto = inputComentario.value.trim();
+      if (!texto) return;
 
+      const nuevoArticulo = document.createElement('article');
+      nuevoArticulo.className = 'comentario-fila-item';
+      nuevoArticulo.innerHTML = `
+        <div class="comentario-item-avatar">
+          <img src="assets/icons/icon-profile.svg" alt="Esteban">
+        </div>
+        <div class="comentario-item-contenido">
+          <span class="comentario-item-usuario">Esteban</span>
+          <p class="comentario-item-texto">${texto}</p>
+        </div>
+      `;
+
+      listaComentarios.insertBefore(nuevoArticulo, listaComentarios.firstChild);
+      inputComentario.value = '';
+    });
+  }
+});

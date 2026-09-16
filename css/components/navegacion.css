@@ -136,32 +136,31 @@
 .btn-perfil {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 12px;
-  border-radius: var(--radio-pill);
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radio-redondo);
   background-color: var(--color-superficie-oscura);
-  border: 1px solid var(--color-primario-claro2);
+  border: 1.5px solid var(--color-acento);
   cursor: pointer;
+  padding: 4px;
   transition: all 0.2s ease;
 }
 
 .btn-perfil:hover {
-  border-color: var(--color-acento);
-  background-color: var(--color-superficie);
+  border-color: var(--color-blanco);
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+  transform: scale(1.05);
 }
 
-.avatar-usuario {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radio-redondo);
-  object-fit: cover;
-  border: 1px solid var(--color-acento);
+.avatar-usuario-icono {
+  width: 30px;
+  height: 30px;
+  display: block;
 }
 
 .nombre-usuario {
-  font-size: var(--tamano-small);
-  color: var(--color-claro);
-  font-weight: 500;
+  display: none !important;
 }
 
 /* --- Sidebar (Menú Lateral de Navegación y Categorías) --- */

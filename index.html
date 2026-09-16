@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frente Táctico — Plataforma de Juegos Online</title>
+  <title>Plataforma de Juegos — Inicio</title>
   
-  <!-- Estilos del Sistema (CSS puro y modular) -->
+  <!-- Estilos del Sistema -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components/botones.css">
@@ -20,7 +20,7 @@
 <body>
 
   <!-- ====================================================================
-       PANTALLA DE CARGA (LOADING SCREEN - Estructura para Etapa 2)
+       PANTALLA DE CARGA (LOADER 5s — Preparado para Etapa 2)
        ==================================================================== -->
   <div id="pantalla-carga" class="pantalla-carga loader-oculto" aria-hidden="true">
     <div class="loader-contenido">
@@ -36,25 +36,20 @@
   <header class="nav-principal">
     <div class="nav-contenedor">
       
-      <!-- Lado Izquierdo: Menú Hamburguesa y Logotipo -->
+      <!-- Lado Izquierdo: Menú Hamburguesa y Logo Oficial -->
       <div class="nav-izquierda">
         <button class="btn-hamburguesa" id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
           <img src="assets/icons/menu.svg" alt="Menú lateral">
         </button>
         <a href="index.html" class="nav-logo" title="Ir a la página principal">
-          <img src="assets/logo.png" alt="Logotipo Plataforma de Juegos">
+          <img src="assets/logo.png" alt="Logotipo Plataforma">
         </a>
       </div>
 
-      <!-- Centro: Barra de Búsqueda de Juegos -->
+      <!-- Centro: Buscador Pill con Lupa Naranja -->
       <div class="nav-centro">
         <form class="barra-busqueda" role="search" onsubmit="event.preventDefault();">
-          <input 
-            type="search" 
-            class="input-busqueda" 
-            placeholder="Buscar juegos, géneros o batallas..." 
-            aria-label="Buscar juegos"
-          >
+          <input type="search" class="input-busqueda" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
           <button type="submit" class="btn-busqueda-icono" aria-label="Ejecutar búsqueda">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
@@ -64,20 +59,17 @@
         </form>
       </div>
 
-      <!-- Lado Derecho: Acceso a Perfil de Usuario -->
+      <!-- Lado Derecho: Avatar Circular del Soldado (Sin nombre) -->
       <div class="nav-derecha">
         <a href="login.html" class="btn-perfil" title="Panel de usuario">
-          <img src="assets/images/avatar_user.jpg" alt="Avatar del soldado" class="avatar-usuario">
-          <span class="nombre-usuario">Soldado CT-7567</span>
+          <img src="assets/icons/icon-profile.svg" alt="Avatar del soldado" class="avatar-usuario-icono">
         </a>
       </div>
 
     </div>
   </header>
 
-  <!-- ====================================================================
-       SIDEBAR OFF-CANVAS (NAVEGACIÓN LATERAL POR CATEGORÍAS)
-       ==================================================================== -->
+  <!-- SIDEBAR OFF-CANVAS -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
@@ -87,69 +79,16 @@
       </button>
     </div>
 
-    <span class="sidebar-titulo-seccion">Navegación Táctica</span>
+    <span class="sidebar-titulo-seccion">Navegación</span>
     <ul class="sidebar-menu">
-      <li class="sidebar-item activo">
-        <a href="index.html">
-          <img src="assets/icons/icon-home.svg" alt="Inicio">
-          <span>Inicio</span>
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#top-juegos">
-          <img src="assets/icons/icon-top.svg" alt="Top Juegos">
-          <span>Top Juegos</span>
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#premium">
-          <img src="assets/icons/icon-premium.svg" alt="Premium">
-          <span>Juegos Premium</span>
-        </a>
-      </li>
-      
+      <li class="sidebar-item activo"><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
+      <li class="sidebar-item"><a href="#top"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
+      <li class="sidebar-item"><a href="#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
       <li class="sidebar-divider"></li>
-      <span class="sidebar-titulo-seccion">Categorías</span>
-
-      <li class="sidebar-item">
-        <a href="#accion">
-          <img src="assets/icons/icon-action.svg" alt="Acción">
-          <span>Acción Táctica</span>
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#aventura">
-          <img src="assets/icons/icon-adventure.svg" alt="Aventura">
-          <span>Aventura Galáctica</span>
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#estrategia">
-          <img src="assets/icons/icon-strategy.svg" alt="Estrategia">
-          <span>Estrategia Militar</span>
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="#deportes">
-          <img src="assets/icons/icon-sports.svg" alt="Deportes">
-          <span>Simulación y Carreras</span>
-        </a>
-      </li>
-
-      <li class="sidebar-divider"></li>
-
-      <li class="sidebar-item">
-        <a href="#guardados">
-          <img src="assets/icons/icon-saved.svg" alt="Guardados">
-          <span>Mis Favoritos</span>
-        </a>
-      </li>
-      <li class="sidebar-item">
-        <a href="login.html">
-          <img src="assets/icons/icon-profile.svg" alt="Cuenta">
-          <span>Configuración de Cuenta</span>
-        </a>
-      </li>
+      <li class="sidebar-item"><a href="#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
+      <li class="sidebar-item"><a href="#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
+      <li class="sidebar-item"><a href="#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
+      <li class="sidebar-item"><a href="#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
     </ul>
   </aside>
 
@@ -158,537 +97,210 @@
        ==================================================================== -->
   <main class="contenido-principal">
 
-    <!-- HERO / JUEGOS EN TENDENCIA -->
-    <section class="seccion-hero" aria-label="Juegos Destacados en Tendencia">
-      <h2 class="hero-titulo">Juegos en Tendencia</h2>
+    <!-- HERO: JUEGOS EN TENDENCIA (TRÍPTICO DE 3 FOTOS — FIGMA ORIGINAL) -->
+    <section class="seccion-hero" aria-label="Juegos en Tendencia">
+      <h2 class="hero-titulo">
+        Juegos en tendencia<br>
+        exclusivos del pase de batalla
+      </h2>
 
       <div class="hero-carrusel-contenedor">
         <!-- Flecha Izquierda -->
         <button class="hero-flecha izquierda" id="hero-btn-ant" aria-label="Juego anterior">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
         </button>
 
-        <!-- Pista de Slides -->
-        <div class="hero-pista" id="hero-pista">
-          <article class="hero-slide" style="background-image: url('assets/images/peg_solitaire_hero.jpg');">
-            <div class="hero-info">
-              <span class="badge-categoria badge-premium">Destacado Semanal</span>
-              <h2>Peg Solitaire: Clone Wars Edition</h2>
-              <p>Comanda el batallón en un desafío de lógica y supervivencia donde cada salto táctico define la victoria o el exterminio de la escuadra.</p>
-              <a href="game.html" class="btn btn-primario hero-btn-jugar" title="Jugar a Peg Solitaire ahora">
-                <img src="assets/icons/icon-play.svg" alt="Jugar" style="width: 22px; height: 22px;">
-                JUGAR AHORA
-              </a>
-            </div>
-          </article>
+        <!-- Tríptico de 3 fotos del juego actual -->
+        <div class="hero-triptico">
+          <!-- Foto Lateral Izquierda -->
+          <div class="hero-foto-lateral">
+            <img src="assets/images/game_solitaire_1.jpg" alt="Peg Solitaire detalle">
+          </div>
+
+          <!-- Foto Central Destacada con Título Overlaid -->
+          <a href="game.html" class="hero-foto-central" title="Jugar a Peg Solitaire">
+            <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+            <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire Tablero">
+          </a>
+
+          <!-- Foto Lateral Derecha -->
+          <div class="hero-foto-lateral">
+            <img src="assets/images/game_scifi_2.jpg" alt="Peg Solitaire táctica">
+          </div>
         </div>
 
         <!-- Flecha Derecha -->
         <button class="hero-flecha derecha" id="hero-btn-sig" aria-label="Siguiente juego">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
         </button>
       </div>
     </section>
 
     <!-- ====================================================================
-         CATEGORÍA 1: TOP JUEGOS
+         CATEGORÍA 1: TOP (SIN ICONOS, FONDO PÍLDORA EN TÍTULO)
          ==================================================================== -->
-    <section class="seccion-categoria" id="top-juegos">
+    <section class="seccion-categoria" id="top">
       <div class="categoria-header">
-        <div class="categoria-titulo-grupo">
-          <img src="assets/icons/icon-top.svg" alt="Icono Top" class="categoria-icono">
-          <h2 class="categoria-titulo">Top Juegos</h2>
-        </div>
-        <div class="categoria-controles">
-          <button class="btn-carrusel-nav btn-ant" aria-label="Desplazar a la izquierda" data-target="carrusel-top">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <button class="btn-carrusel-nav btn-sig" aria-label="Desplazar a la derecha" data-target="carrusel-top">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
+        <h2 class="categoria-titulo">Top</h2>
       </div>
 
       <div class="carrusel-viewport">
-        <div class="carrusel-pista" id="carrusel-top">
+        <div class="carrusel-pista">
           
-          <!-- Card 1: Título Corto -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-top">#1 Top</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_action_1.jpg" alt="Portada Apex" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Apex">Apex</h3>
-              <div class="card-detalles">
-                <span>Acción</span>
-                <span class="card-rating">★ 4.9</span>
-              </div>
-              <div class="card-acciones">
-                <a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a>
-              </div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_action_1.jpg" alt="Breach Point" class="card-img" loading="lazy">
+            <span class="card-titulo">Breach Point</span>
+          </a>
 
-          <!-- Card 2: Título Muy Extenso (Prueba de text-overflow: ellipsis) -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-top">#2 Top</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_military_1.jpg" alt="Portada Geopolitical Struggle" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Geopolitical Struggle & Global Intelligence">Geopolitical Struggle & Global Intelligence</h3>
-              <div class="card-detalles">
-                <span>Estrategia</span>
-                <span class="card-rating">★ 4.8</span>
-              </div>
-              <div class="card-acciones">
-                <a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a>
-              </div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_action_2.jpg" alt="Street Battle" class="card-img" loading="lazy">
+            <span class="card-titulo">Street Battle</span>
+          </a>
 
-          <!-- Card 3 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-top">#3 Top</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_combat_1.jpg" alt="Portada CQC Tactical" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="CQC Tactical Recon">CQC Tactical Recon</h3>
-              <div class="card-detalles">
-                <span>Combate</span>
-                <span class="card-rating">★ 4.7</span>
-              </div>
-              <div class="card-acciones">
-                <a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a>
-              </div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_sniper_1.jpg" alt="Elite Marksman" class="card-img" loading="lazy">
+            <span class="card-titulo">Elite Marksman</span>
+          </a>
 
-          <!-- Card 4 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-top">#4 Top</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_scifi_1.jpg" alt="Portada Cyberpunk Operative" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Cyberpunk Operative: Sector Zero">Cyberpunk Operative: Sector Zero</h3>
-              <div class="card-detalles">
-                <span>Sci-Fi</span>
-                <span class="card-rating">★ 4.6</span>
-              </div>
-              <div class="card-acciones">
-                <a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a>
-              </div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_combat_1.jpg" alt="Firebase" class="card-img" loading="lazy">
+            <span class="card-titulo">Firebase</span>
+          </a>
 
-          <!-- Card 5 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-top">#5 Top</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_space_1.jpg" alt="Portada Dreadnought Fleet" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Dreadnought Fleet">Dreadnought Fleet</h3>
-              <div class="card-detalles">
-                <span>Espacio</span>
-                <span class="card-rating">★ 4.6</span>
-              </div>
-              <div class="card-acciones">
-                <a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a>
-              </div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_military_1.jpg" alt="Desert Recon Patrol" class="card-img" loading="lazy">
+            <span class="card-titulo">Desert Recon</span>
+          </a>
 
-          <!-- Card 6 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-top">#6 Top</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_tank_1.jpg" alt="Portada Panzer Blitz" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="WWII Panzer Blitzkrieg Squad">WWII Panzer Blitzkrieg Squad</h3>
-              <div class="card-detalles">
-                <span>Bélico</span>
-                <span class="card-rating">★ 4.5</span>
-              </div>
-              <div class="card-acciones">
-                <a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a>
-              </div>
-            </div>
-          </article>
+          <!-- Prueba de título muy extenso con ellipsis -->
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_military_2.jpg" alt="Geopolitical Struggle" class="card-img" loading="lazy">
+            <span class="card-titulo">Geopolitical Struggle &amp; Global Intelligence</span>
+          </a>
 
         </div>
       </div>
     </section>
 
     <!-- ====================================================================
-         CATEGORÍA 2: JUEGOS PREMIUM (INCLUYE EL PEG SOLITAIRE TEMÁTICO)
+         CATEGORÍA 2: JUEGOS PREMIUM (CON BADGE DIAMANTE AZUL)
          ==================================================================== -->
     <section class="seccion-categoria" id="premium">
       <div class="categoria-header">
-        <div class="categoria-titulo-grupo">
-          <img src="assets/icons/icon-premium.svg" alt="Icono Premium" class="categoria-icono">
-          <h2 class="categoria-titulo">Juegos Premium</h2>
-        </div>
-        <div class="categoria-controles">
-          <button class="btn-carrusel-nav btn-ant" aria-label="Desplazar a la izquierda" data-target="carrusel-premium">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <button class="btn-carrusel-nav btn-sig" aria-label="Desplazar a la derecha" data-target="carrusel-premium">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
+        <h2 class="categoria-titulo">Juegos Premium</h2>
       </div>
 
       <div class="carrusel-viewport">
-        <div class="carrusel-pista" id="carrusel-premium">
+        <div class="carrusel-pista">
           
-          <!-- Card de Peg Solitaire (Enlace obligatorio a la Página 3) -->
-          <article class="card-juego" style="border: 2px solid var(--color-premium);">
-            <div class="card-media">
-              <span class="badge-categoria badge-premium">⭐ Edición Oficial</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire Clone Wars" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Peg Solitaire: Clone Wars Edition">Peg Solitaire: Clone Wars Edition</h3>
-              <div class="card-detalles">
-                <span class="texto-premium">Lógica Militar</span>
-                <span class="card-rating">★ 5.0</span>
-              </div>
-              <div class="card-acciones">
-                <a href="game.html" class="btn btn-primario card-btn-jugar" style="background-color: var(--color-acento); border-color: var(--color-acento-borde);">Jugar Ahora</a>
-              </div>
-            </div>
-          </article>
+          <!-- Card 1: Armada -->
+          <a href="game.html" class="card-juego">
+            <img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">
+            <img src="assets/images/game_space_2.jpg" alt="Armada" class="card-img" loading="lazy">
+            <span class="card-titulo">Armada</span>
+          </a>
 
-          <!-- Card Premium 2 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-premium">$4.99 USD</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_sniper_1.jpg" alt="Sniper Ghost" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Sniper Ghost Vanguard Elite">Sniper Ghost Vanguard Elite</h3>
-              <div class="card-detalles">
-                <span>Tirador</span>
-                <span class="card-rating">★ 4.9</span>
-              </div>
-              <div class="card-acciones">
-                <button class="btn btn-comprar card-btn-jugar">Comprar</button>
-              </div>
-            </div>
-          </article>
+          <!-- Card 2: Peg Solitaire (Enlace obligatorio a la Página 3) -->
+          <a href="game.html" class="card-juego">
+            <img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">
+            <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire" class="card-img" loading="lazy">
+            <span class="card-titulo">Peg Solitaire</span>
+          </a>
 
-          <!-- Card Premium 3 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-premium">$9.99 USD</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_cyber_1.jpg" alt="Cyber Assault" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Cyber Assault Protocol 2077">Cyber Assault Protocol 2077</h3>
-              <div class="card-detalles">
-                <span>Infiltración</span>
-                <span class="card-rating">★ 4.8</span>
-              </div>
-              <div class="card-acciones">
-                <button class="btn btn-comprar card-btn-jugar">Comprar</button>
-              </div>
-            </div>
-          </article>
+          <!-- Card 3: Iron Fist -->
+          <a href="game.html" class="card-juego">
+            <img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">
+            <img src="assets/images/game_tank_1.jpg" alt="Iron Fist" class="card-img" loading="lazy">
+            <span class="card-titulo">Iron Fist</span>
+          </a>
 
-          <!-- Card Premium 4 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-premium">$7.99 USD</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_space_2.jpg" alt="Starfleet Battle" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Starfleet Tactical Battlefleet Command">Starfleet Tactical Battlefleet Command</h3>
-              <div class="card-detalles">
-                <span>Estrategia</span>
-                <span class="card-rating">★ 4.7</span>
-              </div>
-              <div class="card-acciones">
-                <button class="btn btn-comprar card-btn-jugar">Comprar</button>
-              </div>
-            </div>
-          </article>
+          <!-- Card 4: Velocity -->
+          <a href="game.html" class="card-juego">
+            <img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">
+            <img src="assets/images/game_racing_1.jpg" alt="Velocity" class="card-img" loading="lazy">
+            <span class="card-titulo">Velocity</span>
+          </a>
 
-          <!-- Card Premium 5 -->
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-premium">$5.49 USD</span>
-              <button class="btn-guardar-card" aria-label="Guardar en favoritos">
-                <img src="assets/icons/icon-save.svg" alt="Favorito">
-              </button>
-              <img src="assets/images/game_solitaire_1.jpg" alt="Solitaire Arena" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Solitaire Arena: Desert Storm">Solitaire Arena: Desert Storm</h3>
-              <div class="card-detalles">
-                <span>Cartas Tácticas</span>
-                <span class="card-rating">★ 4.5</span>
-              </div>
-              <div class="card-acciones">
-                <button class="btn btn-comprar card-btn-jugar">Comprar</button>
-              </div>
-            </div>
-          </article>
+          <!-- Card 5: Starfleet Tactical -->
+          <a href="game.html" class="card-juego">
+            <img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">
+            <img src="assets/images/game_space_1.jpg" alt="Starfleet Tactical" class="card-img" loading="lazy">
+            <span class="card-titulo">Starfleet Tactical Battlefleet</span>
+          </a>
 
         </div>
       </div>
     </section>
 
     <!-- ====================================================================
-         CATEGORÍA 3: ACCIÓN TÁCTICA
+         CATEGORÍA 3: ACCIÓN
          ==================================================================== -->
     <section class="seccion-categoria" id="accion">
       <div class="categoria-header">
-        <div class="categoria-titulo-grupo">
-          <img src="assets/icons/icon-action.svg" alt="Icono Acción" class="categoria-icono">
-          <h2 class="categoria-titulo">Acción Táctica</h2>
-        </div>
-        <div class="categoria-controles">
-          <button class="btn-carrusel-nav btn-ant" aria-label="Desplazar a la izquierda" data-target="carrusel-accion">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <button class="btn-carrusel-nav btn-sig" aria-label="Desplazar a la derecha" data-target="carrusel-accion">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
+        <h2 class="categoria-titulo">Acción</h2>
       </div>
 
       <div class="carrusel-viewport">
-        <div class="carrusel-pista" id="carrusel-accion">
+        <div class="carrusel-pista">
           
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_action_2.jpg" alt="Iron Siege" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Iron Siege: Frontline">Iron Siege: Frontline</h3>
-              <div class="card-detalles"><span>Shooter</span><span class="card-rating">★ 4.6</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_action_2.jpg" alt="Frontline Assault" class="card-img" loading="lazy">
+            <span class="card-titulo">Frontline Assault</span>
+          </a>
 
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_military_2.jpg" alt="Clone Commando Squad" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Clone Commando Squad Assault Operations">Clone Commando Squad Assault Operations</h3>
-              <div class="card-detalles"><span>Incursión</span><span class="card-rating">★ 4.7</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_combat_1.jpg" alt="Urban Warfare Ops" class="card-img" loading="lazy">
+            <span class="card-titulo">Urban Warfare Ops</span>
+          </a>
 
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_combat_1.jpg" alt="Frontline Recon" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Recon">Recon</h3>
-              <div class="card-detalles"><span>Sigilo</span><span class="card-rating">★ 4.4</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_military_1.jpg" alt="Blackout" class="card-img" loading="lazy">
+            <span class="card-titulo">Special Operations Blackout</span>
+          </a>
 
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_action_1.jpg" alt="Special Operations Blackout" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Special Operations Blackout">Special Operations Blackout</h3>
-              <div class="card-detalles"><span>Guerra Urbana</span><span class="card-rating">★ 4.5</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_scifi_1.jpg" alt="Drone Recon" class="card-img" loading="lazy">
+            <span class="card-titulo">Sector 4 Drone Recon</span>
+          </a>
 
         </div>
       </div>
     </section>
 
     <!-- ====================================================================
-         CATEGORÍA 4: ESTRATEGIA Y TÁCTICA
+         CATEGORÍA 4: ESTRATEGIA
          ==================================================================== -->
     <section class="seccion-categoria" id="estrategia">
       <div class="categoria-header">
-        <div class="categoria-titulo-grupo">
-          <img src="assets/icons/icon-strategy.svg" alt="Icono Estrategia" class="categoria-icono">
-          <h2 class="categoria-titulo">Estrategia Militar</h2>
-        </div>
-        <div class="categoria-controles">
-          <button class="btn-carrusel-nav btn-ant" aria-label="Desplazar a la izquierda" data-target="carrusel-estrategia">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <button class="btn-carrusel-nav btn-sig" aria-label="Desplazar a la derecha" data-target="carrusel-estrategia">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
+        <h2 class="categoria-titulo">Estrategia</h2>
       </div>
 
       <div class="carrusel-viewport">
-        <div class="carrusel-pista" id="carrusel-estrategia">
+        <div class="carrusel-pista">
           
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_strategy_1.jpg" alt="Galactic Warfare" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Galactic Warfare Empire: Dominance">Galactic Warfare Empire: Dominance</h3>
-              <div class="card-detalles"><span>RTS</span><span class="card-rating">★ 4.8</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_strategy_1.jpg" alt="Galactic Warfare" class="card-img" loading="lazy">
+            <span class="card-titulo">Galactic Warfare</span>
+          </a>
 
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_strategy_2.jpg" alt="Naval Special Ops" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Naval Special Operations Command Pacific">Naval Special Operations Command Pacific</h3>
-              <div class="card-detalles"><span>Naval</span><span class="card-rating">★ 4.7</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_strategy_2.jpg" alt="Naval Special Ops" class="card-img" loading="lazy">
+            <span class="card-titulo">Naval Special Operations Command</span>
+          </a>
 
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_military_1.jpg" alt="Siege Commander" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Siege Commander Tactics">Siege Commander Tactics</h3>
-              <div class="card-detalles"><span>Por Turnos</span><span class="card-rating">★ 4.5</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_tank_1.jpg" alt="Armor Tactics" class="card-img" loading="lazy">
+            <span class="card-titulo">Armor Tactics</span>
+          </a>
 
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_tank_1.jpg" alt="Armor" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Armor Tactics">Armor Tactics</h3>
-              <div class="card-detalles"><span>Tanques</span><span class="card-rating">★ 4.6</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         CATEGORÍA 5: SIMULACIÓN Y DEPORTES EXTREMOS
-         ==================================================================== -->
-    <section class="seccion-categoria" id="deportes">
-      <div class="categoria-header">
-        <div class="categoria-titulo-grupo">
-          <img src="assets/icons/icon-sports.svg" alt="Icono Deportes" class="categoria-icono">
-          <h2 class="categoria-titulo">Simulación y Carreras</h2>
-        </div>
-        <div class="categoria-controles">
-          <button class="btn-carrusel-nav btn-ant" aria-label="Desplazar a la izquierda" data-target="carrusel-deportes">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <button class="btn-carrusel-nav btn-sig" aria-label="Desplazar a la derecha" data-target="carrusel-deportes">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="carrusel-viewport">
-        <div class="carrusel-pista" id="carrusel-deportes">
-          
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_racing_1.jpg" alt="Pod Racing" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Pod Racing Galactic Championship">Pod Racing Galactic Championship</h3>
-              <div class="card-detalles"><span>Carreras</span><span class="card-rating">★ 4.7</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
-
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_flight_1.jpg" alt="Combat Flight" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Combat Flight Simulator: Air Superiority">Combat Flight Simulator: Air Superiority</h3>
-              <div class="card-detalles"><span>Simulador</span><span class="card-rating">★ 4.8</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
-
-          <article class="card-juego">
-            <div class="card-media">
-              <span class="badge-categoria badge-gratis">Gratis</span>
-              <button class="btn-guardar-card" aria-label="Guardar"><img src="assets/icons/icon-save.svg" alt=""></button>
-              <img src="assets/images/game_racing_1.jpg" alt="Velocity Drift" class="card-img" loading="lazy">
-            </div>
-            <div class="card-info">
-              <h3 class="card-titulo" title="Velocity Drift">Velocity Drift</h3>
-              <div class="card-detalles"><span>Arcade</span><span class="card-rating">★ 4.3</span></div>
-              <div class="card-acciones"><a href="game.html" class="btn btn-primario card-btn-jugar">Jugar</a></div>
-            </div>
-          </article>
+          <a href="game.html" class="card-juego">
+            <img src="assets/images/game_scifi_2.jpg" alt="Siege Commander" class="card-img" loading="lazy">
+            <span class="card-titulo">Siege Commander</span>
+          </a>
 
         </div>
       </div>
@@ -697,79 +309,77 @@
   </main>
 
   <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL
+       FAT FOOTER INSTITUCIONAL (FIDELIDAD FIGMA)
        ==================================================================== -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
       
-      <!-- Columna 1: Marca y Misión -->
-      <div class="footer-marca">
-        <div class="footer-logo">
-          <img src="assets/logo.png" alt="Logotipo Plataforma">
+      <!-- Fila Superior -->
+      <div class="footer-fila-superior">
+        <div class="footer-marca">
+          <div class="footer-logo">
+            <img src="assets/logo.png" alt="Logotipo Plataforma">
+          </div>
+          <p class="footer-descripcion">
+            Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la batalla.
+          </p>
         </div>
-        <p class="footer-descripcion">
-          Portal de entretenimiento táctico y juegos web online de alta intensidad. Inspirado en la saga galáctica Clone Wars, desarrollado bajo estándares estrictos de UX/UI para la cátedra de Diseño de Interfaces.
-        </p>
+
+        <div class="footer-columna">
+          <h4>Sobre nosotros</h4>
+          <ul class="footer-links">
+            <li><a href="#">Ayuda</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">Privacidad</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-columna">
+          <h4>Categorias</h4>
+          <ul class="footer-links">
+            <li><a href="#top">Top</a></li>
+            <li><a href="#premium">Premium</a></li>
+            <li><a href="#accion">Accion</a></li>
+            <li><a href="#aventura">Aventura</a></li>
+            <li><a href="#deportes">Deportes</a></li>
+            <li><a href="#estrategia">Estrategia</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-columna">
+          <h4>Contacto</h4>
+          <ul class="footer-links">
+            <li><a href="#"><img src="assets/icons/icon-share.svg" alt=""> Compartir</a></li>
+            <li><a href="#"><img src="assets/icons/icon-instagram.svg" alt=""> Instagram</a></li>
+            <li><a href="#"><img src="assets/icons/icon-tiktok.svg" alt=""> TikTok</a></li>
+            <li><a href="#"><img src="assets/icons/icon-x.svg" alt=""> X</a></li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Columna 2: Institucional -->
-      <div class="footer-seccion">
-        <h4>Información</h4>
-        <ul class="footer-links">
-          <li><a href="#">Sobre Nosotros</a></li>
-          <li><a href="#">Base de Operaciones</a></li>
-          <li><a href="#">Novedades del Frente</a></li>
-          <li><a href="#">Comunidad Discord</a></li>
-        </ul>
-      </div>
-
-      <!-- Columna 3: Categorías Rápidas -->
-      <div class="footer-seccion">
-        <h4>Categorías</h4>
-        <ul class="footer-links">
-          <li><a href="#top-juegos">Top Juegos</a></li>
-          <li><a href="#premium">Juegos Premium</a></li>
-          <li><a href="#accion">Acción Táctica</a></li>
-          <li><a href="#estrategia">Estrategia Militar</a></li>
-          <li><a href="#deportes">Simulación Aérea</a></li>
-        </ul>
-      </div>
-
-      <!-- Columna 4: Soporte y Redes -->
-      <div class="footer-seccion">
-        <h4>Ayuda y Legal</h4>
-        <ul class="footer-links">
-          <li><a href="#">Centro de Soporte</a></li>
-          <li><a href="#">Términos del Servicio</a></li>
-          <li><a href="#">Política de Cookies</a></li>
-          <li><a href="#">Privacidad de Datos</a></li>
-        </ul>
-
-        <div class="footer-redes">
-          <a href="#" class="btn-red-social" aria-label="Instagram">
-            <img src="assets/icons/icon-instagram.svg" alt="Instagram">
-          </a>
-          <a href="#" class="btn-red-social" aria-label="TikTok">
-            <img src="assets/icons/icon-tiktok.svg" alt="TikTok">
-          </a>
-          <a href="#" class="btn-red-social" aria-label="X / Twitter">
-            <img src="assets/icons/icon-x.svg" alt="X">
-          </a>
+      <!-- Fila Soporte -->
+      <div class="footer-soporte">
+        <h4>Soporte</h4>
+        <div class="footer-soporte-grilla">
+          <a href="#">Centro de Ayuda</a>
+          <a href="#">Reportar un Bug</a>
+          <a href="#">Soporte</a>
+          <a href="#">Reglas de la comunidad</a>
+          <a href="#">Preguntas frecuentes</a>
+          <a href="#">Guias de juego</a>
         </div>
       </div>
 
     </div>
 
-    <!-- Barra Inferior de Copyright -->
+    <!-- Barra Inferior -->
     <div class="footer-bottom">
-      <div class="footer-bottom-contenido">
-        <p>© 2026 Plataforma de Juegos Online — Entregable Nº 2 (Diseño de Interfaces - TUDAI / UNCPBA)</p>
-        <p>Desarrollado por <strong>Aitor Holzmann</strong> | Pair Programming con Antigravity</p>
-      </div>
+      <p>© Copyright - 2026</p>
+      <p>Todos los derechos reservados</p>
     </div>
   </footer>
 
-  <!-- Scripts Globales -->
   <script src="js/main.js"></script>
 </body>
 </html>

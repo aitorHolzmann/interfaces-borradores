@@ -1,113 +1,107 @@
 /* ==========================================================================
    RESPONSIVE DESIGN — ENFOQUE MOBILE FIRST (HOME)
-   Requerimiento Mandatorio Nº 5 de Cátedra:
-   - Mobile First estricto: estilos base móviles progresando con min-width.
+   Requerimiento Mandatorio Nº 5 de Cátedra
    ========================================================================== */
+
+/* --- AJUSTES BASE MOBILE (< 768px) --- */
+.hero-foto-lateral {
+  display: none; /* En mobile solo mostramos la foto central destacada */
+}
+
+.hero-foto-central {
+  width: 90vw;
+  max-width: 380px;
+  height: 270px;
+}
+
+.card-juego {
+  width: 210px;
+  min-width: 210px;
+  height: 155px;
+}
 
 /* --- TABLET Y PANTALLAS MEDIANAS (min-width: 768px) --- */
 @media (min-width: 768px) {
-  /* Tipografía fluida */
-  h1 {
-    font-size: 3rem;
-  }
-
-  h2 {
+  .hero-titulo {
     font-size: 2.2rem;
   }
 
-  /* Hero */
-  .hero-pista {
-    min-height: 420px;
+  .hero-foto-lateral {
+    display: block;
+    width: 200px;
+    height: 200px;
   }
 
-  .hero-slide {
-    height: 420px;
-    padding: 50px;
+  .hero-foto-central {
+    width: 360px;
+    height: 280px;
   }
 
-  .hero-info h2 {
-    font-size: 2.5rem;
+  .card-juego {
+    width: 230px;
+    min-width: 230px;
+    height: 165px;
   }
 
-  /* Footer en 2 Columnas */
-  .footer-contenedor {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 30px;
-  }
-
-  .footer-bottom-contenido {
-    flex-direction: row;
+  .footer-fila-superior {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
   }
 }
 
 /* --- DESKTOP Y PANTALLAS GRANDES (min-width: 1024px) --- */
 @media (min-width: 1024px) {
-  /* Tipografía desktop completa */
-  h1 {
-    font-size: var(--tamano-h1); /* 64px */
+  .hero-titulo {
+    font-size: 2.5rem;
   }
 
-  h2 {
-    font-size: var(--tamano-h2); /* 48px */
+  .hero-foto-lateral {
+    width: 280px;
+    height: 250px;
   }
 
-  /* Navegación Desktop */
+  .hero-foto-central {
+    width: 440px;
+    height: 330px;
+  }
+
+  .card-juego {
+    width: 245px;
+    min-width: 245px;
+    height: 175px;
+  }
+
   .nav-principal {
     padding: 0 40px;
   }
 
-  .nav-centro {
-    display: block;
-  }
-
-  /* Footer en 4 Columnas completas */
-  .footer-contenedor {
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
-    gap: 40px;
-    padding: 60px 40px 40px;
-  }
-
-  /* Hero carrusel más amplio */
-  .hero-pista {
-    min-height: 460px;
-  }
-
-  .hero-slide {
-    height: 460px;
-    padding: 60px 80px;
-  }
-
-  /* Categorías */
   .seccion-categoria {
     padding: 0 40px;
   }
 }
 
-/* --- AJUSTES PARA PANTALLAS MUY PEQUEÑAS (max-width: 480px) --- */
+/* --- PANTALLAS MUY PEQUEÑAS (< 480px) --- */
 @media (max-width: 480px) {
   .nav-centro {
-    display: none; /* Se activa mediante botón en mobile extremo */
-  }
-
-  .nombre-usuario {
     display: none;
   }
 
-  .hero-slide {
-    padding: 24px 16px;
-    height: 340px;
-  }
-
-  .hero-info h2 {
-    font-size: 1.4rem;
+  .hero-juego-nombre {
+    font-size: 20px;
   }
 
   .card-juego {
+    width: 180px;
     min-width: 180px;
+    height: 135px;
   }
 
-  .card-media {
-    height: 140px;
+  .card-titulo {
+    font-size: 14px;
+    bottom: 6px;
+  }
+
+  .badge-premium-icon {
+    width: 26px;
+    height: 26px;
   }
 }
-

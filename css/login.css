@@ -1,93 +1,97 @@
 /* ==========================================================================
-   PÁGINA: LOGIN Y REGISTRO (login.css)
-   Diseño de fidelidad máxima al prototipo de Figma (File Key: LI86LH8D4OyOSsgXW0ePn2)
-   - Panel central: 415px con linear-gradient(134deg, #4B5320, rgba(0,0,0,0.65))
-   - Sombra exterior difusa: 0 0 25px 8px rgba(255,255,255,0.12)
-   - Border radius: 5px
+   PÁGINA: LOGIN Y REGISTRO (login.css) — FIDELIDAD FIGMA
+   Referencia: examples/login_original.png y examples/registrarse_original.png
+   - Panel a la derecha sobre fondo temático
+   - Header y Footer presentes
+   - Botones sociales horizontales
    ========================================================================== */
 
-.pagina-auth {
+.pagina-auth-layout {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  background-color: var(--color-fondo);
+}
+
+.auth-hero-seccion {
+  flex: 1;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.8) 25%, rgba(102, 102, 102, 0.2) 100%),
-                    url('../assets/fondo_login.jpg');
+  justify-content: flex-end; /* Panel ubicado hacia la derecha */
+  padding: 40px 10%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 30px 20px;
   position: relative;
+  min-height: calc(100vh - var(--altura-nav));
 }
 
-/* --- Panel Central --- */
+/* Fondos específicos */
+.auth-hero-seccion.modo-login {
+  background-image: url('../assets/fondo_login.jpg');
+}
+
+.auth-hero-seccion.modo-registro {
+  background-image: url('../assets/fondo_signin.jpg');
+}
+
+/* Panel Translúcido Militar */
 .panel-auth {
   width: 100%;
-  max-width: 440px;
-  background: var(--gradiente-login);
-  border: 1px solid var(--color-primario-claro2);
-  border-radius: var(--radio-sm);
-  box-shadow: var(--sombra-panel-login);
-  padding: 32px 28px;
+  max-width: 420px;
+  background-color: rgba(45, 52, 22, 0.9); /* Verde militar translúcido */
+  border: 1.5px solid var(--color-primario-claro); /* #828E3B */
+  border-radius: var(--radio-md); /* 8px */
+  padding: 24px 26px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  backdrop-filter: blur(8px);
-  position: relative;
-  z-index: 10;
 }
 
-/* --- Encabezado del Formulario (Logo + Título) --- */
+/* Encabezado del Panel */
 .auth-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 6px;
+  margin-bottom: 14px;
   text-align: center;
 }
 
 .auth-logo {
-  height: 52px;
+  height: 38px;
   width: auto;
   object-fit: contain;
 }
 
+/* Título en 2 líneas verde exacto al Figma */
 .auth-titulo {
-  font-size: 1.4rem;
-  color: var(--color-blanco);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: var(--fuente-principal);
+  font-size: 1.45rem;
+  color: var(--color-primario-claro); /* #828E3B */
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
 }
 
-.auth-subtitulo {
-  font-size: var(--tamano-small);
-  color: var(--color-claro);
-  margin-top: -4px;
-}
-
-/* --- Formularios --- */
 .formulario-auth {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.auth-fila-doble {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
+/* Enlace Olvido de Contraseña */
 .auth-enlace-olvido {
-  align-self: flex-end;
-  font-size: var(--tamano-micro);
+  align-self: center;
+  font-family: var(--fuente-principal);
+  font-size: var(--tamano-small);
   color: var(--color-claro);
   text-decoration: underline;
-  margin-top: -6px;
-  margin-bottom: 16px;
+  margin: 6px 0 14px;
   transition: color 0.2s ease;
 }
 
@@ -95,60 +99,102 @@
   color: var(--color-acento-claro);
 }
 
+/* Botón Naranja Principal */
 .btn-auth-submit {
   width: 100%;
-  margin-top: 6px;
+  min-height: 44px;
+  background-color: #FF7A29;
+  border: none;
+  border-radius: var(--radio-md);
+  color: var(--color-blanco);
+  font-family: var(--fuente-principal);
   font-size: var(--tamano-body);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 122, 41, 0.4);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* --- Separador "O continuar con" --- */
-.auth-separador {
+.btn-auth-submit:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-2px);
+}
+
+/* Separador O continuar con */
+.auth-separador-texto {
+  font-family: var(--fuente-principal);
+  font-size: var(--tamano-micro);
+  color: var(--color-gris-texto);
+  text-align: center;
+  margin: 14px 0 10px;
+}
+
+/* Botones Sociales Horizontales (Lado a Lado) */
+.auth-social-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.btn-social-item {
   display: flex;
   align-items: center;
-  width: 100%;
-  margin: 16px 0;
-  color: var(--color-gris-texto);
-  font-size: var(--tamano-micro);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: var(--radio-md);
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 
-.auth-separador::before,
-.auth-separador::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: var(--color-primario-claro2);
+.btn-social-item:hover {
+  opacity: 0.9;
 }
 
-.auth-separador span {
-  padding: 0 12px;
+.btn-social-item img {
+  width: 18px;
+  height: 18px;
 }
 
-/* --- Botones Sociales de Login --- */
-.auth-social-botones {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
+.btn-social-facebook {
+  background-color: #1877F2;
+  color: #FFFFFF;
 }
 
-/* --- Enlace Alternar Login / Registro --- */
+.btn-social-google {
+  background-color: #EFEFEF;
+  color: #333333;
+}
+
+/* Toggle Login / Registro al pie del panel */
 .auth-toggle-footer {
   margin-top: 14px;
+  font-family: var(--fuente-principal);
   font-size: var(--tamano-small);
   color: var(--color-claro);
   text-align: center;
 }
 
 .auth-toggle-link {
-  color: var(--color-acento-claro);
-  font-weight: 700;
+  color: var(--color-claro);
   text-decoration: underline;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .auth-toggle-link:hover {
-  color: var(--color-blanco);
+  color: var(--color-acento-claro);
 }
 
+@media (max-width: 800px) {
+  .auth-hero-seccion {
+    justify-content: center;
+    padding: 30px 16px;
+  }
+}

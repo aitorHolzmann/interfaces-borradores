@@ -1,12 +1,15 @@
 /* ==========================================================================
-   PÁGINA: EJECUCIÓN DE JUEGO (game.css)
-   Ficha técnica y contenedor de juego para "Peg Solitaire: Clone Wars Edition"
-   Basado en el diseño exacto del prototipo de Figma (File Key: LI86LH8D4OyOSsgXW0ePn2)
+   PÁGINA: EJECUCIÓN DE JUEGO (game.css) — FIDELIDAD FIGMA
+   Referencia: examples/ejecucion.jpeg, ejecucion_instrucciones.jpeg, ejecucion_comentarios.jpeg
+   - Splash minimalista con botón naranja "Jugar"
+   - Barra inferior con título a la izquierda y 3 iconos a la derecha
+   - Instrucciones limpias y galería con botón play
+   - Sin carrusel innecesario al pie
    ========================================================================== */
 
 .pagina-juego-main {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px 24px 60px;
   display: flex;
@@ -14,167 +17,144 @@
   gap: 40px;
 }
 
-/* --- Botón Volver Rápido a Home --- */
-.barra-navegacion-superior-juego {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.btn-volver-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background-color: var(--color-superficie-oscura);
-  border: 1px solid var(--color-primario-claro2);
-  border-radius: var(--radio-md);
-  font-size: var(--tamano-small);
+/* --- Breadcrumbs de Navegación --- */
+.game-breadcrumbs {
+  font-family: var(--fuente-principal);
+  font-size: var(--tamano-body);
   color: var(--color-claro);
-  transition: all 0.2s ease;
+  margin-bottom: -15px;
 }
 
-.btn-volver-home:hover {
-  background-color: var(--color-superficie);
-  border-color: var(--color-acento);
+.game-breadcrumbs a {
+  color: var(--color-claro);
+  transition: color 0.2s ease;
+}
+
+.game-breadcrumbs a:hover {
   color: var(--color-acento-claro);
-  transform: translateX(-4px);
 }
 
-.btn-volver-home svg {
-  width: 18px;
-  height: 18px;
+.game-breadcrumbs span {
+  color: var(--color-primario-claro);
 }
 
-/* --- Área de Ejecución del Juego --- */
+/* --- Área de Ejecución del Juego (1190 x 480) --- */
 .area-ejecucion-juego {
   width: 100%;
-  display: flex;
-  flex-direction: column;
   border-radius: var(--radio-md);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  border: 1px solid var(--color-primario);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  background-color: var(--color-superficie-oscura);
 }
 
 .pantalla-juego-contenedor {
   position: relative;
   width: 100%;
   height: 480px;
-  background-image: var(--gradiente-overlay-juego),
-                    url('../assets/images/peg_solitaire_hero.jpg');
+  background-image: url('../assets/images/peg_solitaire_hero.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
-/* Caja de Controles / Splash Inicial del Juego */
+/* Splash con fondo oscuro translúcido y botón naranja "Jugar" */
 .caja-controles-juego {
-  background-color: rgba(20, 23, 20, 0.9);
-  border: 1px solid var(--color-primario-claro2);
+  background-color: rgba(20, 23, 20, 0.75);
   border-radius: var(--radio-md);
-  padding: 36px 48px;
+  padding: 30px 48px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 16px;
-  backdrop-filter: blur(8px);
-  box-shadow: var(--sombra-panel-login);
-  max-width: 520px;
+  justify-content: center;
+  backdrop-filter: blur(4px);
 }
 
-.caja-controles-juego h2 {
-  font-size: 1.8rem;
+.btn-jugar-splash {
+  background-color: #FF7A29;
   color: var(--color-blanco);
-  text-transform: uppercase;
+  font-family: var(--fuente-principal);
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 12px 48px;
+  border-radius: var(--radio-md);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 122, 41, 0.4);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.caja-controles-juego p {
-  font-size: var(--tamano-small);
-  color: var(--color-gris-texto);
-  line-height: 1.5;
+.btn-jugar-splash:hover {
+  background-color: var(--color-acento-hover);
+  transform: scale(1.05);
 }
 
-.btn-iniciar-partida {
-  padding: 14px 36px;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
-}
-
-/* Barra de Ejecución Inferior (Metadatos y Acciones) */
+/* Barra de Ejecución Inferior */
 .barra-ejecucion {
-  height: 64px;
-  background-color: var(--color-superficie-oscura);
-  border-top: 1px solid var(--color-primario-oscuro);
+  height: 52px;
+  background-color: #0E100E;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  gap: 16px;
-}
-
-.barra-ejecucion-info {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  padding: 0 20px;
 }
 
 .barra-ejecucion-titulo {
-  font-size: var(--tamano-body);
-  font-weight: 700;
+  font-family: var(--fuente-principal);
+  font-size: 16px;
+  font-weight: 500;
   color: var(--color-blanco);
-}
-
-.barra-ejecucion-logo img {
-  height: 36px;
-  width: auto;
-  object-fit: contain;
 }
 
 .barra-ejecucion-botonera {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
-/* --- Sección "CÓMO JUGAR?" y Galería Multimedia --- */
+.barra-ejecucion-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.barra-ejecucion-btn:hover {
+  transform: scale(1.15);
+}
+
+.barra-ejecucion-btn img,
+.barra-ejecucion-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Sección: CÓMO JUGAR? y GALERÍA --- */
 .seccion-about-juego {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  background-color: var(--color-superficie);
-  border: 1px solid rgba(130, 142, 59, 0.3);
-  border-radius: var(--radio-lg);
-  padding: 36px 30px;
-  box-shadow: var(--sombra-card);
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 10px;
 }
 
-@media (min-width: 900px) {
-  .seccion-about-juego {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 50px;
-    padding: 44px 40px;
-  }
-}
-
-/* Reglas e Instrucciones */
+/* Columna Instrucciones */
 .contenedor-instrucciones {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
 }
 
 .instrucciones-titulo {
+  font-family: var(--fuente-principal);
   font-size: 1.6rem;
-  color: var(--color-primario-claro);
+  color: var(--color-blanco);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .lista-reglas {
@@ -183,60 +163,50 @@
   gap: 20px;
 }
 
-.item-regla {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-left: 16px;
-  border-left: 3px solid var(--color-acento);
-}
-
 .item-regla h3 {
-  font-size: 1.1rem;
+  font-family: var(--fuente-principal);
+  font-size: 1.15rem;
   color: var(--color-blanco);
+  font-weight: 500;
+  margin-bottom: 4px;
 }
 
 .item-regla p {
+  font-family: var(--fuente-principal);
   font-size: var(--tamano-small);
-  color: var(--color-gris-texto);
-  margin: 0;
+  color: var(--color-claro);
   line-height: 1.5;
+  margin: 0;
 }
 
-/* Galería 2x2 y Video */
+/* Columna Galería */
 .contenedor-galeria {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
 }
 
 .galeria-titulo {
+  font-family: var(--fuente-principal);
   font-size: 1.6rem;
-  color: var(--color-primario-claro);
+  color: var(--color-blanco);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .galeria-grilla {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 14px;
 }
 
 .galeria-item {
   position: relative;
-  height: 150px;
+  height: 160px;
   border-radius: var(--radio-md);
   overflow: hidden;
-  border: 1px solid var(--color-primario);
   background-color: var(--color-superficie-oscura);
-  cursor: pointer;
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.galeria-item:hover {
-  transform: scale(1.03);
-  border-color: var(--color-acento);
 }
 
 .galeria-item img {
@@ -245,33 +215,29 @@
   object-fit: cover;
 }
 
-.galeria-item-video::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.btn-play-video-overlay {
+/* Botón de Play Naranja Grande en la Foto 2 */
+.btn-galeria-play-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radio-redondo);
-  background-color: var(--color-acento);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  box-shadow: var(--sombra-glow-acento);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+  transition: transform 0.2s ease;
 }
 
-.btn-play-video-overlay img,
-.btn-play-video-overlay svg {
-  width: 20px;
-  height: 20px;
-  margin-left: 2px;
+.btn-galeria-play-overlay:hover {
+  transform: translate(-50%, -50%) scale(1.15);
 }
 
+@media (max-width: 850px) {
+  .seccion-about-juego {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
