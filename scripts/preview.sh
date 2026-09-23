@@ -48,8 +48,17 @@ esac
 
 ARCHIVO_SALIDA="/tmp/preview_${DISPOSITIVO}.png"
 
+# Parámetro opcional para espera de virtual time (ej. para superar loaders simulados)
+TIEMPO_ESPERA="${3:-}"
+EXTRA_FLAGS=""
+if [[ -n "$TIEMPO_ESPERA" ]]; then
+  EXTRA_FLAGS="--virtual-time-budget=$TIEMPO_ESPERA"
+elif [[ "$PAGINA" == *"index.html"* ]]; then
+  EXTRA_FLAGS="--virtual-time-budget=5500"
+fi
+
 # Ejecutar Chromium en modo headless
-chromium --headless --disable-gpu --screenshot="$ARCHIVO_SALIDA" --window-size="$DIMENSIONES" "file://$RUTA_HTML" >/dev/null 2>&1
+chromium --headless --disable-gpu $EXTRA_FLAGS --screenshot="$ARCHIVO_SALIDA" --window-size="$DIMENSIONES" "file://$RUTA_HTML" >/dev/null 2>&1
 
 # Imprimir la ruta absoluta del archivo generado para que view_file pueda abrirlo
 echo "$ARCHIVO_SALIDA"
