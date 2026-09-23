@@ -4,280 +4,374 @@
 
 /* --- Barra de Navegación Superior (Navbar) --- */
 .nav-principal {
+  /* 1. Alineación propia y modelo de caja */
   position: sticky;
   top: 0;
-  left: 0;
   right: 0;
-  height: var(--altura-nav);
-  background-color: var(--color-fondo);
-  border-bottom: 1px solid var(--color-acento);
+  left: 0;
   z-index: 1000;
+  width: 100%;
+  height: var(--altura-nav);
+  padding: 0 16px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-fondo);
+  border-bottom: 1px solid var(--color-acento);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .nav-contenedor {
+  /* 1. Alineación propia y modelo de caja */
   width: 100%;
-  max-width: var(--ancho-maximo);
-  margin: 0 auto;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
 }
 
 /* --- Lado Izquierdo: Hamburguesa y Logo --- */
 .nav-izquierda {
+  /* 2. Disposición interna */
   display: flex;
+  flex: 1;
   align-items: center;
-  gap: 16px;
+  justify-content: flex-start;
+  gap: 14px;
 }
 
 .btn-hamburguesa {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
+  /* 1. Alineación propia y modelo de caja */
+  padding: 8px 4px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radio-sm);
+
+  /* 3. Detalles estéticos */
+  background: none;
   color: var(--color-blanco);
+  border: none;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .btn-hamburguesa:hover {
+  /* 3. Detalles estéticos */
   background-color: var(--color-superficie);
 }
 
 .btn-hamburguesa img,
 .btn-hamburguesa svg {
+  /* 1. Alineación propia y modelo de caja */
   width: 28px;
   height: 28px;
 }
 
 .nav-logo {
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .nav-logo img {
-  height: 44px;
+  /* 1. Alineación propia y modelo de caja */
   width: auto;
+  height: 44px;
+
+  /* 3. Detalles estéticos */
   object-fit: contain;
 }
 
 /* --- Centro: Barra de Búsqueda --- */
 .nav-centro {
-  flex: 1;
-  max-width: 420px;
-  margin: 0 20px;
+  /* 1. Alineación propia y modelo de caja */
+  width: 100%;
+  max-width: 440px;
+  margin: 0 16px;
+
+  /* 2. Disposición interna */
+  display: flex;
+  justify-content: center;
 }
 
 .barra-busqueda {
+  /* 1. Alineación propia y modelo de caja */
   position: relative;
+  width: 100%;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
-  width: 100%;
 }
 
 .input-busqueda {
+  /* 1. Alineación propia y modelo de caja */
   width: 100%;
   height: 40px;
   padding: 8px 44px 8px 16px;
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-superficie-oscura);
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
   border: 1px solid var(--color-acento);
   border-radius: 20px;
-  color: var(--color-blanco);
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-small);
   transition: all 0.25s ease;
 }
 
 .input-busqueda::placeholder {
+  /* 3. Detalles estéticos */
   color: var(--color-gris-apagado);
 }
 
 .input-busqueda:focus {
-  outline: none;
+  /* 3. Detalles estéticos */
+  background-color: var(--color-negro-profundo);
   box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
-  background-color: #0d0f0d;
+  outline: none;
 }
 
 .btn-busqueda-icono {
+  /* 1. Alineación propia y modelo de caja */
   position: absolute;
   right: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* 3. Detalles estéticos */
+  background: none;
   color: var(--color-acento);
+  border: none;
+  cursor: pointer;
 }
 
 .btn-busqueda-icono img,
 .btn-busqueda-icono svg {
+  /* 1. Alineación propia y modelo de caja */
   width: 18px;
   height: 18px;
 }
 
 /* --- Lado Derecho: Menú de Usuario / Perfil --- */
 .nav-derecha {
+  /* 2. Disposición interna */
   display: flex;
+  flex: 1;
   align-items: center;
+  justify-content: flex-end;
   gap: 16px;
 }
 
 .btn-perfil {
+  /* 1. Alineación propia y modelo de caja */
+  width: 42px;
+  height: 42px;
+  padding: 4px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radio-redondo);
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-superficie-oscura);
   border: 1.5px solid var(--color-acento);
+  border-radius: var(--radio-redondo);
   cursor: pointer;
-  padding: 4px;
   transition: all 0.2s ease;
 }
 
 .btn-perfil:hover {
+  /* 3. Detalles estéticos */
   border-color: var(--color-blanco);
   box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
   transform: scale(1.05);
 }
 
 .avatar-usuario-icono {
+  /* 1. Alineación propia y modelo de caja */
   width: 30px;
   height: 30px;
+
+  /* 2. Disposición interna */
   display: block;
 }
 
 .nombre-usuario {
+  /* 2. Disposición interna */
   display: none !important;
 }
 
 /* --- Sidebar (Menú Lateral de Navegación y Categorías) --- */
 .sidebar-overlay {
+  /* 1. Alineación propia y modelo de caja */
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1050;
   width: 100vw;
   height: 100vh;
+
+  /* 3. Detalles estéticos */
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1050;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .sidebar-overlay.activo {
+  /* 3. Detalles estéticos */
   opacity: 1;
   visibility: visible;
 }
 
 .sidebar {
+  /* 1. Alineación propia y modelo de caja */
   position: fixed;
   top: 0;
-  left: 0;
   bottom: 0;
-  width: var(--ancho-sidebar);
-  background-color: var(--color-superficie-oscura);
-  border-right: 1px solid var(--color-primario);
+  left: 0;
   z-index: 1100;
+  width: var(--ancho-sidebar);
+  overflow-y: auto;
+
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-superficie-oscura);
+  border-right: 1px solid var(--color-primario);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  overflow-y: auto;
 }
 
 .sidebar.abierto {
+  /* 3. Detalles estéticos */
   transform: translateX(0);
 }
 
 .sidebar-header {
+  /* 1. Alineación propia y modelo de caja */
   height: var(--altura-nav);
+  padding: 0 20px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+
+  /* 3. Detalles estéticos */
   border-bottom: 1px solid var(--color-primario-oscuro);
 }
 
 .btn-cerrar-sidebar {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-gris-texto);
+  /* 1. Alineación propia y modelo de caja */
   padding: 6px;
-  border-radius: var(--radio-sm);
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* 3. Detalles estéticos */
+  background: none;
+  color: var(--color-gris-texto);
+  border: none;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
 }
 
 .btn-cerrar-sidebar:hover {
-  color: var(--color-blanco);
+  /* 3. Detalles estéticos */
   background-color: var(--color-superficie);
+  color: var(--color-blanco);
 }
 
 .sidebar-menu {
-  list-style: none;
+  /* 1. Alineación propia y modelo de caja */
   padding: 20px 10px;
+
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 6px;
+
+  /* 3. Detalles estéticos */
+  list-style: none;
 }
 
 .sidebar-item a {
+  /* 1. Alineación propia y modelo de caja */
+  padding: 12px 16px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 16px;
-  border-radius: var(--radio-md);
+
+  /* 3. Detalles estéticos */
   color: var(--color-gris-texto);
   font-size: var(--tamano-small);
   font-weight: 500;
+  border-radius: var(--radio-md);
   transition: all 0.2s ease;
 }
 
 .sidebar-item a img,
 .sidebar-item a svg {
+  /* 1. Alineación propia y modelo de caja */
   width: 22px;
   height: 22px;
+
+  /* 2. Disposición interna */
   flex-shrink: 0;
 }
 
 .sidebar-item a:hover {
+  /* 1. Alineación propia y modelo de caja */
+  padding-left: 20px;
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-superficie);
   color: var(--color-blanco);
-  padding-left: 20px;
 }
 
 .sidebar-item.activo a {
+  /* 3. Detalles estéticos */
   background-color: var(--color-primario);
   color: var(--color-blanco);
   border-left: 4px solid var(--color-acento);
 }
 
 .sidebar-divider {
+  /* 1. Alineación propia y modelo de caja */
   height: 1px;
-  background-color: var(--color-superficie);
   margin: 12px 10px;
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-superficie);
 }
 
 .sidebar-titulo-seccion {
-  font-size: var(--tamano-micro);
-  text-transform: uppercase;
-  color: var(--color-gris-apagado);
+  /* 1. Alineación propia y modelo de caja */
   padding: 6px 16px;
-  letter-spacing: 1px;
-}
 
+  /* 3. Detalles estéticos */
+  color: var(--color-gris-apagado);
+  font-size: var(--tamano-micro);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

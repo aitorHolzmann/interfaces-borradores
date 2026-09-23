@@ -5,16 +5,19 @@
 
 /* --- AJUSTES BASE MOBILE (< 768px) --- */
 .hero-foto-lateral {
+  /* 2. Disposición interna */
   display: none; /* En mobile solo mostramos la foto central destacada */
 }
 
 .hero-foto-central {
+  /* 1. Alineación propia y modelo de caja */
   width: 90vw;
   max-width: 380px;
   height: 270px;
 }
 
 .card-juego {
+  /* 1. Alineación propia y modelo de caja */
   width: 210px;
   min-width: 210px;
   height: 155px;
@@ -23,27 +26,34 @@
 /* --- TABLET Y PANTALLAS MEDIANAS (min-width: 768px) --- */
 @media (min-width: 768px) {
   .hero-titulo {
+    /* 3. Detalles estéticos */
     font-size: 2.2rem;
   }
 
   .hero-foto-lateral {
-    display: block;
+    /* 1. Alineación propia y modelo de caja */
     width: 200px;
     height: 200px;
+
+    /* 2. Disposición interna */
+    display: block;
   }
 
   .hero-foto-central {
+    /* 1. Alineación propia y modelo de caja */
     width: 360px;
     height: 280px;
   }
 
   .card-juego {
+    /* 1. Alineación propia y modelo de caja */
     width: 230px;
     min-width: 230px;
     height: 165px;
   }
 
   .footer-fila-superior {
+    /* 2. Disposición interna */
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
   }
 }
@@ -51,30 +61,31 @@
 /* --- DESKTOP Y PANTALLAS GRANDES (min-width: 1024px) --- */
 @media (min-width: 1024px) {
   .hero-titulo {
+    /* 3. Detalles estéticos */
     font-size: 2.5rem;
   }
 
   .hero-foto-lateral {
+    /* 1. Alineación propia y modelo de caja */
     width: 280px;
     height: 250px;
   }
 
   .hero-foto-central {
+    /* 1. Alineación propia y modelo de caja */
     width: 440px;
     height: 330px;
   }
 
   .card-juego {
+    /* 1. Alineación propia y modelo de caja */
     width: 245px;
     min-width: 245px;
     height: 175px;
   }
 
-  .nav-principal {
-    padding: 0 40px;
-  }
-
   .seccion-categoria {
+    /* 1. Alineación propia y modelo de caja */
     padding: 0 40px;
   }
 }
@@ -82,25 +93,32 @@
 /* --- PANTALLAS MUY PEQUEÑAS (< 480px) --- */
 @media (max-width: 480px) {
   .nav-centro {
+    /* 2. Disposición interna */
     display: none;
   }
 
   .hero-juego-nombre {
+    /* 3. Detalles estéticos */
     font-size: 20px;
   }
 
   .card-juego {
+    /* 1. Alineación propia y modelo de caja */
     width: 180px;
     min-width: 180px;
     height: 135px;
   }
 
   .card-titulo {
-    font-size: 14px;
+    /* 1. Alineación propia y modelo de caja */
     bottom: 6px;
+
+    /* 3. Detalles estéticos */
+    font-size: 14px;
   }
 
   .badge-premium-icon {
+    /* 1. Alineación propia y modelo de caja */
     width: 26px;
     height: 26px;
   }

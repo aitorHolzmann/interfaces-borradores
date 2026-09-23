@@ -61,6 +61,20 @@ document.addEventListener('DOMContentLoaded', () => {
       fotoCentro: 'assets/images/game_racing_1.jpg',
       fotoDer: 'assets/images/game_combat_1.jpg',
       enlace: 'game.html'
+    },
+    {
+      nombre: 'Cyber Strike',
+      fotoIzq: 'assets/images/game_combat_1.jpg',
+      fotoCentro: 'assets/images/game_scifi_2.jpg',
+      fotoDer: 'assets/images/game_solitaire_1.jpg',
+      enlace: 'game.html'
+    },
+    {
+      nombre: 'Medieval Quest',
+      fotoIzq: 'assets/images/peg_solitaire_hero.jpg',
+      fotoCentro: 'assets/images/game_flight_1.jpg',
+      fotoDer: 'assets/images/game_racing_1.jpg',
+      enlace: 'game.html'
     }
   ];
 
@@ -72,16 +86,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroFotoCentralImg = document.querySelector('.hero-foto-central img');
   const heroFotoIzqImg = document.querySelector('.hero-foto-lateral:first-child img');
   const heroFotoDerImg = document.querySelector('.hero-foto-lateral:last-child img');
+  const heroTriptico = document.querySelector('.hero-triptico');
 
   function actualizarHero(index) {
     const juego = heroJuegos[index];
     if (!juego) return;
 
-    if (heroNombre) heroNombre.textContent = juego.nombre;
-    if (heroFotoCentral) heroFotoCentral.href = juego.enlace;
-    if (heroFotoCentralImg) heroFotoCentralImg.src = juego.fotoCentro;
-    if (heroFotoIzqImg) heroFotoIzqImg.src = juego.fotoIzq;
-    if (heroFotoDerImg) heroFotoDerImg.src = juego.fotoDer;
+    if (heroTriptico) {
+      heroTriptico.classList.add('hero-transicion');
+      
+      setTimeout(() => {
+        if (heroNombre) heroNombre.textContent = juego.nombre;
+        if (heroFotoCentral) heroFotoCentral.href = juego.enlace;
+        if (heroFotoCentralImg) heroFotoCentralImg.src = juego.fotoCentro;
+        if (heroFotoIzqImg) heroFotoIzqImg.src = juego.fotoIzq;
+        if (heroFotoDerImg) heroFotoDerImg.src = juego.fotoDer;
+        
+        heroTriptico.classList.remove('hero-transicion');
+      }, 400);
+    } else {
+      if (heroNombre) heroNombre.textContent = juego.nombre;
+      if (heroFotoCentral) heroFotoCentral.href = juego.enlace;
+      if (heroFotoCentralImg) heroFotoCentralImg.src = juego.fotoCentro;
+      if (heroFotoIzqImg) heroFotoIzqImg.src = juego.fotoIzq;
+      if (heroFotoDerImg) heroFotoDerImg.src = juego.fotoDer;
+    }
   }
 
   if (heroBtnAnt) {
@@ -117,9 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="comentario-item-contenido">
           <span class="comentario-item-usuario">Esteban</span>
-          <p class="comentario-item-texto">${texto}</p>
+          <p class="comentario-item-texto"></p>
         </div>
       `;
+      nuevoArticulo.querySelector('.comentario-item-texto').textContent = texto;
 
       listaComentarios.insertBefore(nuevoArticulo, listaComentarios.firstChild);
       inputComentario.value = '';

@@ -6,140 +6,197 @@
    ========================================================================== */
 
 .grupo-formulario {
+  /* 1. Alineación propia y modelo de caja */
+  width: 100%;
+  margin-bottom: 12px;
+
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 100%;
-  margin-bottom: 12px;
+
+  /* 3. Detalles estéticos */
   text-align: left;
 }
 
 .label-formulario {
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-small);
+  /* 3. Detalles estéticos */
   color: var(--color-claro);
+  font-size: var(--tamano-small);
   font-weight: 400;
 }
 
 .contenedor-input {
+  /* 1. Alineación propia y modelo de caja */
   position: relative;
+  width: 100%;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
-  width: 100%;
 }
 
 /* Input con fondo blanco del prototipo original */
 .input-formulario {
+  /* 1. Alineación propia y modelo de caja */
   width: 100%;
   min-height: 42px;
   padding: 8px 14px;
-  background-color: #FFFFFF;
-  border: 1px solid #CCCCCC;
-  border-radius: var(--radio-md);
-  color: #1A1A1A;
-  font-family: var(--fuente-principal);
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-blanco);
+  color: var(--color-texto-oscuro);
   font-size: var(--tamano-small);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: var(--radio-md);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .input-formulario::placeholder {
-  color: #777777;
-  font-family: var(--fuente-principal);
+  /* 3. Detalles estéticos */
+  color: var(--color-gris-neutro);
 }
 
 .input-formulario:focus {
+  /* 3. Detalles estéticos */
   border-color: var(--color-acento);
-  outline: none;
   box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
+  outline: none;
 }
 
 /* Icono ojo ver/ocultar contraseña dentro del input blanco */
 .contenedor-input .btn-toggle-password {
+  /* 1. Alineación propia y modelo de caja */
   position: absolute;
   right: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
   padding: 4px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* 3. Detalles estéticos */
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .contenedor-input .btn-toggle-password svg,
 .contenedor-input .btn-toggle-password img {
+  /* 1. Alineación propia y modelo de caja */
   width: 20px;
   height: 20px;
+
+  /* 3. Detalles estéticos */
   filter: invert(0.2); /* Icono oscuro dentro del input blanco */
 }
 
 /* Checkbox de Términos (Registro) */
 .grupo-checkbox {
+  /* 1. Alineación propia y modelo de caja */
+  margin: 10px 0 14px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-micro);
+
+  /* 3. Detalles estéticos */
   color: var(--color-claro);
-  margin: 10px 0 14px;
-  cursor: pointer;
+  font-size: var(--tamano-micro);
   line-height: 1.4;
+  cursor: pointer;
 }
 
 .grupo-checkbox input[type="checkbox"] {
+  /* 1. Alineación propia y modelo de caja */
   width: 18px;
-  height: 18px;
   min-width: 18px;
+  height: 18px;
   margin-top: 1px;
-  cursor: pointer;
+
+  /* 3. Detalles estéticos */
   accent-color: var(--color-acento);
+  cursor: pointer;
 }
 
 .grupo-checkbox a {
+  /* 3. Detalles estéticos */
   color: var(--color-acento);
-  text-decoration: underline;
   font-weight: 500;
+  text-decoration: underline;
 }
 
 /* Mockup ReCaptcha en Registro */
 .recaptcha-card {
+  /* 1. Alineación propia y modelo de caja */
+  width: 100%;
+  max-width: 300px;
+  margin: 6px auto 14px;
+  padding: 8px 12px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 300px;
+
+  /* 3. Detalles estéticos */
   background-color: #F9F9F9;
   border: 1px solid #D3D3D3;
   border-radius: 4px;
-  padding: 8px 12px;
-  margin: 6px auto 14px;
 }
 
 .recaptcha-check {
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   gap: 10px;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-texto-contraste);
   font-family: Arial, sans-serif;
   font-size: 13px;
-  color: #333333;
 }
 
 .recaptcha-check input[type="checkbox"] {
+  /* 1. Alineación propia y modelo de caja */
   width: 22px;
   height: 22px;
+
+  /* 3. Detalles estéticos */
   cursor: pointer;
 }
 
 .recaptcha-brand {
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 9px;
-  color: #666666;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-gris-apagado);
   font-family: Arial, sans-serif;
+  font-size: 9px;
 }
 
 .recaptcha-brand img {
+  /* 1. Alineación propia y modelo de caja */
   width: 24px;
   height: 24px;
+}
+
+/* ==========================================================================
+   ESTADOS DE VALIDACIÓN (Visual en tiempo real)
+   ========================================================================== */
+.input-valido {
+  /* 3. Detalles estéticos */
+  border-color: var(--color-exito);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+.input-invalido {
+  /* 3. Detalles estéticos */
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.3);
 }

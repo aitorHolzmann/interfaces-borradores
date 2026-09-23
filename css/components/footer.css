@@ -8,21 +8,27 @@
    ========================================================================== */
 
 .footer-principal {
+  /* 1. Alineación propia y modelo de caja */
+  position: relative;
+  width: 100%;
+  margin-top: 60px;
+  overflow: hidden;
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-primario-oscuro); /* #3B4119 */
+  color: var(--color-claro);
   border-top: 1px solid var(--color-acento);
   border-radius: 25px 25px 0 0;
-  color: var(--color-claro);
-  margin-top: 60px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
 }
 
 .footer-contenedor {
+  /* 1. Alineación propia y modelo de caja */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 0 auto;
   padding: 40px 30px 30px;
+
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -30,139 +36,180 @@
 
 /* --- Fila Superior del Footer (Marca + Columnas Principales) --- */
 .footer-fila-superior {
+  /* 2. Disposición interna */
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: 1fr;
   align-items: start;
+  gap: 30px;
 }
 
 /* Columna Marca y Emblema */
 .footer-marca {
+  /* 2. Disposición interna (alineación controlada desde el contenedor) */
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 16px;
 }
 
 .footer-logo img {
-  height: 90px;
+  /* 1. Alineación propia y modelo de caja */
   width: auto;
+  height: 190px;
+
+  /* 3. Detalles estéticos */
   object-fit: contain;
-  align-self: flex-start;
 }
 
 .footer-descripcion {
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-small);
-  color: var(--color-claro);
-  line-height: 1.5;
+  /* 1. Alineación propia y modelo de caja */
   max-width: 320px;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-claro);
+  font-size: var(--tamano-small);
+  line-height: 1.5;
 }
 
 /* Columnas de Navegación */
 .footer-columna h4 {
-  font-family: var(--fuente-principal);
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--color-blanco);
+  /* 1. Alineación propia y modelo de caja */
   margin-bottom: 12px;
   padding-bottom: 4px;
-  border-bottom: 1.5px solid var(--color-blanco); /* Subrayado blanco exacto */
+
+  /* 2. Disposición interna */
   display: inline-block;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-blanco);
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--color-blanco); /* Subrayado blanco exacto */
 }
 
 .footer-links {
-  list-style: none;
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  /* 3. Detalles estéticos */
+  list-style: none;
 }
 
 .footer-links li a {
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-small);
-  color: var(--color-claro);
+  /* 2. Disposición interna */
   display: inline-flex;
   align-items: center;
   gap: 10px;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-claro);
+  font-size: var(--tamano-small);
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-links li a:hover {
+  /* 3. Detalles estéticos */
   color: var(--color-acento-claro);
   transform: translateX(4px);
 }
 
 .footer-links li a img,
 .footer-links li a svg {
+  /* 1. Alineación propia y modelo de caja */
   width: 18px;
   height: 18px;
 }
 
 /* --- Fila Intermedia: Sección Soporte Centrada --- */
 .footer-soporte {
+  /* 1. Alineación propia y modelo de caja */
+  padding-top: 10px;
+
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* 3. Detalles estéticos */
   text-align: center;
-  padding-top: 10px;
 }
 
 .footer-soporte h4 {
-  font-family: var(--fuente-principal);
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--color-blanco);
+  /* 1. Alineación propia y modelo de caja */
   margin-bottom: 16px;
   padding-bottom: 4px;
-  border-bottom: 1.5px solid var(--color-blanco);
+
+  /* 2. Disposición interna */
   display: inline-block;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-blanco);
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--color-blanco);
 }
 
 .footer-soporte-grilla {
+  /* 2. Disposición interna */
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 12px 60px;
-  text-align: left;
+
+  /* 3. Detalles estéticos */
+  text-align: center;
 }
 
 .footer-soporte-grilla a {
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-small);
+  /* 3. Detalles estéticos */
   color: var(--color-claro);
+  font-size: var(--tamano-small);
   transition: color 0.2s ease;
 }
 
 .footer-soporte-grilla a:hover {
+  /* 3. Detalles estéticos */
   color: var(--color-acento-claro);
 }
 
 /* --- Barra Inferior de Copyright --- */
 .footer-bottom {
-  background-color: var(--color-primario-oscuro2); /* #2D3213 */
+  /* 1. Alineación propia y modelo de caja */
   padding: 16px 20px;
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-primario-oscuro2); /* #2D3213 */
   text-align: center;
 }
 
 .footer-bottom p {
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-small);
-  color: var(--color-claro);
+  /* 1. Alineación propia y modelo de caja */
   margin: 2px 0;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-claro);
+  font-size: var(--tamano-small);
 }
 
-@media (max-width: 900px) {
+@media (min-width: 550px) {
   .footer-fila-superior {
+    /* 2. Disposición interna */
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-  .footer-soporte-grilla {
-    grid-template-columns: 1fr;
-    text-align: center;
   }
 }
 
-@media (max-width: 550px) {
+@media (min-width: 900px) {
   .footer-fila-superior {
-    grid-template-columns: 1fr;
+    /* 2. Disposición interna */
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  }
+
+  .footer-soporte-grilla {
+    /* 2. Disposición interna */
+    grid-template-columns: repeat(2, 1fr);
+
+    /* 3. Detalles estéticos */
+    text-align: left;
   }
 }

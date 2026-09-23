@@ -125,6 +125,32 @@ Cada decisión de maquetación y estilos debe respetar y justificar los concepto
     └── images/                 # Portadas de juegos y capturas
 ```
 
+### 4.1. Convención Obligatoria de Código CSS y Flexbox
+
+Al escribir o modificar cualquier regla o selector CSS, deben cumplirse dos reglas inquebrantables:
+
+1. **Estructura en 3 partes dentro de cada clase CSS:**
+   - **Parte 1 — Alineación propia y modelo de caja (Posicionamiento externo):**
+     Cómo se ubica y dimensiona el elemento en relación al flujo y a sus hermanos:
+     `position`, `top`, `right`, `bottom`, `left`, `z-index`, `margin`, `padding`, `width`, `min-width`, `max-width`, `height`, `min-height`, `max-height`, `box-sizing`, `overflow`.
+   - **Parte 2 — Disposición interna (Layout de los hijos):**
+     Cómo organiza el contenedor a sus elementos hijos:
+     `display`, `flex-direction`, `flex-wrap`, `justify-content`, `align-items`, `gap`, `grid-template-*`, `grid-*`.
+   - **Parte 3 — Detalles estéticos y decorativos:**
+     Aspecto visual de superficie, tipografía y microinteracciones:
+     `background`, `color`, `border`, `border-radius`, `box-shadow`, `font-*`, `text-*`, `opacity`, `transform`, `transition`, `cursor`.
+   - *Nota de sobriedad:* Los comentarios de sección `/* 1. */`, `/* 2. */`, `/* 3. */` son opcionales y solo deben incluirse si la regla tiene 6 o más propiedades, para evitar inflar el archivo.
+
+2. **Alineación Flexbox resuelta SIEMPRE desde el padre:**
+   - En contenedores Flexbox (`display: flex`), la alineación y distribución de los ítems hijos se define exclusivamente en el padre con `justify-content` y `align-items`.
+   - **Prohibido el uso de `align-self` y `justify-self`:** Los elementos hijos no deben alinearse a sí mismos de forma aislada; la alineación es responsabilidad del contenedor padre.
+
+3. **Cero colores hexadecimales hardcodeados en componentes:**
+   - Todo color debe definirse en `css/variables.css` y consumirse mediante `var(--nombre)`. Prohibido usar `#hex` directo en reglas CSS fuera de `variables.css`.
+
+4. **No repetir `font-family` redundante:**
+   - La tipografía principal (`var(--fuente-principal)`) ya se hereda desde `body` en `base.css`. Solo especificar `font-family` cuando una clase requiera expresamente una fuente alternativa.
+
 ---
 
 ## 5. Referencias Teóricas Completas
@@ -136,4 +162,10 @@ Para profundizar en el contenido teórico detallado de la materia, consultar los
 - [Tema 4: Eventos y Canvas POO](../../../teoria/Tema4-Eventos-y-Canvas-POO.md)
 - [Requisitos Entregable 1 (Figma)](../../../teoria/Entregable1-Figma-Diseno-Juegos-Online.md)
 - [Requisitos Entregable 2 (Implementación Web)](../../../teoria/Entregable2-Implementacion-Web-HTML5-CSS3-JS.md)
+
+---
+
+## 6. Verificación Visual Autónoma Obligatoria
+
+Al modificar cualquier layout, componente o estilo CSS, el agente debe validar el renderizado ejecutando `./scripts/preview.sh <pagina.html> [desktop|mobile]` y abriendo la captura con `view_file` para inspeccionar visualmente la interfaz antes de dar por cerrada la tarea.
 

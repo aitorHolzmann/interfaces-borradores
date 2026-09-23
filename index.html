@@ -22,9 +22,12 @@
   <!-- ====================================================================
        PANTALLA DE CARGA (LOADER 5s — Preparado para Etapa 2)
        ==================================================================== -->
-  <div id="pantalla-carga" class="pantalla-carga loader-oculto" aria-hidden="true">
+  <div id="pantalla-carga" class="pantalla-carga">
     <div class="loader-contenido">
-      <div class="loader-spinner"></div>
+      <div class="loader-logo-contenedor">
+        <img src="assets/logo.png" alt="Silueta Logo" class="loader-logo-silueta">
+        <img src="assets/logo.png" alt="Logo Cargando" class="loader-logo-color" id="loader-logo-color">
+      </div>
       <p id="loader-porcentaje" class="loader-porcentaje">0%</p>
       <span class="loader-subtexto">Estableciendo enlace táctico con el servidor...</span>
     </div>
@@ -380,6 +383,7 @@
     </div>
   </footer>
 
+  <script src="js/loader.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

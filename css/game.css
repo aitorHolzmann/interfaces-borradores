@@ -8,10 +8,13 @@
    ========================================================================== */
 
 .pagina-juego-main {
+  /* 1. Alineación propia y modelo de caja */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 24px 60px;
+
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -19,224 +22,314 @@
 
 /* --- Breadcrumbs de Navegación --- */
 .game-breadcrumbs {
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-body);
-  color: var(--color-claro);
+  /* 1. Alineación propia y modelo de caja */
   margin-bottom: -15px;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-claro);
+  font-size: var(--tamano-body);
 }
 
 .game-breadcrumbs a {
+  /* 3. Detalles estéticos */
   color: var(--color-claro);
   transition: color 0.2s ease;
 }
 
 .game-breadcrumbs a:hover {
+  /* 3. Detalles estéticos */
   color: var(--color-acento-claro);
 }
 
 .game-breadcrumbs span {
+  /* 3. Detalles estéticos */
   color: var(--color-primario-claro);
 }
 
 /* --- Área de Ejecución del Juego (1190 x 480) --- */
 .area-ejecucion-juego {
+  /* 1. Alineación propia y modelo de caja */
   width: 100%;
-  border-radius: var(--radio-md);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-superficie-oscura);
+  border-radius: var(--radio-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 .pantalla-juego-contenedor {
+  /* 1. Alineación propia y modelo de caja */
   position: relative;
   width: 100%;
   height: 480px;
-  background-image: url('../assets/images/peg_solitaire_hero.jpg');
-  background-size: cover;
-  background-position: center;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* 3. Detalles estéticos */
+  background-image: url('../assets/images/peg_solitaire_hero.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 /* Splash con fondo oscuro translúcido y botón naranja "Jugar" */
 .caja-controles-juego {
-  background-color: rgba(20, 23, 20, 0.75);
-  border-radius: var(--radio-md);
+  /* 1. Alineación propia y modelo de caja */
   padding: 30px 48px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* 3. Detalles estéticos */
   backdrop-filter: blur(4px);
+  background-color: rgba(20, 23, 20, 0.75);
+  border-radius: var(--radio-md);
 }
 
 .btn-jugar-splash {
-  background-color: #FF7A29;
+  /* 1. Alineación propia y modelo de caja */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  padding: 14px 52px;
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-superficie-oscura);
   color: var(--color-blanco);
-  font-family: var(--fuente-principal);
   font-size: 1.4rem;
-  font-weight: 500;
-  padding: 12px 48px;
+  font-weight: 700;
+  border: 2px solid var(--color-acento-vibrante);
   border-radius: var(--radio-md);
-  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 122, 41, 0.4);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto 2: Barrido de fondo mediante pseudo-elemento ::before */
+.btn-jugar-splash::before {
+  /* 1. Alineación propia y modelo de caja */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-acento-vibrante);
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
 }
 
 .btn-jugar-splash:hover {
-  background-color: var(--color-acento-hover);
-  transform: scale(1.05);
+  /* 3. Detalles estéticos */
+  color: var(--color-blanco);
+  border-color: var(--color-acento-hover);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
+}
+
+.btn-jugar-splash:hover::before {
+  /* 1. Alineación propia y modelo de caja */
+  transform: translateX(0);
 }
 
 /* Barra de Ejecución Inferior */
 .barra-ejecucion {
+  /* 1. Alineación propia y modelo de caja */
   height: 52px;
-  background-color: #0E100E;
+  padding: 0 20px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+
+  /* 3. Detalles estéticos */
+  background-color: var(--color-negro-profundo);
 }
 
 .barra-ejecucion-titulo {
-  font-family: var(--fuente-principal);
+  /* 3. Detalles estéticos */
+  color: var(--color-blanco);
   font-size: 16px;
   font-weight: 500;
-  color: var(--color-blanco);
 }
 
 .barra-ejecucion-botonera {
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
+/* Efecto 3: Borde luminiscente (glow) y cambio de border-radius */
 .barra-ejecucion-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
+  /* 1. Alineación propia y modelo de caja */
+  padding: 8px;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+
+  /* 3. Detalles estéticos */
+  background: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .barra-ejecucion-btn:hover {
+  /* 3. Detalles estéticos */
+  background-color: var(--color-superficie);
+  border-color: var(--color-acento);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-glow-acento);
   transform: scale(1.15);
 }
 
 .barra-ejecucion-btn img,
 .barra-ejecucion-btn svg {
+  /* 1. Alineación propia y modelo de caja */
   width: 20px;
   height: 20px;
 }
 
 /* --- Sección: CÓMO JUGAR? y GALERÍA --- */
 .seccion-about-juego {
+  /* 1. Alineación propia y modelo de caja */
+  margin-top: 10px;
+
+  /* 2. Disposición interna */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  margin-top: 10px;
 }
 
 /* Columna Instrucciones */
 .contenedor-instrucciones {
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
 
 .instrucciones-titulo {
-  font-family: var(--fuente-principal);
-  font-size: 1.6rem;
+  /* 3. Detalles estéticos */
   color: var(--color-blanco);
-  text-transform: uppercase;
+  font-size: 1.6rem;
   font-weight: 500;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .lista-reglas {
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .item-regla h3 {
-  font-family: var(--fuente-principal);
-  font-size: 1.15rem;
-  color: var(--color-blanco);
-  font-weight: 500;
+  /* 1. Alineación propia y modelo de caja */
   margin-bottom: 4px;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-blanco);
+  font-size: 1.15rem;
+  font-weight: 500;
 }
 
 .item-regla p {
-  font-family: var(--fuente-principal);
-  font-size: var(--tamano-small);
-  color: var(--color-claro);
-  line-height: 1.5;
+  /* 1. Alineación propia y modelo de caja */
   margin: 0;
+
+  /* 3. Detalles estéticos */
+  color: var(--color-claro);
+  font-size: var(--tamano-small);
+  line-height: 1.5;
 }
 
 /* Columna Galería */
 .contenedor-galeria {
+  /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
 
 .galeria-titulo {
-  font-family: var(--fuente-principal);
-  font-size: 1.6rem;
+  /* 3. Detalles estéticos */
   color: var(--color-blanco);
-  text-transform: uppercase;
+  font-size: 1.6rem;
   font-weight: 500;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .galeria-grilla {
+  /* 2. Disposición interna */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
 .galeria-item {
+  /* 1. Alineación propia y modelo de caja */
   position: relative;
   height: 160px;
-  border-radius: var(--radio-md);
   overflow: hidden;
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-superficie-oscura);
+  border-radius: var(--radio-md);
 }
 
 .galeria-item img {
+  /* 1. Alineación propia y modelo de caja */
   width: 100%;
   height: 100%;
+
+  /* 3. Detalles estéticos */
   object-fit: cover;
 }
 
 /* Botón de Play Naranja Grande en la Foto 2 */
 .btn-galeria-play-overlay {
+  /* 1. Alineación propia y modelo de caja */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 50px;
   height: 50px;
-  cursor: pointer;
+
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+
+  /* 3. Detalles estéticos */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  cursor: pointer;
+  transform: translate(-50%, -50%);
   transition: transform 0.2s ease;
 }
 
 .btn-galeria-play-overlay:hover {
+  /* 3. Detalles estéticos */
   transform: translate(-50%, -50%) scale(1.15);
 }
 
 @media (max-width: 850px) {
   .seccion-about-juego {
+    /* 2. Disposición interna */
     grid-template-columns: 1fr;
     gap: 40px;
   }

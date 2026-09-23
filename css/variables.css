@@ -23,6 +23,7 @@
   --color-superficie: #424B42;
   --color-superficie-oscura: #141714;
   --color-superficie-card: #353D35;
+  --color-negro-profundo: #0E100E;
 
   /* --- Colores de Estado y Terceros --- */
   --color-premium: #E5B80B;
@@ -31,13 +32,20 @@
   --color-exito: #4CAF50;
   --color-facebook: #1877F2;
   --color-google: #FFFFFF;
+  --color-google-fondo: #EFEFEF;
 
   /* --- Colores Neutros y Textos --- */
   --color-blanco: #FFFFFF;
   --color-claro: #EAEAEA;
   --color-gris-texto: #C0C8C0;
   --color-gris-apagado: #8C968C;
+  --color-gris-neutro: #777777;
+  --color-gris-input: #E2E6E2;
+  --color-borde-suave: #CCCCCC;
+  --color-texto-oscuro: #1A1A1A;
+  --color-texto-contraste: #333333;
   --color-negro: #0A0D0A;
+  --color-acento-vibrante: #FF7A29;
 
   /* --- Tipografías --- */
   --fuente-principal: 'JetBrains Mono', monospace;
