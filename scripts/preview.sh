@@ -57,7 +57,7 @@ EXTRA_FLAGS=""
 if [[ -n "$TIEMPO_ESPERA" ]]; then
   EXTRA_FLAGS="--virtual-time-budget=$TIEMPO_ESPERA"
 elif [[ "$PAGINA" == *"index.html"* ]]; then
-  EXTRA_FLAGS="--virtual-time-budget=6500"
+  EXTRA_FLAGS="--virtual-time-budget=5500"
 fi
 
 # Ejecutar Chromium en modo headless

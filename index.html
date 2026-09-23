@@ -106,42 +106,46 @@
        ==================================================================== -->
   <main class="contenido-principal">
 
-    <!-- HERO: JUEGOS EN TENDENCIA (TRÍPTICO DE 3 FOTOS — FIGMA ORIGINAL) -->
+    <!-- HERO: JUEGOS EN TENDENCIA (CARRUSEL 3D CON 3 FOTOS DEL MISMO JUEGO) -->
     <section class="seccion-hero" aria-label="Juegos en Tendencia">
-      <h2>
+      <h2 class="hero-titulo">
         Juegos en tendencia<br>
         exclusivos del pase de batalla
       </h2>
 
       <div class="hero-carrusel-contenedor">
         <!-- Flecha Izquierda -->
-        <button id="hero-btn-ant" aria-label="Juego anterior">
+        <button class="hero-flecha izquierda" id="hero-btn-ant" aria-label="Imagen anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
 
-        <!-- Tríptico de 3 fotos del juego actual -->
-        <div class="hero-triptico">
-          <!-- Foto Lateral Izquierda -->
-          <div>
-            <img src="assets/images/game_solitaire_1.jpg" alt="Peg Solitaire detalle">
-          </div>
+        <!-- Escena 3D con perspectiva -->
+        <div class="hero-escena-3d">
+          <div class="hero-carrusel-3d" id="hero-carrusel-3d">
+            <!-- Cara 1: Tablero central -->
+            <a href="game.html" class="hero-card-3d cara-1" title="Jugar a Peg Solitaire">
+              <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+              <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire Tablero">
+            </a>
 
-          <!-- Foto Central Destacada con Título Overlaid -->
-          <a href="game.html" title="Jugar a Peg Solitaire">
-            <h3>Peg Solitaire</h3>
-            <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire Tablero">
-          </a>
+            <!-- Cara 2: Detalle de juego -->
+            <a href="game.html" class="hero-card-3d cara-2" title="Jugar a Peg Solitaire">
+              <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+              <img src="assets/images/game_solitaire_1.jpg" alt="Peg Solitaire Detalle">
+            </a>
 
-          <!-- Foto Lateral Derecha -->
-          <div>
-            <img src="assets/images/game_scifi_2.jpg" alt="Peg Solitaire táctica">
+            <!-- Cara 3: Vista táctica -->
+            <a href="game.html" class="hero-card-3d cara-3" title="Jugar a Peg Solitaire">
+              <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+              <img src="assets/images/game_scifi_2.jpg" alt="Peg Solitaire Táctica">
+            </a>
           </div>
         </div>
 
         <!-- Flecha Derecha -->
-        <button id="hero-btn-sig" aria-label="Siguiente juego">
+        <button class="hero-flecha derecha" id="hero-btn-sig" aria-label="Siguiente imagen">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
@@ -151,6 +155,7 @@
 
     <!-- ====================================================================
          CATÁLOGO MODULAR DE CATEGORÍAS (RENDERIZADO DINÁMICO EN JS/CAROUSEL.JS)
+         Buenas prácticas: DRY, carruseles infinitos, animaciones skewX y hover.
          ==================================================================== -->
     <div id="contenedor-categorias" class="contenedor-categorias"></div>
 

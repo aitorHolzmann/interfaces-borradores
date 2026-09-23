@@ -109,85 +109,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 3. Rotación de Juegos en el Tríptico del Hero ---
-  const heroJuegos = [
-    {
-      nombre: 'Peg Solitaire',
-      fotoIzq: 'assets/images/game_solitaire_1.jpg',
-      fotoCentro: 'assets/images/peg_solitaire_hero.jpg',
-      fotoDer: 'assets/images/game_scifi_2.jpg',
-      enlace: 'game.html'
-    },
-    {
-      nombre: 'Velocity',
-      fotoIzq: 'assets/images/game_flight_1.jpg',
-      fotoCentro: 'assets/images/game_racing_1.jpg',
-      fotoDer: 'assets/images/game_combat_1.jpg',
-      enlace: 'game.html'
-    },
-    {
-      nombre: 'Cyber Strike',
-      fotoIzq: 'assets/images/game_combat_1.jpg',
-      fotoCentro: 'assets/images/game_scifi_2.jpg',
-      fotoDer: 'assets/images/game_solitaire_1.jpg',
-      enlace: 'game.html'
-    },
-    {
-      nombre: 'Medieval Quest',
-      fotoIzq: 'assets/images/peg_solitaire_hero.jpg',
-      fotoCentro: 'assets/images/game_flight_1.jpg',
-      fotoDer: 'assets/images/game_racing_1.jpg',
-      enlace: 'game.html'
-    }
-  ];
-
-  let heroIndex = 0;
+  // --- 3. Control de Giro del Carrusel 3D del Hero ---
+  const carrusel3D = document.getElementById('hero-carrusel-3d');
   const heroBtnAnt = document.getElementById('hero-btn-ant');
   const heroBtnSig = document.getElementById('hero-btn-sig');
-  const heroTriptico = document.querySelector('.hero-triptico');
-  const heroNombre = document.querySelector('.hero-triptico h3');
-  const heroFotoCentral = document.querySelector('.hero-triptico > a');
-  const heroFotoCentralImg = document.querySelector('.hero-triptico > a > img');
-  const heroFotoIzqImg = document.querySelector('.hero-triptico > div:first-child img');
-  const heroFotoDerImg = document.querySelector('.hero-triptico > div:last-child img');
+  let anguloHero3D = 0;
+  let timerReanudarAuto = null;
 
-  function actualizarHero(index) {
-    const juego = heroJuegos[index];
-    if (!juego) return;
+  function rotarCarruselManual(direccion) {
+    if (!carrusel3D) return;
 
-    if (heroTriptico) {
-      heroTriptico.classList.add('hero-transicion');
-      
-      setTimeout(() => {
-        if (heroNombre) heroNombre.textContent = juego.nombre;
-        if (heroFotoCentral) heroFotoCentral.href = juego.enlace;
-        if (heroFotoCentralImg) heroFotoCentralImg.src = juego.fotoCentro;
-        if (heroFotoIzqImg) heroFotoIzqImg.src = juego.fotoIzq;
-        if (heroFotoDerImg) heroFotoDerImg.src = juego.fotoDer;
-        
-        heroTriptico.classList.remove('hero-transicion');
-      }, 400);
+    // Desactivamos la animación CSS automática para tomar el control con JS
+    carrusel3D.style.animation = 'none';
+
+    // Cada cara está separada 120 grados (360 / 3)
+    if (direccion === 'sig') {
+      anguloHero3D -= 120;
     } else {
-      if (heroNombre) heroNombre.textContent = juego.nombre;
-      if (heroFotoCentral) heroFotoCentral.href = juego.enlace;
-      if (heroFotoCentralImg) heroFotoCentralImg.src = juego.fotoCentro;
-      if (heroFotoIzqImg) heroFotoIzqImg.src = juego.fotoIzq;
-      if (heroFotoDerImg) heroFotoDerImg.src = juego.fotoDer;
+      anguloHero3D += 120;
     }
-  }
 
-  if (heroBtnAnt) {
-    heroBtnAnt.addEventListener('click', () => {
-      heroIndex = (heroIndex - 1 + heroJuegos.length) % heroJuegos.length;
-      actualizarHero(heroIndex);
-    });
+    carrusel3D.style.transform = `rotateY(${anguloHero3D}deg)`;
+
+    // Si pasan 8 segundos sin interacción manual, reactivamos el giro automático
+    clearTimeout(timerReanudarAuto);
+    timerReanudarAuto = setTimeout(() => {
+      if (carrusel3D) {
+        carrusel3D.style.animation = '';
+        carrusel3D.style.transform = '';
+      }
+    }, 8000);
   }
 
   if (heroBtnSig) {
-    heroBtnSig.addEventListener('click', () => {
-      heroIndex = (heroIndex + 1) % heroJuegos.length;
-      actualizarHero(heroIndex);
-    });
+    heroBtnSig.addEventListener('click', () => rotarCarruselManual('sig'));
+  }
+
+  if (heroBtnAnt) {
+    heroBtnAnt.addEventListener('click', () => rotarCarruselManual('ant'));
   }
 
   // --- 4. Interacción de Comentarios en Sala de Juego ---
