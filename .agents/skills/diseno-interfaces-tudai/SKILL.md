@@ -169,3 +169,12 @@ Para profundizar en el contenido teórico detallado de la materia, consultar los
 
 Al modificar cualquier layout, componente o estilo CSS, el agente debe validar el renderizado ejecutando `./scripts/preview.sh <pagina.html> [desktop|mobile]` y abriendo la captura con `view_file` para inspeccionar visualmente la interfaz antes de dar por cerrada la tarea.
 
+---
+
+## 7. Generación de Informes y Apuntes de Estudio (`/apuntes/`)
+
+Cuando el alumno solicite un informe, apunte o explicación técnica para estudiar y defender frente a los docentes:
+- Guardar el documento en `apuntes/<nombre-tema>.md`.
+- Mantener un formato estructurado con: contexto del entregable, arquitectura de archivos, código comentado, banco de preguntas y respuestas técnicas (Q&A de examen), principios teóricos de la materia (Nielsen, Gestalt, DRY) y un guion conciso para la defensa oral (pitch de 1 minuto).
+
+

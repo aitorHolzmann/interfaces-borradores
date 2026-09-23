@@ -84,6 +84,7 @@ Eres un **Senior Frontend & UX/UI Engineer** especializado en **JavaScript Vanil
 │   ├── loader.js               # Contador 0% a 100% en 5000ms exactos
 │   ├── auth.js                 # Validación de formularios y animación de éxito
 │   └── main.js                 # Sidebar, rotación suave del hero y comentarios
+├── apuntes/                 # Informes técnicos y resúmenes de estudio para coloquios
 ├── scripts/
 │   └── preview.sh              # Captura visual headless instantánea (Desktop/Mobile)
 └── assets/
@@ -106,3 +107,19 @@ Cada vez que el agente cree, modifique o refactorice archivos HTML o CSS:
 1. **No pedir al usuario que vuelva a explicar el contexto.**
 2. **Consultar `SKILL.md` y archivos en `teoria/`** ante dudas de diseño o UX (Gestalt, Nielsen, Fitts, Hick).
 3. **Verificación visual del agente:** Usar SIEMPRE `./scripts/preview.sh` + `view_file` para ver el resultado de los cambios de forma autónoma. Para el usuario, sugerir Live Server en VS Code o `python3 -m http.server 3000`.
+
+---
+
+## 8. Protocolo para Informes y Apuntes de Estudio (`/apuntes/`)
+
+Siempre que el usuario solicite un informe, resumen o documento de estudio sobre una funcionalidad implementada:
+1. **Ubicación obligatoria:** Guardar el archivo en formato Markdown dentro del directorio `apuntes/<tema-descriptivo>.md`.
+2. **Enfoque pedagógico y defendible:** Debe estar redactado con máxima claridad técnica para un estudiante de 2º año universitario (TUDAI / UNCPBA), evitando sobreingeniería o explicaciones abstractas.
+3. **Estructura estricta del documento:**
+   - **Contexto y Requerimiento:** Cómo se vincula con la consigna de cátedra y las restricciones técnicas.
+   - **Arquitectura de Archivos:** Tablas y rutas relativas con el rol de cada archivo (HTML, CSS, JS).
+   - **Código Explicado Paso a Paso:** Bloques de código reales con comentarios didácticos en cada línea clave.
+   - **Banco de Preguntas de Examen (Q&A):** Dudas frecuentes, sutilezas del navegador (ej. `visibility` vs `opacity`, `filter`, `clip-path`, `aspect-ratio`), justificaciones de por qué no se usaron otras alternativas.
+   - **Fundamentos Teóricos:** Vinculación con heurísticas de Nielsen, leyes de Gestalt y principios de usabilidad.
+   - **Pitch / Guion de Defensa Oral:** Párrafo de 1 minuto listo para que el alumno pueda exponerlo con seguridad en la mesa de examen.
+
