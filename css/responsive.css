@@ -51,11 +51,6 @@
     min-width: 230px;
     height: 165px;
   }
-
-  .footer-fila-superior {
-    /* 2. Disposición interna */
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  }
 }
 
 /* --- DESKTOP Y PANTALLAS GRANDES (min-width: 1024px) --- */

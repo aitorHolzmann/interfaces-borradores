@@ -60,7 +60,7 @@
     <div class="sidebar-header">
       <img src="assets/logo.png" alt="Logo" style="height: 36px;">
       <button class="btn-cerrar-sidebar" id="btn-cerrar-sidebar" aria-label="Cerrar menú">
-        <img src="assets/icons/icon-x.svg" alt="Cerrar">
+        <img src="assets/icons/icon-cerrar.svg" alt="Cerrar">
       </button>
     </div>
     <span class="sidebar-titulo-seccion">Navegación</span>
@@ -70,7 +70,9 @@
       <li class="sidebar-item activo"><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
       <li class="sidebar-divider"></li>
       <li class="sidebar-item"><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
+      <li class="sidebar-item"><a href="index.html#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
       <li class="sidebar-item"><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
+      <li class="sidebar-item"><a href="index.html#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
     </ul>
   </aside>
 
@@ -268,23 +270,24 @@
 
   </main>
 
-  <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL (REUTILIZADO)
+   <!-- ====================================================================
+       FAT FOOTER INSTITUCIONAL (REQUERIDO EN LOGIN / REGISTRO)
        ==================================================================== -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
-      
-      <!-- Fila Superior -->
-      <div class="footer-fila-superior">
-        <div class="footer-marca">
-          <div class="footer-logo">
-            <img src="assets/logo.png" alt="Logotipo Plataforma">
-          </div>
-          <p class="footer-descripcion">
-            Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la batalla.
-          </p>
+       
+      <!-- Caja 1: Marca y descripción -->
+      <div class="footer-marca">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="Logotipo Plataforma">
         </div>
+        <p class="footer-descripcion">
+          Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la batalla.
+        </p>
+      </div>
 
+      <!-- Caja 2: Contenedor de links (Grid) -->
+      <div class="footer-links-grid">
         <div class="footer-columna">
           <h4>Sobre nosotros</h4>
           <ul class="footer-links">
@@ -316,18 +319,18 @@
             <li><a href="#"><img src="assets/icons/icon-x.svg" alt=""> X</a></li>
           </ul>
         </div>
-      </div>
 
-      <!-- Fila Soporte -->
-      <div class="footer-soporte">
-        <h4>Soporte</h4>
-        <div class="footer-soporte-grilla">
-          <a href="#">Centro de Ayuda</a>
-          <a href="#">Reportar un Bug</a>
-          <a href="#">Soporte</a>
-          <a href="#">Reglas de la comunidad</a>
-          <a href="#">Preguntas frecuentes</a>
-          <a href="#">Guias de juego</a>
+        <!-- Sección Soporte dentro del bloque de navegación -->
+        <div class="footer-soporte">
+          <h4>Soporte</h4>
+          <div class="footer-soporte-grilla">
+            <a href="#">Centro de Ayuda</a>
+            <a href="#">Reportar un Bug</a>
+            <a href="#">Soporte</a>
+            <a href="#">Reglas de la comunidad</a>
+            <a href="#">Preguntas frecuentes</a>
+            <a href="#">Guias de juego</a>
+          </div>
         </div>
       </div>
 
