@@ -61,7 +61,7 @@
 
   /* 3. Detalles estéticos */
   background-color: var(--color-superficie-oscura);
-  border: 1.5px solid var(--color-acento);
+  border: 1.5px solid var(--color-secundario);
   border-radius: var(--radio-redondo);
 }
 
@@ -73,7 +73,7 @@
 
 .comentario-autor-nombre-label {
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: 11px;
   text-align: center;
 }
@@ -90,7 +90,7 @@
   align-items: center;
 
   /* 3. Detalles estéticos */
-  background-color: var(--color-gris-input);
+  background-color: var(--color-blanco);
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
@@ -101,7 +101,7 @@
 
   /* 3. Detalles estéticos */
   background: none;
-  color: var(--color-texto-oscuro);
+  color: var(--color-negro);
   font-size: var(--tamano-small);
   border: none;
   outline: none;
@@ -109,7 +109,7 @@
 
 .comentario-input-campo::placeholder {
   /* 3. Detalles estéticos */
-  color: var(--color-gris-apagado);
+  color: var(--color-gris-neutro);
 }
 
 .btn-enviar-comentario-icono {
@@ -206,8 +206,8 @@
 
 .comentario-item-fecha {
   /* 3. Detalles estéticos */
-  color: var(--color-gris-apagado);
-  font-size: var(--tamano-micro);
+  color: var(--color-gris-neutro);
+  font-size: var(--tamano-small);
 }
 
 .comentario-item-texto {
@@ -215,7 +215,7 @@
   margin: 0;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.5;
   word-break: break-word;

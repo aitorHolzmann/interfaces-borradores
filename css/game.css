@@ -26,19 +26,19 @@
   margin-bottom: -15px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-body);
 }
 
 .game-breadcrumbs a {
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   transition: color 0.2s ease;
 }
 
 .game-breadcrumbs a:hover {
   /* 3. Detalles estéticos */
-  color: var(--color-acento-claro);
+  color: var(--color-secundario);
 }
 
 .game-breadcrumbs span {
@@ -103,9 +103,9 @@
   color: var(--color-blanco);
   font-size: 1.4rem;
   font-weight: 700;
-  border: 2px solid var(--color-acento-vibrante);
+  border: 2px solid var(--color-secundario);
   border-radius: var(--radio-md);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 0 0 var(--color-acento-vibrante);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 0 0 var(--color-secundario);
   cursor: pointer;
   transition: color 0.3s ease, border-color 0.3s ease, box-shadow 2s ease;
 }
@@ -114,8 +114,8 @@
 .btn-jugar-splash:hover {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
-  border-color: var(--color-acento-hover);
-  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5), inset 0 0 0 100px var(--color-acento-vibrante);
+  border-color: var(--color-secundario);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5), inset 0 0 0 100px var(--color-secundario);
 }
 
 .btn-jugar-splash:focus-visible {
@@ -137,9 +137,9 @@
 
   /* 3. Detalles estéticos */
 
-  background-color: var(--color-negro-profundo);
+  background-color: var(--color-superficie-oscura);
   border-radius: 0 0 var(--radio-md) var(--radio-md);
-  border: 1px solid var(--color-acento);
+  border: 1px solid var(--color-secundario);
 }
 
 .barra-ejecucion-titulo {
@@ -179,12 +179,11 @@
 
 .barra-ejecucion-btn:hover {
   /* 3. Detalles estéticos */
-  background-color: var(--color-superficie);
-  border-color: var(--color-acento);
+  background-color: var(--color-secundario);
+  border-color: var(--color-secundario);
   border-radius: var(--radio-lg);
-  box-shadow: var(--sombra-glow-acento);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
   transform: scale(1.15);
-  background-color: var(--color-acento);
 }
 
 .barra-ejecucion-btn:focus-visible {
@@ -250,7 +249,7 @@
   margin: 0;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.5;
 }
@@ -270,9 +269,9 @@
 
   /* 3. Detalles estéticos */
   background: none;
-  border: 1px solid var(--color-superficie);
+  border: 1px solid var(--color-primario);
   border-radius: var(--radio-md);
-  box-shadow: var(--sombra-card);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .card-controles-titulo {
@@ -312,7 +311,7 @@
   margin: 0;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 500;
   text-align: center;

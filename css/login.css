@@ -135,7 +135,7 @@
   display: block;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   text-align: center;
   text-decoration: underline;
@@ -144,7 +144,7 @@
 
 .auth-enlace-olvido:hover {
   /* 3. Detalles estéticos */
-  color: var(--color-acento-claro);
+  color: var(--color-secundario);
 }
 
 /* Botón Naranja Principal */
@@ -154,7 +154,7 @@
   min-height: 44px;
 
   /* 3. Detalles estéticos */
-  background-color: var(--color-acento-vibrante);
+  background-color: var(--color-secundario);
   color: var(--color-blanco);
   font-size: var(--tamano-body);
   font-weight: 700;
@@ -170,7 +170,8 @@
   transform: scale(1.04);
 
   /* 3. Detalles estéticos */
-  background-color: var(--color-acento-hover);
+  background-color: var(--color-secundario);
+  filter: brightness(0.9);
   box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
 }
 
@@ -180,8 +181,8 @@
   margin: 14px 0 10px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-gris-texto);
-  font-size: var(--tamano-micro);
+  color: var(--color-gris-neutro);
+  font-size: var(--tamano-small);
   text-align: center;
 }
 
@@ -237,7 +238,7 @@
 .btn-social-google {
   /* 3. Detalles estéticos */
   background-color: var(--color-google-fondo);
-  color: var(--color-texto-contraste);
+  color: var(--color-negro);
 }
 
 /* Toggle Login / Registro al pie del panel */
@@ -246,14 +247,14 @@
   margin-top: 14px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   text-align: center;
 }
 
 .auth-toggle-link {
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-weight: 700;
   text-decoration: underline;
   cursor: pointer;
@@ -261,7 +262,7 @@
 
 .auth-toggle-link:hover {
   /* 3. Detalles estéticos */
-  color: var(--color-acento-claro);
+  color: var(--color-secundario);
 }
 
 @media (max-width: 800px) {

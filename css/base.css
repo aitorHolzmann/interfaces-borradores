@@ -2,7 +2,7 @@
    ESTILOS BASE, RESET Y TIPOGRAFÍA GLOBAL
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 
 /* --- Reset Estricto --- */
 *,
@@ -68,13 +68,13 @@ p {
   margin-bottom: 0.5rem;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-body);
 }
 
 small {
   /* 3. Detalles estéticos */
-  color: var(--color-gris-texto);
+  color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }
 
@@ -144,9 +144,10 @@ img, svg {
   text-align: center;
 }
 
+.texto-secundario,
 .texto-acento {
   /* 3. Detalles estéticos */
-  color: var(--color-acento);
+  color: var(--color-secundario);
 }
 
 .texto-primario-claro {

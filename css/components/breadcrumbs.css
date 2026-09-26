@@ -15,7 +15,7 @@
   gap: 10px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-gris-texto);
+  color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }
 
@@ -28,13 +28,13 @@
 
 .breadcrumb-link {
   /* 3. Detalles estéticos */
-  color: var(--color-gris-texto);
+  color: var(--color-gris-neutro);
   transition: color 0.2s ease;
 }
 
 .breadcrumb-link:hover {
   /* 3. Detalles estéticos */
-  color: var(--color-acento-claro);
+  color: var(--color-secundario);
   text-decoration: underline;
 }
 

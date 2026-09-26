@@ -95,6 +95,6 @@
 
 .loader-subtexto {
   /* 3. Detalles estéticos */
-  color: var(--color-gris-texto);
+  color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }

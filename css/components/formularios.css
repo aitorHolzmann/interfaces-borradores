@@ -21,7 +21,7 @@
 
 .label-formulario {
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 400;
 }
@@ -45,9 +45,9 @@
 
   /* 3. Detalles estéticos */
   background-color: var(--color-blanco);
-  color: var(--color-texto-oscuro);
+  color: var(--color-negro);
   font-size: var(--tamano-small);
-  border: 1px solid var(--color-borde-suave);
+  border: 1px solid var(--color-gris-neutro);
   border-radius: var(--radio-md);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -59,7 +59,7 @@
 
 .input-formulario:focus {
   /* 3. Detalles estéticos */
-  border-color: var(--color-acento);
+  border-color: var(--color-secundario);
   box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
   outline: none;
 }
@@ -103,8 +103,8 @@
   gap: 10px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
-  font-size: var(--tamano-micro);
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
   line-height: 1.4;
   cursor: pointer;
 }
@@ -117,13 +117,13 @@
   margin-top: 1px;
 
   /* 3. Detalles estéticos */
-  accent-color: var(--color-acento);
+  accent-color: var(--color-secundario);
   cursor: pointer;
 }
 
 .grupo-checkbox a {
   /* 3. Detalles estéticos */
-  color: var(--color-acento);
+  color: var(--color-secundario);
   font-weight: 500;
   text-decoration: underline;
 }
@@ -154,7 +154,7 @@
   gap: 10px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-texto-contraste);
+  color: var(--color-negro);
   font-family: Arial, sans-serif;
   font-size: 13px;
 }
@@ -175,7 +175,7 @@
   align-items: center;
 
   /* 3. Detalles estéticos */
-  color: var(--color-gris-apagado);
+  color: var(--color-gris-neutro);
   font-family: Arial, sans-serif;
   font-size: 9px;
 }

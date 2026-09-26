@@ -4,7 +4,7 @@
    - Estructura: 2 Cajas Principales (Marca a la izquierda, Links en Grid a la derecha)
    - Layout: CSS Grid tanto para el contenedor principal como para la sección de links
    - Fondo: var(--color-primario-oscuro) con barra inferior var(--color-primario-oscuro2)
-   - Borde superior: 1px var(--color-acento) con esquinas redondeadas
+   - Borde superior: 1px var(--color-secundario) con esquinas redondeadas
    - Títulos con subrayado blanco fino extendido
    ========================================================================== */
 
@@ -17,9 +17,9 @@
 
   /* 3. Detalles estéticos */
   background-color: var(--color-primario-oscuro);
-  border-top: 1px solid var(--color-acento);
+  border-top: 1px solid var(--color-secundario);
   border-radius: var(--radio-card) var(--radio-card) 0 0;
-  color: var(--color-claro);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
 }
 
@@ -46,7 +46,7 @@
 
 .footer-principal a:hover {
   /* 3. Detalles estéticos */
-  color: var(--color-acento-claro);
+  color: var(--color-secundario);
   transform: translateX(4px);
 }
 /* Contenedor Principal: 2 Cajas con CSS Grid */

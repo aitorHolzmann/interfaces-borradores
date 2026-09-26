@@ -20,7 +20,7 @@
 
   /* 3. Detalles estéticos */
   background-color: var(--color-fondo);
-  border-bottom: 1px solid var(--color-acento);
+  border-bottom: 1px solid var(--color-secundario);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -58,7 +58,7 @@
 
 .btn-hamburguesa:hover {
   /* 3. Detalles estéticos */
-  background-color: var(--color-superficie);
+  background-color: var(--color-primario);
 }
 
 .btn-hamburguesa img{
@@ -111,7 +111,7 @@
   background-color: var(--color-superficie-oscura);
   font-size: var(--tamano-small);
   text-overflow: ellipsis;
-  border: 1px solid var(--color-acento);
+  border: 1px solid var(--color-secundario);
   border-radius: 20px;
   transition: all 0.25s ease;
 }
@@ -119,7 +119,7 @@
 
 .input-busqueda:focus {
   /* 3. Detalles estéticos */
-  background-color: var(--color-negro-profundo);
+  background-color: var(--color-superficie-oscura);
   box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
   outline: none;
 }
@@ -166,7 +166,7 @@
 
   /* 3. Detalles estéticos */
   background-color: var(--color-superficie-oscura);
-  border: 1.5px solid var(--color-acento);
+  border: 1.5px solid var(--color-secundario);
   border-radius: var(--radio-redondo);
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
@@ -224,7 +224,7 @@
 
   /* 3. Detalles estéticos */
   background-color: var(--color-fondo);
-  border: 1.5px solid var(--color-acento);
+  border: 1.5px solid var(--color-secundario);
   border-radius: 4px 4px 8px 18px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   opacity: 0;
@@ -281,15 +281,15 @@
 
 .menu-perfil-enlace:hover {
   /* 3. Detalles estéticos */
-  background-color: var(--color-superficie);
-  color: var(--color-acento);
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
 }
 
 
 .menu-perfil-logout:hover {
   /* 3. Detalles estéticos */
-  background-color: var(--color-superficie);
-  color: var(--color-acento-claro);
+  background-color: var(--color-primario-oscuro);
+  color: var(--color-secundario);
 }
 
 /* ==========================================================================
@@ -369,7 +369,7 @@
 
 .btn-cerrar-sidebar:hover {
   /* 3. Detalles estéticos */
-  background-color: var(--color-acento);
+  background-color: var(--color-secundario);
 }
 
 .btn-cerrar-sidebar img {
@@ -422,7 +422,7 @@
   z-index: -1;
 
   /* 3. Detalles estéticos */
-  background-color: var(--color-acento);
+  background-color: var(--color-secundario);
   transform: translateX(-100%);
   transition: all 0.4s ease;
 }
@@ -437,7 +437,7 @@
 
 .sidebar-item a:hover {
   /* 3. Detalles estéticos */
-  border-color: var(--color-acento);
+  border-color: var(--color-secundario);
   box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
 }
 
@@ -448,7 +448,7 @@
 
 .sidebar-item.activo a {
   /* 3. Detalles estéticos */
-  border-color: var(--color-acento);
+  border-color: var(--color-secundario);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 

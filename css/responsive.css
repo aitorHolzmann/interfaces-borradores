@@ -113,7 +113,7 @@
     padding: 6px 36px 6px 12px;
 
     /* 3. Detalles estéticos */
-    font-size: var(--tamano-micro);
+    font-size: var(--tamano-small);
   }
 
   .btn-busqueda-icono {

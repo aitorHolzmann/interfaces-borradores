@@ -36,9 +36,9 @@
    Utilizado en "Iniciar Sesión", "Registrarse", "JUGAR AHORA" */
 .btn-primario {
   /* 3. Detalles estéticos */
-  background-color: var(--color-acento-claro);
+  background-color: var(--color-secundario);
   color: var(--color-blanco);
-  border: 1px solid var(--color-acento-borde);
+  border: 1px solid var(--color-secundario);
   box-shadow: 0 4px 10px rgba(143, 60, 0, 0.4);
 }
 
@@ -79,7 +79,7 @@
   z-index: -1;
 
   /* 3. Detalles estéticos */
-  background-color: var(--color-acento);
+  background-color: var(--color-secundario);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -101,8 +101,8 @@
   padding: 10px 18px;
 
   /* 3. Detalles estéticos */
-  background-color: var(--color-superficie);
-  color: var(--color-claro);
+  background-color: var(--color-primario);
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   border: 1px solid var(--color-primario-claro2);
   border-radius: var(--radio-md);
@@ -110,9 +110,9 @@
 
 .btn-compartir:hover {
   /* 3. Detalles estéticos */
-  border-color: var(--color-acento);
+  border-color: var(--color-secundario);
   border-radius: var(--radio-lg);
-  box-shadow: var(--sombra-glow-acento);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
 }
 
 .btn-compartir svg,
@@ -145,8 +145,8 @@
 
 .btn-icono:hover {
   /* 3. Detalles estéticos */
-  background-color: var(--color-superficie);
-  border-color: var(--color-acento);
+  background-color: var(--color-primario);
+  border-color: var(--color-secundario);
 }
 
 .btn-icono img,
