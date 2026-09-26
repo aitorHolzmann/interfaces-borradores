@@ -21,14 +21,17 @@ PAGINA="${1:-index.html}"
 DISPOSITIVO="${2:-desktop}"
 
 # Resolver ruta completa del archivo HTML
-if [[ "$PAGINA" = /* ]]; then
+PAGINA_FILE="${PAGINA%%[#?]*}"
+if [[ "$PAGINA_FILE" = /* ]]; then
   RUTA_HTML="$PAGINA"
+  RUTA_CHECK="$PAGINA_FILE"
 else
   RUTA_HTML="$DIR/$PAGINA"
+  RUTA_CHECK="$DIR/$PAGINA_FILE"
 fi
 
-if [[ ! -f "$RUTA_HTML" ]]; then
-  echo "Error: No se encontró el archivo $RUTA_HTML" >&2
+if [[ ! -f "$RUTA_CHECK" ]]; then
+  echo "Error: No se encontró el archivo $RUTA_CHECK" >&2
   exit 1
 fi
 
@@ -54,7 +57,7 @@ EXTRA_FLAGS=""
 if [[ -n "$TIEMPO_ESPERA" ]]; then
   EXTRA_FLAGS="--virtual-time-budget=$TIEMPO_ESPERA"
 elif [[ "$PAGINA" == *"index.html"* ]]; then
-  EXTRA_FLAGS="--virtual-time-budget=5500"
+  EXTRA_FLAGS="--virtual-time-budget=6500"
 fi
 
 # Ejecutar Chromium en modo headless

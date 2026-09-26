@@ -1,15 +1,10 @@
 /* ==========================================================================
-   COMPONENTE: FAT FOOTER INSTITUCIONAL (FIDELIDAD FIGMA)
-   Referencia: examples/footer.jpeg
-   - Estructura: 2 Cajas Principales (Marca a la izquierda, Links en Grid a la derecha)
-   - Layout: CSS Grid tanto para el contenedor principal como para la sección de links
-   - Fondo: var(--color-primario-oscuro) con barra inferior var(--color-primario-oscuro2)
-   - Borde superior: 1px var(--color-secundario) con esquinas redondeadas
-   - Títulos con subrayado blanco fino extendido
+   COMPONENTE: FAT FOOTER INSTITUCIONAL
+   Optimizado con operadores relativos y eliminación de wrappers innecesarios
    ========================================================================== */
 
 .footer-principal {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 100%;
   margin-top: 60px;
@@ -23,7 +18,8 @@
   font-size: var(--tamano-small);
 }
 
-.footer-principal h4{
+.footer-principal h4 {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   margin-bottom: 14px;
 
@@ -45,19 +41,22 @@
 }
 
 .footer-principal a:hover {
+  /* 1. Posicionamiento y modelo de caja */
+  transform: translateX(4px);
+
   /* 3. Detalles estéticos */
   color: var(--color-secundario);
-  transform: translateX(4px);
 }
-/* Contenedor Principal: 2 Cajas con CSS Grid */
-.footer-contenedor {
-  /* 1. Alineación propia y modelo de caja */
+
+/* Contenedor Principal: 2 Cajas Principales */
+.footer-principal > .footer-contenedor {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 0 auto;
   padding: 40px 24px;
 
-  /* 2. Disposición interna: Mobile First (Grid mono-columna) */
+  /* 2. Disposición interna: Mobile First (columna centrada) */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -65,10 +64,10 @@
 }
 
 /* ==========================================================================
-   CAJA 1: MARCA Y DESCRIPCIÓN (IZQUIERDA EN DESKTOP)
+   CAJA 1: Marca y descripción (Izquierda en desktop)
    ========================================================================== */
-.footer-marca {
-  /* 1. Alineación propia y modelo de caja */
+.footer-contenedor > .footer-marca {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 360px;
 
@@ -82,8 +81,8 @@
   text-align: center;
 }
 
-.footer-logo img {
-  /* 1. Alineación propia y modelo de caja */
+.footer-marca > img {
+  /* 1. Posicionamiento y modelo de caja */
   width: auto;
   height: 190px;
 
@@ -91,8 +90,8 @@
   object-fit: contain;
 }
 
-.footer-descripcion {
-  /* 1. Alineación propia y modelo de caja */
+.footer-marca > p {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 360px;
 
@@ -103,14 +102,14 @@
 }
 
 /* ==========================================================================
-   CAJA 2: CONTENEDOR DE LINKS (CSS GRID)
+   CAJA 2: Grilla de enlaces y navegación (Derecha en desktop)
    ========================================================================== */
-.footer-links-grid {
-  /* 1. Alineación propia y modelo de caja */
+.footer-contenedor > .footer-links-grid {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 970px;
 
-  /* 2. Disposición interna: Mobile First (Grid mono-columna centrado) */
+  /* 2. Disposición interna: Mobile First (1 columna centrada) */
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
@@ -120,9 +119,8 @@
   text-align: center;
 }
 
-/* Columnas individuales de navegación dentro del Grid */
-.footer-columna {
-  /* 1. Alineación propia y modelo de caja */
+.footer-links-grid > div {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 260px;
 
@@ -132,8 +130,7 @@
   align-items: center;
 }
 
-
-.footer-links {
+.footer-links-grid ul {
   /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
@@ -144,11 +141,8 @@
   list-style: none;
 }
 
-
-
-.footer-links li a img,
-.footer-links li a svg {
-  /* 1. Alineación propia y modelo de caja */
+.footer-links-grid a img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 18px;
   height: 18px;
 
@@ -157,9 +151,10 @@
 }
 
 /* Bloque Soporte (ocupa todo el ancho de la grilla de links) */
-.footer-soporte {
-  /* 1. Alineación propia y modelo de caja */
+.footer-links-grid > .footer-soporte {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
+  max-width: 100%;
   margin-top: 10px;
 
   /* 2. Disposición interna */
@@ -172,19 +167,17 @@
   text-align: center;
 }
 
-.footer-soporte h4 {
-  /* 1. Alineación propia y modelo de caja */
+.footer-soporte > h4 {
+  /* 1. Posicionamiento y modelo de caja */
   max-width: 620px;
 }
 
-
-
-.footer-soporte-grilla {
-  /* 1. Alineación propia y modelo de caja */
+.footer-soporte > div {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 620px;
 
-  /* 2. Disposición interna: CSS Grid para los links de soporte */
+  /* 2. Disposición interna: Grilla de links de soporte */
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
@@ -194,13 +187,11 @@
   text-align: center;
 }
 
-
-
 /* ==========================================================================
    BARRA INFERIOR DE COPYRIGHT
    ========================================================================== */
-.footer-bottom {
-  /* 1. Alineación propia y modelo de caja */
+.footer-principal > .footer-bottom {
+  /* 1. Posicionamiento y modelo de caja */
   padding: 16px 20px;
 
   /* 3. Detalles estéticos */
@@ -208,49 +199,58 @@
   text-align: center;
 }
 
+.footer-bottom > p {
+  /* 1. Posicionamiento y modelo de caja */
+  margin: 0;
+
+  /* 3. Detalles estéticos */
+  font-size: var(--tamano-small);
+  line-height: 1.4;
+}
 
 /* ==========================================================================
    RESPONSIVE: TABLET (min-width: 600px)
    ========================================================================== */
 @media (min-width: 600px) {
-  .footer-principal{
+  .footer-principal {
+    /* 3. Detalles estéticos */
     font-size: var(--tamano-body);
   }
-  .footer-links-grid {
-    /* 2. Disposición interna: CSS Grid de 3 columnas para navegación */
-    grid-template-columns: repeat(3, 1fr);
 
+  .footer-contenedor > .footer-links-grid {
+    /* 2. Disposición interna: 3 columnas de navegación */
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .footer-columna {
-    /* 1. Alineación propia y modelo de caja */
+  .footer-links-grid > div {
+    /* 1. Posicionamiento y modelo de caja */
     max-width: 100%;
 
     /* 2. Disposición interna */
     align-items: flex-start;
   }
 
-  .footer-columna h4 {
+  .footer-links-grid > div > h4 {
     /* 3. Detalles estéticos */
     text-align: left;
   }
 
-  .footer-links {
+  .footer-links-grid ul {
     /* 2. Disposición interna */
     align-items: flex-start;
   }
 
-  .footer-soporte {
-    /* 1. Alineación propia y modelo de caja */
+  .footer-links-grid > .footer-soporte {
+    /* 1. Posicionamiento y modelo de caja */
     grid-column: 1 / -1;
   }
 
-  .footer-soporte h4 {
+  .footer-soporte > h4 {
     /* 3. Detalles estéticos */
     text-align: center;
   }
 
-  .footer-soporte-grilla {
+  .footer-soporte > div {
     /* 2. Disposición interna */
     grid-template-columns: repeat(2, 1fr);
     justify-items: start;
@@ -261,16 +261,13 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE: DESKTOP (min-width: 992px) — 2 CAJAS LATERALES EN GRID (FIGMA)
+   RESPONSIVE: DESKTOP (min-width: 992px)
    ========================================================================== */
 @media (min-width: 992px) {
-
-
-  .footer-contenedor {
-    /* 2. Disposición interna: 2 Cajas Principales mediante CSS Grid */
+  .footer-principal > .footer-contenedor {
+    /* 2. Disposición interna: 2 cajas lado a lado */
     flex-direction: row;
     justify-content: space-between;
     gap: 150px;
   }
-
 }

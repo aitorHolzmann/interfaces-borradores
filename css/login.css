@@ -1,13 +1,10 @@
 /* ==========================================================================
    PÁGINA: LOGIN Y REGISTRO (login.css) — FIDELIDAD FIGMA
-   Referencia: examples/login_original.png y examples/registrarse_original.png
-   - Panel a la derecha sobre fondo temático
-   - Header y Footer presentes
-   - Botones sociales horizontales
+   Optimizado con operadores relativos y eliminación de clases atómicas
    ========================================================================== */
 
 .pagina-auth-layout {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   min-height: 100vh;
 
   /* 2. Disposición interna */
@@ -18,9 +15,9 @@
   background-color: var(--color-fondo);
 }
 
-/* Acople directo del footer a la sección hero para eliminar la franja gris */
+/* Acople directo del footer a la sección hero */
 .pagina-auth-layout .footer-principal {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin-top: 0;
 
   /* 3. Detalles estéticos */
@@ -28,7 +25,7 @@
 }
 
 .auth-hero-seccion {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 100%;
   min-height: calc(100vh - var(--altura-nav));
@@ -46,7 +43,7 @@
   background-repeat: no-repeat;
 }
 
-/* Fondos específicos y disposición */
+/* Fondos específicos por modo */
 .auth-hero-seccion.modo-login {
   /* 3. Detalles estéticos */
   background-image: var(--gradiente-fondo-login), url('../assets/fondo_login.jpg');
@@ -62,7 +59,7 @@
 
 /* Panel Translúcido Militar */
 .panel-auth {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   z-index: 10;
   width: 100%;
@@ -75,16 +72,16 @@
   align-items: center;
 
   /* 3. Detalles estéticos */
-  background-color: rgba(45, 52, 22, 0.7); /* Verde militar translúcido */
-  border: 1.5px solid var(--color-primario-claro); /* #828E3B */
-  border-radius: var(--radio-md); /* 8px */
+  background-color: rgba(45, 52, 22, 0.7);
+  border: 1.5px solid var(--color-primario-claro);
+  border-radius: var(--radio-md);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(6px);
 }
 
 /* Encabezado del Panel */
-.auth-header {
-  /* 1. Alineación propia y modelo de caja */
+.panel-auth > header {
+  /* 1. Posicionamiento y modelo de caja */
   margin-bottom: 14px;
 
   /* 2. Disposición interna */
@@ -97,8 +94,8 @@
   text-align: center;
 }
 
-.auth-logo {
-  /* 1. Alineación propia y modelo de caja */
+.panel-auth > header > img {
+  /* 1. Posicionamiento y modelo de caja */
   width: auto;
   height: 38px;
 
@@ -106,18 +103,17 @@
   object-fit: contain;
 }
 
-/* Título en 2 líneas verde exacto al Figma */
-.auth-titulo {
+.panel-auth > header > h1 {
   /* 3. Detalles estéticos */
-  color: var(--color-primario-claro); /* #828E3B */
+  color: var(--color-primario-claro);
   font-size: 1.45rem;
   font-weight: 700;
   line-height: 1.25;
   text-align: center;
 }
 
-.formulario-auth {
-  /* 1. Alineación propia y modelo de caja */
+.panel-auth > form {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
 
   /* 2. Disposición interna */
@@ -126,8 +122,8 @@
 }
 
 /* Enlace Olvido de Contraseña */
-.auth-enlace-olvido {
-  /* 1. Alineación propia y modelo de caja */
+.panel-auth form > a {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   margin: 6px 0 14px;
 
@@ -142,42 +138,14 @@
   transition: color 0.2s ease;
 }
 
-.auth-enlace-olvido:hover {
+.panel-auth form > a:hover {
   /* 3. Detalles estéticos */
   color: var(--color-secundario);
 }
 
-/* Botón Naranja Principal */
-.btn-auth-submit {
-  /* 1. Alineación propia y modelo de caja */
-  width: 100%;
-  min-height: 44px;
-
-  /* 3. Detalles estéticos */
-  background-color: var(--color-secundario);
-  color: var(--color-blanco);
-  font-size: var(--tamano-body);
-  font-weight: 700;
-  border: none;
-  border-radius: var(--radio-md);
-  box-shadow: 0 4px 12px rgba(255, 122, 41, 0.4);
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.btn-auth-submit:hover {
-  /* 1. Alineación propia y modelo de caja */
-  transform: scale(1.04);
-
-  /* 3. Detalles estéticos */
-  background-color: var(--color-secundario);
-  filter: brightness(0.9);
-  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
-}
-
-/* Separador O continuar con */
+/* Texto separador */
 .auth-separador-texto {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin: 14px 0 10px;
 
   /* 3. Detalles estéticos */
@@ -186,9 +154,9 @@
   text-align: center;
 }
 
-/* Botones Sociales Horizontales (Lado a Lado) */
-.auth-social-fila {
-  /* 1. Alineación propia y modelo de caja */
+/* Fila de botones sociales */
+.auth-sociales {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
 
   /* 2. Disposición interna */
@@ -197,8 +165,8 @@
   gap: 12px;
 }
 
-.btn-social-item {
-  /* 1. Alineación propia y modelo de caja */
+.auth-sociales > button {
+  /* 1. Posicionamiento y modelo de caja */
   min-height: 40px;
   padding: 8px 12px;
 
@@ -218,32 +186,32 @@
   transition: opacity 0.2s ease;
 }
 
-.btn-social-item:hover {
+.auth-sociales > button:hover {
   /* 3. Detalles estéticos */
   opacity: 0.9;
 }
 
-.btn-social-item img {
-  /* 1. Alineación propia y modelo de caja */
+.auth-sociales img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 18px;
   height: 18px;
 }
 
-.btn-social-facebook {
+.auth-sociales > button:first-child {
   /* 3. Detalles estéticos */
   background-color: var(--color-facebook);
   color: var(--color-blanco);
 }
 
-.btn-social-google {
+.auth-sociales > button:last-child {
   /* 3. Detalles estéticos */
   background-color: var(--color-google-fondo);
   color: var(--color-negro);
 }
 
-/* Toggle Login / Registro al pie del panel */
+/* Pie de autenticación (Toggle) */
 .auth-toggle-footer {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin-top: 14px;
 
   /* 3. Detalles estéticos */
@@ -252,6 +220,7 @@
   text-align: center;
 }
 
+.auth-toggle-footer a,
 .auth-toggle-link {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
@@ -260,6 +229,7 @@
   cursor: pointer;
 }
 
+.auth-toggle-footer a:hover,
 .auth-toggle-link:hover {
   /* 3. Detalles estéticos */
   color: var(--color-secundario);
@@ -268,7 +238,7 @@
 @media (max-width: 800px) {
   .auth-hero-seccion,
   .auth-hero-seccion.modo-registro {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     padding: 30px 16px;
 
     /* 2. Disposición interna */
@@ -280,7 +250,7 @@
    ANIMACIÓN DE ÉXITO (Validación visual)
    ========================================================================== */
 .mensaje-exito {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   top: 0;
   left: 0;

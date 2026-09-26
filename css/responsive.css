@@ -1,23 +1,26 @@
 /* ==========================================================================
    RESPONSIVE DESIGN — ENFOQUE MOBILE FIRST (HOME)
    Requerimiento Mandatorio Nº 5 de Cátedra
+   Optimizado con operadores relativos y herencia limpia
    ========================================================================== */
 
 /* --- AJUSTES BASE MOBILE (< 768px) --- */
+.hero-triptico > div,
 .hero-foto-lateral {
   /* 2. Disposición interna */
   display: none; /* En mobile solo mostramos la foto central destacada */
 }
 
+.hero-triptico > a,
 .hero-foto-central {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 90vw;
   max-width: 380px;
   height: 270px;
 }
 
 .card-juego {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 210px;
   min-width: 210px;
   height: 155px;
@@ -25,13 +28,15 @@
 
 /* --- TABLET Y PANTALLAS MEDIANAS (min-width: 768px) --- */
 @media (min-width: 768px) {
+  .seccion-hero > h2,
   .hero-titulo {
     /* 3. Detalles estéticos */
     font-size: 2.2rem;
   }
 
+  .hero-triptico > div,
   .hero-foto-lateral {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 200px;
     height: 200px;
 
@@ -39,14 +44,15 @@
     display: block;
   }
 
+  .hero-triptico > a,
   .hero-foto-central {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 360px;
     height: 280px;
   }
 
   .card-juego {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 230px;
     min-width: 230px;
     height: 165px;
@@ -55,32 +61,35 @@
 
 /* --- DESKTOP Y PANTALLAS GRANDES (min-width: 1024px) --- */
 @media (min-width: 1024px) {
+  .seccion-hero > h2,
   .hero-titulo {
     /* 3. Detalles estéticos */
     font-size: 2.5rem;
   }
 
+  .hero-triptico > div,
   .hero-foto-lateral {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 280px;
     height: 250px;
   }
 
+  .hero-triptico > a,
   .hero-foto-central {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 440px;
     height: 330px;
   }
 
   .card-juego {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 245px;
     min-width: 245px;
     height: 175px;
   }
 
   .seccion-categoria {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     padding: 0 40px;
   }
 }
@@ -88,27 +97,27 @@
 /* --- PANTALLAS MUY PEQUEÑAS (< 480px) --- */
 @media (max-width: 480px) {
   .nav-principal {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     padding: 0 10px;
   }
 
-  .nav-contenedor {
+  .nav-principal > .nav-contenedor {
     /* 2. Disposición interna */
     gap: 10px;
   }
 
-  .nav-izquierda {
+  .nav-contenedor > .nav-izquierda {
     /* 2. Disposición interna */
     gap: 8px;
   }
 
-  .nav-logo img {
-    /* 1. Alineación propia y modelo de caja */
+  .nav-izquierda > a > img {
+    /* 1. Posicionamiento y modelo de caja */
     height: 38px;
   }
 
-  .input-busqueda {
-    /* 1. Alineación propia y modelo de caja */
+  .nav-centro form > input[type="search"] {
+    /* 1. Posicionamiento y modelo de caja */
     height: 36px;
     padding: 6px 36px 6px 12px;
 
@@ -116,42 +125,42 @@
     font-size: var(--tamano-small);
   }
 
-  .btn-busqueda-icono {
-    /* 1. Alineación propia y modelo de caja */
+  .nav-centro form > button {
+    /* 1. Posicionamiento y modelo de caja */
     right: 10px;
   }
 
-  .btn-perfil {
-    /* 1. Alineación propia y modelo de caja */
+  .perfil-menu-contenedor > button {
+    /* 1. Posicionamiento y modelo de caja */
     width: 36px;
     height: 36px;
   }
 
-  .avatar-usuario-icono {
-    /* 1. Alineación propia y modelo de caja */
+  .perfil-menu-contenedor > button img {
+    /* 1. Posicionamiento y modelo de caja */
     width: 24px;
     height: 24px;
   }
 
   .perfil-menu-contenedor {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     min-width: 140px;
   }
 
-  .hero-juego-nombre {
+  .hero-triptico h3 {
     /* 3. Detalles estéticos */
     font-size: 20px;
   }
 
   .card-juego {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 180px;
     min-width: 180px;
     height: 135px;
   }
 
-  .card-titulo {
-    /* 1. Alineación propia y modelo de caja */
+  .card-juego > span {
+    /* 1. Posicionamiento y modelo de caja */
     bottom: 6px;
 
     /* 3. Detalles estéticos */
@@ -159,7 +168,7 @@
   }
 
   .badge-premium-icon {
-    /* 1. Alineación propia y modelo de caja */
+    /* 1. Posicionamiento y modelo de caja */
     width: 26px;
     height: 26px;
   }

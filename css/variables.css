@@ -24,6 +24,8 @@
   --color-exito: #4CAF50;
   --color-facebook: #1877F2;
   --color-google-fondo: #EFEFEF;
+  --color-recaptcha-fondo: #F9F9F9;
+  --color-recaptcha-borde: #D3D3D3;
 
   /* --- Colores Neutros y Textos --- */
   --color-blanco: #FFFFFF;

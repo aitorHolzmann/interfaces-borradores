@@ -379,8 +379,8 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias') {
 
       card.innerHTML = `
         ${badgeHtml}
-        <img src="${juego.imagen}" alt="${juego.titulo}" class="card-img" loading="lazy">
-        <span class="card-titulo">${juego.titulo}</span>
+        <img src="${juego.imagen}" alt="${juego.titulo}" loading="lazy">
+        <span>${juego.titulo}</span>
       `;
 
       pista.appendChild(card);

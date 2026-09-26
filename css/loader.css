@@ -1,10 +1,10 @@
 /* ==========================================================================
    COMPONENTE: PANTALLA DE CARGA (LOADER 5s)
-   Requerimiento Mandatorio Nº 3 (Se activa y completa en Etapa 2)
+   Requerimiento Mandatorio Nº 3 (Optimizado con operadores relativos)
    ========================================================================== */
 
 .pantalla-carga {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +31,7 @@
   pointer-events: none;
 }
 
-.loader-contenido {
+.pantalla-carga > div {
   /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
@@ -43,8 +43,8 @@
 }
 
 /* Contenedor del Logo en Carga */
-.loader-logo-contenedor {
-  /* 1. Alineación propia y modelo de caja */
+.loader-logo {
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 220px;
   aspect-ratio: 587 / 425;
@@ -53,14 +53,13 @@
   transition: transform 0.4s ease-in-out;
 }
 
-/* Pulsación suave con transform (activada por JS sin usar keyframes) */
-.loader-logo-contenedor.pulsando {
+.loader-logo.pulsando {
   /* 3. Detalles estéticos */
   transform: scale(1.06);
 }
 
-.loader-logo-contenedor img{
-  /* 1. Alineación propia y modelo de caja */
+.loader-logo img {
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   top: 0;
   left: 0;
@@ -71,21 +70,21 @@
 }
 
 /* Silueta oscura de fondo (guía) */
-.loader-logo-silueta {
+.loader-logo img:first-child {
   /* 3. Detalles estéticos */
   opacity: 0.1;
-  filter: grayscale(1) ;
+  filter: grayscale(1);
 }
 
 /* Logo a color que se va revelando de abajo hacia arriba */
-.loader-logo-color {
+.loader-logo img:last-child {
   /* 3. Detalles estéticos */
   clip-path: inset(100% 0 0 0);
   filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.4));
   transition: clip-path 0.05s linear;
 }
 
-.loader-porcentaje {
+.pantalla-carga p {
   /* 3. Detalles estéticos */
   color: var(--color-primario-claro);
   font-size: 2rem;
@@ -93,7 +92,7 @@
   letter-spacing: 1px;
 }
 
-.loader-subtexto {
+.pantalla-carga span {
   /* 3. Detalles estéticos */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);

@@ -25,18 +25,18 @@
     <div class="nav-contenedor">
       
       <div class="nav-izquierda">
-        <button class="btn-hamburguesa" id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
+        <button id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
           <img src="assets/icons/menu.svg" alt="Menú lateral">
         </button>
-        <a href="index.html" class="nav-logo" title="Volver a la página principal">
+        <a href="index.html" title="Volver a la página principal">
           <img src="assets/logo.png" alt="Logotipo Plataforma">
         </a>
       </div>
 
       <div class="nav-centro">
-        <form class="barra-busqueda" role="search" onsubmit="event.preventDefault();">
-          <input type="search" class="input-busqueda" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
-          <button type="submit" class="btn-busqueda-icono" aria-label="Ejecutar búsqueda">
+        <form role="search" onsubmit="event.preventDefault();">
+          <input type="search" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
+          <button type="submit" aria-label="Ejecutar búsqueda">
             <img src="assets/icons/icon-search.svg" alt="Buscar">
           </button>
         </form>
@@ -45,21 +45,15 @@
       <!-- Lado Derecho: Avatar Circular del Soldado y Menú Desplegable -->
       <div class="nav-derecha">
         <div class="perfil-menu-contenedor">
-          <button type="button" class="btn-perfil" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
-            <img src="assets/icons/icon-profile.svg" alt="Avatar del soldado" class="avatar-usuario-icono">
+          <button type="button" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
+            <img src="assets/icons/icon-profile.svg" alt="Avatar del soldado">
           </button>
 
           <div class="menu-desplegable-perfil" id="menu-perfil" role="menu" aria-label="Opciones de perfil">
-            <ul class="menu-perfil-lista">
-              <li class="menu-perfil-item" role="none">
-                <a href="#" class="menu-perfil-enlace" role="menuitem">Editar Perfil</a>
-              </li>
-              <li class="menu-perfil-item" role="none">
-                <a href="#" class="menu-perfil-enlace" role="menuitem">Biblioteca</a>
-              </li>
-              <li class="menu-perfil-item" role="none">
-                <a href="login.html" class="menu-perfil-enlace menu-perfil-logout" role="menuitem">Cerrar Sesión</a>
-              </li>
+            <ul>
+              <li role="none"><a href="#" role="menuitem">Editar Perfil</a></li>
+              <li role="none"><a href="#" role="menuitem">Biblioteca</a></li>
+              <li role="none"><a href="login.html" role="menuitem">Cerrar Sesión</a></li>
             </ul>
           </div>
         </div>
@@ -71,21 +65,21 @@
   <!-- SIDEBAR OFF-CANVAS -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
+    <header>
       <img src="assets/logo.png" alt="Logo" style="height: 36px;">
-      <button class="btn-cerrar-sidebar" id="btn-cerrar-sidebar" aria-label="Cerrar menú">
+      <button id="btn-cerrar-sidebar" aria-label="Cerrar menú">
         <img src="assets/icons/icon-cerrar.svg" alt="Cerrar">
       </button>
-    </div>
-    <span class="sidebar-titulo-seccion">Navegación</span>
-    <ul class="sidebar-menu">
-      <li class="sidebar-item"><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
-      <li class="sidebar-item"><a href="index.html#top"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
-      <li class="sidebar-item activo"><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
-      <li class="sidebar-item"><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
-      <li class="sidebar-item"><a href="index.html#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
-      <li class="sidebar-item"><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
-      <li class="sidebar-item"><a href="index.html#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
+    </header>
+    <span>Navegación</span>
+    <ul>
+      <li><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
+      <li><a href="index.html#top"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
+      <li class="activo"><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
+      <li><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
+      <li><a href="index.html#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
+      <li><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
+      <li><a href="index.html#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
     </ul>
   </aside>
 
@@ -94,8 +88,8 @@
        ==================================================================== -->
   <main class="pagina-juego-main">
 
-    <!-- Breadcrumbs Exactos al Figma -->
-    <nav class="game-breadcrumbs" aria-label="Ruta de navegación">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Ruta de navegación">
       <a href="index.html">Home</a> &gt; <a href="index.html#premium">Premium</a> &gt; <span>Peg Solitaire</span>
     </nav>
 
@@ -104,10 +98,10 @@
          ==================================================================== -->
     <section class="area-ejecucion-juego" aria-label="Área de Juego">
       
-      <div class="pantalla-juego-contenedor">
+      <div>
         <!-- Splash con Botón Naranja "Jugar" -->
-        <div class="caja-controles-juego">
-          <button class="btn-jugar-splash" id="btn-iniciar-partida">
+        <div>
+          <button id="btn-iniciar-partida">
             Jugar
           </button>
         </div>
@@ -115,21 +109,21 @@
 
       <!-- Barra de Ejecución Inferior -->
       <div class="barra-ejecucion">
-        <span class="barra-ejecucion-titulo">Peg Solitaire</span>
+        <span>Peg Solitaire</span>
 
-        <div class="barra-ejecucion-botonera">
+        <div>
           <!-- Icono 1: Guardar en Favoritos -->
-          <button class="barra-ejecucion-btn" id="btn-guardar-juego" title="Guardar">
+          <button id="btn-guardar-juego" title="Guardar">
             <img src="assets/icons/icon-save.svg" alt="Guardar">
           </button>
 
           <!-- Icono 2: Compartir -->
-          <button class="barra-ejecucion-btn" id="btn-compartir-juego" title="Compartir">
+          <button id="btn-compartir-juego" title="Compartir">
             <img src="assets/icons/icon-share.svg" alt="Compartir">
           </button>
 
           <!-- Icono 3: Pantalla Completa -->
-          <button class="barra-ejecucion-btn" id="btn-fullscreen" title="Pantalla Completa">
+          <button id="btn-fullscreen" title="Pantalla Completa">
             <img src="assets/icons/icon-fullscreen.svg" alt="Pantalla Completa">
           </button>
         </div>
@@ -144,26 +138,22 @@
       
       <!-- Columna 1: Instrucciones y Controles Resumidos -->
       <div class="contenedor-instrucciones">
-        <h2 class="instrucciones-titulo">COMO JUGAR?</h2>
+        <h2>COMO JUGAR?</h2>
         
         <div class="lista-reglas">
+          <!-- Tarjeta de Controles Resumida con Mouse -->
+          <div class="card-controles">
+            <h3>Controles</h3>
+            <img src="assets/icons/icon-mouse.svg" alt="Controles con mouse">
+            <p>Seleccionar y moverse</p>
+          </div>
 
-                  <!-- Tarjeta de Controles Resumida con Mouse -->
-        <div class="card-controles">
-            <h3 class="card-controles-titulo">Controles</h3>
-            <div class="card-controles-icono">
-              <img src="assets/icons/icon-mouse.svg" alt="Controles con mouse" class="icono-mouse">
-            </div>
-            <p class="card-controles-texto">Seleccionar y moverse</p>
-        </div>
-
-
-          <article class="item-regla">
+          <article>
             <h3>Objetivo</h3>
             <p>Eliminá fichas saltando sobre ellas hasta que quede una sola en todo el tablero (idealmente en el centro).</p>
           </article>
 
-          <article class="item-regla">
+          <article>
             <h3>Reglas de salto</h3>
             <p>Saltá en línea recta (horizontal o vertical) sobre una ficha adyacente hacia un casillero vacío. No se permiten diagonales.</p>
           </article>
@@ -172,28 +162,28 @@
 
       <!-- Columna 2: Galería 2x2 -->
       <div class="contenedor-galeria">
-        <h2 class="galeria-titulo">GALERIA</h2>
+        <h2>GALERIA</h2>
         
         <div class="galeria-grilla">
-          <div class="galeria-item">
+          <div>
             <img src="assets/images/peg_solitaire_hero.jpg" alt="Despliegue inicial">
           </div>
           
-          <div class="galeria-item">
+          <div>
             <img src="assets/images/game_solitaire_1.jpg" alt="Avance táctico">
             <!-- Botón Naranja de Play Centrado -->
-            <div class="btn-galeria-play-overlay" title="Ver jugada">
+            <div class="btn-galeria-play" title="Ver jugada">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <polygon points="18,12 36,24 18,36" fill="#FF6B00"></polygon>
               </svg>
             </div>
           </div>
 
-          <div class="galeria-item">
+          <div>
             <img src="assets/images/game_scifi_2.jpg" alt="Objetivo final">
           </div>
 
-          <div class="galeria-item">
+          <div>
             <img src="assets/images/game_action_1.jpg" alt="Victoria total">
           </div>
         </div>
@@ -205,76 +195,75 @@
          SECCIÓN: COMENTARIOS
          ==================================================================== -->
     <section class="seccion-comentarios" aria-label="Comentarios">
-      <h2 class="comentarios-titulo">COMENTARIOS</h2>
+      <h2>COMENTARIOS</h2>
 
-      <!-- Formulario de Entrada: Avatar con nombre abajo + barra gris clara -->
-      <form class="comentario-form-fila" id="form-nuevo-comentario" onsubmit="event.preventDefault();">
+      <!-- Formulario de Entrada: Avatar con nombre abajo + barra blanca píldora -->
+      <form class="comentario-form" id="form-nuevo-comentario" onsubmit="event.preventDefault();">
         <div class="comentario-autor-actual">
-          <div class="comentario-avatar-circulo">
+          <div>
             <img src="assets/icons/icon-profile.svg" alt="Esteban">
           </div>
-          <span class="comentario-autor-nombre-label">Esteban</span>
+          <span>Esteban</span>
         </div>
 
         <div class="comentario-input-barra">
           <input 
             type="text" 
             id="input-comentario" 
-            class="comentario-input-campo" 
             placeholder="Escribe algo..."
           >
-          <button type="button" class="btn-enviar-comentario-icono" aria-label="Enviar comentario">
+          <button type="button" aria-label="Enviar comentario">
             <img src="assets/icons/icon-send.svg" alt="Enviar">
           </button>
         </div>
       </form>
 
-      <!-- Lista Abierta de Comentarios del Figma -->
-      <div class="comentarios-lista-abierta" id="lista-comentarios">
+      <!-- Lista Abierta de Comentarios -->
+      <div class="comentarios-lista" id="lista-comentarios">
         
         <!-- Comentario 1: Esteban -->
-        <article class="comentario-fila-item">
-          <div class="comentario-item-avatar">
+        <article class="comentario-item">
+          <div>
             <img src="assets/icons/icon-profile.svg" alt="Esteban">
           </div>
-          <div class="comentario-item-contenido">
-            <div class="comentario-item-meta">
-              <span class="comentario-item-usuario">Esteban</span>
-              <time class="comentario-item-fecha">25/09/2026 12:15</time>
-            </div>
-            <p class="comentario-item-texto">
+          <div>
+            <header>
+              <strong>Esteban</strong>
+              <time>25/09/2026 12:15</time>
+            </header>
+            <p>
               Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la batalla. Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la b...
             </p>
           </div>
         </article>
 
         <!-- Comentario 2: Aitor -->
-        <article class="comentario-fila-item">
-          <div class="comentario-item-avatar">
+        <article class="comentario-item">
+          <div>
             <img src="assets/icons/icon-profile.svg" alt="Aitor">
           </div>
-          <div class="comentario-item-contenido">
-            <div class="comentario-item-meta">
-              <span class="comentario-item-usuario">Aitor</span>
-              <time class="comentario-item-fecha">25/09/2026 11:30</time>
-            </div>
-            <p class="comentario-item-texto">
-              Hola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan
+          <div>
+            <header>
+              <strong>Aitor</strong>
+              <time>25/09/2026 11:30</time>
+            </header>
+            <p>
+              Hola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan amigosHola como estan
             </p>
           </div>
         </article>
 
         <!-- Comentario 3: Esteban -->
-        <article class="comentario-fila-item">
-          <div class="comentario-item-avatar">
+        <article class="comentario-item">
+          <div>
             <img src="assets/icons/icon-profile.svg" alt="Esteban">
           </div>
-          <div class="comentario-item-contenido">
-            <div class="comentario-item-meta">
-              <span class="comentario-item-usuario">Esteban</span>
-              <time class="comentario-item-fecha">24/09/2026 18:45</time>
-            </div>
-            <p class="comentario-item-texto">
+          <div>
+            <header>
+              <strong>Esteban</strong>
+              <time>24/09/2026 18:45</time>
+            </header>
+            <p>
               ME ENCANTA DISENIAR INTERFACES
             </p>
           </div>
@@ -285,27 +274,25 @@
 
   </main>
 
-   <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL (REQUERIDO EN LOGIN / REGISTRO)
+  <!-- ====================================================================
+       FAT FOOTER INSTITUCIONAL
        ==================================================================== -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
        
       <!-- Caja 1: Marca y descripción -->
       <div class="footer-marca">
-        <div class="footer-logo">
-          <img src="assets/logo.png" alt="Logotipo Plataforma">
-        </div>
-        <p class="footer-descripcion">
+        <img src="assets/logo.png" alt="Logotipo Plataforma">
+        <p>
           Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la batalla.
         </p>
       </div>
 
       <!-- Caja 2: Contenedor de links (Grid) -->
       <div class="footer-links-grid">
-        <div class="footer-columna">
+        <div>
           <h4>Sobre nosotros</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#">Ayuda</a></li>
             <li><a href="#">Privacidad</a></li>
             <li><a href="#">Cookies</a></li>
@@ -313,9 +300,9 @@
           </ul>
         </div>
 
-        <div class="footer-columna">
+        <div>
           <h4>Categorias</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="index.html#top">Top</a></li>
             <li><a href="index.html#premium">Premium</a></li>
             <li><a href="index.html#accion">Accion</a></li>
@@ -325,9 +312,9 @@
           </ul>
         </div>
 
-        <div class="footer-columna">
+        <div>
           <h4>Contacto</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#"><img src="assets/icons/icon-share.svg" alt=""> Compartir</a></li>
             <li><a href="#"><img src="assets/icons/icon-instagram.svg" alt=""> Instagram</a></li>
             <li><a href="#"><img src="assets/icons/icon-tiktok.svg" alt=""> TikTok</a></li>
@@ -338,7 +325,7 @@
         <!-- Sección Soporte dentro del bloque de navegación -->
         <div class="footer-soporte">
           <h4>Soporte</h4>
-          <div class="footer-soporte-grilla">
+          <div>
             <a href="#">Centro de Ayuda</a>
             <a href="#">Reportar un Bug</a>
             <a href="#">Soporte</a>

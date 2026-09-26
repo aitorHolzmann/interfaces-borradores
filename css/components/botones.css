@@ -1,15 +1,17 @@
 /* ==========================================================================
-   COMPONENTE: BOTONES
-   Estilos base y estados estáticos para botones del sistema
-   Incluye 3 efectos hover diferenciados (Requerimiento Nº 2)
+   COMPONENTE: BOTONES Y EFECTOS HOVER
+   Requerimiento Mandatorio Nº 2: Mínimo 3 animaciones hover diferenciadas
+   - Efecto 1: Escala con sombra elevada (ej. Botón Submit / Auth)
+   - Efecto 2: Barrido de fondo horizontal con ::before (ej. Sidebar / Splash)
+   - Efecto 3: Borde luminiscente (glow) y cambio de radio (ej. Botonera Barra)
    ========================================================================== */
 
 /* --- Botón Base --- */
 .btn {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
-  min-height: 46px; /* Cumplimiento Ley de Fitts: >= 44px */
-  padding: 12px 24px;
+  min-height: 44px;
+  padding: 10px 20px;
   overflow: hidden;
 
   /* 2. Disposición interna */
@@ -23,145 +25,115 @@
   font-size: var(--tamano-body);
   font-weight: 700;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   white-space: nowrap;
   border: 1px solid transparent;
   border-radius: var(--radio-md);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
-/* --- Botón Primario (Acento Naranja) ---
-   Utilizado en "Iniciar Sesión", "Registrarse", "JUGAR AHORA" */
-.btn-primario {
+/* ==========================================================================
+   EFECTO 1: Escala con sombra elevada
+   ========================================================================== */
+.btn-efecto-escala,
+.btn-auth-submit {
+  /* 1. Posicionamiento y modelo de caja */
+  min-height: 44px;
+
   /* 3. Detalles estéticos */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border: 1px solid var(--color-secundario);
-  box-shadow: 0 4px 10px rgba(143, 60, 0, 0.4);
+  border-radius: var(--radio-md);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
-.btn-primario:hover {
-  /* 1. Alineación propia y modelo de caja */
-  transform: scale(1.06);
+.btn-efecto-escala:hover,
+.btn-auth-submit:hover {
+  /* 1. Posicionamiento y modelo de caja */
+  transform: scale(1.04);
 
   /* 3. Detalles estéticos */
-  box-shadow: 0 8px 20px rgba(143, 60, 0, 0.6);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
+  filter: brightness(0.95);
 }
 
-.btn-primario:focus-visible {
+.btn-efecto-escala:focus-visible,
+.btn-auth-submit:focus-visible {
   /* 3. Detalles estéticos */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }
 
-/* --- Botón Premium ("Comprar") ---
-   Utilizado en cards o fichas de juegos premium */
-.btn-comprar {
+/* ==========================================================================
+   EFECTO 2: Barrido de fondo horizontal con ::before
+   ========================================================================== */
+.btn-efecto-barrido {
+  /* 1. Posicionamiento y modelo de caja */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
   /* 3. Detalles estéticos */
-  background-color: var(--color-superficie-oscura);
-  color: var(--color-premium);
-  font-weight: 700;
-  border: 2px solid var(--color-premium);
-  box-shadow: 0 0 10px rgba(229, 184, 11, 0.2);
-  z-index: 1; /* Necesario para que ::before quede detrás del texto */
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.btn-comprar::before {
-  /* 1. Alineación propia y modelo de caja */
+.btn-efecto-barrido::before {
+  /* 1. Posicionamiento y modelo de caja */
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: -1;
 
   /* 3. Detalles estéticos */
   background-color: var(--color-secundario);
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
 }
 
-.btn-comprar:hover {
-  /* 3. Detalles estéticos */
-  color: var(--color-blanco);
-}
-
-.btn-comprar:hover::before {
-  /* 1. Alineación propia y modelo de caja */
+.btn-efecto-barrido:hover::before {
+  /* 1. Posicionamiento y modelo de caja */
   transform: translateX(0);
 }
 
-/* --- Botón Compartir / Social en Ficha de Juego ---
-   Utilizado en game.html para acciones sociales */
-.btn-compartir {
-  /* 1. Alineación propia y modelo de caja */
-  padding: 10px 18px;
-
-  /* 3. Detalles estéticos */
-  background-color: var(--color-primario);
-  color: var(--color-blanco);
-  font-size: var(--tamano-small);
-  border: 1px solid var(--color-primario-claro2);
-  border-radius: var(--radio-md);
-}
-
-.btn-compartir:hover {
-  /* 3. Detalles estéticos */
-  border-color: var(--color-secundario);
-  border-radius: var(--radio-lg);
-  box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
-}
-
-.btn-compartir svg,
-.btn-compartir img {
-  /* 1. Alineación propia y modelo de caja */
-  width: 18px;
-  height: 18px;
-}
-
-
-/* --- Botón Icono (Flechas carrusel, hamburguesa, pantalla completa) --- */
-.btn-icono {
-  /* 1. Alineación propia y modelo de caja */
-  width: 44px;
-  height: 44px;
-  min-height: 44px;
-  padding: 0;
+/* ==========================================================================
+   EFECTO 3: Borde luminiscente (glow) y cambio de border-radius
+   ========================================================================== */
+.btn-efecto-glow,
+.barra-ejecucion button {
+  /* 1. Posicionamiento y modelo de caja */
+  padding: 8px;
 
   /* 2. Disposición interna */
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 
   /* 3. Detalles estéticos */
-  background-color: rgba(20, 23, 20, 0.6);
-  color: var(--color-blanco);
-  border: 1px solid var(--color-primario-claro2);
-  border-radius: var(--radio-md);
+  background: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: border-radius 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
 }
 
-.btn-icono:hover {
+.btn-efecto-glow:hover,
+.barra-ejecucion button:hover {
+  /* 1. Posicionamiento y modelo de caja */
+  transform: scale(1.15);
+
   /* 3. Detalles estéticos */
-  background-color: var(--color-primario);
+  background-color: var(--color-secundario);
   border-color: var(--color-secundario);
+  border-radius: var(--radio-lg);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.6);
 }
 
-.btn-icono img,
-.btn-icono svg {
-  /* 1. Alineación propia y modelo de caja */
-  width: 24px;
-  height: 24px;
-}
-
-/* --- Botón Deshabilitado --- */
-.btn:disabled,
-.btn.deshabilitado {
+.btn-efecto-glow:focus-visible,
+.barra-ejecucion button:focus-visible {
   /* 3. Detalles estéticos */
-  opacity: 0.5;
-  box-shadow: none;
-  cursor: not-allowed;
-  pointer-events: none;
+  outline: 2px solid var(--color-blanco);
+  outline-offset: 2px;
 }

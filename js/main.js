@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebarOverlay.addEventListener('click', cerrarSidebar);
   }
 
-  const sidebarLinks = document.querySelectorAll('.sidebar-item a');
+  const sidebarLinks = document.querySelectorAll('#sidebar a, .sidebar a');
   sidebarLinks.forEach((link) => {
     link.addEventListener('click', () => {
       cerrarSidebar();
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Opciones de demo: Editar Perfil y Biblioteca cierran el dropdown
-  const menuPerfilEnlaces = document.querySelectorAll('.menu-perfil-enlace:not(.menu-perfil-logout)');
+  const menuPerfilEnlaces = document.querySelectorAll('.menu-desplegable-perfil a:not(:last-child)');
   menuPerfilEnlaces.forEach((enlace) => {
     enlace.addEventListener('click', (e) => {
       e.preventDefault();
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 2. Rotación de Juegos en el Tríptico del Hero ---
+  // --- 3. Rotación de Juegos en el Tríptico del Hero ---
   const heroJuegos = [
     {
       nombre: 'Peg Solitaire',
@@ -144,12 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let heroIndex = 0;
   const heroBtnAnt = document.getElementById('hero-btn-ant');
   const heroBtnSig = document.getElementById('hero-btn-sig');
-  const heroNombre = document.querySelector('.hero-juego-nombre');
-  const heroFotoCentral = document.querySelector('.hero-foto-central');
-  const heroFotoCentralImg = document.querySelector('.hero-foto-central img');
-  const heroFotoIzqImg = document.querySelector('.hero-foto-lateral:first-child img');
-  const heroFotoDerImg = document.querySelector('.hero-foto-lateral:last-child img');
   const heroTriptico = document.querySelector('.hero-triptico');
+  const heroNombre = document.querySelector('.hero-triptico h3');
+  const heroFotoCentral = document.querySelector('.hero-triptico > a');
+  const heroFotoCentralImg = document.querySelector('.hero-triptico > a > img');
+  const heroFotoIzqImg = document.querySelector('.hero-triptico > div:first-child img');
+  const heroFotoDerImg = document.querySelector('.hero-triptico > div:last-child img');
 
   function actualizarHero(index) {
     const juego = heroJuegos[index];
@@ -188,6 +188,55 @@ document.addEventListener('DOMContentLoaded', () => {
       heroIndex = (heroIndex + 1) % heroJuegos.length;
       actualizarHero(heroIndex);
     });
+  }
+
+  // --- 4. Interacción de Comentarios en Sala de Juego ---
+  const formNuevoComentario = document.getElementById('form-nuevo-comentario');
+  const inputComentario = document.getElementById('input-comentario');
+  const listaComentarios = document.getElementById('lista-comentarios');
+
+  function publicarComentario() {
+    if (!inputComentario || !listaComentarios) return;
+    const texto = inputComentario.value.trim();
+    if (!texto) return;
+
+    const hoy = new Date();
+    const dia = String(hoy.getDate()).padStart(2, '0');
+    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+    const anio = hoy.getFullYear();
+    const horas = String(hoy.getHours()).padStart(2, '0');
+    const mins = String(hoy.getMinutes()).padStart(2, '0');
+    const fechaHora = `${dia}/${mes}/${anio} ${horas}:${mins}`;
+
+    const nuevoItem = document.createElement('article');
+    nuevoItem.className = 'comentario-item';
+    nuevoItem.innerHTML = `
+      <div>
+        <img src="assets/icons/icon-profile.svg" alt="Esteban">
+      </div>
+      <div>
+        <header>
+          <strong>Esteban</strong>
+          <time>${fechaHora}</time>
+        </header>
+        <p>${texto.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+      </div>
+    `;
+
+    listaComentarios.prepend(nuevoItem);
+    inputComentario.value = '';
+  }
+
+  if (formNuevoComentario) {
+    formNuevoComentario.addEventListener('submit', (e) => {
+      e.preventDefault();
+      publicarComentario();
+    });
+
+    const btnEnviar = formNuevoComentario.querySelector('button');
+    if (btnEnviar) {
+      btnEnviar.addEventListener('click', publicarComentario);
+    }
   }
 });
 

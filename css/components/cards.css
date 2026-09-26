@@ -1,13 +1,11 @@
 /* ==========================================================================
    CARDS DE JUEGOS — ESTILOS Y ANIMACIONES
-   - Reposo: solo se ve la foto limpia y el badge si es premium
-   - Hover: la tarjeta se agranda, sube con z-index y aparece el nombre
-   - Deslizamiento: efecto de inercia con skewX segun el Tema 2 de la catedra
+   Optimizado con operadores relativos (> img, > span)
    ========================================================================== */
 
-/* tarjeta base: tamaño fijo para que no se deforme en el flex, bordes redondeados y transicion suave */
+/* Tarjeta base */
 .card-juego {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   z-index: 1;
   width: 245px;
@@ -15,11 +13,11 @@
   height: 175px;
   overflow: hidden;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: block;
   flex: 0 0 auto;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   border-radius: var(--radio-card);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   text-decoration: none;
@@ -27,9 +25,9 @@
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
 
-/* sombreado negro abajo que arranca transparente para que cuando suba el texto se lea de diez sin tapar toda la foto */
+/* Sombreado inferior para legibilidad del texto en hover */
 .card-juego::after {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   content: "";
   position: absolute;
   right: 0;
@@ -38,55 +36,56 @@
   z-index: 2;
   height: 60%;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   background: linear-gradient(to top, rgba(14, 16, 14, 0.95) 0%, rgba(14, 16, 14, 0.6) 60%, transparent 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.28s ease;
 }
 
-/* hover y focus: cuando pasas el mouse o navegas con teclado (tab), agrandamos la card un 8% y le metemos z-index alto para que no quede abajo de las vecinas */
+/* Hover y focus */
 .card-juego:hover,
 .card-juego:focus-visible {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   z-index: 10;
-
-  /* 3. Detalles esteticos */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 16px rgba(130, 142, 59, 0.45);
   transform: scale(1.08);
+
+  /* 3. Detalles estéticos */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 16px rgba(130, 142, 59, 0.45);
 }
 
-/* activamos el sombreado oscuro en hover para darle contraste al texto */
 .card-juego:hover::after,
 .card-juego:focus-visible::after {
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   opacity: 1;
 }
 
-/* foto de portada del juego */
+/* Imagen de portada de la card */
+.card-juego > img:not(.badge-premium-icon),
 .card-img {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   height: 100%;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: block;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   object-fit: cover;
   transition: transform 0.35s ease;
 }
 
-/* un zoom chiquito a la imagen cuando pasamos el cursor para que quede mas vivo */
-.card-juego:hover .card-img,
-.card-juego:focus-visible .card-img {
-  /* 3. Detalles esteticos */
+.card-juego:hover > img:not(.badge-premium-icon),
+.card-juego:focus-visible > img:not(.badge-premium-icon),
+.card-juego:hover .card-img {
+  /* 1. Posicionamiento y modelo de caja */
   transform: scale(1.04);
 }
 
-/* titulo del juego: arranca escondido con opacidad 0 y bajado unos pixeles para animarlo */
+/* Título de la card que asciende en hover */
+.card-juego > span,
 .card-titulo {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   right: 10px;
   bottom: 12px;
@@ -96,7 +95,7 @@
   padding: 0 4px;
   overflow: hidden;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   color: var(--color-blanco);
   font-size: 15px;
   font-weight: 600;
@@ -111,17 +110,19 @@
   transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* cuando hacemos hover, el titulo sube a su posicion natural y se hace visible con transicion suave */
-.card-juego:hover .card-titulo,
-.card-juego:focus-visible .card-titulo {
-  /* 3. Detalles esteticos */
-  opacity: 1;
+.card-juego:hover > span,
+.card-juego:focus-visible > span,
+.card-juego:hover .card-titulo {
+  /* 1. Posicionamiento y modelo de caja */
   transform: translateY(0);
+
+  /* 3. Detalles estéticos */
+  opacity: 1;
 }
 
-/* diamante azul para identificar los juegos premium */
+/* Insignia Premium */
 .badge-premium-icon {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   top: 10px;
   left: 10px;
@@ -129,7 +130,7 @@
   width: 32px;
   height: 32px;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
   pointer-events: none;
   transition: transform 0.3s ease;
@@ -137,18 +138,17 @@
 
 .card-juego:hover .badge-premium-icon,
 .card-juego:focus-visible .badge-premium-icon {
-  /* 3. Detalles esteticos */
+  /* 1. Posicionamiento y modelo de caja */
   transform: scale(1.1);
 }
 
-/* animacion del tema 2 (filmina 10): al deslizar a la derecha las cards se inclinan -4 grados por inercia */
+/* Animación de inercia física (skewX) al arrastrar el carrusel */
 .carrusel-pista.deslizando-sig .card-juego {
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   transform: skewX(-15deg) scale(0.97);
 }
 
-/* y cuando retrocedemos a la izquierda se inclinan para el otro lado */
 .carrusel-pista.deslizando-ant .card-juego {
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   transform: skewX(15deg) scale(0.97);
 }

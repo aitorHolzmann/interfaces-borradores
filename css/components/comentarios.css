@@ -1,12 +1,10 @@
 /* ==========================================================================
    COMPONENTE: COMENTARIOS (FIDELIDAD FIGMA)
-   Referencia: examples/ejecucion_comentarios.jpeg
-   - Formulario con avatar y nombre debajo, barra gris clara de input
-   - Lista abierta de comentarios con nombre en verde y texto en monospace
+   Optimizado con operadores relativos y etiquetas semánticas
    ========================================================================== */
 
 .seccion-comentarios {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 960px;
   margin: 40px auto;
@@ -17,7 +15,7 @@
   gap: 30px;
 }
 
-.comentarios-titulo {
+.seccion-comentarios > h2 {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
   font-size: 1.6rem;
@@ -28,8 +26,8 @@
 }
 
 /* --- Formulario de Entrada de Comentario --- */
-.comentario-form-fila {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-form {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
 
   /* 2. Disposición interna */
@@ -48,8 +46,8 @@
   gap: 4px;
 }
 
-.comentario-avatar-circulo {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-autor-actual > div {
+  /* 1. Posicionamiento y modelo de caja */
   width: 44px;
   height: 44px;
   overflow: hidden;
@@ -65,22 +63,22 @@
   border-radius: var(--radio-redondo);
 }
 
-.comentario-avatar-circulo img {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-autor-actual img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 32px;
   height: 32px;
 }
 
-.comentario-autor-nombre-label {
+.comentario-autor-actual > span {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
   font-size: 11px;
   text-align: center;
 }
 
-/* Barra de Entrada Gris Clara con Flecha Naranja */
+/* Barra de Entrada Blanca Estilo Píldora */
 .comentario-input-barra {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   min-height: 44px;
   padding: 4px 12px 4px 20px;
 
@@ -95,7 +93,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.comentario-input-campo {
+.comentario-input-barra > input {
   /* 2. Disposición interna */
   flex: 1;
 
@@ -107,13 +105,13 @@
   outline: none;
 }
 
-.comentario-input-campo::placeholder {
+.comentario-input-barra > input::placeholder {
   /* 3. Detalles estéticos */
   color: var(--color-gris-neutro);
 }
 
-.btn-enviar-comentario-icono {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-input-barra > button {
+  /* 1. Posicionamiento y modelo de caja */
   padding: 6px;
 
   /* 2. Disposición interna */
@@ -128,21 +126,20 @@
   transition: transform 0.2s ease;
 }
 
-.btn-enviar-comentario-icono:hover {
-  /* 3. Detalles estéticos */
+.comentario-input-barra > button:hover {
+  /* 1. Posicionamiento y modelo de caja */
   transform: scale(1.15);
 }
 
-.btn-enviar-comentario-icono img,
-.btn-enviar-comentario-icono svg {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-input-barra > button img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 26px;
   height: 26px;
 }
 
-/* --- Lista Abierta de Comentarios (Sin Tarjetas Pesadas) --- */
-.comentarios-lista-abierta {
-  /* 1. Alineación propia y modelo de caja */
+/* --- Lista Abierta de Comentarios --- */
+.comentarios-lista {
+  /* 1. Posicionamiento y modelo de caja */
   padding-left: 10px;
 
   /* 2. Disposición interna */
@@ -151,15 +148,15 @@
   gap: 24px;
 }
 
-.comentario-fila-item {
+.comentario-item {
   /* 2. Disposición interna */
   display: flex;
   align-items: flex-start;
   gap: 18px;
 }
 
-.comentario-item-avatar {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-item > div:first-child {
+  /* 1. Posicionamiento y modelo de caja */
   width: 40px;
   height: 40px;
   overflow: hidden;
@@ -176,13 +173,13 @@
   border-radius: var(--radio-redondo);
 }
 
-.comentario-item-avatar img {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-item > div:first-child img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 30px;
   height: 30px;
 }
 
-.comentario-item-contenido {
+.comentario-item > div:last-child {
   /* 2. Disposición interna */
   display: flex;
   flex: 1;
@@ -190,28 +187,28 @@
   gap: 4px;
 }
 
-.comentario-item-meta {
+.comentario-item header {
   /* 2. Disposición interna */
   display: flex;
   align-items: baseline;
   gap: 10px;
 }
 
-.comentario-item-usuario {
+.comentario-item header strong {
   /* 3. Detalles estéticos */
-  color: var(--color-primario-claro); /* #828E3B */
+  color: var(--color-primario-claro);
   font-size: var(--tamano-small);
   font-weight: 700;
 }
 
-.comentario-item-fecha {
+.comentario-item header time {
   /* 3. Detalles estéticos */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }
 
-.comentario-item-texto {
-  /* 1. Alineación propia y modelo de caja */
+.comentario-item p {
+  /* 1. Posicionamiento y modelo de caja */
   margin: 0;
 
   /* 3. Detalles estéticos */

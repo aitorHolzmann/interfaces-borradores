@@ -1,12 +1,12 @@
 /* ==========================================================================
-   COMPONENTE: FORMULARIOS E INPUTS (FIDELIDAD FIGMA)
-   Referencia: examples/login_original.png y examples/registrarse_original.png
-   - Inputs con fondo blanco y texto oscuro
-   - Border radius de 8px
+   COMPONENTE: FORMULARIOS E INPUTS
+   Optimizado con operadores relativos y eliminación de clases redundantes
    ========================================================================== */
 
-.grupo-formulario {
-  /* 1. Alineación propia y modelo de caja */
+/* Grupo o fila de campo en formularios */
+form > div {
+  /* 1. Posicionamiento y modelo de caja */
+  position: relative;
   width: 100%;
   margin-bottom: 12px;
 
@@ -19,15 +19,16 @@
   text-align: left;
 }
 
-.label-formulario {
+form label {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 400;
 }
 
-.contenedor-input {
-  /* 1. Alineación propia y modelo de caja */
+/* Envoltorio específico cuando un input tiene botón interno (ej. contraseña) */
+.campo-password {
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 100%;
 
@@ -37,8 +38,8 @@
 }
 
 /* Input con fondo blanco del prototipo original */
-.input-formulario {
-  /* 1. Alineación propia y modelo de caja */
+form input:not([type="checkbox"]) {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   min-height: 42px;
   padding: 8px 14px;
@@ -52,21 +53,21 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.input-formulario::placeholder {
+form input:not([type="checkbox"])::placeholder {
   /* 3. Detalles estéticos */
   color: var(--color-gris-neutro);
 }
 
-.input-formulario:focus {
+form input:not([type="checkbox"]):focus {
   /* 3. Detalles estéticos */
   border-color: var(--color-secundario);
   box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
   outline: none;
 }
 
-/* Icono ojo ver/ocultar contraseña dentro del input blanco */
-.contenedor-input .btn-toggle-password {
-  /* 1. Alineación propia y modelo de caja */
+/* Icono ojo ver/ocultar contraseña */
+.btn-toggle-password {
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   right: 12px;
   padding: 4px;
@@ -82,19 +83,19 @@
   cursor: pointer;
 }
 
-.contenedor-input .btn-toggle-password svg,
-.contenedor-input .btn-toggle-password img {
-  /* 1. Alineación propia y modelo de caja */
+.btn-toggle-password svg,
+.btn-toggle-password img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 20px;
   height: 20px;
 
   /* 3. Detalles estéticos */
-  filter: invert(0.2); /* Icono oscuro dentro del input blanco */
+  filter: invert(0.2);
 }
 
 /* Checkbox de Términos (Registro) */
 .grupo-checkbox {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin: 10px 0 14px;
 
   /* 2. Disposición interna */
@@ -110,7 +111,7 @@
 }
 
 .grupo-checkbox input[type="checkbox"] {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 18px;
   min-width: 18px;
   height: 18px;
@@ -130,7 +131,7 @@
 
 /* Mockup ReCaptcha en Registro */
 .recaptcha-card {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 300px;
   margin: 6px auto 14px;
@@ -142,12 +143,12 @@
   justify-content: space-between;
 
   /* 3. Detalles estéticos */
-  background-color: #F9F9F9;
-  border: 1px solid #D3D3D3;
+  background-color: var(--color-recaptcha-fondo);
+  border: 1px solid var(--color-recaptcha-borde);
   border-radius: 4px;
 }
 
-.recaptcha-check {
+.recaptcha-card > label {
   /* 2. Disposición interna */
   display: flex;
   align-items: center;
@@ -159,8 +160,8 @@
   font-size: 13px;
 }
 
-.recaptcha-check input[type="checkbox"] {
-  /* 1. Alineación propia y modelo de caja */
+.recaptcha-card input[type="checkbox"] {
+  /* 1. Posicionamiento y modelo de caja */
   width: 22px;
   height: 22px;
 
@@ -168,7 +169,7 @@
   cursor: pointer;
 }
 
-.recaptcha-brand {
+.recaptcha-card > div {
   /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
@@ -180,8 +181,8 @@
   font-size: 9px;
 }
 
-.recaptcha-brand img {
-  /* 1. Alineación propia y modelo de caja */
+.recaptcha-card img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 24px;
   height: 24px;
 }
@@ -191,12 +192,12 @@
    ========================================================================== */
 .input-valido {
   /* 3. Detalles estéticos */
-  border-color: var(--color-exito);
-  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+  border-color: var(--color-exito) !important;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3) !important;
 }
 
 .input-invalido {
   /* 3. Detalles estéticos */
-  border-color: var(--color-error);
-  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.3);
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.3) !important;
 }

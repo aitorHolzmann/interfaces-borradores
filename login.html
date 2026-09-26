@@ -22,19 +22,20 @@
        ==================================================================== -->
   <header class="nav-principal">
     <div class="nav-contenedor">
+      
       <div class="nav-izquierda">
-        <button class="btn-hamburguesa" id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
+        <button id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
           <img src="assets/icons/menu.svg" alt="Menú lateral">
         </button>
-        <a href="index.html" class="nav-logo" title="Ir a la página principal">
+        <a href="index.html" title="Ir a la página principal">
           <img src="assets/logo.png" alt="Logotipo Plataforma">
         </a>
       </div>
 
       <div class="nav-centro">
-        <form class="barra-busqueda" role="search" onsubmit="event.preventDefault();">
-          <input type="search" class="input-busqueda" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
-          <button type="submit" class="btn-busqueda-icono" aria-label="Ejecutar búsqueda">
+        <form role="search" onsubmit="event.preventDefault();">
+          <input type="search" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
+          <button type="submit" aria-label="Ejecutar búsqueda">
             <img src="assets/icons/icon-search.svg" alt="Buscar">
           </button>
         </form>
@@ -43,48 +44,42 @@
       <!-- Lado Derecho: Avatar Circular del Soldado y Menú Desplegable -->
       <div class="nav-derecha">
         <div class="perfil-menu-contenedor">
-          <button type="button" class="btn-perfil" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
-            <img src="assets/icons/icon-profile.svg" alt="Avatar del soldado" class="avatar-usuario-icono">
+          <button type="button" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
+            <img src="assets/icons/icon-profile.svg" alt="Avatar del soldado">
           </button>
 
           <div class="menu-desplegable-perfil" id="menu-perfil" role="menu" aria-label="Opciones de perfil">
-            <ul class="menu-perfil-lista">
-              <li class="menu-perfil-item" role="none">
-                <a href="#" class="menu-perfil-enlace" role="menuitem">Editar Perfil</a>
-              </li>
-              <li class="menu-perfil-item" role="none">
-                <a href="#" class="menu-perfil-enlace" role="menuitem">Biblioteca</a>
-              </li>
-              <li class="menu-perfil-item" role="none">
-                <a href="login.html" class="menu-perfil-enlace menu-perfil-logout" role="menuitem">Cerrar Sesión</a>
-              </li>
+            <ul>
+              <li role="none"><a href="#" role="menuitem">Editar Perfil</a></li>
+              <li role="none"><a href="#" role="menuitem">Biblioteca</a></li>
+              <li role="none"><a href="login.html" role="menuitem">Cerrar Sesión</a></li>
             </ul>
           </div>
         </div>
       </div>
+
     </div>
   </header>
 
   <!-- SIDEBAR OFF-CANVAS -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
- 
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
+    <header>
       <img src="assets/logo.png" alt="Logo" style="height: 36px;">
-      <button class="btn-cerrar-sidebar" id="btn-cerrar-sidebar" aria-label="Cerrar menú">
+      <button id="btn-cerrar-sidebar" aria-label="Cerrar menú">
         <img src="assets/icons/icon-cerrar.svg" alt="Cerrar">
       </button>
-    </div>
+    </header>
 
-    <span class="sidebar-titulo-seccion">NAVEGACIÓN</span>
-    <ul class="sidebar-menu">
-      <li class="sidebar-item"><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
-      <li class="sidebar-item"><a href="index.html#top"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
-      <li class="sidebar-item"><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
-      <li class="sidebar-item"><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
-      <li class="sidebar-item"><a href="index.html#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
-      <li class="sidebar-item"><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
-      <li class="sidebar-item"><a href="index.html#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
+    <span>NAVEGACIÓN</span>
+    <ul>
+      <li><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
+      <li><a href="index.html#top"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
+      <li><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
+      <li><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
+      <li><a href="index.html#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
+      <li><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
+      <li><a href="index.html#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
     </ul>
   </aside>
 
@@ -93,38 +88,34 @@
        ==================================================================== -->
   <main class="auth-hero-seccion modo-login" id="auth-seccion">
     
-    <div class="panel-auth" id="panel-autenticacion">
+    <article class="panel-auth" id="panel-autenticacion">
       
       <!-- Logo del Panel -->
-      <div class="auth-header">
-        <img src="assets/logo.png" alt="Insignia República" class="auth-logo">
-        <h1 class="auth-titulo" id="auth-titulo">Inicia<br>Soldado!</h1>
-      </div>
+      <header>
+        <img src="assets/logo.png" alt="Insignia República">
+        <h1 id="auth-titulo">Inicia<br>Soldado!</h1>
+      </header>
 
       <!-- ==================================================================
            1. FORMULARIO DE LOGIN (INICIAR SESIÓN)
            ================================================================== -->
-      <form id="form-login" class="formulario-auth" action="index.html" method="GET">
+      <form id="form-login" action="index.html" method="GET">
         
         <!-- Campo: Email -->
-        <div class="grupo-formulario">
-          <div class="contenedor-input">
-            <input type="email" id="login-email" name="email" class="input-formulario" placeholder="Email" required autocomplete="email">
-          </div>
+        <div>
+          <input type="email" id="login-email" name="email" placeholder="Email" required autocomplete="email">
         </div>
 
         <!-- Campo: Contraseña -->
-        <div class="grupo-formulario">
-          <div class="contenedor-input">
-            <input type="password" id="login-password" name="password" class="input-formulario" placeholder="Contraseña" required minlength="8" autocomplete="current-password">
-            <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="login-password">
-              <img src="assets/icons/icon-eye.svg" alt="Ver clave">
-            </button>
-          </div>
+        <div class="campo-password">
+          <input type="password" id="login-password" name="password" placeholder="Contraseña" required minlength="8" autocomplete="current-password">
+          <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="login-password">
+            <img src="assets/icons/icon-eye.svg" alt="Ver clave">
+          </button>
         </div>
 
         <!-- Enlace Olvido -->
-        <a href="#" class="auth-enlace-olvido">¿Has olvidado tu contraseña?</a>
+        <a href="#">¿Has olvidado tu contraseña?</a>
 
         <!-- Botón Submit -->
         <button type="submit" class="btn-auth-submit" id="btn-submit-login">
@@ -135,12 +126,12 @@
         <p class="auth-separador-texto">O continuar con</p>
 
         <!-- Botones Sociales Lado a Lado (Figma) -->
-        <div class="auth-social-fila">
-          <button type="button" class="btn-social-item btn-social-facebook">
+        <div class="auth-sociales">
+          <button type="button">
             <img src="assets/icons/icon-facebook.svg" alt="Facebook">
             Facebook
           </button>
-          <button type="button" class="btn-social-item btn-social-google">
+          <button type="button">
             <img src="assets/icons/icon-google.svg" alt="Google">
             Google
           </button>
@@ -149,65 +140,54 @@
         <!-- Toggle hacia Registro -->
         <p class="auth-toggle-footer">
           ¿No tienes cuenta? 
-          <a href="#registro" id="link-ir-registro" class="auth-toggle-link">Registrate</a>
+          <a href="#registro" id="link-ir-registro">Registrate</a>
         </p>
-
       </form>
 
       <!-- ==================================================================
            2. FORMULARIO DE REGISTRO
            ================================================================== -->
-      <form id="form-registro" class="formulario-auth oculto" action="index.html" method="GET">
+      <form id="form-registro" class="oculto" action="index.html" method="GET">
         
-        <div class="grupo-formulario">
-          <label for="reg-nombre" class="label-formulario">Nombre</label>
-          <div class="contenedor-input">
-            <input type="text" id="reg-nombre" name="nombre" class="input-formulario" placeholder="Nombre" required>
-          </div>
+        <div>
+          <label for="reg-nombre">Nombre</label>
+          <input type="text" id="reg-nombre" name="nombre" placeholder="Nombre" required>
         </div>
 
-        <div class="grupo-formulario">
-          <label for="reg-apellido" class="label-formulario">Apellido</label>
-          <div class="contenedor-input">
-            <input type="text" id="reg-apellido" name="apellido" class="input-formulario" placeholder="Apellido" required>
-          </div>
+        <div>
+          <label for="reg-apellido">Apellido</label>
+          <input type="text" id="reg-apellido" name="apellido" placeholder="Apellido" required>
         </div>
 
-        <div class="grupo-formulario">
-          <label for="reg-edad" class="label-formulario">Edad</label>
-          <div class="contenedor-input">
-            <input type="number" id="reg-edad" name="edad" class="input-formulario" placeholder="Edad" min="13" max="99" required>
-          </div>
+        <div>
+          <label for="reg-edad">Edad</label>
+          <input type="number" id="reg-edad" name="edad" placeholder="Edad" min="13" max="99" required>
         </div>
 
-        <div class="grupo-formulario">
-          <label for="reg-email" class="label-formulario">Email</label>
-          <div class="contenedor-input">
-            <input type="email" id="reg-email" name="email" class="input-formulario" placeholder="Email" required>
-          </div>
+        <div>
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" name="email" placeholder="Email" required>
         </div>
 
-        <div class="grupo-formulario">
-          <label for="reg-usuario" class="label-formulario">Usuario</label>
-          <div class="contenedor-input">
-            <input type="text" id="reg-usuario" name="usuario" class="input-formulario" placeholder="Usuario" required>
-          </div>
+        <div>
+          <label for="reg-usuario">Usuario</label>
+          <input type="text" id="reg-usuario" name="usuario" placeholder="Usuario" required>
         </div>
 
-        <div class="grupo-formulario">
-          <label for="reg-password" class="label-formulario">Contraseña</label>
-          <div class="contenedor-input">
-            <input type="password" id="reg-password" name="password" class="input-formulario" placeholder="Contraseña" required minlength="8">
+        <div>
+          <label for="reg-password">Contraseña</label>
+          <div class="campo-password">
+            <input type="password" id="reg-password" name="password" placeholder="Contraseña" required minlength="8">
             <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="reg-password">
               <img src="assets/icons/icon-eye.svg" alt="Ver clave">
             </button>
           </div>
         </div>
 
-        <div class="grupo-formulario">
-          <label for="reg-password-repeat" class="label-formulario">Repetir contraseña</label>
-          <div class="contenedor-input">
-            <input type="password" id="reg-password-repeat" name="password_repeat" class="input-formulario" placeholder="Contraseña" required minlength="8">
+        <div>
+          <label for="reg-password-repeat">Repetir contraseña</label>
+          <div class="campo-password">
+            <input type="password" id="reg-password-repeat" name="password_repeat" placeholder="Contraseña" required minlength="8">
             <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="reg-password-repeat">
               <img src="assets/icons/icon-eye.svg" alt="Ver clave">
             </button>
@@ -222,11 +202,11 @@
 
         <!-- ReCaptcha Card -->
         <div class="recaptcha-card">
-          <label class="recaptcha-check">
+          <label>
             <input type="checkbox" id="recaptcha-mock" required>
             <span>No soy un robot</span>
           </label>
-          <div class="recaptcha-brand">
+          <div>
             <img src="assets/icons/recaptcha.svg" alt="reCAPTCHA">
             <span>reCAPTCHA</span>
           </div>
@@ -240,36 +220,34 @@
         <!-- Toggle hacia Login -->
         <p class="auth-toggle-footer">
           ¿Tienes una cuenta? 
-          <a href="#login" id="link-ir-login" class="auth-toggle-link">Inicia sesión</a>
+          <a href="#login" id="link-ir-login">Inicia sesión</a>
         </p>
 
       </form>
 
-    </div>
+    </article>
 
   </main>
 
   <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL (REQUERIDO EN LOGIN / REGISTRO)
+       FAT FOOTER INSTITUCIONAL
        ==================================================================== -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
        
       <!-- Caja 1: Marca y descripción -->
       <div class="footer-marca">
-        <div class="footer-logo">
-          <img src="assets/logo.png" alt="Logotipo Plataforma">
-        </div>
-        <p class="footer-descripcion">
+        <img src="assets/logo.png" alt="Logotipo Plataforma">
+        <p>
           Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la batalla.
         </p>
       </div>
 
       <!-- Caja 2: Contenedor de links (Grid) -->
       <div class="footer-links-grid">
-        <div class="footer-columna">
+        <div>
           <h4>Sobre nosotros</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#">Ayuda</a></li>
             <li><a href="#">Privacidad</a></li>
             <li><a href="#">Cookies</a></li>
@@ -277,9 +255,9 @@
           </ul>
         </div>
 
-        <div class="footer-columna">
+        <div>
           <h4>Categorias</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="index.html#top">Top</a></li>
             <li><a href="index.html#premium">Premium</a></li>
             <li><a href="index.html#accion">Accion</a></li>
@@ -289,9 +267,9 @@
           </ul>
         </div>
 
-        <div class="footer-columna">
+        <div>
           <h4>Contacto</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#"><img src="assets/icons/icon-share.svg" alt=""> Compartir</a></li>
             <li><a href="#"><img src="assets/icons/icon-instagram.svg" alt=""> Instagram</a></li>
             <li><a href="#"><img src="assets/icons/icon-tiktok.svg" alt=""> TikTok</a></li>
@@ -302,7 +280,7 @@
         <!-- Sección Soporte dentro del bloque de navegación -->
         <div class="footer-soporte">
           <h4>Soporte</h4>
-          <div class="footer-soporte-grilla">
+          <div>
             <a href="#">Centro de Ayuda</a>
             <a href="#">Reportar un Bug</a>
             <a href="#">Soporte</a>

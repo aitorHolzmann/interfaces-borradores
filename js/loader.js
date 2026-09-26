@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pantallaCarga = document.getElementById('pantalla-carga');
     const textoPorcentaje = document.getElementById('loader-porcentaje');
     const logoColor = document.getElementById('loader-logo-color');
-    const logoContenedor = document.querySelector('.loader-logo-contenedor');
+    const logoContenedor = document.querySelector('.loader-logo') || document.querySelector('.loader-logo-contenedor');
     
     // Si no existen los elementos en la página, salimos
     if (!pantallaCarga || !textoPorcentaje) return;

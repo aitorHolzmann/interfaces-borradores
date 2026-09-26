@@ -1,14 +1,10 @@
 /* ==========================================================================
    PÁGINA: EJECUCIÓN DE JUEGO (game.css) — FIDELIDAD FIGMA
-   Referencia: examples/ejecucion.jpeg, ejecucion_instrucciones.jpeg, ejecucion_comentarios.jpeg
-   - Splash minimalista con botón naranja "Jugar"
-   - Barra inferior con título a la izquierda y 3 iconos a la derecha
-   - Instrucciones limpias y galería con botón play
-   - Sin carrusel innecesario al pie
+   Optimizado con operadores relativos y estructura de 3 partes
    ========================================================================== */
 
 .pagina-juego-main {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -21,8 +17,9 @@
 }
 
 /* --- Breadcrumbs de Navegación --- */
+.breadcrumbs,
 .game-breadcrumbs {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin-bottom: -15px;
 
   /* 3. Detalles estéticos */
@@ -30,25 +27,30 @@
   font-size: var(--tamano-body);
 }
 
+.breadcrumbs a,
 .game-breadcrumbs a {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
   transition: color 0.2s ease;
 }
 
+.breadcrumbs a:hover,
 .game-breadcrumbs a:hover {
   /* 3. Detalles estéticos */
   color: var(--color-secundario);
 }
 
+.breadcrumbs span,
 .game-breadcrumbs span {
   /* 3. Detalles estéticos */
   color: var(--color-primario-claro);
 }
 
-/* --- Área de Ejecución del Juego (1190 x 480) --- */
+/* ==========================================================================
+   ÁREA DE EJECUCIÓN DEL JUEGO (1190 x 480)
+   ========================================================================== */
 .area-ejecucion-juego {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   overflow: hidden;
 
@@ -58,8 +60,9 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
+.area-ejecucion-juego > div:first-child,
 .pantalla-juego-contenedor {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 100%;
   height: 480px;
@@ -76,8 +79,9 @@
 }
 
 /* Splash con fondo oscuro translúcido y botón naranja "Jugar" */
+.area-ejecucion-juego > div:first-child > div,
 .caja-controles-juego {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   padding: 30px 48px;
 
   /* 2. Disposición interna */
@@ -91,8 +95,9 @@
   border-radius: var(--radio-md);
 }
 
+.area-ejecucion-juego button#btn-iniciar-partida,
 .btn-jugar-splash {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -107,10 +112,10 @@
   border-radius: var(--radio-md);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 0 0 var(--color-secundario);
   cursor: pointer;
-  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 2s ease;
+  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.35s ease;
 }
 
-/* Efecto Hover: Llenado desde los bordes hacia el centro siguiendo el contorno del botón */
+.area-ejecucion-juego button#btn-iniciar-partida:hover,
 .btn-jugar-splash:hover {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
@@ -118,6 +123,7 @@
   box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5), inset 0 0 0 100px var(--color-secundario);
 }
 
+.area-ejecucion-juego button#btn-iniciar-partida:focus-visible,
 .btn-jugar-splash:focus-visible {
   /* 3. Detalles estéticos */
   outline: 2px solid var(--color-blanco);
@@ -126,7 +132,7 @@
 
 /* Barra de Ejecución Inferior */
 .barra-ejecucion {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   height: 52px;
   padding: 0 20px;
 
@@ -136,12 +142,12 @@
   justify-content: space-between;
 
   /* 3. Detalles estéticos */
-
   background-color: var(--color-superficie-oscura);
   border-radius: 0 0 var(--radio-md) var(--radio-md);
   border: 1px solid var(--color-secundario);
 }
 
+.barra-ejecucion > span,
 .barra-ejecucion-titulo {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
@@ -149,6 +155,7 @@
   font-weight: 500;
 }
 
+.barra-ejecucion > div,
 .barra-ejecucion-botonera {
   /* 2. Disposición interna */
   display: flex;
@@ -156,11 +163,9 @@
   gap: 16px;
 }
 
-/* Efecto 3: Borde luminiscente (glow) y cambio de border-radius */
-/* Botones de control de la barra de ejecución (Guardar, Compartir, Pantalla Completa) */
+.barra-ejecucion button,
 .barra-ejecucion-btn {
-  /* 1. Alineación propia y modelo de caja */
-  /* 1. Posicionamiento externo y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   padding: 8px;
 
   /* 2. Disposición interna */
@@ -174,34 +179,41 @@
   border-radius: var(--radio-sm);
   cursor: pointer;
   transition: all 0.25s ease;
-  transition: background-color 0.2s ease;
 }
 
+.barra-ejecucion button:hover,
 .barra-ejecucion-btn:hover {
+  /* 1. Posicionamiento y modelo de caja */
+  transform: scale(1.15);
+
   /* 3. Detalles estéticos */
   background-color: var(--color-secundario);
   border-color: var(--color-secundario);
   border-radius: var(--radio-lg);
   box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
-  transform: scale(1.15);
 }
 
+.barra-ejecucion button:focus-visible,
 .barra-ejecucion-btn:focus-visible {
   /* 3. Detalles estéticos */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }
 
+.barra-ejecucion button img,
+.barra-ejecucion button svg,
 .barra-ejecucion-btn img,
 .barra-ejecucion-btn svg {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 20px;
   height: 20px;
 }
 
-/* --- Sección: CÓMO JUGAR? y GALERÍA --- */
+/* ==========================================================================
+   SECCIÓN: CÓMO JUGAR? Y GALERÍA
+   ========================================================================== */
 .seccion-about-juego {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin-top: 10px;
 
   /* 2. Disposición interna */
@@ -218,6 +230,7 @@
   gap: 22px;
 }
 
+.contenedor-instrucciones > h2,
 .instrucciones-titulo {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
@@ -234,8 +247,9 @@
   gap: 20px;
 }
 
+.lista-reglas > article h3,
 .item-regla h3 {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin-bottom: 4px;
 
   /* 3. Detalles estéticos */
@@ -244,8 +258,9 @@
   font-weight: 500;
 }
 
+.lista-reglas > article p,
 .item-regla p {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin: 0;
 
   /* 3. Detalles estéticos */
@@ -256,7 +271,7 @@
 
 /* Tarjeta de Controles Resumida (Mouse) */
 .card-controles {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   padding: 16px 20px;
 
@@ -274,8 +289,9 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
+.card-controles > h3,
 .card-controles-titulo {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin: 0;
 
   /* 3. Detalles estéticos */
@@ -285,20 +301,9 @@
   text-align: center;
 }
 
-.card-controles-icono {
-  /* 1. Alineación propia y modelo de caja */
-  width: 50px;
-  height: 50px;
-
-  /* 2. Disposición interna */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Icono del Mouse: control de tamaño y ajuste */
+.card-controles > img,
 .icono-mouse {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 44px;
   height: 44px;
 
@@ -306,8 +311,9 @@
   object-fit: contain;
 }
 
+.card-controles > p,
 .card-controles-texto {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin: 0;
 
   /* 3. Detalles estéticos */
@@ -325,6 +331,7 @@
   gap: 22px;
 }
 
+.contenedor-galeria > h2,
 .galeria-titulo {
   /* 3. Detalles estéticos */
   color: var(--color-blanco);
@@ -341,8 +348,9 @@
   gap: 14px;
 }
 
+.galeria-grilla > div,
 .galeria-item {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   height: 160px;
   overflow: hidden;
@@ -352,8 +360,8 @@
   border-radius: var(--radio-md);
 }
 
-.galeria-item img {
-  /* 1. Alineación propia y modelo de caja */
+.galeria-grilla img {
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   height: 100%;
 
@@ -361,9 +369,10 @@
   object-fit: cover;
 }
 
-/* Botón de Play Naranja Grande en la Foto 2 */
+/* Botón de Play Naranja Grande en la Galería */
+.btn-galeria-play,
 .btn-galeria-play-overlay {
-  /* 1. Alineación propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -382,8 +391,9 @@
   transition: transform 0.2s ease;
 }
 
+.btn-galeria-play:hover,
 .btn-galeria-play-overlay:hover {
-  /* 3. Detalles estéticos */
+  /* 1. Posicionamiento y modelo de caja */
   transform: translate(-50%, -50%) scale(1.15);
 }
 

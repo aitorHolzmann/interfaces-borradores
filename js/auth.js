@@ -39,6 +39,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Comprobación de parámetro en URL o hash (ej. login.html?modo=registro o #registro)
+  function aplicarModoSegunUrl() {
+    const esRegistro = window.location.hash === '#registro' || window.location.search.includes('registro');
+    const esLogin = window.location.hash === '#login' || window.location.search.includes('login');
+
+    if (esRegistro && linkIrRegistro) {
+      formLogin.classList.add('oculto');
+      formRegistro.classList.remove('oculto');
+      if (authTitulo) authTitulo.innerHTML = 'Registrate<br>Soldado!';
+      if (authSeccion) {
+        authSeccion.classList.remove('modo-login');
+        authSeccion.classList.add('modo-registro');
+      }
+    } else if (esLogin && linkIrLogin) {
+      formRegistro.classList.add('oculto');
+      formLogin.classList.remove('oculto');
+      if (authTitulo) authTitulo.innerHTML = 'Inicia<br>Soldado!';
+      if (authSeccion) {
+        authSeccion.classList.remove('modo-registro');
+        authSeccion.classList.add('modo-login');
+      }
+    }
+  }
+
+  aplicarModoSegunUrl();
+  window.addEventListener('hashchange', aplicarModoSegunUrl);
+
   // Toggle de visibilidad de contraseña
   const toggleButtons = document.querySelectorAll('.btn-toggle-password');
   toggleButtons.forEach((btn) => {
@@ -59,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // VALIDACIÓN Y ENVÍO DE FORMULARIOS
   // ==========================================================================
 
-  const inputs = document.querySelectorAll('.input-formulario');
+  const inputs = document.querySelectorAll('form input:not([type="checkbox"])');
 
   const validarInput = (input) => {
     let esValido = false;

@@ -20,16 +20,16 @@
 <body>
 
   <!-- ====================================================================
-       PANTALLA DE CARGA (LOADER 5s — Preparado para Etapa 2)
+       PANTALLA DE CARGA (LOADER 5s)
        ==================================================================== -->
   <div id="pantalla-carga" class="pantalla-carga">
-    <div class="loader-contenido">
-      <div class="loader-logo-contenedor">
-        <img src="assets/logo.png" alt="Silueta Logo" class="loader-logo-silueta">
-        <img src="assets/logo.png" alt="Logo Cargando" class="loader-logo-color" id="loader-logo-color">
+    <div>
+      <div class="loader-logo">
+        <img src="assets/logo.png" alt="Silueta Logo">
+        <img src="assets/logo.png" alt="Logo Cargando" id="loader-logo-color">
       </div>
-      <p id="loader-porcentaje" class="loader-porcentaje">0%</p>
-      <span class="loader-subtexto">Estableciendo enlace táctico con el servidor...</span>
+      <p id="loader-porcentaje">0%</p>
+      <span>Estableciendo enlace táctico con el servidor...</span>
     </div>
   </div>
 
@@ -41,19 +41,19 @@
       
       <!-- Lado Izquierdo: Menú Hamburguesa y Logo Oficial -->
       <div class="nav-izquierda">
-        <button class="btn-hamburguesa" id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
+        <button id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
           <img src="assets/icons/menu.svg" alt="Menú lateral">
         </button>
-        <a href="index.html" class="nav-logo" title="Ir a la página principal">
+        <a href="index.html" title="Ir a la página principal">
           <img src="assets/logo.png" alt="Logotipo Plataforma">
         </a>
       </div>
 
       <!-- Centro: Buscador Pill con Lupa Naranja -->
       <div class="nav-centro">
-        <form class="barra-busqueda" role="search" onsubmit="event.preventDefault();">
-          <input type="search" class="input-busqueda" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
-          <button type="submit" class="btn-busqueda-icono" aria-label="Ejecutar búsqueda">
+        <form role="search" onsubmit="event.preventDefault();">
+          <input type="search" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
+          <button type="submit" aria-label="Ejecutar búsqueda">
             <img src="assets/icons/icon-search.svg" alt="Buscar">
           </button>
         </form>
@@ -62,21 +62,15 @@
       <!-- Lado Derecho: Avatar Circular del Soldado y Menú Desplegable -->
       <div class="nav-derecha">
         <div class="perfil-menu-contenedor">
-          <button type="button" class="btn-perfil" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
-            <img src="assets/icons/icon-profile.svg" alt="Avatar del soldado" class="avatar-usuario-icono">
+          <button type="button" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
+            <img src="assets/icons/icon-profile.svg" alt="Avatar del soldado">
           </button>
 
           <div class="menu-desplegable-perfil" id="menu-perfil" role="menu" aria-label="Opciones de perfil">
-            <ul class="menu-perfil-lista">
-              <li class="menu-perfil-item" role="none">
-                <a href="#" class="menu-perfil-enlace" role="menuitem">Editar Perfil</a>
-              </li>
-              <li class="menu-perfil-item" role="none">
-                <a href="#" class="menu-perfil-enlace" role="menuitem">Biblioteca</a>
-              </li>
-              <li class="menu-perfil-item" role="none">
-                <a href="login.html" class="menu-perfil-enlace menu-perfil-logout" role="menuitem">Cerrar Sesión</a>
-              </li>
+            <ul>
+              <li role="none"><a href="#" role="menuitem">Editar Perfil</a></li>
+              <li role="none"><a href="#" role="menuitem">Biblioteca</a></li>
+              <li role="none"><a href="login.html" role="menuitem">Cerrar Sesión</a></li>
             </ul>
           </div>
         </div>
@@ -88,22 +82,22 @@
   <!-- SIDEBAR OFF-CANVAS -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
+    <header>
       <img src="assets/logo.png" alt="Logo" style="height: 36px;">
-      <button class="btn-cerrar-sidebar" id="btn-cerrar-sidebar" aria-label="Cerrar menú">
+      <button id="btn-cerrar-sidebar" aria-label="Cerrar menú">
         <img src="assets/icons/icon-cerrar.svg" alt="Cerrar">
       </button>
-    </div>
+    </header>
 
-    <span class="sidebar-titulo-seccion">Navegación</span>
-    <ul class="sidebar-menu">
-      <li class="sidebar-item activo"><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
-      <li class="sidebar-item"><a href="index.html#top"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
-      <li class="sidebar-item"><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
-      <li class="sidebar-item"><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
-      <li class="sidebar-item"><a href="index.html#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
-      <li class="sidebar-item"><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
-      <li class="sidebar-item"><a href="index.html#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
+    <span>Navegación</span>
+    <ul>
+      <li class="activo"><a href="index.html"><img src="assets/icons/icon-home.svg" alt=""><span>Inicio</span></a></li>
+      <li><a href="index.html#top"><img src="assets/icons/icon-top.svg" alt=""><span>Top Juegos</span></a></li>
+      <li><a href="index.html#premium"><img src="assets/icons/icon-premium.svg" alt=""><span>Juegos Premium</span></a></li>
+      <li><a href="index.html#accion"><img src="assets/icons/icon-action.svg" alt=""><span>Acción</span></a></li>
+      <li><a href="index.html#aventura"><img src="assets/icons/icon-adventure.svg" alt=""><span>Aventura</span></a></li>
+      <li><a href="index.html#estrategia"><img src="assets/icons/icon-strategy.svg" alt=""><span>Estrategia</span></a></li>
+      <li><a href="index.html#deportes"><img src="assets/icons/icon-sports.svg" alt=""><span>Deportes</span></a></li>
     </ul>
   </aside>
 
@@ -114,14 +108,14 @@
 
     <!-- HERO: JUEGOS EN TENDENCIA (TRÍPTICO DE 3 FOTOS — FIGMA ORIGINAL) -->
     <section class="seccion-hero" aria-label="Juegos en Tendencia">
-      <h2 class="hero-titulo">
+      <h2>
         Juegos en tendencia<br>
         exclusivos del pase de batalla
       </h2>
 
       <div class="hero-carrusel-contenedor">
         <!-- Flecha Izquierda -->
-        <button class="hero-flecha izquierda" id="hero-btn-ant" aria-label="Juego anterior">
+        <button id="hero-btn-ant" aria-label="Juego anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
@@ -130,24 +124,24 @@
         <!-- Tríptico de 3 fotos del juego actual -->
         <div class="hero-triptico">
           <!-- Foto Lateral Izquierda -->
-          <div class="hero-foto-lateral">
+          <div>
             <img src="assets/images/game_solitaire_1.jpg" alt="Peg Solitaire detalle">
           </div>
 
           <!-- Foto Central Destacada con Título Overlaid -->
-          <a href="game.html" class="hero-foto-central" title="Jugar a Peg Solitaire">
-            <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+          <a href="game.html" title="Jugar a Peg Solitaire">
+            <h3>Peg Solitaire</h3>
             <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire Tablero">
           </a>
 
           <!-- Foto Lateral Derecha -->
-          <div class="hero-foto-lateral">
+          <div>
             <img src="assets/images/game_scifi_2.jpg" alt="Peg Solitaire táctica">
           </div>
         </div>
 
         <!-- Flecha Derecha -->
-        <button class="hero-flecha derecha" id="hero-btn-sig" aria-label="Siguiente juego">
+        <button id="hero-btn-sig" aria-label="Siguiente juego">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
@@ -157,33 +151,30 @@
 
     <!-- ====================================================================
          CATÁLOGO MODULAR DE CATEGORÍAS (RENDERIZADO DINÁMICO EN JS/CAROUSEL.JS)
-         Buenas prácticas: DRY, carruseles infinitos, animaciones skewX y hover.
          ==================================================================== -->
     <div id="contenedor-categorias" class="contenedor-categorias"></div>
 
   </main>
 
-   <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL (REQUERIDO EN LOGIN / REGISTRO)
+  <!-- ====================================================================
+       FAT FOOTER INSTITUCIONAL
        ==================================================================== -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
        
       <!-- Caja 1: Marca y descripción -->
       <div class="footer-marca">
-        <div class="footer-logo">
-          <img src="assets/logo.png" alt="Logotipo Plataforma">
-        </div>
-        <p class="footer-descripcion">
+        <img src="assets/logo.png" alt="Logotipo Plataforma">
+        <p>
           Tu cuartel general para los mejores juegos de estrategia militar, shooters tácticos y colecciones premium. Únete a la batalla.
         </p>
       </div>
 
       <!-- Caja 2: Contenedor de links (Grid) -->
       <div class="footer-links-grid">
-        <div class="footer-columna">
+        <div>
           <h4>Sobre nosotros</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#">Ayuda</a></li>
             <li><a href="#">Privacidad</a></li>
             <li><a href="#">Cookies</a></li>
@@ -191,9 +182,9 @@
           </ul>
         </div>
 
-        <div class="footer-columna">
+        <div>
           <h4>Categorias</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="index.html#top">Top</a></li>
             <li><a href="index.html#premium">Premium</a></li>
             <li><a href="index.html#accion">Accion</a></li>
@@ -203,9 +194,9 @@
           </ul>
         </div>
 
-        <div class="footer-columna">
+        <div>
           <h4>Contacto</h4>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#"><img src="assets/icons/icon-share.svg" alt=""> Compartir</a></li>
             <li><a href="#"><img src="assets/icons/icon-instagram.svg" alt=""> Instagram</a></li>
             <li><a href="#"><img src="assets/icons/icon-tiktok.svg" alt=""> TikTok</a></li>
@@ -216,7 +207,7 @@
         <!-- Sección Soporte dentro del bloque de navegación -->
         <div class="footer-soporte">
           <h4>Soporte</h4>
-          <div class="footer-soporte-grilla">
+          <div>
             <a href="#">Centro de Ayuda</a>
             <a href="#">Reportar un Bug</a>
             <a href="#">Soporte</a>

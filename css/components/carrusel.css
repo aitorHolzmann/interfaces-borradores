@@ -1,26 +1,26 @@
 /* ==========================================================================
-   CARRUSELES: HERO Y CATEGORIAS CON DESPLAZAMIENTO INFINITO
-   - Hero: triptico de 3 fotos con el juego principal en el centro
-   - Categorias: carrusel infinito manejado con js, con flechitas y animacion skewX
+   CARRUSELES: HERO Y CATEGORÍAS CON DESPLAZAMIENTO INFINITO
+   Optimizado con operadores relativos y estructura de 3 partes
    ========================================================================== */
 
 /* --- 1. Carrusel Hero (Juegos en Tendencia) --- */
 .seccion-hero {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 30px auto 50px;
   padding: 0 20px;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   text-align: center;
 }
 
+.seccion-hero > h2,
 .hero-titulo {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin-bottom: 28px;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   color: var(--color-premium);
   font-size: 2rem;
   font-weight: 500;
@@ -29,114 +29,115 @@
   text-align: center;
 }
 
-.hero-titulo span {
-  /* 2. Disposicion interna */
-  display: block;
-}
-
-/* contenedor para centrar el triptico y las flechas */
+/* Contenedor para centrar el tríptico y las flechas */
 .hero-carrusel-contenedor {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 100%;
   padding: 10px 0;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
 }
 
-/* las 3 fotos del hero: las dos chiquitas a los lados y la grande al medio */
+/* Las 3 fotos del hero */
 .hero-triptico {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: 1100px;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
 }
 
-/* clase que le metemos con js cuando cambia de juego para que no pegue un salto brusco */
+/* Transición suave al rotar juego con JS */
 .hero-transicion {
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-/* fotos de los costados del triptico */
+/* Fotos laterales del tríptico */
+.hero-triptico > div,
 .hero-foto-lateral {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 280px;
   height: 250px;
   overflow: hidden;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   flex-shrink: 0;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
   opacity: 0.75;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.hero-triptico > div img,
 .hero-foto-lateral img {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   height: 100%;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   object-fit: cover;
 }
 
-/* la foto del centro: mas grande y con sombra mas pesada para destacar */
+/* Foto central destacada */
+.hero-triptico > a,
 .hero-foto-central {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   z-index: 5;
   width: 440px;
   height: 330px;
   overflow: hidden;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   flex-shrink: 0;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
+.hero-triptico > a:hover,
 .hero-foto-central:hover {
-  /* 3. Detalles esteticos */
+  /* 1. Posicionamiento y modelo de caja */
   transform: scale(1.02);
 }
 
+.hero-triptico > a > img,
 .hero-foto-central img {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   height: 100%;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   object-fit: cover;
 }
 
-/* titulo del juego arriba de la foto central con borde negro para que no se pierda */
+/* Título sobreimpreso en la foto central */
+.hero-triptico h3,
 .hero-juego-nombre {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   top: 18px;
   right: 0;
   left: 0;
   z-index: 6;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   color: var(--color-blanco);
   font-size: 26px;
   font-weight: 700;
@@ -146,19 +147,20 @@
   pointer-events: none;
 }
 
-/* botones de flecha del hero */
+/* Flechas de navegación del hero */
+.hero-carrusel-contenedor > button,
 .hero-flecha {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   z-index: 10;
   width: 44px;
   height: 44px;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   background-color: rgba(30, 33, 30, 0.85);
   color: var(--color-blanco);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -167,57 +169,60 @@
   transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
+.hero-carrusel-contenedor > button:hover,
 .hero-flecha:hover {
-  /* 3. Detalles esteticos */
+  /* 1. Posicionamiento y modelo de caja */
+  transform: scale(1.1);
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border-color: var(--color-secundario);
-  transform: scale(1.1);
 }
 
+.hero-carrusel-contenedor > button svg,
 .hero-flecha svg {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 22px;
   height: 22px;
 }
 
-/* --- 2. Carruseles de Categorias (Renderizados con JS) --- */
-
-/* contenedor general donde se inyectan todas las categorias */
+/* --- 2. Carruseles de Categorías (Renderizados con JS) --- */
 .contenedor-categorias {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
 }
 
-/* seccion individual de cada categoria */
 .seccion-categoria {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 0 auto 46px;
   padding: 0 30px;
 }
 
+.seccion-categoria > header,
 .categoria-header {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin-bottom: 16px;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-/* fondo tipo capsula para el titulo como teniamos en figma */
+/* Fondo tipo pastilla para títulos de categoría */
+.seccion-categoria h2,
 .categoria-titulo {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   margin: 0;
   padding: 6px 20px;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: inline-block;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   background: linear-gradient(90deg, rgba(42, 48, 42, 0.6), rgba(130, 142, 59, 0.35) 50%, rgba(42, 48, 42, 0.6));
   color: var(--color-primario-claro);
   font-size: 1.6rem;
@@ -226,37 +231,34 @@
   border-radius: 16px;
 }
 
-/* contenedor relativo para ubicar las flechas flotando a los costados */
 .carrusel-contenedor {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 100%;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
 }
 
-/* importante: le damos padding arriba y abajo para que al hacer hover la card no se corte con el overflow hidden */
 .carrusel-viewport {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   width: 100%;
   padding: 16px 0;
   overflow: hidden;
 }
 
-/* la tira de cards: se mueve horizontalmente con transform translateX desde el js */
 .carrusel-pista {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: relative;
   padding: 4px;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: flex;
   gap: 20px;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   user-select: none;
   touch-action: pan-y;
   cursor: grab;
@@ -264,25 +266,25 @@
 }
 
 .carrusel-pista:active {
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   cursor: grabbing;
 }
 
-/* flechas laterales para deslizar el carrusel de cada categoria */
+/* Flechas de carrusel de categorías */
 .carrusel-flecha {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   position: absolute;
   top: calc(50% - 22px);
   z-index: 15;
   width: 44px;
   height: 44px;
 
-  /* 2. Disposicion interna */
+  /* 2. Disposición interna */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* 3. Detalles estéticos */
   background-color: rgba(30, 33, 30, 0.88);
   color: var(--color-blanco);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -292,29 +294,29 @@
   transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* las clavamos justo en los bordes del carrusel */
 .carrusel-flecha.izquierda {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   left: -18px;
 }
 
 .carrusel-flecha.derecha {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   right: -18px;
 }
 
-/* efecto hover con naranja de acento y un brillo sutil */
 .carrusel-flecha:hover {
-  /* 3. Detalles esteticos */
+  /* 1. Posicionamiento y modelo de caja */
+  transform: scale(1.12);
+
+  /* 3. Detalles estéticos */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border-color: var(--color-secundario);
   box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
-  transform: scale(1.12);
 }
 
 .carrusel-flecha svg {
-  /* 1. Alineacion propia y modelo de caja */
+  /* 1. Posicionamiento y modelo de caja */
   width: 22px;
   height: 22px;
   pointer-events: none;
