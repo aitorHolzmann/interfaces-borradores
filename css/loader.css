@@ -48,6 +48,15 @@
   position: relative;
   width: 220px;
   aspect-ratio: 587 / 425;
+
+  /* 3. Detalles estéticos */
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Pulsación suave con transform (activada por JS sin usar keyframes) */
+.loader-logo-contenedor.pulsando {
+  /* 3. Detalles estéticos */
+  transform: scale(1.06);
 }
 
 .loader-logo-contenedor img{

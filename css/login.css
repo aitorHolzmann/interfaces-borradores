@@ -46,13 +46,18 @@
   background-repeat: no-repeat;
 }
 
-/* Fondos específicos */
+/* Fondos específicos y disposición */
 .auth-hero-seccion.modo-login {
-  background-image: url('../assets/fondo_login.jpg');
+  /* 3. Detalles estéticos */
+  background-image: var(--gradiente-fondo-login), url('../assets/fondo_login.jpg');
 }
 
 .auth-hero-seccion.modo-registro {
-  background-image: url('../assets/fondo_signin.jpg');
+  /* 2. Disposición interna */
+  justify-content: flex-start;
+
+  /* 3. Detalles estéticos */
+  background-image: var(--gradiente-fondo-registro), url('../assets/fondo_signin.jpg');
 }
 
 /* Panel Translúcido Militar */
@@ -70,7 +75,7 @@
   align-items: center;
 
   /* 3. Detalles estéticos */
-  background-color: rgba(45, 52, 22, 0.9); /* Verde militar translúcido */
+  background-color: rgba(45, 52, 22, 0.7); /* Verde militar translúcido */
   border: 1.5px solid var(--color-primario-claro); /* #828E3B */
   border-radius: var(--radio-md); /* 8px */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
@@ -260,7 +265,8 @@
 }
 
 @media (max-width: 800px) {
-  .auth-hero-seccion {
+  .auth-hero-seccion,
+  .auth-hero-seccion.modo-registro {
     /* 1. Alineación propia y modelo de caja */
     padding: 30px 16px;
 

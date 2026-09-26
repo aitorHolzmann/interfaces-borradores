@@ -46,6 +46,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- 2. Control del Menú Desplegable de Perfil / Usuario ---
+  const btnPerfil = document.getElementById('btn-perfil');
+  const menuPerfil = document.getElementById('menu-perfil');
+
+  function toggleMenuPerfil(e) {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    if (!menuPerfil || !btnPerfil) return;
+
+    const estaAbierto = menuPerfil.classList.contains('abierto');
+    if (estaAbierto) {
+      cerrarMenuPerfil();
+    } else {
+      abrirMenuPerfil();
+    }
+  }
+
+  function abrirMenuPerfil() {
+    if (!menuPerfil || !btnPerfil) return;
+    menuPerfil.classList.add('abierto');
+    btnPerfil.classList.add('activo');
+    btnPerfil.setAttribute('aria-expanded', 'true');
+  }
+
+  function cerrarMenuPerfil() {
+    if (!menuPerfil || !btnPerfil) return;
+    menuPerfil.classList.remove('abierto');
+    btnPerfil.classList.remove('activo');
+    btnPerfil.setAttribute('aria-expanded', 'false');
+  }
+
+  if (btnPerfil) {
+    btnPerfil.addEventListener('click', toggleMenuPerfil);
+  }
+
+  // Cerrar al clickear fuera del menú
+  document.addEventListener('click', (e) => {
+    if (menuPerfil && menuPerfil.classList.contains('abierto')) {
+      if (!menuPerfil.contains(e.target) && !btnPerfil.contains(e.target)) {
+        cerrarMenuPerfil();
+      }
+    }
+  });
+
+  // Cerrar al presionar la tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuPerfil && menuPerfil.classList.contains('abierto')) {
+      cerrarMenuPerfil();
+      btnPerfil.focus();
+    }
+  });
+
+  // Opciones de demo: Editar Perfil y Biblioteca cierran el dropdown
+  const menuPerfilEnlaces = document.querySelectorAll('.menu-perfil-enlace:not(.menu-perfil-logout)');
+  menuPerfilEnlaces.forEach((enlace) => {
+    enlace.addEventListener('click', (e) => {
+      e.preventDefault();
+      cerrarMenuPerfil();
+    });
+  });
+
   // --- 2. Rotación de Juegos en el Tríptico del Hero ---
   const heroJuegos = [
     {
@@ -126,33 +189,5 @@ document.addEventListener('DOMContentLoaded', () => {
       actualizarHero(heroIndex);
     });
   }
-
-  // --- 3. Publicación interactiva de comentario (Ficha de Juego) ---
-  const formNuevoComentario = document.getElementById('form-nuevo-comentario');
-  const inputComentario = document.getElementById('input-comentario');
-  const listaComentarios = document.getElementById('lista-comentarios');
-
-  if (formNuevoComentario && inputComentario && listaComentarios) {
-    formNuevoComentario.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const texto = inputComentario.value.trim();
-      if (!texto) return;
-
-      const nuevoArticulo = document.createElement('article');
-      nuevoArticulo.className = 'comentario-fila-item';
-      nuevoArticulo.innerHTML = `
-        <div class="comentario-item-avatar">
-          <img src="assets/icons/icon-profile.svg" alt="Esteban">
-        </div>
-        <div class="comentario-item-contenido">
-          <span class="comentario-item-usuario">Esteban</span>
-          <p class="comentario-item-texto"></p>
-        </div>
-      `;
-      nuevoArticulo.querySelector('.comentario-item-texto').textContent = texto;
-
-      listaComentarios.insertBefore(nuevoArticulo, listaComentarios.firstChild);
-      inputComentario.value = '';
-    });
-  }
 });
+

@@ -17,24 +17,51 @@
 
   /* 3. Detalles estéticos */
   background-color: var(--color-primario-oscuro);
-  color: var(--color-claro);
   border-top: 1px solid var(--color-acento);
   border-radius: var(--radio-card) var(--radio-card) 0 0;
+  color: var(--color-claro);
+  font-size: var(--tamano-small);
 }
 
+.footer-principal h4{
+  width: 100%;
+  margin-bottom: 14px;
+
+  /* 3. Detalles estéticos */
+  font-size: var(--tamano-h3);
+  border-bottom: 1.5px solid var(--color-blanco);
+  text-align: center;
+}
+
+.footer-principal a {
+  /* 2. Disposición interna */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  /* 3. Detalles estéticos */
+  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-principal a:hover {
+  /* 3. Detalles estéticos */
+  color: var(--color-acento-claro);
+  transform: translateX(4px);
+}
 /* Contenedor Principal: 2 Cajas con CSS Grid */
 .footer-contenedor {
   /* 1. Alineación propia y modelo de caja */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 0 auto;
-  padding: 40px 24px 30px;
+  padding: 40px 24px;
 
   /* 2. Disposición interna: Mobile First (Grid mono-columna) */
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  gap: 36px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 60px;
 }
 
 /* ==========================================================================
@@ -70,8 +97,7 @@
   max-width: 360px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-claro);
-  font-size: var(--tamano-small);
+  font-size: inherit;
   line-height: 1.6;
   text-align: center;
 }
@@ -82,6 +108,7 @@
 .footer-links-grid {
   /* 1. Alineación propia y modelo de caja */
   width: 100%;
+  max-width: 970px;
 
   /* 2. Disposición interna: Mobile First (Grid mono-columna centrado) */
   display: grid;
@@ -105,22 +132,6 @@
   align-items: center;
 }
 
-.footer-columna h4 {
-  /* 1. Alineación propia y modelo de caja */
-  width: 100%;
-  margin-bottom: 14px;
-  padding-bottom: 4px;
-
-  /* 2. Disposición interna */
-  display: block;
-
-  /* 3. Detalles estéticos */
-  color: var(--color-blanco);
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-bottom: 1.5px solid var(--color-blanco);
-  text-align: center;
-}
 
 .footer-links {
   /* 2. Disposición interna */
@@ -133,23 +144,7 @@
   list-style: none;
 }
 
-.footer-links li a {
-  /* 2. Disposición interna */
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
 
-  /* 3. Detalles estéticos */
-  color: var(--color-claro);
-  font-size: var(--tamano-small);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.footer-links li a:hover {
-  /* 3. Detalles estéticos */
-  color: var(--color-acento-claro);
-  transform: translateX(4px);
-}
 
 .footer-links li a img,
 .footer-links li a svg {
@@ -179,47 +174,27 @@
 
 .footer-soporte h4 {
   /* 1. Alineación propia y modelo de caja */
-  width: 100%;
-  max-width: 480px;
-  margin-bottom: 0;
-  padding-bottom: 4px;
-
-  /* 2. Disposición interna */
-  display: block;
-
-  /* 3. Detalles estéticos */
-  color: var(--color-blanco);
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-bottom: 1.5px solid var(--color-blanco);
-  text-align: center;
+  max-width: 620px;
 }
+
+
 
 .footer-soporte-grilla {
   /* 1. Alineación propia y modelo de caja */
   width: 100%;
-  max-width: 480px;
+  max-width: 620px;
 
   /* 2. Disposición interna: CSS Grid para los links de soporte */
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  justify-items: center;
 
   /* 3. Detalles estéticos */
   text-align: center;
 }
 
-.footer-soporte-grilla a {
-  /* 3. Detalles estéticos */
-  color: var(--color-claro);
-  font-size: var(--tamano-small);
-  transition: color 0.2s ease;
-}
 
-.footer-soporte-grilla a:hover {
-  /* 3. Detalles estéticos */
-  color: var(--color-acento-claro);
-}
 
 /* ==========================================================================
    BARRA INFERIOR DE COPYRIGHT
@@ -233,27 +208,18 @@
   text-align: center;
 }
 
-.footer-bottom p {
-  /* 1. Alineación propia y modelo de caja */
-  margin: 3px 0;
-
-  /* 3. Detalles estéticos */
-  color: var(--color-claro);
-  font-size: var(--tamano-small);
-}
 
 /* ==========================================================================
    RESPONSIVE: TABLET (min-width: 600px)
    ========================================================================== */
 @media (min-width: 600px) {
+  .footer-principal{
+    font-size: var(--tamano-body);
+  }
   .footer-links-grid {
     /* 2. Disposición interna: CSS Grid de 3 columnas para navegación */
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px 24px;
-    justify-items: start;
 
-    /* 3. Detalles estéticos */
-    text-align: left;
   }
 
   .footer-columna {
@@ -277,12 +243,6 @@
   .footer-soporte {
     /* 1. Alineación propia y modelo de caja */
     grid-column: 1 / -1;
-
-    /* 2. Disposición interna */
-    align-items: center;
-
-    /* 3. Detalles estéticos */
-    text-align: center;
   }
 
   .footer-soporte h4 {
@@ -293,7 +253,7 @@
   .footer-soporte-grilla {
     /* 2. Disposición interna */
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px 30px;
+    justify-items: start;
 
     /* 3. Detalles estéticos */
     text-align: left;
@@ -304,27 +264,13 @@
    RESPONSIVE: DESKTOP (min-width: 992px) — 2 CAJAS LATERALES EN GRID (FIGMA)
    ========================================================================== */
 @media (min-width: 992px) {
+
+
   .footer-contenedor {
-    /* 1. Alineación propia y modelo de caja */
-    padding: 50px 60px 40px;
-
     /* 2. Disposición interna: 2 Cajas Principales mediante CSS Grid */
-    grid-template-columns: 340px 1fr;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: start;
-    gap: 60px;
+    gap: 150px;
   }
 
-  .footer-marca {
-    /* 1. Alineación propia y modelo de caja */
-    max-width: 340px;
-  }
-
-  .footer-links-grid {
-    /* 1. Alineación propia y modelo de caja */
-    max-width: 880px;
-
-    /* 2. Disposición interna */
-    gap: 36px 40px;
-  }
 }

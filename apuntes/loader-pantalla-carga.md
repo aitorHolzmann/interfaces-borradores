@@ -80,14 +80,20 @@ El componente respeta la separación de intereses del desarrollo web estático:
   pointer-events: none;
 }
 
-/* 3. Contenedor escalable con Aspect-Ratio nativo */
+/* 3. Contenedor escalable con Aspect-Ratio nativo y transición de escala */
 .loader-logo-contenedor {
   position: relative;
   width: 220px;
   aspect-ratio: 587 / 425; /* Dimensiones reales de assets/logo.png */
+  transition: transform 0.4s ease-in-out;
 }
 
-/* 4. Regla compartida (Principio DRY): Superposición perfecta */
+/* 4. Estado de pulsación modulado por JS con transform (sin @keyframes) */
+.loader-logo-contenedor.pulsando {
+  transform: scale(1.06);
+}
+
+/* 5. Regla compartida (Principio DRY): Superposición perfecta */
 .loader-logo-contenedor img {
   position: absolute;
   top: 0;
@@ -96,13 +102,13 @@ El componente respeta la separación de intereses del desarrollo web estático:
   object-fit: contain;
 }
 
-/* 5. Silueta oscura de fondo */
+/* 6. Silueta oscura de fondo */
 .loader-logo-silueta {
   opacity: 0.1;
   filter: grayscale(1);
 }
 
-/* 6. Logo que se revela progresivamente */
+/* 7. Logo que se revela progresivamente */
 .loader-logo-color {
   clip-path: inset(100% 0 0 0); /* 100% tapado desde arriba inicialmente */
   filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.4));
@@ -119,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pantallaCarga = document.getElementById('pantalla-carga');
     const textoPorcentaje = document.getElementById('loader-porcentaje');
     const logoColor = document.getElementById('loader-logo-color');
+    const logoContenedor = document.querySelector('.loader-logo-contenedor');
     
     if (!pantallaCarga || !textoPorcentaje) return;
 
@@ -134,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             progreso = 100;
             clearInterval(timer); // Liberar memoria destruyendo el timer
             pantallaCarga.classList.add('loader-oculto'); // Disparar transición CSS
+            if (logoContenedor) logoContenedor.classList.remove('pulsando');
         }
 
         // 1. Actualizar el valor porcentual numérico
@@ -142,6 +150,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Revelar el logo de abajo hacia arriba en tiempo real
         if (logoColor) {
             logoColor.style.clipPath = `inset(${100 - progreso}% 0 0 0)`;
+        }
+
+        // 3. Pulsación rítmica con transform: alternar clase cada 10% (500 ms)
+        if (logoContenedor && progreso < 100) {
+            logoContenedor.classList.toggle('pulsando', Math.floor(progreso / 10) % 2 === 1);
         }
     }, intervaloMs);
 });
@@ -184,14 +197,21 @@ document.addEventListener('DOMContentLoaded', () => {
   $$\text{Incremento por paso} = \frac{100\%}{100} = 1\%$$
   Cada 50 ms se suma un 1%, garantizando una progresión lineal, intuitiva y fácil de justificar en el pizarrón.
 
+### P7. ¿Por qué usamos `transform` con `transition` en lugar de `@keyframes` y cómo se activa la pulsación?
+* **Diferencia teórica clave (Tema 2):** Las animaciones `@keyframes` se ejecutan autónomamente, mientras que las transiciones (`transition`) requieren un cambio de estado para activarse.
+* **Modulación simple desde JavaScript:** Como `js/loader.js` ya posee un `setInterval` corriendo cada 50 ms para el porcentaje, aprovechamos ese mismo flujo para alternar la clase `.pulsando` cada 10% de avance (500 ms):
+  `logoContenedor.classList.toggle('pulsando', Math.floor(progreso / 10) % 2 === 1);`
+* **Interpolación suave por GPU:** En CSS declaramos `transition: transform 0.4s ease-in-out` y `.pulsando { transform: scale(1.06); }`. El navegador interpola suavemente la escala ida y vuelta sin necesidad de declarar reglas complejas de fotogramas clave.
+* **Principio de Destino Común (Gestalt):** Al aplicar la transformación al contenedor padre `.loader-logo-contenedor`, tanto la silueta como el logo activo escalan de forma perfectamente sincronizada.
+
 ---
 
 ## 5. Fundamentos Teóricos de UX / UI Aplicados
 
 1. **1ª Heurística de Nielsen — Visibilidad del estado del sistema:**
-   Un sistema nunca debe dejar al usuario en la incertidumbre. El contador numérico (`0%` a `100%`) y la barra de llenado visual comunican de forma continua que la aplicación está procesando y cuánto tiempo falta para acceder.
-2. **Ley de Gestalt — Figura y Fondo:**
-   La silueta en escala de grises actúa como fondo estático (recipiente cognitivo), mientras que el logo naranja que emerge conforma la "figura" dinámica que atrae la atención perceptual.
+   Un sistema nunca debe dejar al usuario en la incertidumbre. El contador numérico (`0%` a `100%`), el llenado vertical y la pulsación continua comunican activamente que el proceso está vivo y avanzando.
+2. **Ley de Gestalt — Figura y Fondo & Destino Común:**
+   La silueta en escala de grises actúa como fondo estático, mientras que el logo naranja conforma la figura activa. Ambos comparten la misma pulsación en escala (destino común).
 3. **Principio DRY (*Don't Repeat Yourself*):**
    Unificación de estilos compartidos en `.loader-logo-contenedor img` para evitar código redundante.
 
@@ -201,7 +221,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 > *"Para la pantalla de carga de 5 segundos de la Home, evitamos el uso de GIFs o librerías externas cumpliendo las pautas de la cátedra mediante CSS3 puro y JavaScript Vanilla.*
 > 
-> *El componente utiliza una técnica de doble capa: una silueta en escala de grises atenuada con `filter: grayscale()` y `opacity` que sirve de guía visual, y sobre ella el logo original con resplandor `drop-shadow` que se va revelando de abajo hacia arriba mediante `clip-path: inset()`.*
+> *El componente utiliza una técnica de doble capa: una silueta en escala de grises atenuada con `filter: grayscale()` y `opacity` que sirve de guía visual, y sobre ella el logo original con resplandor `drop-shadow` que se va revelando progresivamente mediante `clip-path: inset()`.*
 > 
-> *En JavaScript orquestamos los 5.000 ms con un `setInterval` de 50 ms que incrementa un 1% por tick en 100 pasos exactos. Al alcanzar el 100%, se destruye el temporizador con `clearInterval` y se aplica la clase `.loader-oculto`. Esta clase combina `opacity: 0`, `visibility: hidden` dentro de la transición para desvanecer suavemente la pantalla y liberar los eventos del mouse sin saltos bruscos."*
+> *Para darle dinamismo y movimiento visual sin sobrecargar el código con `@keyframes`, implementamos una pulsación mediante `transform: scale(1.06)` y `transition: transform 0.4s ease-in-out`. Como las transiciones de CSS requieren un cambio de estado, aprovechamos el temporizador en JavaScript para alternar la clase `.pulsando` cada 500 ms de forma armónica.*
+> 
+> *Al alcanzar el 100%, se destruye el temporizador con `clearInterval` y se aplica la clase `.loader-oculto`, que combina `opacity: 0` y `visibility: hidden` en la transición para desvanecer suavemente la pantalla y liberar los eventos sin saltos bruscos."*
 

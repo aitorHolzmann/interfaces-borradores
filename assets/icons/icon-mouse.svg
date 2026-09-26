@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Arco indicador de click izquierdo -->
+  <path d="M 13 25 C 11 18 16 11 23 9" />
+  <!-- Contorno del mouse -->
+  <rect x="20" y="14" width="28" height="44" rx="14" />
+  <!-- Separador horizontal de botones -->
+  <line x1="20" y1="30" x2="48" y2="30" />
+  <!-- Separador vertical izquierdo/derecho -->
+  <line x1="34" y1="14" x2="34" y2="30" />
+</svg>
+

@@ -190,11 +190,24 @@
   gap: 4px;
 }
 
+.comentario-item-meta {
+  /* 2. Disposición interna */
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
 .comentario-item-usuario {
   /* 3. Detalles estéticos */
   color: var(--color-primario-claro); /* #828E3B */
   font-size: var(--tamano-small);
   font-weight: 700;
+}
+
+.comentario-item-fecha {
+  /* 3. Detalles estéticos */
+  color: var(--color-gris-apagado);
+  font-size: var(--tamano-micro);
 }
 
 .comentario-item-texto {
