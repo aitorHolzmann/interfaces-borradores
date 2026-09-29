@@ -377,9 +377,15 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias') {
         badgeHtml = `<img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">`;
       }
 
+      // En categorías premium mostramos COMPRAR, en el resto JUGAR
+      const esPremium = categoria.id === 'premium' || juego.premium;
+      const textoBoton = esPremium ? 'COMPRAR' : 'JUGAR';
+      const claseBoton = esPremium ? 'btn-card-accion btn-comprar' : 'btn-card-accion btn-jugar';
+
       card.innerHTML = `
         ${badgeHtml}
         <img src="${juego.imagen}" alt="${juego.titulo}" class="card-img" loading="lazy">
+        <span class="${claseBoton}">${textoBoton}</span>
         <span class="card-titulo">${juego.titulo}</span>
       `;
 

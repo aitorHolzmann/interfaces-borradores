@@ -16,19 +16,20 @@
   text-align: center;
 }
 
-/* titulo dorado arriba del carrusel */
+/* titulo dorado llamativo del hero */
 .seccion-hero > h2,
 .hero-titulo {
   /* 1. Alineacion propia y modelo de caja */
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 
   /* 3. Detalles esteticos */
   color: var(--color-premium);
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  line-height: 1.3;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1.25;
   text-align: center;
+  text-shadow: 0 0 24px rgba(229, 184, 11, 0.4), 0 2px 8px rgba(0, 0, 0, 0.95);
 }
 
 .hero-titulo span {
@@ -152,19 +153,69 @@
 .hero-card-3d h3 {
   /* 1. Alineacion propia y modelo de caja */
   position: absolute;
-  top: 18px;
+  top: 20px;
   right: 0;
   left: 0;
   z-index: 6;
 
   /* 3. Detalles esteticos */
   color: var(--color-blanco);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
+  letter-spacing: 0.5px;
   text-align: center;
-  -webkit-text-stroke: 1.8px var(--color-negro);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  paint-order: stroke fill;
+  -webkit-text-stroke: 3px var(--color-negro);
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.95);
   pointer-events: none;
+}
+
+/* boton JUGAR centrado en cada cara del hero que aparece en hover */
+.btn-hero-accion {
+  /* 1. Alineacion propia y modelo de caja */
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  z-index: 7;
+  padding: 12px 34px;
+
+  /* 2. Disposicion interna */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3. Detalles esteticos */
+  background-color: var(--color-superficie-oscura);
+  color: var(--color-blanco);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 2px solid var(--color-secundario);
+  border-radius: var(--radio-md);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-card-3d:hover .btn-hero-accion,
+.hero-card-3d:focus-visible .btn-hero-accion {
+  /* 3. Detalles esteticos */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-hero-accion:hover {
+  /* 1. Alineacion propia y modelo de caja */
+  transform: translate(-50%, -56%) scale(1.08);
+
+  /* 3. Detalles esteticos */
+  background-color: var(--color-secundario);
+  color: var(--color-blanco);
+  border-color: var(--color-acento-claro);
+  box-shadow: 0 8px 25px rgba(255, 107, 0, 0.8), 0 0 16px var(--color-secundario);
 }
 
 /* flechas de navegacion para el hero */
