@@ -5,18 +5,39 @@
    ========================================================================== */
 
 /* --- AJUSTES BASE MOBILE (< 768px) --- */
-.hero-triptico > div,
-.hero-foto-lateral {
-  /* 2. Disposición interna */
-  display: none; /* En mobile solo mostramos la foto central destacada */
+.hero-carrusel-contenedor {
+  /* 1. Alineacion propia y modelo de caja */
+  gap: 16px;
 }
 
-.hero-triptico > a,
-.hero-foto-central {
-  /* 1. Posicionamiento y modelo de caja */
-  width: 90vw;
-  max-width: 380px;
-  height: 270px;
+.hero-escena-3d {
+  /* 1. Alineacion propia y modelo de caja */
+  width: 270px;
+  height: 200px;
+
+  /* 3. Detalles esteticos */
+  perspective: 650px;
+}
+
+.hero-card-3d.cara-1 {
+  /* 3. Detalles esteticos */
+  transform: rotateY(0deg) translateZ(120px);
+}
+
+.hero-card-3d.cara-2 {
+  /* 3. Detalles esteticos */
+  transform: rotateY(120deg) translateZ(120px);
+}
+
+.hero-card-3d.cara-3 {
+  /* 3. Detalles esteticos */
+  transform: rotateY(240deg) translateZ(120px);
+}
+
+.hero-juego-nombre,
+.hero-card-3d h3 {
+  /* 3. Detalles esteticos */
+  font-size: 18px;
 }
 
 .card-juego {
@@ -34,21 +55,39 @@
     font-size: 2.2rem;
   }
 
-  .hero-triptico > div,
-  .hero-foto-lateral {
-    /* 1. Posicionamiento y modelo de caja */
-    width: 200px;
-    height: 200px;
-
-    /* 2. Disposición interna */
-    display: block;
+  .hero-carrusel-contenedor {
+    /* 1. Alineacion propia y modelo de caja */
+    gap: 45px;
   }
 
-  .hero-triptico > a,
-  .hero-foto-central {
-    /* 1. Posicionamiento y modelo de caja */
+  .hero-escena-3d {
+    /* 1. Alineacion propia y modelo de caja */
     width: 360px;
-    height: 280px;
+    height: 260px;
+
+    /* 3. Detalles esteticos */
+    perspective: 850px;
+  }
+
+  .hero-card-3d.cara-1 {
+    /* 3. Detalles esteticos */
+    transform: rotateY(0deg) translateZ(160px);
+  }
+
+  .hero-card-3d.cara-2 {
+    /* 3. Detalles esteticos */
+    transform: rotateY(120deg) translateZ(160px);
+  }
+
+  .hero-card-3d.cara-3 {
+    /* 3. Detalles esteticos */
+    transform: rotateY(240deg) translateZ(160px);
+  }
+
+  .hero-juego-nombre,
+  .hero-card-3d h3 {
+    /* 3. Detalles esteticos */
+    font-size: 22px;
   }
 
   .card-juego {
