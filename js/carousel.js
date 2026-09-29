@@ -366,21 +366,21 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias') {
 
     // Renderizar cada card de juego
     categoria.juegos.forEach((juego) => {
+      // En categorías premium mostramos COMPRAR, en el resto JUGAR
+      const esPremium = categoria.id === 'premium' || juego.premium;
+      const textoBoton = esPremium ? 'COMPRAR' : 'JUGAR';
+      const claseBoton = esPremium ? 'btn-card-accion btn-comprar' : 'btn-card-accion btn-jugar';
+
       const card = document.createElement('a');
-      card.href = juego.enlace;
-      card.className = 'card-juego';
-      card.setAttribute('title', `Jugar a ${juego.titulo}`);
+      card.href = esPremium ? '#modal-pase-batalla' : juego.enlace;
+      card.className = esPremium ? 'card-juego card-premium' : 'card-juego';
+      card.setAttribute('title', esPremium ? `Comprar Pase de Batalla para ${juego.titulo}` : `Jugar a ${juego.titulo}`);
 
       // Si es premium, añadir badge circular de diamante azul
       let badgeHtml = '';
       if (juego.premium) {
         badgeHtml = `<img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">`;
       }
-
-      // En categorías premium mostramos COMPRAR, en el resto JUGAR
-      const esPremium = categoria.id === 'premium' || juego.premium;
-      const textoBoton = esPremium ? 'COMPRAR' : 'JUGAR';
-      const claseBoton = esPremium ? 'btn-card-accion btn-comprar' : 'btn-card-accion btn-jugar';
 
       card.innerHTML = `
         ${badgeHtml}

@@ -17,6 +17,10 @@
   /* --- Superficies y Fondos --- */
   --color-fondo: #2A302A;
   --color-superficie-oscura: #141714;
+  --color-overlay-modal: rgba(10, 13, 10, 0.78);
+  --color-modal-fondo: #262E27;
+  --color-modal-caja-precio: #1B211C;
+  --color-modal-desc: #C2C8C2;
 
   /* --- Colores de Estado y Terceros --- */
   --color-premium: #E5B80B;

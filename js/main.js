@@ -197,5 +197,89 @@ document.addEventListener('DOMContentLoaded', () => {
       btnEnviar.addEventListener('click', publicarComentario);
     }
   }
+
+  // --- 5. Control del Modal de Compra (Pase de Batalla) ---
+  const modalPaseBatalla = document.getElementById('modal-pase-batalla');
+  const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+  const btnModalComprar = document.getElementById('btn-modal-comprar');
+
+  function abrirModalPaseBatalla() {
+    if (!modalPaseBatalla) return;
+    modalPaseBatalla.classList.add('activo');
+    modalPaseBatalla.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Foco accesible al botón de cierre
+    if (btnCerrarModal) {
+      btnCerrarModal.focus();
+    }
+  }
+
+  function cerrarModalPaseBatalla() {
+    if (!modalPaseBatalla) return;
+    modalPaseBatalla.classList.remove('activo');
+    modalPaseBatalla.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    // Si la URL contiene el hash, lo limpiamos sin recargar para anular :target
+    if (window.location.hash === '#modal-pase-batalla') {
+      history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
+  }
+
+  // Delegación de eventos para capturar clicks en botones de comprar o cards premium
+  document.addEventListener('click', (e) => {
+    // Si clickea el botón de comprar de cualquier card
+    const btnComprar = e.target.closest('.btn-comprar');
+    if (btnComprar) {
+      e.preventDefault();
+      e.stopPropagation();
+      abrirModalPaseBatalla();
+      return;
+    }
+
+    // Si clickea en cualquier lugar de una card premium
+    const cardPremium = e.target.closest('.card-premium') || e.target.closest('#premium .card-juego');
+    if (cardPremium) {
+      e.preventDefault();
+      e.stopPropagation();
+      abrirModalPaseBatalla();
+      return;
+    }
+
+    // Botón de cierre (cruz)
+    if (e.target.closest('#btn-cerrar-modal') || e.target.closest('.modal-btn-cerrar')) {
+      cerrarModalPaseBatalla();
+      return;
+    }
+
+    // Clic fuera de la caja (sobre el backdrop oscuro)
+    if (e.target === modalPaseBatalla) {
+      cerrarModalPaseBatalla();
+      return;
+    }
+  });
+
+  // Cerrar modal al presionar la tecla Escape (heurística de libertad y control)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalPaseBatalla && modalPaseBatalla.classList.contains('activo')) {
+      cerrarModalPaseBatalla();
+    }
+  });
+
+  // Acción de compra dentro del modal (feedback visual en menos de 400ms)
+  if (btnModalComprar) {
+    btnModalComprar.addEventListener('click', () => {
+      const textoOriginal = btnModalComprar.textContent;
+      btnModalComprar.textContent = '¡Comprado!';
+      btnModalComprar.style.backgroundColor = 'var(--color-exito)';
+
+      setTimeout(() => {
+        cerrarModalPaseBatalla();
+        btnModalComprar.textContent = textoOriginal;
+        btnModalComprar.style.backgroundColor = '';
+      }, 1100);
+    });
+  }
 });
 

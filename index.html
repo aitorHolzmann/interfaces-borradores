@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/components/navegacion.css">
   <link rel="stylesheet" href="css/components/cards.css">
   <link rel="stylesheet" href="css/components/carrusel.css">
+  <link rel="stylesheet" href="css/components/modal.css">
   <link rel="stylesheet" href="css/components/footer.css">
   <link rel="stylesheet" href="css/loader.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -108,7 +109,7 @@
 
     <!-- HERO: JUEGOS EN TENDENCIA (CARRUSEL 3D CON 3 FOTOS DEL MISMO JUEGO) -->
     <section class="seccion-hero" aria-label="Juegos en Tendencia">
-      <h2 class="hero-titulo">Top 1 de nuestros juegos en tendencia!</h2>
+      <h2 class="hero-titulo">¡PRUEBA NUESTRO NUEVO LANZAMIENTO!</h2>
 
       <div class="hero-carrusel-contenedor">
         <!-- Flecha Izquierda -->
@@ -231,6 +232,34 @@
       <p>Todos los derechos reservados</p>
     </div>
   </footer>
+
+  <!-- ====================================================================
+       MODAL DE COMPRA — PASE DE BATALLA (JUEGOS PREMIUM)
+       ==================================================================== -->
+  <div id="modal-pase-batalla" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-hidden="true">
+    <div class="modal-caja">
+      <!-- Botón de Cierre (Cruz) -->
+      <button type="button" class="modal-btn-cerrar" id="btn-cerrar-modal" aria-label="Cerrar modal de compra">&times;</button>
+
+      <!-- Título con Subrayado Naranja -->
+      <h3 id="modal-titulo" class="modal-titulo">Unete a las filas</h3>
+      <div class="modal-linea-decorativa" aria-hidden="true"></div>
+
+      <!-- Texto Descriptivo -->
+      <p class="modal-descripcion">
+        Para conocer la experiencia de juego y disfrutar de todo el contenido
+      </p>
+
+      <!-- Subtítulo / Llamado a la Acción -->
+      <h4 class="modal-subtitulo">COMPRAR PASE DE BATALLA</h4>
+
+      <!-- Contenedor Píldora de Precio y Botón Comprar -->
+      <div class="modal-precio-contenedor">
+        <span class="modal-precio-texto">$40 USD</span>
+        <button type="button" class="btn-modal-comprar" id="btn-modal-comprar">Comprar</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/loader.js"></script>
   <script src="js/carousel.js"></script>

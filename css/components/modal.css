@@ -1,0 +1,215 @@
+/* ==========================================================================
+   MODAL DE COMPRA — PASE DE BATALLA
+   Ventana emergente que se activa al presionar "COMPRAR" en juegos premium
+   ========================================================================== */
+
+/* Fondo oscuro que cubre toda la pantalla para enfocar la atencion */
+.modal-overlay {
+  /* 1. Posicionamiento y modelo de caja */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+
+  /* 2. Disposicion interna */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3. Detalles esteticos */
+  background-color: var(--color-overlay-modal);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+/* Estado activo: se hace visible suavemente (por clase .activo o por ancla :target) */
+.modal-overlay.activo,
+.modal-overlay:target {
+  /* 3. Detalles esteticos */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tarjeta central del modal con borde naranja y fondo oscuro */
+.modal-caja {
+  /* 1. Posicionamiento y modelo de caja */
+  position: relative;
+  width: 100%;
+  max-width: 490px;
+  padding: 26px 32px 28px;
+  box-sizing: border-box;
+
+  /* 2. Disposicion interna */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* 3. Detalles esteticos */
+  background-color: var(--color-modal-fondo);
+  border: 1.5px solid var(--color-secundario);
+  border-radius: var(--radio-md);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85);
+  transform: scale(0.92) translateY(10px);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Animacion de entrada de la caja cuando se activa el overlay */
+.modal-overlay.activo .modal-caja,
+.modal-overlay:target .modal-caja {
+  /* 3. Detalles esteticos */
+  transform: scale(1) translateY(0);
+}
+
+/* Cruz para cerrar el modal en la esquina superior derecha */
+.modal-btn-cerrar {
+  /* 1. Posicionamiento y modelo de caja */
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  /* 2. Disposicion interna */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3. Detalles esteticos */
+  background: transparent;
+  color: var(--color-blanco);
+  font-size: 26px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-btn-cerrar:hover,
+.modal-btn-cerrar:focus-visible {
+  /* 3. Detalles esteticos */
+  opacity: 1;
+  color: var(--color-secundario);
+  transform: scale(1.15) rotate(90deg);
+}
+
+/* Titulo principal "Unete a las filas" */
+.modal-titulo {
+  /* 1. Posicionamiento y modelo de caja */
+  margin: 0;
+
+  /* 3. Detalles esteticos */
+  color: var(--color-blanco);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Linea decorativa naranja debajo del titulo */
+.modal-linea-decorativa {
+  /* 1. Posicionamiento y modelo de caja */
+  width: 140px;
+  height: 2px;
+  margin: 8px 0 16px;
+
+  /* 3. Detalles esteticos */
+  background-color: var(--color-secundario);
+  border-radius: var(--radio-sm);
+}
+
+/* Descripcion intermedia */
+.modal-descripcion {
+  /* 1. Posicionamiento y modelo de caja */
+  max-width: 390px;
+  margin: 0 0 20px;
+
+  /* 3. Detalles esteticos */
+  color: var(--color-modal-desc);
+  font-size: 13.5px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* Subtitulo en mayusculas COMPRAR PASE DE BATALLA */
+.modal-subtitulo {
+  /* 1. Posicionamiento y modelo de caja */
+  margin: 0 0 18px;
+
+  /* 3. Detalles esteticos */
+  color: var(--color-blanco);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Pastilla oscura que agrupa el precio y el boton comprar */
+.modal-precio-contenedor {
+  /* 1. Posicionamiento y modelo de caja */
+  padding: 5px 6px 5px 18px;
+
+  /* 2. Disposicion interna */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  /* 3. Detalles esteticos */
+  background-color: var(--color-modal-caja-precio);
+  border-radius: var(--radio-md);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Texto del precio $40 USD */
+.modal-precio-texto {
+  /* 3. Detalles esteticos */
+  color: var(--color-blanco);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Boton Comprar con fondo dorado/amarillo */
+.btn-modal-comprar {
+  /* 1. Posicionamiento y modelo de caja */
+  padding: 7px 22px;
+
+  /* 2. Disposicion interna */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3. Detalles esteticos */
+  background-color: var(--color-premium);
+  color: var(--color-blanco);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border: none;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(229, 184, 11, 0.4);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-modal-comprar:hover {
+  /* 3. Detalles esteticos */
+  filter: brightness(1.1);
+  box-shadow: 0 4px 14px rgba(229, 184, 11, 0.65);
+  transform: translateY(-1px);
+}
+
+.btn-modal-comprar:active {
+  /* 3. Detalles esteticos */
+  filter: brightness(0.95);
+  transform: translateY(1px);
+}
