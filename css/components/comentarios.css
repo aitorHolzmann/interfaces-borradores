@@ -38,6 +38,9 @@
 
 /* Autor Actual (Avatar con Nombre Debajo) */
 .comentario-autor-actual {
+  /* 1. Posicionamiento y modelo de caja */
+  width: auto;
+
   /* 2. Disposición interna */
   display: flex;
   flex-direction: column;
@@ -76,7 +79,7 @@
   text-align: center;
 }
 
-/* Barra de Entrada Blanca Estilo Píldora */
+/* Barra de Entrada Gris Clara Estilo Píldora */
 .comentario-input-barra {
   /* 1. Posicionamiento y modelo de caja */
   min-height: 44px;
@@ -93,19 +96,35 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.comentario-input-barra > input {
+.comentario-input-barra > textarea {
+  /* 1. Posicionamiento y modelo de caja */
+  width: 100%;
+  max-height: 20px;
+  padding: 0;
+
   /* 2. Disposición interna */
+  display: block;
   flex: 1;
 
   /* 3. Detalles estéticos */
-  background: none;
+  background: transparent;
   color: var(--color-negro);
   font-size: var(--tamano-small);
   border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  resize: none;
+}
+
+.comentario-input-barra > textarea:focus {
+  /* 3. Detalles estéticos */
+  border: none;
+  box-shadow: none;
   outline: none;
 }
 
-.comentario-input-barra > input::placeholder {
+.comentario-input-barra > textarea:placeholder {
   /* 3. Detalles estéticos */
   color: var(--color-gris-neutro);
 }

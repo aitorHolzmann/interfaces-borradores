@@ -189,54 +189,5 @@ document.addEventListener('DOMContentLoaded', () => {
       actualizarHero(heroIndex);
     });
   }
-
-  // --- 4. Interacción de Comentarios en Sala de Juego ---
-  const formNuevoComentario = document.getElementById('form-nuevo-comentario');
-  const inputComentario = document.getElementById('input-comentario');
-  const listaComentarios = document.getElementById('lista-comentarios');
-
-  function publicarComentario() {
-    if (!inputComentario || !listaComentarios) return;
-    const texto = inputComentario.value.trim();
-    if (!texto) return;
-
-    const hoy = new Date();
-    const dia = String(hoy.getDate()).padStart(2, '0');
-    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
-    const anio = hoy.getFullYear();
-    const horas = String(hoy.getHours()).padStart(2, '0');
-    const mins = String(hoy.getMinutes()).padStart(2, '0');
-    const fechaHora = `${dia}/${mes}/${anio} ${horas}:${mins}`;
-
-    const nuevoItem = document.createElement('article');
-    nuevoItem.className = 'comentario-item';
-    nuevoItem.innerHTML = `
-      <div>
-        <img src="assets/icons/icon-profile.svg" alt="Esteban">
-      </div>
-      <div>
-        <header>
-          <strong>Esteban</strong>
-          <time>${fechaHora}</time>
-        </header>
-        <p>${texto.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
-      </div>
-    `;
-
-    listaComentarios.prepend(nuevoItem);
-    inputComentario.value = '';
-  }
-
-  if (formNuevoComentario) {
-    formNuevoComentario.addEventListener('submit', (e) => {
-      e.preventDefault();
-      publicarComentario();
-    });
-
-    const btnEnviar = formNuevoComentario.querySelector('button');
-    if (btnEnviar) {
-      btnEnviar.addEventListener('click', publicarComentario);
-    }
-  }
 });
 

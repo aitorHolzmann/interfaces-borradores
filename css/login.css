@@ -149,7 +149,8 @@
   margin: 14px 0 10px;
 
   /* 3. Detalles estéticos */
-  color: var(--color-gris-neutro);
+  cursor: default;
+  color: var(--color-blanco);
   font-size: var(--tamano-small);
   text-align: center;
 }

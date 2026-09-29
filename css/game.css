@@ -166,7 +166,7 @@
 .barra-ejecucion button,
 .barra-ejecucion-btn {
   /* 1. Posicionamiento y modelo de caja */
-  padding: 8px;
+  padding: 4px;
 
   /* 2. Disposición interna */
   display: flex;
@@ -184,12 +184,11 @@
 .barra-ejecucion button:hover,
 .barra-ejecucion-btn:hover {
   /* 1. Posicionamiento y modelo de caja */
-  transform: scale(1.15);
 
   /* 3. Detalles estéticos */
   background-color: var(--color-secundario);
   border-color: var(--color-secundario);
-  border-radius: var(--radio-lg);
+  border-radius: var(--radio-sm);
   box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
 }
 
