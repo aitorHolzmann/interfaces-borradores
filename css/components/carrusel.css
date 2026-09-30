@@ -262,8 +262,6 @@
   gap: 20px;
 
   transition: transform 0.38s cubic-bezier(0.25, 1, 0.5, 1);
-  user-select: none;
-  touch-action: pan-y;
 }
 
 /* FLECHAS LATERALES PARA DESLIZAR EL CARRUSEL DE CADA CATEGORIA */

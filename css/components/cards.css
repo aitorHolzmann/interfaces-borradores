@@ -184,3 +184,13 @@
   transform: scale(1.08);
 }
 
+/* INCLINACION INERCIAL MIENTRAS LA PISTA AVANZA */
+.carrusel-pista.deslizando-sig .card-juego {
+  transform: skewX(-8deg) scale(0.97);
+}
+
+/* INCLINACION INVERSA MIENTRAS LA PISTA RETROCEDE */
+.carrusel-pista.deslizando-ant .card-juego {
+  transform: skewX(8deg) scale(0.97);
+}
+

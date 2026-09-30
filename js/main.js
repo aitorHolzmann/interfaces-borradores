@@ -105,60 +105,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // CONTROL DEL CARRUSEL PRINCIPAL D
+  // CONTROL DEL CARRUSEL PRINCIPAL 3D CON GIRO AUTOMATICO
   const carruselPrincipal = document.getElementById('carrusel-principal-3d');
   const contenedorCarruselPrincipal = document.querySelector('.carrusel-principal-contenedor');
   const carruselPrincipalBtnAnt = document.getElementById('carrusel-principal-btn-ant');
   const carruselPrincipalBtnSig = document.getElementById('carrusel-principal-btn-sig');
+  let indiceCarruselPrincipal = 0;
   let anguloCarruselPrincipal = 0;
   let timerGiroAutomatico = null;
   let timerReanudarAuto = null;
 
-  function rotarCarruselManual(direccion) {
+  function moverCarruselPrincipal(direccion) {
     if (!carruselPrincipal) return;
 
-    // CADA CARA ESTA SEPARADA GRADOS
-    if (direccion === 'sig') {
-      anguloCarruselPrincipal -= 120;
-    } else {
-      anguloCarruselPrincipal += 120;
-    }
-
+    indiceCarruselPrincipal = (indiceCarruselPrincipal + direccion + 3) % 3;
+    anguloCarruselPrincipal -= direccion * 120;
     carruselPrincipal.style.transform = `rotateY(${anguloCarruselPrincipal}deg)`;
   }
 
   function pausarGiroAutomatico() {
     clearInterval(timerGiroAutomatico);
     clearTimeout(timerReanudarAuto);
+    timerReanudarAuto = null;
   }
 
   function iniciarGiroAutomatico() {
-    if (!carruselPrincipal) return;
-    if (contenedorCarruselPrincipal.matches(':hover') || contenedorCarruselPrincipal.contains(document.activeElement)) return;
+    if (!carruselPrincipal || contenedorCarruselPrincipal.matches(':hover')) return;
+    if (contenedorCarruselPrincipal.contains(document.activeElement)) return;
+    if (timerReanudarAuto) return;
 
     clearInterval(timerGiroAutomatico);
-    timerGiroAutomatico = setInterval(() => rotarCarruselManual('sig'), 4000);
+    timerGiroAutomatico = setInterval(() => moverCarruselPrincipal(1), 4000);
   }
 
   function manejarGiroManual(direccion) {
-    rotarCarruselManual(direccion);
+    moverCarruselPrincipal(direccion);
     pausarGiroAutomatico();
-
-    // DEJAMOS TIEMPO PARA INSPECCIONAR LA IMAGEN ELEGIDA ANTES DE CONTINUAR
     timerReanudarAuto = setTimeout(() => {
+      timerReanudarAuto = null;
       iniciarGiroAutomatico();
     }, 8000);
   }
 
-  if (carruselPrincipalBtnSig) {
-    carruselPrincipalBtnSig.addEventListener('click', () => manejarGiroManual('sig'));
-  }
+  if (carruselPrincipal && contenedorCarruselPrincipal && carruselPrincipalBtnAnt && carruselPrincipalBtnSig) {
+    carruselPrincipalBtnAnt.addEventListener('click', () => manejarGiroManual(-1));
+    carruselPrincipalBtnSig.addEventListener('click', () => manejarGiroManual(1));
 
-  if (carruselPrincipalBtnAnt) {
-    carruselPrincipalBtnAnt.addEventListener('click', () => manejarGiroManual('ant'));
-  }
-
-  if (carruselPrincipal && contenedorCarruselPrincipal) {
     contenedorCarruselPrincipal.addEventListener('mouseenter', pausarGiroAutomatico);
     contenedorCarruselPrincipal.addEventListener('mouseleave', iniciarGiroAutomatico);
     contenedorCarruselPrincipal.addEventListener('focusin', pausarGiroAutomatico);

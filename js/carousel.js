@@ -223,6 +223,7 @@ class CarruselCategoria {
     this.btnAnt = contenedor.querySelector('.carrusel-flecha.izquierda');
     this.btnSig = contenedor.querySelector('.carrusel-flecha.derecha');
     this.desplazamiento = 0;
+    this.enMovimiento = false;
 
     this.btnSig.addEventListener('click', () => this.mover(1));
     this.btnAnt.addEventListener('click', () => this.mover(-1));
@@ -250,9 +251,23 @@ class CarruselCategoria {
 
   // MUEVE LA PISTA UNA TARJETA Y LIMITA EL RESULTADO ENTRE EL PRINCIPIO Y EL FINAL
   mover(direccion) {
+    if (this.enMovimiento) return;
+
     const paso = this.obtenerPaso();
     const maximo = Math.max(0, this.pista.scrollWidth - this.viewport.clientWidth);
     this.desplazamiento = Math.max(0, Math.min(this.desplazamiento + paso * direccion, maximo));
+    this.enMovimiento = true;
+    const claseDeslizamiento = direccion > 0 ? 'deslizando-sig' : 'deslizando-ant';
+    this.pista.classList.add(claseDeslizamiento);
+
+    const finalizarMovimiento = (evento) => {
+      if (evento.target !== this.pista || evento.propertyName !== 'transform') return;
+      this.pista.classList.remove(claseDeslizamiento);
+      this.pista.removeEventListener('transitionend', finalizarMovimiento);
+      this.enMovimiento = false;
+    };
+
+    this.pista.addEventListener('transitionend', finalizarMovimiento);
     this.actualizarEstado();
   }
 }
