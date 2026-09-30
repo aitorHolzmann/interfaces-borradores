@@ -424,12 +424,14 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = C
   });
 }
 
-// Inicializar el catálogo: render inmediato con datos locales + enriquecimiento asíncrono desde la API de la cátedra
+// --- 4. Inicialización: Render inmediato offline + Hidratación dinámica desde la API ---
+// Las funciones de petición HTTP y formateo (obtenerVideojuegosAPI, clasificarJuegosEnCategorias)
+// se encuentran modularizadas en js/api.js cumpliendo con la separación de responsabilidades.
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Render inmediato con catálogo de respaldo local (evita pantalla en blanco si no hay internet)
+  // 1. Render inmediato con catálogo de respaldo local (First Contentful Paint instantáneo y soporte offline)
   renderizarCatalogo('contenedor-categorias', CATALOGO_CATEGORIAS);
 
-  // 2. Si el servicio de API está disponible, solicitar datos reales de la cátedra
+  // 2. Consulta asíncrona a la API oficial de la cátedra
   if (typeof obtenerVideojuegosAPI === 'function' && typeof clasificarJuegosEnCategorias === 'function') {
     try {
       const juegosAPI = await obtenerVideojuegosAPI();
@@ -445,3 +447,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 });
+
+
