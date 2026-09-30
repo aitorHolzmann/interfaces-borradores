@@ -372,9 +372,17 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias') {
       const claseBoton = esPremium ? 'btn-card-accion btn-comprar' : 'btn-card-accion btn-jugar';
 
       const card = document.createElement('a');
-      card.href = esPremium ? '#modal-pase-batalla' : juego.enlace;
-      card.className = esPremium ? 'card-juego card-premium' : 'card-juego';
-      card.setAttribute('title', esPremium ? `Comprar Pase de Batalla para ${juego.titulo}` : `Jugar a ${juego.titulo}`);
+      if (esPremium) {
+        card.href = 'javascript:void(0);';
+        card.className = 'card-juego card-premium';
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-haspopup', 'dialog');
+        card.setAttribute('title', `Comprar Pase de Batalla para ${juego.titulo}`);
+      } else {
+        card.href = juego.enlace;
+        card.className = 'card-juego';
+        card.setAttribute('title', `Jugar a ${juego.titulo}`);
+      }
 
       // Si es premium, añadir badge circular de diamante azul
       let badgeHtml = '';
