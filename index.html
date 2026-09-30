@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plataforma de Juegos — Inicio</title>
-  <!-- Estilos del Sistema -->
+  <!-- ESTILOS DEL SISTEMA -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components/botones.css">
@@ -19,9 +19,7 @@
 </head>
 <body>
 
-  <!-- ====================================================================
-       PANTALLA DE CARGA (LOADER 5s)
-       ==================================================================== -->
+  <!-- PANTALLA DE CARGA LOADER S -->
   <div id="pantalla-carga" class="pantalla-carga">
     <div>
       <div class="loader-logo">
@@ -33,13 +31,11 @@
     </div>
   </div>
 
-  <!-- ====================================================================
-       BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR)
-       ==================================================================== -->
+  <!-- BARRA DE NAVEGACION SUPERIOR NAVBAR -->
   <header class="nav-principal">
     <div class="nav-contenedor">
       
-      <!-- Lado Izquierdo: Menú Hamburguesa y Logo Oficial -->
+      <!-- LADO IZQUIERDO MENU HAMBURGUESA Y LOGO OFICIAL -->
       <div class="nav-izquierda">
         <button id="btn-toggle-sidebar" aria-label="Abrir menú de navegación">
           <img src="assets/icons/menu.svg" alt="Menú lateral">
@@ -49,7 +45,7 @@
         </a>
       </div>
 
-      <!-- Centro: Buscador Pill con Lupa Naranja -->
+      <!-- CENTRO BUSCADOR PILL CON LUPA NARANJA -->
       <div class="nav-centro">
         <form role="search" onsubmit="event.preventDefault();">
           <input type="search" placeholder="Buscar juegos, géneros o batallas..." aria-label="Buscar juegos">
@@ -59,7 +55,7 @@
         </form>
       </div>
 
-      <!-- Lado Derecho: Avatar Circular del Soldado y Menú Desplegable -->
+      <!-- LADO DERECHO AVATAR CIRCULAR DEL SOLDADO Y MENU DESPLEGABLE -->
       <div class="nav-derecha">
         <div class="perfil-menu-contenedor">
           <button type="button" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
@@ -79,7 +75,7 @@
     </div>
   </header>
 
-  <!-- SIDEBAR OFF-CANVAS -->
+  <!-- SIDEBAR OFF CANVAS -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <aside class="sidebar" id="sidebar">
     <header>
@@ -101,41 +97,39 @@
     </ul>
   </aside>
 
-  <!-- ====================================================================
-       CONTENIDO PRINCIPAL
-       ==================================================================== -->
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="contenido-principal">
 
-    <!-- CARRUSEL PRINCIPAL 3D: TRES VISTAS DE PEG SOLITAIRE -->
+    <!-- CARRUSEL PRINCIPAL D TRES VISTAS DE PEG SOLITAIRE -->
     <section class="seccion-carrusel-principal" aria-label="Carrusel principal de Peg Solitaire">
-      <h2 class="carrusel-principal-titulo">Top 1 de nuestros juegos en tendencia!</h2>
+      <h2 class="carrusel-principal-titulo">!PRUEBA NUESTRO NUEVO LANZAMIENTO!</h2>
 
       <div class="carrusel-principal-contenedor">
-        <!-- Flecha Izquierda -->
+        <!-- FLECHA IZQUIERDA -->
         <button class="carrusel-principal-flecha izquierda" id="carrusel-principal-btn-ant" aria-label="Imagen anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
 
-        <!-- Escena 3D con perspectiva -->
+        <!-- ESCENA D CON PERSPECTIVA -->
         <div class="carrusel-principal-escena-3d">
           <div class="carrusel-principal-3d" id="carrusel-principal-3d">
-            <!-- Cara 1: Tablero central -->
+            <!-- CARA TABLERO CENTRAL -->
             <a href="game.html" class="carrusel-principal-tarjeta-3d cara-1" title="Jugar a Peg Solitaire">
               <h3 class="carrusel-principal-juego-nombre">Peg Solitaire</h3>
               <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire Tablero">
               <span class="btn-card-accion btn-carrusel-principal-accion">JUGAR</span>
             </a>
 
-            <!-- Cara 2: Detalle de juego -->
+            <!-- CARA DETALLE DE JUEGO -->
             <a href="game.html" class="carrusel-principal-tarjeta-3d cara-2" title="Jugar a Peg Solitaire">
               <h3 class="carrusel-principal-juego-nombre">Peg Solitaire</h3>
               <img src="assets/images/game_solitaire_1.jpg" alt="Peg Solitaire Detalle">
               <span class="btn-card-accion btn-carrusel-principal-accion">JUGAR</span>
             </a>
 
-            <!-- Cara 3: Vista táctica -->
+            <!-- CARA VISTA TACTICA -->
             <a href="game.html" class="carrusel-principal-tarjeta-3d cara-3" title="Jugar a Peg Solitaire">
               <h3 class="carrusel-principal-juego-nombre">Peg Solitaire</h3>
               <img src="assets/images/game_scifi_2.jpg" alt="Peg Solitaire Táctica">
@@ -144,7 +138,7 @@
           </div>
         </div>
 
-        <!-- Flecha Derecha -->
+        <!-- FLECHA DERECHA -->
         <button class="carrusel-principal-flecha derecha" id="carrusel-principal-btn-sig" aria-label="Siguiente imagen">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="9 18 15 12 9 6"></polyline>
@@ -153,21 +147,16 @@
       </div>
     </section>
 
-    <!-- ====================================================================
-         CATÁLOGO MODULAR DE CATEGORÍAS
-         DRY, carruseles infinitos, animaciones skewX y hover.
-         ==================================================================== -->
+    <!-- CATALOGO MODULAR DE CATEGORIAS DRY CARRUSELES INFINITOS ANIMACIONES SKEWX Y HOVER -->
     <div id="contenedor-categorias" class="contenedor-categorias"></div>
 
   </main>
 
-  <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL
-       ==================================================================== -->
+  <!-- FAT FOOTER INSTITUCIONAL -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
        
-      <!-- Marca y descripción -->
+      <!-- MARCA Y DESCRIPCION -->
       <div class="footer-marca">
         <img src="assets/logo.png" alt="Logotipo Plataforma">
         <p>
@@ -175,7 +164,7 @@
         </p>
       </div>
 
-      <!--Contenedor de links (grid) -->
+      <!-- CONTENEDOR DE LINKS GRID -->
       <div class="footer-links-grid">
         <div>
           <h4>Sobre nosotros</h4>
@@ -209,7 +198,7 @@
           </ul>
         </div>
 
-        <!-- Sección soporte dentro del bloque de navegación -->
+        <!-- SECCION SOPORTE DENTRO DEL BLOQUE DE NAVEGACION -->
         <div class="footer-soporte">
           <h4>Soporte</h4>
           <div>
@@ -225,33 +214,31 @@
 
     </div>
 
-    <!-- Barra Inferior -->
+    <!-- BARRA INFERIOR -->
     <div class="footer-bottom">
       <p>© Copyright - 2026</p>
       <p>Todos los derechos reservados</p>
     </div>
   </footer>
 
-  <!-- ====================================================================
-       MODAL DE COMPRA — PASE DE BATALLA (JUEGOS PREMIUM)
-       ==================================================================== -->
+  <!-- MODAL DE COMPRA PASE DE BATALLA JUEGOS PREMIUM -->
   <div id="modal-pase-batalla" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-hidden="true">
     <div class="modal-caja">
-      <!-- Botón de Cierre (Cruz) -->
+      <!-- BOTON DE CIERRE CRUZ -->
       <button type="button" class="modal-btn-cerrar" id="btn-cerrar-modal" aria-label="Cerrar modal de compra">&times;</button>
 
-      <!-- Título con Subrayado Naranja -->
+      <!-- TITULO CON SUBRAYADO NARANJA -->
       <h3 id="modal-titulo" class="modal-titulo">Unete a las filas</h3>
       <div class="modal-linea-decorativa" aria-hidden="true"></div>
 
-      <!-- descripcion -->
+      <!-- DESCRIPCION -->
       <p class="modal-descripcion">
         Para conocer la experiencia de juego y disfrutar de todo el contenido
       </p>
 
       <h4 class="modal-subtitulo">COMPRAR PASE DE BATALLA</h4>
 
-      <!-- precio y boton para comprar -->
+      <!-- PRECIO Y BOTON PARA COMPRAR -->
       <div class="modal-precio-contenedor">
         <span class="modal-precio-texto">$40 USD</span>
         <button type="button" class="btn-modal-comprar" id="btn-modal-comprar">Comprar</button>

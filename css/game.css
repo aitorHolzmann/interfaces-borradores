@@ -1,60 +1,55 @@
-/* ==========================================================================
-   PÁGINA: EJECUCIÓN DE JUEGO (game.css) — FIDELIDAD FIGMA
-   Optimizado con operadores relativos y estructura de 3 partes
-   ========================================================================== */
+/* PAGINA EJECUCION DE JUEGO GAME CSS FIDELIDAD FIGMA OPTIMIZADO CON OPERADORES RELATIVOS Y ESTRUCTURA DE PARTES */
 
 .pagina-juego-main {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 24px 60px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
-/* --- Breadcrumbs de Navegación --- */
+/* BREADCRUMBS DE NAVEGACION */
 .breadcrumbs,
 .game-breadcrumbs {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-bottom: -15px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-body);
 }
 
 .breadcrumbs a,
 .game-breadcrumbs a {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   transition: color 0.2s ease;
 }
 
 .breadcrumbs a:hover,
 .game-breadcrumbs a:hover {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 .breadcrumbs span,
 .game-breadcrumbs span {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
 }
 
-/* ==========================================================================
-   ÁREA DE EJECUCIÓN DEL JUEGO (1190 x 480)
-   ========================================================================== */
+/* AREA DE EJECUCION DEL JUEGO X */
 .area-ejecucion-juego {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   overflow: hidden;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border-radius: var(--radio-md) var(--radio-md) 0 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
@@ -62,34 +57,34 @@
 
 .area-ejecucion-juego > div:first-child,
 .pantalla-juego-contenedor {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   height: 480px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-image: url('../assets/images/peg_solitaire_hero.jpg');
   background-position: center;
   background-size: cover;
 }
 
-/* Splash con fondo oscuro translúcido y botón naranja "Jugar" */
+/* SPLASH CON FONDO OSCURO TRANSLUCIDO Y BOTON NARANJA JUGAR */
 .area-ejecucion-juego > div:first-child > div,
 .caja-controles-juego {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 30px 48px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   backdrop-filter: blur(4px);
   background-color: rgba(20, 23, 20, 0.75);
   border-radius: var(--radio-md);
@@ -97,13 +92,13 @@
 
 .area-ejecucion-juego button#btn-iniciar-partida,
 .btn-jugar-splash {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   overflow: hidden;
   z-index: 1;
   padding: 14px 52px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   color: var(--color-blanco);
   font-size: 1.4rem;
@@ -117,7 +112,7 @@
 
 .area-ejecucion-juego button#btn-iniciar-partida:hover,
 .btn-jugar-splash:hover {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   border-color: var(--color-secundario);
   box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5), inset 0 0 0 100px var(--color-secundario);
@@ -125,23 +120,23 @@
 
 .area-ejecucion-juego button#btn-iniciar-partida:focus-visible,
 .btn-jugar-splash:focus-visible {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 3px;
 }
 
-/* Barra de Ejecución Inferior */
+/* BARRA DE EJECUCION INFERIOR */
 .barra-ejecucion {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   height: 52px;
   padding: 0 20px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border-radius: 0 0 var(--radio-md) var(--radio-md);
   border: 1px solid var(--color-secundario);
@@ -149,7 +144,7 @@
 
 .barra-ejecucion > span,
 .barra-ejecucion-titulo {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 16px;
   font-weight: 500;
@@ -157,7 +152,7 @@
 
 .barra-ejecucion > div,
 .barra-ejecucion-botonera {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   gap: 16px;
@@ -165,15 +160,15 @@
 
 .barra-ejecucion button,
 .barra-ejecucion-btn {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 8px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: none;
   border: 1.5px solid transparent;
   border-radius: var(--radio-sm);
@@ -183,10 +178,10 @@
 
 .barra-ejecucion button:hover,
 .barra-ejecucion-btn:hover {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.15);
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   border-color: var(--color-secundario);
   border-radius: var(--radio-lg);
@@ -195,7 +190,7 @@
 
 .barra-ejecucion button:focus-visible,
 .barra-ejecucion-btn:focus-visible {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }
@@ -204,27 +199,25 @@
 .barra-ejecucion button svg,
 .barra-ejecucion-btn img,
 .barra-ejecucion-btn svg {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 20px;
   height: 20px;
 }
 
-/* ==========================================================================
-   SECCIÓN: CÓMO JUGAR? Y GALERÍA
-   ========================================================================== */
+/* SECCION COMO JUGAR Y GALERIA */
 .seccion-about-juego {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-top: 10px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
 }
 
-/* Columna Instrucciones */
+/* COLUMNA INSTRUCCIONES */
 .contenedor-instrucciones {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -232,7 +225,7 @@
 
 .contenedor-instrucciones > h2,
 .instrucciones-titulo {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.6rem;
   font-weight: 500;
@@ -241,7 +234,7 @@
 }
 
 .lista-reglas {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -249,10 +242,10 @@
 
 .lista-reglas > article h3,
 .item-regla h3 {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-bottom: 4px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.15rem;
   font-weight: 500;
@@ -260,29 +253,29 @@
 
 .lista-reglas > article p,
 .item-regla p {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.5;
 }
 
-/* Tarjeta de Controles Resumida (Mouse) */
+/* TARJETA DE CONTROLES RESUMIDA MOUSE */
 .card-controles {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   padding: 16px 20px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: none;
   border: 1px solid var(--color-primario);
   border-radius: var(--radio-md);
@@ -291,10 +284,10 @@
 
 .card-controles > h3,
 .card-controles-titulo {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.15rem;
   font-weight: 600;
@@ -303,29 +296,29 @@
 
 .card-controles > img,
 .icono-mouse {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 44px;
   height: 44px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 .card-controles > p,
 .card-controles-texto {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 500;
   text-align: center;
 }
 
-/* Columna Galería */
+/* COLUMNA GALERIA */
 .contenedor-galeria {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -333,7 +326,7 @@
 
 .contenedor-galeria > h2,
 .galeria-titulo {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.6rem;
   font-weight: 500;
@@ -342,7 +335,7 @@
 }
 
 .galeria-grilla {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
@@ -350,41 +343,41 @@
 
 .galeria-grilla > div,
 .galeria-item {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   height: 160px;
   overflow: hidden;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border-radius: var(--radio-md);
 }
 
 .galeria-grilla img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   height: 100%;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   object-fit: cover;
 }
 
-/* Botón de Play Naranja Grande en la Galería */
+/* BOTON DE PLAY NARANJA GRANDE EN LA GALERIA */
 .btn-galeria-play,
 .btn-galeria-play-overlay {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   top: 50%;
   left: 50%;
   width: 50px;
   height: 50px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
   cursor: pointer;
   transform: translate(-50%, -50%);
@@ -393,13 +386,13 @@
 
 .btn-galeria-play:hover,
 .btn-galeria-play-overlay:hover {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: translate(-50%, -50%) scale(1.15);
 }
 
 @media (max-width: 850px) {
   .seccion-about-juego {
-    /* 2. Disposición interna */
+    /* DISPOSICION INTERNA */
     grid-template-columns: 1fr;
     gap: 40px;
   }

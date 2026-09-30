@@ -1,7 +1,4 @@
-/* ==========================================================================
-   LÓGICA DE AUTENTICACIÓN — LOGIN Y REGISTRO
-   Alternancia de formularios, cambio de fondo y visor de contraseña
-   ========================================================================== */
+/* LOGICA DE AUTENTICACION LOGIN Y REGISTRO ALTERNANCIA DE FORMULARIOS CAMBIO DE FONDO Y VISOR DE CONTRASENA */
 
 document.addEventListener('DOMContentLoaded', () => {
   const formLogin = document.getElementById('form-login');
@@ -11,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const authTitulo = document.getElementById('auth-titulo');
   const authSeccion = document.getElementById('auth-seccion');
 
-  // Alternar a Modo Registro
+  // ALTERNAR A MODO REGISTRO
   if (linkIrRegistro) {
     linkIrRegistro.addEventListener('click', (e) => {
       e.preventDefault();
@@ -25,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Alternar a Modo Login
+  // ALTERNAR A MODO LOGIN
   if (linkIrLogin) {
     linkIrLogin.addEventListener('click', (e) => {
       e.preventDefault();
@@ -39,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Comprobación de parámetro en URL o hash (ej. login.html?modo=registro o #registro)
+  // COMPROBACION DE PARAMETRO EN URL O HASH EJ LOGIN HTML MODO REGISTRO O REGISTRO
   function aplicarModoSegunUrl() {
     const esRegistro = window.location.hash === '#registro' || window.location.search.includes('registro');
     const esLogin = window.location.hash === '#login' || window.location.search.includes('login');
@@ -66,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   aplicarModoSegunUrl();
   window.addEventListener('hashchange', aplicarModoSegunUrl);
 
-  // Toggle de visibilidad de contraseña
+  // TOGGLE DE VISIBILIDAD DE CONTRASENA
   const toggleButtons = document.querySelectorAll('.btn-toggle-password');
   toggleButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -82,26 +79,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==========================================================================
-  // VALIDACIÓN Y ENVÍO DE FORMULARIOS
-  // ==========================================================================
+  // 
+  // VALIDACION Y ENVIO DE FORMULARIOS
+  // 
 
   const inputs = document.querySelectorAll('form input:not([type="checkbox"])');
 
   const validarInput = (input) => {
     let esValido = false;
     
-    // Reglas de validación simples
+    // REGLAS DE VALIDACION SIMPLES
     if (input.type === 'email') {
       esValido = input.validity.valid && input.value.includes('.') && input.value.includes('@');
     } else if (input.type === 'password') {
       esValido = input.value.length >= 8;
-      // Comprobar coincidencia si es repetir contraseña
+      // COMPROBAR COINCIDENCIA SI ES REPETIR CONTRASENA
       if (input.id === 'reg-password-repeat') {
         const pass = document.getElementById('reg-password').value;
         esValido = input.value.length >= 8 && input.value === pass;
       }
-      // Actualizar el de repetir si cambia el original
+      // ACTUALIZAR EL DE REPETIR SI CAMBIA EL ORIGINAL
       if (input.id === 'reg-password') {
         const passRepeat = document.getElementById('reg-password-repeat');
         if (passRepeat && passRepeat.value.length > 0) {
@@ -112,17 +109,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const edad = parseInt(input.value);
       esValido = edad >= 13 && edad <= 99;
     } else {
-      // Nombre, Apellido, Usuario (texto genérico)
+      // NOMBRE APELLIDO USUARIO TEXTO GENERICO
       esValido = input.value.trim() !== '';
     }
 
-    // Aplicar clases visuales
+    // APLICAR CLASES VISUALES
     if (esValido) {
       input.classList.add('input-valido');
       input.classList.remove('input-invalido');
     } else {
       input.classList.remove('input-valido');
-      // Solo marcar inválido si ya fue tocado (blur)
+      // SOLO MARCAR INVALIDO SI YA FUE TOCADO BLUR
       if (input.dataset.tocado === 'true') {
         input.classList.add('input-invalido');
       }
@@ -145,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const manejarSubmit = (e, form, mensaje) => {
     e.preventDefault();
     
-    // Forzar validación en todos los inputs del form
+    // FORZAR VALIDACION EN TODOS LOS INPUTS DEL FORM
     const formInputs = form.querySelectorAll('.input-formulario');
     let formValido = true;
     
@@ -156,14 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Checkbox de términos y recaptcha (solo en registro)
+    // CHECKBOX DE TERMINOS Y RECAPTCHA SOLO EN REGISTRO
     const checkboxes = form.querySelectorAll('input[type="checkbox"][required]');
     checkboxes.forEach(chk => {
       if (!chk.checked) formValido = false;
     });
 
     if (formValido) {
-      // Crear mensaje de éxito
+      // CREAR MENSAJE DE EXITO
       const mensajeExito = document.createElement('div');
       mensajeExito.className = 'mensaje-exito';
       mensajeExito.textContent = mensaje;
@@ -171,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const panelAuth = document.getElementById('panel-autenticacion');
       panelAuth.appendChild(mensajeExito);
 
-      // Redirigir después de 2 segundos
+      // REDIRIGIR DESPUES DE SEGUNDOS
       setTimeout(() => {
         window.location.href = 'index.html';
       }, 2000);

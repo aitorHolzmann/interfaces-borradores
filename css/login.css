@@ -1,77 +1,74 @@
-/* ==========================================================================
-   PÁGINA: LOGIN Y REGISTRO (login.css) — FIDELIDAD FIGMA
-   Optimizado con operadores relativos y eliminación de clases atómicas
-   ========================================================================== */
+/* PAGINA LOGIN Y REGISTRO LOGIN CSS FIDELIDAD FIGMA OPTIMIZADO CON OPERADORES RELATIVOS Y ELIMINACION DE CLASES ATOMICAS */
 
 .pagina-auth-layout {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 100vh;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-fondo);
 }
 
-/* Acople directo del footer a la sección hero */
+/* ACOPLE DIRECTO DEL FOOTER A LA SECCION HERO */
 .pagina-auth-layout .footer-principal {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-top: 0;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   border-radius: 0;
 }
 
 .auth-hero-seccion {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   min-height: calc(100vh - var(--altura-nav));
   padding: 40px 10%;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex: 1;
   align-items: center;
-  justify-content: flex-end; /* Panel ubicado hacia la derecha */
+  justify-content: flex-end; /* PANEL UBICADO HACIA LA DERECHA */
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Fondos específicos por modo */
+/* FONDOS ESPECIFICOS POR MODO */
 .auth-hero-seccion.modo-login {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-image: var(--gradiente-fondo-login), url('../assets/fondo_login.jpg');
 }
 
 .auth-hero-seccion.modo-registro {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   justify-content: flex-start;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-image: var(--gradiente-fondo-registro), url('../assets/fondo_signin.jpg');
 }
 
-/* Panel Translúcido Militar */
+/* PANEL TRANSLUCIDO MILITAR */
 .panel-auth {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 420px;
   padding: 24px 26px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: rgba(45, 52, 22, 0.7);
   border: 1.5px solid var(--color-primario-claro);
   border-radius: var(--radio-md);
@@ -79,32 +76,32 @@
   backdrop-filter: blur(6px);
 }
 
-/* Encabezado del Panel */
+/* ENCABEZADO DEL PANEL */
 .panel-auth > header {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-bottom: 14px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .panel-auth > header > img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: auto;
   height: 38px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 .panel-auth > header > h1 {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
   font-size: 1.45rem;
   font-weight: 700;
@@ -113,24 +110,24 @@
 }
 
 .panel-auth > form {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
 }
 
-/* Enlace Olvido de Contraseña */
+/* ENLACE OLVIDO DE CONTRASENA */
 .panel-auth form > a {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   margin: 6px 0 14px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: block;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   text-align: center;
@@ -139,44 +136,44 @@
 }
 
 .panel-auth form > a:hover {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
-/* Texto separador */
+/* TEXTO SEPARADOR */
 .auth-separador-texto {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 14px 0 10px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
   text-align: center;
 }
 
-/* Fila de botones sociales */
+/* FILA DE BOTONES SOCIALES */
 .auth-sociales {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
 .auth-sociales > button {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 40px;
   padding: 8px 12px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   font-family: Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -187,34 +184,34 @@
 }
 
 .auth-sociales > button:hover {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   opacity: 0.9;
 }
 
 .auth-sociales img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 18px;
   height: 18px;
 }
 
 .auth-sociales > button:first-child {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-facebook);
   color: var(--color-blanco);
 }
 
 .auth-sociales > button:last-child {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-google-fondo);
   color: var(--color-negro);
 }
 
-/* Pie de autenticación (Toggle) */
+/* PIE DE AUTENTICACION TOGGLE */
 .auth-toggle-footer {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-top: 14px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   text-align: center;
@@ -222,7 +219,7 @@
 
 .auth-toggle-footer a,
 .auth-toggle-link {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-weight: 700;
   text-decoration: underline;
@@ -231,26 +228,24 @@
 
 .auth-toggle-footer a:hover,
 .auth-toggle-link:hover {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 @media (max-width: 800px) {
   .auth-hero-seccion,
   .auth-hero-seccion.modo-registro {
-    /* 1. Posicionamiento y modelo de caja */
+    /* POSICIONAMIENTO Y MODELO DE CAJA */
     padding: 30px 16px;
 
-    /* 2. Disposición interna */
+    /* DISPOSICION INTERNA */
     justify-content: center;
   }
 }
 
-/* ==========================================================================
-   ANIMACIÓN DE ÉXITO (Validación visual)
-   ========================================================================== */
+/* ANIMACION DE EXITO VALIDACION VISUAL */
 .mensaje-exito {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   top: 0;
   left: 0;
@@ -258,12 +253,12 @@
   height: 100%;
   z-index: 20;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: rgba(45, 52, 22, 0.98);
   color: var(--color-exito);
   font-size: 1.5rem;

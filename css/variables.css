@@ -1,20 +1,17 @@
-/* ==========================================================================
-   VARIABLES Y TOKENS DE DISEÑO — ESTÉTICA MILITAR / CLONE WARS
-   Basado en el Design System de Figma (File Key: LI86LH8D4OyOSsgXW0ePn2)
-   ========================================================================== */
+/* VARIABLES Y TOKENS DE DISENO ESTETICA MILITAR CLONE WARS BASADO EN EL DESIGN SYSTEM DE FIGMA FILE KEY LI LH D OYOSSGXW EPN */
 
 :root {
-  /* --- Paleta Cromática Primaria (Verde Militar) --- */
+  /* PALETA CROMATICA PRIMARIA VERDE MILITAR */
   --color-primario: #4B5320;
   --color-primario-claro: #828E3B;
   --color-primario-claro2: #66702D;
   --color-primario-oscuro: #3B4119;
   --color-primario-oscuro2: #2D3213;
 
-  /* --- Paleta Secundaria (Naranja Táctico) --- */
+  /* PALETA SECUNDARIA NARANJA TACTICO */
   --color-secundario: #FF6B00;
 
-  /* --- Superficies y Fondos --- */
+  /* SUPERFICIES Y FONDOS */
   --color-fondo: #2A302A;
   --color-superficie-oscura: #141714;
   --color-overlay-modal: rgba(10, 13, 10, 0.78);
@@ -22,7 +19,7 @@
   --color-modal-caja-precio: #1B211C;
   --color-modal-desc: #C2C8C2;
 
-  /* --- Colores de Estado y Terceros --- */
+  /* COLORES DE ESTADO Y TERCEROS */
   --color-premium: #E5B80B;
   --color-error: #E53935;
   --color-exito: #4CAF50;
@@ -31,33 +28,33 @@
   --color-recaptcha-fondo: #F9F9F9;
   --color-recaptcha-borde: #D3D3D3;
 
-  /* --- Colores Neutros y Textos --- */
+  /* COLORES NEUTROS Y TEXTOS */
   --color-blanco: #FFFFFF;
   --color-gris-neutro: #777777;
   --color-negro: #0A0D0A;
 
-  /* --- Tipografías --- */
+  /* TIPOGRAFIAS */
   --fuente-principal: 'JetBrains Mono', monospace;
 
-  /* --- Tamaños de Fuente --- */
+  /* TAMANOS DE FUENTE */
   --tamano-h1: 64px;
   --tamano-h2: 48px;
   --tamano-h3: 24px;
   --tamano-body: 16px;
   --tamano-small: 14px;
 
-  /* --- Border Radius --- */
+  /* BORDER RADIUS */
   --radio-sm: 5px;
   --radio-md: 8px;
   --radio-lg: 16px;
   --radio-card: 25px;
   --radio-redondo: 50%;
 
-  /* --- Gradientes --- */
+  /* GRADIENTES */
   --gradiente-fondo-login: linear-gradient(to left, rgba(0, 0, 0, 1), transparent);
   --gradiente-fondo-registro: linear-gradient(to right, rgba(0, 0, 0, 1), transparent);
 
-  /* --- Dimensiones del Layout --- */
+  /* DIMENSIONES DEL LAYOUT */
   --ancho-maximo: 1440px;
   --altura-nav: 81px;
   --ancho-sidebar: 260px;

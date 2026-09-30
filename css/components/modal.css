@@ -1,11 +1,8 @@
-/* ==========================================================================
-   MODAL DE COMPRA — PASE DE BATALLA
-   Ventana emergente que se activa al presionar "COMPRAR" en juegos premium
-   ========================================================================== */
+/* MODAL DE COMPRA PASE DE BATALLA VENTANA EMERGENTE QUE SE ACTIVA AL PRESIONAR COMPRAR EN JUEGOS PREMIUM */
 
-/* Fondo oscuro que cubre toda la pantalla para enfocar la atencion */
+/* FONDO OSCURO QUE CUBRE TODA LA PANTALLA PARA ENFOCAR LA ATENCION */
 .modal-overlay {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: fixed;
   top: 0;
   right: 0;
@@ -15,12 +12,12 @@
   padding: 20px;
   overflow-y: auto;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-overlay-modal);
   backdrop-filter: blur(4px);
   opacity: 0;
@@ -29,30 +26,30 @@
   transition: opacity 0.28s ease, visibility 0.28s ease;
 }
 
-/* Estado activo: se hace visible suavemente (por clase .activo o por ancla :target) */
+/* ESTADO ACTIVO SE HACE VISIBLE SUAVEMENTE POR CLASE ACTIVO O POR ANCLA TARGET */
 .modal-overlay.activo,
 .modal-overlay:target {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-/* Tarjeta central del modal con borde naranja y fondo oscuro */
+/* TARJETA CENTRAL DEL MODAL CON BORDE NARANJA Y FONDO OSCURO */
 .modal-caja {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   max-width: 490px;
   padding: 26px 32px 28px;
   box-sizing: border-box;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-modal-fondo);
   border: 1.5px solid var(--color-secundario);
   border-radius: var(--radio-md);
@@ -61,16 +58,16 @@
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Animacion de entrada de la caja cuando se activa el overlay */
+/* ANIMACION DE ENTRADA DE LA CAJA CUANDO SE ACTIVA EL OVERLAY */
 .modal-overlay.activo .modal-caja,
 .modal-overlay:target .modal-caja {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: scale(1) translateY(0);
 }
 
-/* Cruz para cerrar el modal en la esquina superior derecha */
+/* CRUZ PARA CERRAR EL MODAL EN LA ESQUINA SUPERIOR DERECHA */
 .modal-btn-cerrar {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   top: 10px;
   right: 14px;
@@ -78,12 +75,12 @@
   height: 32px;
   padding: 0;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background: transparent;
   color: var(--color-blanco);
   font-size: 26px;
@@ -96,18 +93,18 @@
 
 .modal-btn-cerrar:hover,
 .modal-btn-cerrar:focus-visible {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   opacity: 1;
   color: var(--color-secundario);
   transform: scale(1.15) rotate(90deg);
 }
 
-/* Titulo principal "Unete a las filas" */
+/* TITULO PRINCIPAL UNETE A LAS FILAS */
 .modal-titulo {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 22px;
   font-weight: 500;
@@ -115,37 +112,37 @@
   text-align: center;
 }
 
-/* Linea decorativa naranja debajo del titulo */
+/* LINEA DECORATIVA NARANJA DEBAJO DEL TITULO */
 .modal-linea-decorativa {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 140px;
   height: 2px;
   margin: 8px 0 16px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   border-radius: var(--radio-sm);
 }
 
-/* Descripcion intermedia */
+/* DESCRIPCION INTERMEDIA */
 .modal-descripcion {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   max-width: 390px;
   margin: 0 0 20px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-modal-desc);
   font-size: 13.5px;
   line-height: 1.45;
   text-align: center;
 }
 
-/* Subtitulo en mayusculas COMPRAR PASE DE BATALLA */
+/* SUBTITULO EN MAYUSCULAS COMPRAR PASE DE BATALLA */
 .modal-subtitulo {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0 0 18px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 16px;
   font-weight: 700;
@@ -154,43 +151,43 @@
   text-transform: uppercase;
 }
 
-/* Pastilla oscura que agrupa el precio y el boton comprar */
+/* PASTILLA OSCURA QUE AGRUPA EL PRECIO Y EL BOTON COMPRAR */
 .modal-precio-contenedor {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 5px 6px 5px 18px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-modal-caja-precio);
   border-radius: var(--radio-md);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Texto del precio $40 USD */
+/* TEXTO DEL PRECIO USD */
 .modal-precio-texto {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-/* Boton Comprar con fondo dorado/amarillo */
+/* BOTON COMPRAR CON FONDO DORADO AMARILLO */
 .btn-modal-comprar {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 7px 22px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-premium);
   color: var(--color-blanco);
   font-size: 14px;
@@ -204,14 +201,14 @@
 }
 
 .btn-modal-comprar:hover {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   filter: brightness(1.1);
   box-shadow: 0 4px 14px rgba(229, 184, 11, 0.65);
   transform: translateY(-1px);
 }
 
 .btn-modal-comprar:active {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   filter: brightness(0.95);
   transform: translateY(1px);
 }

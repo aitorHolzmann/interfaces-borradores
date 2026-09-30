@@ -1,33 +1,31 @@
-/* ==========================================================================
-   ESTILOS BASE, RESET Y TIPOGRAFÍA GLOBAL
-   ========================================================================== */
+/* ESTILOS BASE RESET Y TIPOGRAFIA GLOBAL */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 
-/* --- Reset Estricto --- */
+/* RESET ESTRICTO */
 *,
 *::before,
 *::after {
-  /* 1. Alineación propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* --- Raíz del Documento --- */
+/* RAIZ DEL DOCUMENTO */
 html {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color-scheme: dark;
   font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  /* 1. Alineación propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   min-height: 100vh;
   overflow-x: hidden;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-fondo);
   color: var(--color-blanco);
   font-family: var(--fuente-principal);
@@ -36,9 +34,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Tipografía --- */
+/* TIPOGRAFIA */
 h1, h2, h3, h4, h5, h6 {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-family: var(--fuente-principal);
   font-weight: 700;
@@ -46,51 +44,51 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  /* 3. Detalles estéticos */
-  font-size: 2.5rem; /* 40px mobile */
+  /* DETALLES ESTETICOS */
+  font-size: 2.5rem; /* PX MOBILE */
   line-height: 1.2;
 }
 
 h2 {
-  /* 3. Detalles estéticos */
-  font-size: 1.8rem; /* 28px mobile */
+  /* DETALLES ESTETICOS */
+  font-size: 1.8rem; /* PX MOBILE */
   line-height: 1.3;
 }
 
 h3 {
-  /* 3. Detalles estéticos */
-  font-size: 1.3rem; /* 20px mobile */
+  /* DETALLES ESTETICOS */
+  font-size: 1.3rem; /* PX MOBILE */
   line-height: 1.4;
 }
 
 p {
-  /* 1. Alineación propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   margin-bottom: 0.5rem;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-body);
 }
 
 small {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }
 
-/* --- Enlaces y Botones Base --- */
+/* ENLACES Y BOTONES BASE */
 a {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: inline-block;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 button, input, select, textarea {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: none;
   color: inherit;
   font-family: inherit;
@@ -100,73 +98,73 @@ button, input, select, textarea {
 }
 
 button {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   cursor: pointer;
   user-select: none;
 }
 
-/* --- Imágenes y Multimedia --- */
+/* IMAGENES Y MULTIMEDIA */
 img, svg {
-  /* 1. Alineación propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   max-width: 100%;
   height: auto;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: block;
 }
 
-/* --- Barra de Scroll Temática Militar --- */
+/* BARRA DE SCROLL TEMATICA MILITAR */
 ::-webkit-scrollbar {
-  /* 1. Alineación propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: var(--color-superficie-oscura);
 }
 
 ::-webkit-scrollbar-thumb {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: var(--color-primario);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: var(--color-primario-claro);
 }
 
-/* --- Clases de Utilidad Comunes --- */
+/* CLASES DE UTILIDAD COMUNES */
 .texto-centrado {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .texto-secundario,
 .texto-acento {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 .texto-primario-claro {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
 }
 
 .texto-premium {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-premium);
 }
 
 .oculto {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: none !important;
 }
 
 .sr-only {
-  /* 1. Alineación propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   width: 1px;
   height: 1px;
@@ -175,7 +173,7 @@ img, svg {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   white-space: nowrap;
   border: 0;
 }

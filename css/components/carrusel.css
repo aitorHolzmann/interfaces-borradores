@@ -1,28 +1,24 @@
-/* ==========================================================================
-  CARRUSELES: PRINCIPAL 3D GIRATORIO Y CATEGORIAS INFINITAS
-  - Carrusel principal: vista 3D de Peg Solitaire con transiciones de estado
-   - Categorias: carruseles horizontales infinitos con flechas y deformacion skewX
-   ========================================================================== */
+/* CARRUSELES PRINCIPAL D GIRATORIO Y CATEGORIAS INFINITAS CARRUSEL PRINCIPAL VISTA D DE PEG SOLITAIRE CON TRANSICIONES DE ESTADO CATEGORIAS CARRUSELES HORIZONTALES INFINITOS CON FLECHAS Y DEFORMACION SKEWX */
 
-/* --- 1. Carrusel principal 3D (Peg Solitaire) --- */
+/* CARRUSEL PRINCIPAL D PEG SOLITAIRE */
 .seccion-carrusel-principal {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 30px auto 50px;
   padding: 0 20px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
-/* titulo dorado del carrusel principal */
+/* TITULO DORADO DEL CARRUSEL PRINCIPAL */
 .seccion-carrusel-principal > h2,
 .carrusel-principal-titulo {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   margin-bottom: 24px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-premium);
   font-size: 2.3rem;
   font-weight: 700;
@@ -33,61 +29,61 @@
 }
 
 .carrusel-principal-titulo span {
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: block;
 }
 
-/* contenedor para centrar la escena 3D y las flechas */
+/* CONTENEDOR PARA CENTRAR LA ESCENA D Y LAS FLECHAS */
 .carrusel-principal-contenedor {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px 0;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 65px;
 }
 
-/* la escena 3D: le clavamos perspective como nos explicaron en el tema 2 para que tenga profundidad real */
+/* LA ESCENA D LE CLAVAMOS PERSPECTIVE COMO NOS EXPLICARON EN EL TEMA PARA QUE TENGA PROFUNDIDAD REAL */
 .carrusel-principal-escena-3d {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   width: 440px;
   height: 320px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   perspective: 1000px;
 }
 
-/* prisma 3D que JavaScript rota entre estados; CSS interpola el movimiento */
+/* PRISMA D QUE JAVASCRIPT ROTA ENTRE ESTADOS CSS INTERPOLA EL MOVIMIENTO */
 .carrusel-principal-3d {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   height: 100%;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform-style: preserve-3d;
   transform: rotateY(0deg);
   transition: transform 1.1s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
-/* Respetamos la preferencia del usuario por menos movimiento */
+/* RESPETAMOS LA PREFERENCIA DEL USUARIO POR MENOS MOVIMIENTO */
 @media (prefers-reduced-motion: reduce) {
   .carrusel-principal-3d {
     transition: none;
   }
 }
 
-/* cada una de las 3 fotos del mismo juego ubicadas en el espacio 3D */
+/* CADA UNA DE LAS FOTOS DEL MISMO JUEGO UBICADAS EN EL ESPACIO D */
 .carrusel-principal-tarjeta-3d {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: 0;
   left: 0;
@@ -95,10 +91,10 @@
   height: 100%;
   overflow: hidden;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: block;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
   text-decoration: none;
@@ -107,44 +103,44 @@
   transition: box-shadow 0.3s ease, filter 0.3s ease;
 }
 
-/* foto 1: al frente en 0 grados y corrida en Z */
+/* FOTO AL FRENTE EN GRADOS Y CORRIDA EN Z */
 .carrusel-principal-tarjeta-3d.cara-1 {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: rotateY(0deg) translateZ(200px);
 }
 
-/* foto 2: girada 120 grados para armar el triangulo 3D */
+/* FOTO GIRADA GRADOS PARA ARMAR EL TRIANGULO D */
 .carrusel-principal-tarjeta-3d.cara-2 {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: rotateY(120deg) translateZ(200px);
 }
 
-/* foto 3: girada 240 grados */
+/* FOTO GIRADA GRADOS */
 .carrusel-principal-tarjeta-3d.cara-3 {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: rotateY(240deg) translateZ(200px);
 }
 
 .carrusel-principal-tarjeta-3d img {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 100%;
   height: 100%;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   object-fit: cover;
 }
 
-/* titulo del juego sobre la foto con borde negro para que resalte */
+/* TITULO DEL JUEGO SOBRE LA FOTO CON BORDE NEGRO PARA QUE RESALTE */
 .carrusel-principal-juego-nombre,
 .carrusel-principal-tarjeta-3d h3 {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: 20px;
   right: 0;
   left: 0;
   z-index: 6;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 26px;
   font-weight: 700;
@@ -156,9 +152,9 @@
   pointer-events: none;
 }
 
-/* boton JUGAR centrado en cada cara que aparece en hover */
+/* BOTON JUGAR CENTRADO EN CADA CARA QUE APARECE EN HOVER */
 .btn-carrusel-principal-accion {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: 52%;
   left: 50%;
@@ -166,12 +162,12 @@
   z-index: 7;
   padding: 12px 34px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   color: var(--color-blanco);
   font-size: 15px;
@@ -188,36 +184,36 @@
 
 .carrusel-principal-tarjeta-3d:hover .btn-carrusel-principal-accion,
 .carrusel-principal-tarjeta-3d:focus-visible .btn-carrusel-principal-accion {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
 .btn-carrusel-principal-accion:hover {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   transform: translate(-50%, -56%) scale(1.08);
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border-color: var(--color-acento-claro);
   box-shadow: 0 8px 25px rgba(255, 107, 0, 0.8), 0 0 16px var(--color-secundario);
 }
 
-/* flechas de navegacion para el carrusel principal */
+/* FLECHAS DE NAVEGACION PARA EL CARRUSEL PRINCIPAL */
 .carrusel-principal-contenedor > button,
 .carrusel-principal-flecha {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   z-index: 10;
   width: 46px;
   height: 46px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: rgba(30, 33, 30, 0.85);
   color: var(--color-blanco);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -228,7 +224,7 @@
 
 .carrusel-principal-contenedor > button:hover,
 .carrusel-principal-flecha:hover {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-acento);
   color: var(--color-blanco);
   border-color: var(--color-acento-borde);
@@ -237,23 +233,23 @@
 
 .carrusel-principal-contenedor > button svg,
 .carrusel-principal-flecha svg {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 22px;
   height: 22px;
 }
 
 
-/* --- 2. Carruseles de Categorias (Renderizados con JS) --- */
+/* CARRUSELES DE CATEGORIAS RENDERIZADOS CON JS */
 
-/* contenedor general donde se inyectan todas las categorias */
+/* CONTENEDOR GENERAL DONDE SE INYECTAN TODAS LAS CATEGORIAS */
 .contenedor-categorias {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 100%;
 }
 
-/* seccion individual de cada categoria */
+/* SECCION INDIVIDUAL DE CADA CATEGORIA */
 .seccion-categoria {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 0 auto 46px;
@@ -262,26 +258,26 @@
 
 .seccion-categoria > header,
 .categoria-header {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   margin-bottom: 16px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-/* fondo tipo capsula para el titulo como teniamos en figma */
+/* FONDO TIPO CAPSULA PARA EL TITULO COMO TENIAMOS EN FIGMA */
 .seccion-categoria h2,
 .categoria-titulo {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   margin: 0;
   padding: 6px 20px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: inline-block;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background: linear-gradient(90deg, rgba(42, 48, 42, 0.6), rgba(130, 142, 59, 0.35) 50%, rgba(42, 48, 42, 0.6));
   color: var(--color-primario-claro);
   font-size: 1.6rem;
@@ -290,39 +286,39 @@
   border-radius: 16px;
 }
 
-/* contenedor relativo para ubicar las flechas flotando a los costados */
+/* CONTENEDOR RELATIVO PARA UBICAR LAS FLECHAS FLOTANDO A LOS COSTADOS */
 .carrusel-contenedor {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   width: 100%;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
 }
 
-/* importante: le damos padding arriba y abajo para que al hacer hover la card no se corte con el overflow hidden */
+/* IMPORTANTE LE DAMOS PADDING ARRIBA Y ABAJO PARA QUE AL HACER HOVER LA CARD NO SE CORTE CON EL OVERFLOW HIDDEN */
 .carrusel-viewport {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   padding: 16px 0;
   overflow: hidden;
 }
 
-/* la tira de cards: OBLIGATORIO display flex para que las cards queden en fila horizontal */
+/* LA TIRA DE CARDS OBLIGATORIO DISPLAY FLEX PARA QUE LAS CARDS QUEDEN EN FILA HORIZONTAL */
 .carrusel-pista {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   padding: 10px 4px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 20px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   user-select: none;
   touch-action: pan-y;
   cursor: grab;
@@ -330,25 +326,25 @@
 }
 
 .carrusel-pista:active {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   cursor: grabbing;
 }
 
-/* flechas laterales para deslizar el carrusel de cada categoria */
+/* FLECHAS LATERALES PARA DESLIZAR EL CARRUSEL DE CADA CATEGORIA */
 .carrusel-flecha {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: calc(50% - 22px);
   z-index: 15;
   width: 44px;
   height: 44px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: rgba(30, 33, 30, 0.88);
   color: var(--color-claro);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -358,20 +354,20 @@
   transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* las clavamos justo en los bordes del carrusel */
+/* LAS CLAVAMOS JUSTO EN LOS BORDES DEL CARRUSEL */
 .carrusel-flecha.izquierda {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   left: -18px;
 }
 
 .carrusel-flecha.derecha {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   right: -18px;
 }
 
-/* efecto hover con naranja de acento y un brillo sutil */
+/* EFECTO HOVER CON NARANJA DE ACENTO Y UN BRILLO SUTIL */
 .carrusel-flecha:hover {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-acento);
   color: var(--color-blanco);
   border-color: var(--color-acento-borde);
@@ -380,7 +376,7 @@
 }
 
 .carrusel-flecha svg {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 22px;
   height: 22px;
   pointer-events: none;

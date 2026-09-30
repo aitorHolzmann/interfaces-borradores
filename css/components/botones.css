@@ -1,26 +1,20 @@
-/* ==========================================================================
-   COMPONENTE: BOTONES Y EFECTOS HOVER
-   Mínimo 3 animaciones hover diferenciadas
-   - Efecto 1: Escala con sombra elevada (ej. Botón Submit / Auth)
-   - Efecto 2: Barrido de fondo horizontal con ::before (ej. Sidebar / Splash)
-   - Efecto 3: Borde luminiscente (glow) y cambio de radio (ej. Botonera Barra)
-   ========================================================================== */
+/* COMPONENTE BOTONES Y EFECTOS HOVER MINIMO ANIMACIONES HOVER DIFERENCIADAS EFECTO ESCALA CON SOMBRA ELEVADA EJ BOTON SUBMIT AUTH EFECTO BARRIDO DE FONDO HORIZONTAL CON BEFORE EJ SIDEBAR SPLASH EFECTO BORDE LUMINISCENTE GLOW Y CAMBIO DE RADIO EJ BOTONERA BARRA */
 
-/* --- Botón Base --- */
+/* BOTON BASE */
 .btn {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   min-height: 44px;
   padding: 10px 20px;
   overflow: hidden;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: inherit;
   font-size: var(--tamano-body);
   font-weight: 700;
@@ -32,15 +26,13 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
-/* ==========================================================================
-   EFECTO 1: Escala con sombra elevada
-   ========================================================================== */
+/* EFECTO ESCALA CON SOMBRA ELEVADA */
 .btn-efecto-escala,
 .btn-auth-submit {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 44px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border: 1px solid var(--color-secundario);
@@ -52,66 +44,62 @@
 
 .btn-efecto-escala:hover,
 .btn-auth-submit:hover {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.04);
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
   filter: brightness(0.95);
 }
 
 .btn-efecto-escala:focus-visible,
 .btn-auth-submit:focus-visible {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }
 
-/* ==========================================================================
-   EFECTO 2: Barrido de fondo horizontal con ::before
-   ========================================================================== */
+/* EFECTO BARRIDO DE FONDO HORIZONTAL CON BEFORE */
 .btn-efecto-barrido {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   z-index: 1;
   overflow: hidden;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-efecto-barrido::before {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   transform: translateX(-100%);
   transition: transform 0.35s ease;
 }
 
 .btn-efecto-barrido:hover::before {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: translateX(0);
 }
 
-/* ==========================================================================
-   EFECTO 3: Borde luminiscente (glow) y cambio de border-radius
-   ========================================================================== */
+/* EFECTO BORDE LUMINISCENTE GLOW Y CAMBIO DE BORDER RADIUS */
 .btn-efecto-glow,
 .barra-ejecucion button {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 8px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: none;
   border: 1.5px solid transparent;
   border-radius: var(--radio-sm);
@@ -121,10 +109,10 @@
 
 .btn-efecto-glow:hover,
 .barra-ejecucion button:hover {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.15);
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   border-color: var(--color-secundario);
   border-radius: var(--radio-lg);
@@ -133,7 +121,7 @@
 
 .btn-efecto-glow:focus-visible,
 .barra-ejecucion button:focus-visible {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }

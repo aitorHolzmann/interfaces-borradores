@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acceso Táctico — Base de Operaciones</title>
   
-  <!-- Estilos del Sistema -->
+  <!-- ESTILOS DEL SISTEMA -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components/botones.css">
@@ -17,9 +17,7 @@
 </head>
 <body class="pagina-auth-layout">
 
-  <!-- ====================================================================
-       BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR)
-       ==================================================================== -->
+  <!-- BARRA DE NAVEGACION SUPERIOR NAVBAR -->
   <header class="nav-principal">
     <div class="nav-contenedor">
       
@@ -41,7 +39,7 @@
         </form>
       </div>
 
-      <!-- Lado Derecho: Avatar Circular del Soldado y Menú Desplegable -->
+      <!-- LADO DERECHO AVATAR CIRCULAR DEL SOLDADO Y MENU DESPLEGABLE -->
       <div class="nav-derecha">
         <div class="perfil-menu-contenedor">
           <button type="button" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
@@ -61,7 +59,7 @@
     </div>
   </header>
 
-  <!-- SIDEBAR OFF-CANVAS -->
+  <!-- SIDEBAR OFF CANVAS -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <aside class="sidebar" id="sidebar">
     <header>
@@ -83,30 +81,26 @@
     </ul>
   </aside>
 
-  <!-- ====================================================================
-       SECCIÓN CENTRAL: FONDO BÉLICO Y PANEL DE ACCESO
-       ==================================================================== -->
+  <!-- SECCION CENTRAL FONDO BELICO Y PANEL DE ACCESO -->
   <main class="auth-hero-seccion modo-login" id="auth-seccion">
     
     <article class="panel-auth" id="panel-autenticacion">
       
-      <!-- Logo del Panel -->
+      <!-- LOGO DEL PANEL -->
       <header>
         <img src="assets/logo.png" alt="Insignia República">
         <h1 id="auth-titulo">Inicia<br>Soldado!</h1>
       </header>
 
-      <!-- ==================================================================
-           1. FORMULARIO DE LOGIN (INICIAR SESIÓN)
-           ================================================================== -->
+      <!-- FORMULARIO DE LOGIN INICIAR SESION -->
       <form id="form-login" action="index.html" method="GET">
         
-        <!-- Campo: Email -->
+        <!-- CAMPO EMAIL -->
         <div>
           <input type="email" id="login-email" name="email" placeholder="Email" required autocomplete="email">
         </div>
 
-        <!-- Campo: Contraseña -->
+        <!-- CAMPO CONTRASENA -->
         <div class="campo-password">
           <input type="password" id="login-password" name="password" placeholder="Contraseña" required minlength="8" autocomplete="current-password">
           <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="login-password">
@@ -114,18 +108,18 @@
           </button>
         </div>
 
-        <!-- Enlace Olvido -->
+        <!-- ENLACE OLVIDO -->
         <a href="#">¿Has olvidado tu contraseña?</a>
 
-        <!-- Botón Submit -->
+        <!-- BOTON SUBMIT -->
         <button type="submit" class="btn-auth-submit" id="btn-submit-login">
           Iniciar Sesión
         </button>
 
-        <!-- Texto O continuar con -->
+        <!-- TEXTO O CONTINUAR CON -->
         <p class="auth-separador-texto">O continuar con</p>
 
-        <!-- Botones Sociales Lado a Lado (Figma) -->
+        <!-- BOTONES SOCIALES LADO A LADO FIGMA -->
         <div class="auth-sociales">
           <button type="button">
             <img src="assets/icons/icon-facebook.svg" alt="Facebook">
@@ -137,16 +131,14 @@
           </button>
         </div>
 
-        <!-- Toggle hacia Registro -->
+        <!-- TOGGLE HACIA REGISTRO -->
         <p class="auth-toggle-footer">
           ¿No tienes cuenta? 
           <a href="#registro" id="link-ir-registro">Registrate</a>
         </p>
       </form>
 
-      <!-- ==================================================================
-           2. FORMULARIO DE REGISTRO
-           ================================================================== -->
+      <!-- FORMULARIO DE REGISTRO -->
       <form id="form-registro" class="oculto" action="index.html" method="GET">
         
         <div>
@@ -194,13 +186,13 @@
           </div>
         </div>
 
-        <!-- Checkbox Términos -->
+        <!-- CHECKBOX TERMINOS -->
         <label class="grupo-checkbox">
           <input type="checkbox" id="reg-terminos" required>
           <span>Aceptas los <a href="#">Términos de la plataforma</a> y la aplicacion del <a href="#">Aviso de privacidad</a>.</span>
         </label>
 
-        <!-- ReCaptcha Card -->
+        <!-- RECAPTCHA CARD -->
         <div class="recaptcha-card">
           <label>
             <input type="checkbox" id="recaptcha-mock" required>
@@ -212,12 +204,12 @@
           </div>
         </div>
 
-        <!-- Botón Registrarse -->
+        <!-- BOTON REGISTRARSE -->
         <button type="submit" class="btn-auth-submit" id="btn-submit-registro">
           Registrarse
         </button>
 
-        <!-- Toggle hacia Login -->
+        <!-- TOGGLE HACIA LOGIN -->
         <p class="auth-toggle-footer">
           ¿Tienes una cuenta? 
           <a href="#login" id="link-ir-login">Inicia sesión</a>
@@ -229,13 +221,11 @@
 
   </main>
 
-  <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL
-       ==================================================================== -->
+  <!-- FAT FOOTER INSTITUCIONAL -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
        
-      <!-- Caja 1: Marca y descripción -->
+      <!-- CAJA MARCA Y DESCRIPCION -->
       <div class="footer-marca">
         <img src="assets/logo.png" alt="Logotipo Plataforma">
         <p>
@@ -243,7 +233,7 @@
         </p>
       </div>
 
-      <!-- Caja 2: Contenedor de links (Grid) -->
+      <!-- CAJA CONTENEDOR DE LINKS GRID -->
       <div class="footer-links-grid">
         <div>
           <h4>Sobre nosotros</h4>
@@ -277,7 +267,7 @@
           </ul>
         </div>
 
-        <!-- Sección Soporte dentro del bloque de navegación -->
+        <!-- SECCION SOPORTE DENTRO DEL BLOQUE DE NAVEGACION -->
         <div class="footer-soporte">
           <h4>Soporte</h4>
           <div>
@@ -293,7 +283,7 @@
 
     </div>
 
-    <!-- Barra Inferior -->
+    <!-- BARRA INFERIOR -->
     <div class="footer-bottom">
       <p>© Copyright - 2026</p>
       <p>Todos los derechos reservados</p>

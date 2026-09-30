@@ -1,12 +1,6 @@
-/* ==========================================================================
-   CARRUSELES INFINITOS Y CATÁLOGO DE JUEGOS — CAROUSEL.JS
-   - Renderizado dinámico de categorías y cards desde datos estructurados (DRY)
-   - Lógica de carrusel infinito mediante rotación circular de nodos en el DOM
-   - Animación de deformación por inercia física (skewX) al deslizar (Tema 2)
-   - Soporte para navegación con flechas tácticas y swipe táctil / drag de mouse
-   ========================================================================== */
+/* CARRUSELES INFINITOS Y CATALOGO DE JUEGOS CAROUSEL JS RENDERIZADO DINAMICO DE CATEGORIAS Y CARDS DESDE DATOS ESTRUCTURADOS DRY LOGICA DE CARRUSEL INFINITO MEDIANTE ROTACION CIRCULAR DE NODOS EN EL DOM ANIMACION DE DEFORMACION POR INERCIA FISICA SKEWX AL DESLIZAR TEMA SOPORTE PARA NAVEGACION CON FLECHAS TACTICAS Y SWIPE TACTIL DRAG DE MOUSE */
 
-// --- 1. Catálogo de Datos de Categorías y Juegos Reales ---
+// CATALOGO DE RESPALDO LOCAL PARA RENDERIZAR INMEDIATAMENTE Y SOPORTAR OFFLINE
 const CATALOGO_CATEGORIAS = [
   {
     id: 'top',
@@ -178,7 +172,7 @@ const CATALOGO_CATEGORIAS = [
   }
 ];
 
-// --- 2. Clase CarruselInfinito ---
+// CLASE CARRUSELINFINITO
 class CarruselInfinito {
   constructor(contenedor) {
     this.contenedor = contenedor;
@@ -190,7 +184,7 @@ class CarruselInfinito {
     this.duracionMs = 380;
     this.timerSeguridad = null;
 
-    // Variables para soporte de arrastre / swipe
+    // VARIABLES PARA SOPORTE DE ARRASTRE SWIPE
     this.inicioX = 0;
     this.distanciaArrastre = 0;
     this.estaArrastrando = false;
@@ -198,7 +192,7 @@ class CarruselInfinito {
     this.iniciarEventos();
   }
 
-  // Obtiene el paso exacto de desplazamiento según el ancho de la primera card y el gap
+  // OBTIENE EL PASO EXACTO DE DESPLAZAMIENTO SEGUN EL ANCHO DE LA PRIMERA CARD Y EL GAP
   obtenerPaso() {
     const primeraCard = this.pista.querySelector('.card-juego');
     if (!primeraCard) return 265;
@@ -207,30 +201,30 @@ class CarruselInfinito {
     return primeraCard.offsetWidth + gap;
   }
 
-  // Desplazamiento hacia la derecha (Siguiente) con deformación inercial skewX(-4deg)
+  // DESPLAZAMIENTO HACIA LA DERECHA SIGUIENTE CON DEFORMACION INERCIAL SKEWX DEG
   avanzar() {
     if (this.enAnimacion || this.pista.children.length <= 1) return;
     this.enAnimacion = true;
 
     const paso = this.obtenerPaso();
 
-    // 1. Aplicar clase de deformación por inercia hacia adelante
+    // APLICAR CLASE DE DEFORMACION POR INERCIA HACIA ADELANTE
     this.pista.classList.add('deslizando-sig');
     this.pista.style.transition = `transform ${this.duracionMs}ms cubic-bezier(0.25, 1, 0.5, 1)`;
     this.pista.style.transform = `translateX(-${paso}px)`;
 
-    // 2. Al finalizar la transición, rotar nodo en el DOM y resetear posición
+    // AL FINALIZAR LA TRANSICION ROTAR NODO EN EL DOM Y RESETEAR POSICION
     const finalizarAvance = () => {
       clearTimeout(this.timerSeguridad);
       this.pista.removeEventListener('transitionend', onEnd);
 
       this.pista.style.transition = 'none';
-      // Mover el primer elemento al final de la pista
+      // MOVER EL PRIMER ELEMENTO AL FINAL DE LA PISTA
       this.pista.appendChild(this.pista.firstElementChild);
       this.pista.style.transform = 'translateX(0)';
       this.pista.classList.remove('deslizando-sig');
 
-      // Forzar reflujo para limpiar estilos antes de la próxima animación
+      // FORZAR REFLUJO PARA LIMPIAR ESTILOS ANTES DE LA PROXIMA ANIMACION
       void this.pista.offsetWidth;
       this.pista.style.transition = '';
       this.enAnimacion = false;
@@ -246,23 +240,23 @@ class CarruselInfinito {
     this.timerSeguridad = setTimeout(finalizarAvance, this.duracionMs + 60);
   }
 
-  // Desplazamiento hacia la izquierda (Anterior) con deformación inercial skewX(4deg)
+  // DESPLAZAMIENTO HACIA LA IZQUIERDA ANTERIOR CON DEFORMACION INERCIAL SKEWX DEG
   retroceder() {
     if (this.enAnimacion || this.pista.children.length <= 1) return;
     this.enAnimacion = true;
 
     const paso = this.obtenerPaso();
 
-    // 1. Mover el último elemento al inicio inmediatamente sin transición
+    // MOVER EL ULTIMO ELEMENTO AL INICIO INMEDIATAMENTE SIN TRANSICION
     this.pista.style.transition = 'none';
     this.pista.insertBefore(this.pista.lastElementChild, this.pista.firstElementChild);
     this.pista.style.transform = `translateX(-${paso}px)`;
     this.pista.classList.add('deslizando-ant');
 
-    // Forzar reflujo del navegador
+    // FORZAR REFLUJO DEL NAVEGADOR
     void this.pista.offsetWidth;
 
-    // 2. Animar hacia la posición neutra (translateX(0))
+    // ANIMAR HACIA LA POSICION NEUTRA TRANSLATEX
     this.pista.style.transition = `transform ${this.duracionMs}ms cubic-bezier(0.25, 1, 0.5, 1)`;
     this.pista.style.transform = 'translateX(0)';
 
@@ -286,7 +280,7 @@ class CarruselInfinito {
     this.timerSeguridad = setTimeout(finalizarRetroceso, this.duracionMs + 60);
   }
 
-  // Asociación de listeners para botones y gestos táctiles
+  // ASOCIACION DE LISTENERS PARA BOTONES Y GESTOS TACTILES
   iniciarEventos() {
     if (this.btnSig) {
       this.btnSig.addEventListener('click', () => this.avanzar());
@@ -296,7 +290,7 @@ class CarruselInfinito {
       this.btnAnt.addEventListener('click', () => this.retroceder());
     }
 
-    // Soporte táctil / mouse swipe
+    // SOPORTE TACTIL MOUSE SWIPE
     this.pista.addEventListener('pointerdown', (e) => {
       this.inicioX = e.clientX;
       this.estaArrastrando = true;
@@ -312,7 +306,7 @@ class CarruselInfinito {
       if (!this.estaArrastrando) return;
       this.estaArrastrando = false;
 
-      // Umbral de 45px para activar el avance o retroceso
+      // UMBRAL DE PX PARA ACTIVAR EL AVANCE O RETROCESO
       if (this.distanciaArrastre < -45) {
         this.avanzar();
       } else if (this.distanciaArrastre > 45) {
@@ -323,7 +317,7 @@ class CarruselInfinito {
   }
 }
 
-// --- 3. Renderizador del Catálogo Dinámico en index.html ---
+// RENDERIZADOR DEL CATALOGO DINAMICO EN INDEX HTML
 function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = CATALOGO_CATEGORIAS) {
   const contenedorPrincipal = document.getElementById(contenedorId);
   if (!contenedorPrincipal) return;
@@ -331,23 +325,23 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = C
   contenedorPrincipal.innerHTML = '';
 
   catalogo.forEach((categoria) => {
-    // 1. Crear sección semántica de la categoría
+    // CREAR SECCION SEMANTICA DE LA CATEGORIA
     const seccion = document.createElement('section');
     seccion.className = 'seccion-categoria';
     seccion.id = categoria.id;
     seccion.setAttribute('aria-label', `Categoría ${categoria.titulo}`);
 
-    // 2. Cabecera con título píldora
+    // CABECERA CON TITULO PILDORA
     const header = document.createElement('div');
     header.className = 'categoria-header';
     header.innerHTML = `<h2 class="categoria-titulo">${categoria.titulo}</h2>`;
     seccion.appendChild(header);
 
-    // 3. Contenedor del carrusel con flechas de navegación y viewport
+    // CONTENEDOR DEL CARRUSEL CON FLECHAS DE NAVEGACION Y VIEWPORT
     const carruselContenedor = document.createElement('div');
     carruselContenedor.className = 'carrusel-contenedor';
 
-    // Flecha Izquierda
+    // FLECHA IZQUIERDA
     const btnAnt = document.createElement('button');
     btnAnt.className = 'carrusel-flecha izquierda';
     btnAnt.setAttribute('aria-label', `Juegos anteriores de ${categoria.titulo}`);
@@ -357,16 +351,16 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = C
       </svg>
     `;
 
-    // Viewport y Pista
+    // VIEWPORT Y PISTA
     const viewport = document.createElement('div');
     viewport.className = 'carrusel-viewport';
 
     const pista = document.createElement('div');
     pista.className = 'carrusel-pista';
 
-    // Renderizar cada card de juego
+    // RENDERIZAR CADA CARD DE JUEGO
     categoria.juegos.forEach((juego) => {
-      // En categorías premium mostramos COMPRAR, en el resto JUGAR
+      // EN CATEGORIAS PREMIUM MOSTRAMOS COMPRAR EN EL RESTO JUGAR
       const esPremium = categoria.id === 'premium' || juego.premium;
       const textoBoton = esPremium ? 'COMPRAR' : 'JUGAR';
       const claseBoton = esPremium ? 'btn-card-accion btn-comprar' : 'btn-card-accion btn-jugar';
@@ -384,7 +378,7 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = C
         card.setAttribute('title', `Jugar a ${juego.titulo}`);
       }
 
-      // Si es premium, añadir badge circular de diamante azul o corona
+      // SI ES PREMIUM ANADIR BADGE CIRCULAR DE DIAMANTE AZUL O CORONA
       let badgeHtml = '';
       if (juego.premium) {
         badgeHtml = `<img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">`;
@@ -402,7 +396,7 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = C
 
     viewport.appendChild(pista);
 
-    // Flecha Derecha
+    // FLECHA DERECHA
     const btnSig = document.createElement('button');
     btnSig.className = 'carrusel-flecha derecha';
     btnSig.setAttribute('aria-label', `Siguientes juegos de ${categoria.titulo}`);
@@ -419,19 +413,19 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = C
     seccion.appendChild(carruselContenedor);
     contenedorPrincipal.appendChild(seccion);
 
-    // 4. Instanciar la lógica de carrusel infinito para esta categoría
+    // INSTANCIAR LA LOGICA DE CARRUSEL INFINITO PARA ESTA CATEGORIA
     new CarruselInfinito(carruselContenedor);
   });
 }
 
-// --- 4. Inicialización: Render inmediato offline + Hidratación dinámica desde la API ---
-// Las funciones de petición HTTP y formateo (obtenerVideojuegosAPI, clasificarJuegosEnCategorias)
-// se encuentran modularizadas en js/api.js cumpliendo con la separación de responsabilidades.
+// INICIALIZACION RENDER INMEDIATO OFFLINE HIDRATACION DINAMICA DESDE LA API
+// LAS FUNCIONES DE PETICION HTTP Y FORMATEO OBTENERVIDEOJUEGOSAPI CLASIFICARJUEGOSENCATEGORIAS
+// SE ENCUENTRAN MODULARIZADAS EN JS API JS CUMPLIENDO CON LA SEPARACION DE RESPONSABILIDADES
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Render inmediato con catálogo de respaldo local (First Contentful Paint instantáneo y soporte offline)
+  // RENDER INMEDIATO CON CATALOGO DE RESPALDO LOCAL FIRST CONTENTFUL PAINT INSTANTANEO Y SOPORTE OFFLINE
   renderizarCatalogo('contenedor-categorias', CATALOGO_CATEGORIAS);
 
-  // 2. Consulta asíncrona a la API oficial de la cátedra
+  // CONSULTA ASINCRONA A LA API OFICIAL DE LA CATEDRA
   if (typeof obtenerVideojuegosAPI === 'function' && typeof clasificarJuegosEnCategorias === 'function') {
     try {
       const juegosAPI = await obtenerVideojuegosAPI();

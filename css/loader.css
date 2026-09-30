@@ -1,10 +1,7 @@
-/* ==========================================================================
-   COMPONENTE: PANTALLA DE CARGA (LOADER 5s)
-   Requerimiento Mandatorio Nº 3 (Optimizado con operadores relativos)
-   ========================================================================== */
+/* COMPONENTE PANTALLA DE CARGA LOADER S REQUERIMIENTO MANDATORIO N OPTIMIZADO CON OPERADORES RELATIVOS */
 
 .pantalla-carga {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: fixed;
   top: 0;
   left: 0;
@@ -12,12 +9,12 @@
   width: 100vw;
   height: 100vh;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-fondo);
   opacity: 1;
   visibility: visible;
@@ -25,67 +22,67 @@
 }
 
 .pantalla-carga.loader-oculto {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
 .pantalla-carga > div {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
-/* Contenedor del Logo en Carga */
+/* CONTENEDOR DEL LOGO EN CARGA */
 .loader-logo {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 220px;
   aspect-ratio: 587 / 425;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   transition: transform 0.4s ease-in-out;
 }
 
 .loader-logo.pulsando {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   transform: scale(1.06);
 }
 
 .loader-logo img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
-/* Silueta oscura de fondo (guía) */
+/* SILUETA OSCURA DE FONDO GUIA */
 .loader-logo img:first-child {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   opacity: 0.1;
   filter: grayscale(1);
 }
 
-/* Logo a color que se va revelando de abajo hacia arriba */
+/* LOGO A COLOR QUE SE VA REVELANDO DE ABAJO HACIA ARRIBA */
 .loader-logo img:last-child {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   clip-path: inset(100% 0 0 0);
   filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.4));
   transition: clip-path 0.05s linear;
 }
 
 .pantalla-carga p {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
   font-size: 2rem;
   font-weight: 700;
@@ -93,7 +90,7 @@
 }
 
 .pantalla-carga span {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }

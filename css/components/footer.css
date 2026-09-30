@@ -1,16 +1,13 @@
-/* ==========================================================================
-   COMPONENTE: FAT FOOTER INSTITUCIONAL
-   Optimizado con operadores relativos y eliminación de wrappers innecesarios
-   ========================================================================== */
+/* COMPONENTE FAT FOOTER INSTITUCIONAL OPTIMIZADO CON OPERADORES RELATIVOS Y ELIMINACION DE WRAPPERS INNECESARIOS */
 
 .footer-principal {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   margin-top: 60px;
   overflow: hidden;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-primario-oscuro);
   border-top: 1px solid var(--color-secundario);
   border-radius: var(--radio-card) var(--radio-card) 0 0;
@@ -19,253 +16,243 @@
 }
 
 .footer-principal h4 {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   margin-bottom: 14px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   font-size: var(--tamano-h3);
   border-bottom: 1.5px solid var(--color-blanco);
   text-align: center;
 }
 
 .footer-principal a {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   gap: 10px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   white-space: nowrap;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-principal a:hover {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: translateX(4px);
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
-/* Contenedor Principal: 2 Cajas Principales */
+/* CONTENEDOR PRINCIPAL CAJAS PRINCIPALES */
 .footer-principal > .footer-contenedor {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 0 auto;
   padding: 40px 24px;
 
-  /* 2. Disposición interna: Mobile First (columna centrada) */
+  /* DISPOSICION INTERNA MOBILE FIRST COLUMNA CENTRADA */
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 60px;
 }
 
-/* ==========================================================================
-   CAJA 1: Marca y descripción (Izquierda en desktop)
-   ========================================================================== */
+/* CAJA MARCA Y DESCRIPCION IZQUIERDA EN DESKTOP */
 .footer-contenedor > .footer-marca {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 360px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .footer-marca > img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: auto;
   height: 190px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 .footer-marca > p {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 360px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   font-size: inherit;
   line-height: 1.6;
   text-align: center;
 }
 
-/* ==========================================================================
-   CAJA 2: Grilla de enlaces y navegación (Derecha en desktop)
-   ========================================================================== */
+/* CAJA GRILLA DE ENLACES Y NAVEGACION DERECHA EN DESKTOP */
 .footer-contenedor > .footer-links-grid {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 970px;
 
-  /* 2. Disposición interna: Mobile First (1 columna centrada) */
+  /* DISPOSICION INTERNA MOBILE FIRST COLUMNA CENTRADA */
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
   justify-items: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .footer-links-grid > div {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 260px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .footer-links-grid ul {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   list-style: none;
 }
 
 .footer-links-grid a img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 18px;
   height: 18px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
-/* Bloque Soporte (ocupa todo el ancho de la grilla de links) */
+/* BLOQUE SOPORTE OCUPA TODO EL ANCHO DE LA GRILLA DE LINKS */
 .footer-links-grid > .footer-soporte {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 100%;
   margin-top: 10px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .footer-soporte > h4 {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   max-width: 620px;
 }
 
 .footer-soporte > div {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 620px;
 
-  /* 2. Disposición interna: Grilla de links de soporte */
+  /* DISPOSICION INTERNA GRILLA DE LINKS DE SOPORTE */
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
   justify-items: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
-/* ==========================================================================
-   BARRA INFERIOR DE COPYRIGHT
-   ========================================================================== */
+/* BARRA INFERIOR DE COPYRIGHT */
 .footer-principal > .footer-bottom {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 16px 20px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-primario-oscuro2);
   text-align: center;
 }
 
 .footer-bottom > p {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   font-size: var(--tamano-small);
   line-height: 1.4;
 }
 
-/* ==========================================================================
-   RESPONSIVE: TABLET (min-width: 600px)
-   ========================================================================== */
+/* RESPONSIVE TABLET MIN WIDTH PX */
 @media (min-width: 600px) {
   .footer-principal {
-    /* 3. Detalles estéticos */
+    /* DETALLES ESTETICOS */
     font-size: var(--tamano-body);
   }
 
   .footer-contenedor > .footer-links-grid {
-    /* 2. Disposición interna: 3 columnas de navegación */
+    /* DISPOSICION INTERNA COLUMNAS DE NAVEGACION */
     grid-template-columns: repeat(3, 1fr);
   }
 
   .footer-links-grid > div {
-    /* 1. Posicionamiento y modelo de caja */
+    /* POSICIONAMIENTO Y MODELO DE CAJA */
     max-width: 100%;
 
-    /* 2. Disposición interna */
+    /* DISPOSICION INTERNA */
     align-items: flex-start;
   }
 
   .footer-links-grid > div > h4 {
-    /* 3. Detalles estéticos */
+    /* DETALLES ESTETICOS */
     text-align: left;
   }
 
   .footer-links-grid ul {
-    /* 2. Disposición interna */
+    /* DISPOSICION INTERNA */
     align-items: flex-start;
   }
 
   .footer-links-grid > .footer-soporte {
-    /* 1. Posicionamiento y modelo de caja */
+    /* POSICIONAMIENTO Y MODELO DE CAJA */
     grid-column: 1 / -1;
   }
 
   .footer-soporte > h4 {
-    /* 3. Detalles estéticos */
+    /* DETALLES ESTETICOS */
     text-align: center;
   }
 
   .footer-soporte > div {
-    /* 2. Disposición interna */
+    /* DISPOSICION INTERNA */
     grid-template-columns: repeat(2, 1fr);
     justify-items: start;
 
-    /* 3. Detalles estéticos */
+    /* DETALLES ESTETICOS */
     text-align: left;
   }
 }
 
-/* ==========================================================================
-   RESPONSIVE: DESKTOP (min-width: 992px)
-   ========================================================================== */
+/* RESPONSIVE DESKTOP MIN WIDTH PX */
 @media (min-width: 992px) {
   .footer-principal > .footer-contenedor {
-    /* 2. Disposición interna: 2 cajas lado a lado */
+    /* DISPOSICION INTERNA CAJAS LADO A LADO */
     flex-direction: row;
     justify-content: space-between;
     gap: 150px;

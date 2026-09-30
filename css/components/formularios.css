@@ -1,50 +1,47 @@
-/* ==========================================================================
-   COMPONENTE: FORMULARIOS E INPUTS
-   Optimizado con operadores relativos y eliminación de clases redundantes
-   ========================================================================== */
+/* COMPONENTE FORMULARIOS E INPUTS OPTIMIZADO CON OPERADORES RELATIVOS Y ELIMINACION DE CLASES REDUNDANTES */
 
-/* Grupo o fila de campo en formularios */
+/* GRUPO O FILA DE CAMPO EN FORMULARIOS */
 form > div {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   margin-bottom: 12px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 4px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   text-align: left;
 }
 
 form label {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 400;
 }
 
-/* Envoltorio específico cuando un input tiene botón interno (ej. contraseña) */
+/* ENVOLTORIO ESPECIFICO CUANDO UN INPUT TIENE BOTON INTERNO EJ CONTRASENA */
 .campo-password {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
 }
 
-/* Input con fondo blanco del prototipo original */
+/* INPUT CON FONDO BLANCO DEL PROTOTIPO ORIGINAL */
 form input:not([type="checkbox"]) {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   min-height: 42px;
   padding: 8px 14px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-blanco);
   color: var(--color-negro);
   font-size: var(--tamano-small);
@@ -54,30 +51,30 @@ form input:not([type="checkbox"]) {
 }
 
 form input:not([type="checkbox"])::placeholder {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
 }
 
 form input:not([type="checkbox"]):focus {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   border-color: var(--color-secundario);
   box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
   outline: none;
 }
 
-/* Icono ojo ver/ocultar contraseña */
+/* ICONO OJO VER OCULTAR CONTRASENA */
 .btn-toggle-password {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   right: 12px;
   padding: 4px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: none;
   border: none;
   cursor: pointer;
@@ -85,25 +82,25 @@ form input:not([type="checkbox"]):focus {
 
 .btn-toggle-password svg,
 .btn-toggle-password img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 20px;
   height: 20px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   filter: invert(0.2);
 }
 
-/* Checkbox de Términos (Registro) */
+/* CHECKBOX DE TERMINOS REGISTRO */
 .grupo-checkbox {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 10px 0 14px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: flex-start;
   gap: 10px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.4;
@@ -111,93 +108,91 @@ form input:not([type="checkbox"]):focus {
 }
 
 .grupo-checkbox input[type="checkbox"] {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 18px;
   min-width: 18px;
   height: 18px;
   margin-top: 1px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   accent-color: var(--color-secundario);
   cursor: pointer;
 }
 
 .grupo-checkbox a {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
   font-weight: 500;
   text-decoration: underline;
 }
 
-/* Mockup ReCaptcha en Registro */
+/* MOCKUP RECAPTCHA EN REGISTRO */
 .recaptcha-card {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 300px;
   margin: 6px auto 14px;
   padding: 8px 12px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-recaptcha-fondo);
   border: 1px solid var(--color-recaptcha-borde);
   border-radius: 4px;
 }
 
 .recaptcha-card > label {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   gap: 10px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-negro);
   font-family: Arial, sans-serif;
   font-size: 13px;
 }
 
 .recaptcha-card input[type="checkbox"] {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 22px;
   height: 22px;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   cursor: pointer;
 }
 
 .recaptcha-card > div {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-family: Arial, sans-serif;
   font-size: 9px;
 }
 
 .recaptcha-card img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 24px;
   height: 24px;
 }
 
-/* ==========================================================================
-   ESTADOS DE VALIDACIÓN (Visual en tiempo real)
-   ========================================================================== */
+/* ESTADOS DE VALIDACION VISUAL EN TIEMPO REAL */
 .input-valido {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   border-color: var(--color-exito) !important;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3) !important;
 }
 
 .input-invalido {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   border-color: var(--color-error) !important;
   box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.3) !important;
 }

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peg Solitaire — Sala de Juego</title>
   
-  <!-- Estilos del Sistema -->
+  <!-- ESTILOS DEL SISTEMA -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components/botones.css">
@@ -18,9 +18,7 @@
 </head>
 <body>
 
-  <!-- ====================================================================
-       BARRA DE NAVEGACIÓN SUPERIOR (NAVBAR)
-       ==================================================================== -->
+  <!-- BARRA DE NAVEGACION SUPERIOR NAVBAR -->
   <header class="nav-principal">
     <div class="nav-contenedor">
       
@@ -42,7 +40,7 @@
         </form>
       </div>
 
-      <!-- Lado Derecho: Avatar Circular del Soldado y Menú Desplegable -->
+      <!-- LADO DERECHO AVATAR CIRCULAR DEL SOLDADO Y MENU DESPLEGABLE -->
       <div class="nav-derecha">
         <div class="perfil-menu-contenedor">
           <button type="button" id="btn-perfil" aria-expanded="false" aria-haspopup="true" aria-controls="menu-perfil" aria-label="Abrir opciones de usuario">
@@ -62,7 +60,7 @@
     </div>
   </header>
 
-  <!-- SIDEBAR OFF-CANVAS -->
+  <!-- SIDEBAR OFF CANVAS -->
   <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <aside class="sidebar" id="sidebar">
     <header>
@@ -83,23 +81,19 @@
     </ul>
   </aside>
 
-  <!-- ====================================================================
-       CONTENIDO PRINCIPAL: EJECUCIÓN DE JUEGO
-       ==================================================================== -->
+  <!-- CONTENIDO PRINCIPAL EJECUCION DE JUEGO -->
   <main class="pagina-juego-main">
 
-    <!-- Breadcrumbs -->
+    <!-- BREADCRUMBS -->
     <nav class="breadcrumbs" aria-label="Ruta de navegación">
       <a href="index.html">Home</a> &gt; <a href="index.html#top" id="game-breadcrumb-categoria">Catálogo</a> &gt; <span id="game-breadcrumb-titulo">Peg Solitaire</span>
     </nav>
 
-    <!-- ====================================================================
-         ÁREA DE EJECUCIÓN DEL JUEGO (1190 x 480 con splash minimalista)
-         ==================================================================== -->
+    <!-- AREA DE EJECUCION DEL JUEGO X CON SPLASH MINIMALISTA -->
     <section class="area-ejecucion-juego" aria-label="Área de Juego">
       
       <div id="game-splash-pantalla">
-        <!-- Splash con Botón Naranja "Jugar" -->
+        <!-- SPLASH CON BOTON NARANJA JUGAR -->
         <div>
           <button id="btn-iniciar-partida">
             Jugar
@@ -107,22 +101,22 @@
         </div>
       </div>
 
-      <!-- Barra de Ejecución Inferior -->
+      <!-- BARRA DE EJECUCION INFERIOR -->
       <div class="barra-ejecucion">
         <span id="game-barra-titulo">Peg Solitaire</span>
 
         <div>
-          <!-- Icono 1: Guardar en Favoritos -->
+          <!-- ICONO GUARDAR EN FAVORITOS -->
           <button id="btn-guardar-juego" title="Guardar">
             <img src="assets/icons/icon-save.svg" alt="Guardar">
           </button>
 
-          <!-- Icono 2: Compartir -->
+          <!-- ICONO COMPARTIR -->
           <button id="btn-compartir-juego" title="Compartir">
             <img src="assets/icons/icon-share.svg" alt="Compartir">
           </button>
 
-          <!-- Icono 3: Pantalla Completa -->
+          <!-- ICONO PANTALLA COMPLETA -->
           <button id="btn-fullscreen" title="Pantalla Completa">
             <img src="assets/icons/icon-fullscreen.svg" alt="Pantalla Completa">
           </button>
@@ -131,17 +125,15 @@
 
     </section>
 
-    <!-- ====================================================================
-         SECCIÓN: CÓMO JUGAR? Y GALERÍA MULTIMEDIA
-         ==================================================================== -->
+    <!-- SECCION COMO JUGAR Y GALERIA MULTIMEDIA -->
     <section class="seccion-about-juego" aria-label="Instrucciones y Galería">
       
-      <!-- Columna 1: Instrucciones y Controles Resumidos -->
+      <!-- COLUMNA INSTRUCCIONES Y CONTROLES RESUMIDOS -->
       <div class="contenedor-instrucciones">
         <h2>COMO JUGAR?</h2>
         
         <div class="lista-reglas">
-          <!-- Tarjeta de Controles Resumida con Mouse -->
+          <!-- TARJETA DE CONTROLES RESUMIDA CON MOUSE -->
           <div class="card-controles">
             <h3>Controles</h3>
             <img src="assets/icons/icon-mouse.svg" alt="Controles con mouse">
@@ -160,7 +152,7 @@
         </div>
       </div>
 
-      <!-- Columna 2: Galería 2x2 -->
+      <!-- COLUMNA GALERIA X -->
       <div class="contenedor-galeria">
         <h2>GALERIA</h2>
         
@@ -171,7 +163,7 @@
           
           <div>
             <img src="assets/images/game_solitaire_1.jpg" alt="Avance táctico">
-            <!-- Botón Naranja de Play Centrado -->
+            <!-- BOTON NARANJA DE PLAY CENTRADO -->
             <div class="btn-galeria-play" title="Ver jugada">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <polygon points="18,12 36,24 18,36" fill="#FF6B00"></polygon>
@@ -191,13 +183,11 @@
 
     </section>
 
-    <!-- ====================================================================
-         SECCIÓN: COMENTARIOS
-         ==================================================================== -->
+    <!-- SECCION COMENTARIOS -->
     <section class="seccion-comentarios" aria-label="Comentarios">
       <h2>COMENTARIOS</h2>
 
-      <!-- Formulario de Entrada: Avatar con nombre abajo + barra blanca píldora -->
+      <!-- FORMULARIO DE ENTRADA AVATAR CON NOMBRE ABAJO BARRA BLANCA PILDORA -->
       <form class="comentario-form" id="form-nuevo-comentario" onsubmit="event.preventDefault();">
         <div class="comentario-autor-actual">
           <div>
@@ -218,10 +208,10 @@
         </div>
       </form>
 
-      <!-- Lista Abierta de Comentarios -->
+      <!-- LISTA ABIERTA DE COMENTARIOS -->
       <div class="comentarios-lista" id="lista-comentarios">
         
-        <!-- Comentario 1: Esteban -->
+        <!-- COMENTARIO ESTEBAN -->
         <article class="comentario-item">
           <div>
             <img src="assets/icons/icon-profile.svg" alt="Esteban">
@@ -237,7 +227,7 @@
           </div>
         </article>
 
-        <!-- Comentario 2: Aitor -->
+        <!-- COMENTARIO AITOR -->
         <article class="comentario-item">
           <div>
             <img src="assets/icons/icon-profile.svg" alt="Aitor">
@@ -253,7 +243,7 @@
           </div>
         </article>
 
-        <!-- Comentario 3: Esteban -->
+        <!-- COMENTARIO ESTEBAN -->
         <article class="comentario-item">
           <div>
             <img src="assets/icons/icon-profile.svg" alt="Esteban">
@@ -274,13 +264,11 @@
 
   </main>
 
-  <!-- ====================================================================
-       FAT FOOTER INSTITUCIONAL
-       ==================================================================== -->
+  <!-- FAT FOOTER INSTITUCIONAL -->
   <footer class="footer-principal">
     <div class="footer-contenedor">
        
-      <!-- Caja 1: Marca y descripción -->
+      <!-- CAJA MARCA Y DESCRIPCION -->
       <div class="footer-marca">
         <img src="assets/logo.png" alt="Logotipo Plataforma">
         <p>
@@ -288,7 +276,7 @@
         </p>
       </div>
 
-      <!-- Caja 2: Contenedor de links (Grid) -->
+      <!-- CAJA CONTENEDOR DE LINKS GRID -->
       <div class="footer-links-grid">
         <div>
           <h4>Sobre nosotros</h4>
@@ -322,7 +310,7 @@
           </ul>
         </div>
 
-        <!-- Sección Soporte dentro del bloque de navegación -->
+        <!-- SECCION SOPORTE DENTRO DEL BLOQUE DE NAVEGACION -->
         <div class="footer-soporte">
           <h4>Soporte</h4>
           <div>
@@ -338,7 +326,7 @@
 
     </div>
 
-    <!-- Barra Inferior -->
+    <!-- BARRA INFERIOR -->
     <div class="footer-bottom">
       <p>© Copyright - 2026</p>
       <p>Todos los derechos reservados</p>

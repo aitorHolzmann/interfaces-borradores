@@ -1,14 +1,8 @@
-/* ==========================================================================
-   CARDS DE JUEGOS — ESTILOS Y ANIMACIONES (FIDELIDAD FIGMA + TEMA 2)
-   - Reposo: solo se ve la foto limpia y el badge si es premium
-   - Hover: la tarjeta se agranda, sube con z-index, aparece el titulo y el boton
-   - Boton de accion: JUGAR (o COMPRAR en premium), con estilos de game.html y hover propio
-   - Deslizamiento: efecto de inercia con skewX segun el Tema 2 de la catedra
-   ========================================================================== */
+/* CARDS DE JUEGOS ESTILOS Y ANIMACIONES FIDELIDAD FIGMA TEMA REPOSO SOLO SE VE LA FOTO LIMPIA Y EL BADGE SI ES PREMIUM HOVER LA TARJETA SE AGRANDA SUBE CON Z INDEX APARECE EL TITULO Y EL BOTON BOTON DE ACCION JUGAR O COMPRAR EN PREMIUM CON ESTILOS DE GAME HTML Y HOVER PROPIO DESLIZAMIENTO EFECTO DE INERCIA CON SKEWX SEGUN EL TEMA DE LA CATEDRA */
 
-/* tarjeta base: tamaño fijo para que no se deforme en el flex, bordes redondeados y transicion suave */
+/* TARJETA BASE TAMANO FIJO PARA QUE NO SE DEFORME EN EL FLEX BORDES REDONDEADOS Y TRANSICION SUAVE */
 .card-juego {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   z-index: 1;
   width: 245px;
@@ -16,11 +10,11 @@
   height: 175px;
   overflow: hidden;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: block;
   flex: 0 0 auto;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   border-radius: var(--radio-card);
   box-shadow: var(--sombra-card);
   text-decoration: none;
@@ -28,9 +22,9 @@
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
 
-/* sombreado negro abajo que arranca transparente para que cuando suba el texto se lea de diez sin tapar toda la foto */
+/* SOMBREADO NEGRO ABAJO QUE ARRANCA TRANSPARENTE PARA QUE CUANDO SUBA EL TEXTO SE LEA DE DIEZ SIN TAPAR TODA LA FOTO */
 .card-juego::after {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   content: "";
   position: absolute;
   right: 0;
@@ -39,55 +33,55 @@
   z-index: 2;
   height: 65%;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background: linear-gradient(to top, rgba(14, 16, 14, 0.95) 0%, rgba(14, 16, 14, 0.6) 60%, transparent 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.28s ease;
 }
 
-/* hover y focus: cuando pasas el mouse o navegas con teclado (tab), agrandamos la card un 8% y le metemos z-index alto para que no quede abajo de las vecinas */
+/* HOVER Y FOCUS CUANDO PASAS EL MOUSE O NAVEGAS CON TECLADO TAB AGRANDAMOS LA CARD UN Y LE METEMOS Z INDEX ALTO PARA QUE NO QUEDE ABAJO DE LAS VECINAS */
 .card-juego:hover,
 .card-juego:focus-visible {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   z-index: 10;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   box-shadow: var(--sombra-card-hover), 0 0 16px rgba(130, 142, 59, 0.45);
   transform: scale(1.08);
 }
 
-/* activamos el sombreado oscuro en hover para darle contraste al texto */
+/* ACTIVAMOS EL SOMBREADO OSCURO EN HOVER PARA DARLE CONTRASTE AL TEXTO */
 .card-juego:hover::after,
 .card-juego:focus-visible::after {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   opacity: 1;
 }
 
-/* foto de portada del juego */
+/* FOTO DE PORTADA DEL JUEGO */
 .card-img {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 100%;
   height: 100%;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: block;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   object-fit: cover;
   transition: transform 0.35s ease;
 }
 
-/* un zoom chiquito a la imagen cuando pasamos el cursor para que quede mas vivo */
+/* UN ZOOM CHIQUITO A LA IMAGEN CUANDO PASAMOS EL CURSOR PARA QUE QUEDE MAS VIVO */
 .card-juego:hover .card-img,
 .card-juego:focus-visible .card-img {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: scale(1.04);
 }
 
-/* boton de accion rapida (JUGAR / COMPRAR) que aparece en el centro de la card al hacer hover */
+/* BOTON DE ACCION RAPIDA JUGAR COMPRAR QUE APARECE EN EL CENTRO DE LA CARD AL HACER HOVER */
 .btn-card-accion {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: 40%;
   left: 50%;
@@ -95,12 +89,12 @@
   z-index: 5;
   padding: 8px 24px;
 
-  /* 2. Disposicion interna */
+  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   color: var(--color-blanco);
   font-size: 13px;
@@ -115,20 +109,20 @@
   transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
 }
 
-/* en hover de la card, el boton se hace visible y toma su tamaño natural */
+/* EN HOVER DE LA CARD EL BOTON SE HACE VISIBLE Y TOMA SU TAMANO NATURAL */
 .card-juego:hover .btn-card-accion,
 .card-juego:focus-visible .btn-card-accion {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* hover propio del boton JUGAR: se eleva un toque, se llena de naranja y larga un brillo glow */
+/* HOVER PROPIO DEL BOTON JUGAR SE ELEVA UN TOQUE SE LLENA DE NARANJA Y LARGA UN BRILLO GLOW */
 .btn-card-accion:hover {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   transform: translate(-50%, -56%) scale(1.06);
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border-color: var(--color-acento-claro);
@@ -136,30 +130,30 @@
 }
 
 .btn-card-accion:active {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   transform: translate(-50%, -48%) scale(0.96);
 }
 
-/* estilo especial para el boton COMPRAR de los juegos premium: borde y glow dorado */
+/* ESTILO ESPECIAL PARA EL BOTON COMPRAR DE LOS JUEGOS PREMIUM BORDE Y GLOW DORADO */
 .btn-card-accion.btn-comprar {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   border-color: var(--color-premium);
 }
 
 .btn-card-accion.btn-comprar:hover {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   transform: translate(-50%, -56%) scale(1.06);
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-premium);
   color: var(--color-negro);
   border-color: var(--color-blanco);
   box-shadow: 0 6px 20px rgba(229, 184, 11, 0.75), 0 0 14px var(--color-premium);
 }
 
-/* titulo del juego: letra agrandada y bien legible, relleno blanco y bordes negros */
+/* TITULO DEL JUEGO LETRA AGRANDADA Y BIEN LEGIBLE RELLENO BLANCO Y BORDES NEGROS */
 .card-titulo {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   right: 8px;
   bottom: 12px;
@@ -169,7 +163,7 @@
   padding: 0 4px;
   overflow: hidden;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 17px;
   font-weight: 700;
@@ -186,17 +180,17 @@
   transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* cuando hacemos hover, el titulo sube a su posicion natural y se hace visible con transicion suave */
+/* CUANDO HACEMOS HOVER EL TITULO SUBE A SU POSICION NATURAL Y SE HACE VISIBLE CON TRANSICION SUAVE */
 .card-juego:hover .card-titulo,
 .card-juego:focus-visible .card-titulo {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   opacity: 1;
   transform: translateY(0);
 }
 
-/* insignia para identificar los juegos premium */
+/* INSIGNIA PARA IDENTIFICAR LOS JUEGOS PREMIUM */
 .badge-premium-icon {
-  /* 1. Alineacion propia y modelo de caja */
+  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: 10px;
   left: 10px;
@@ -205,7 +199,7 @@
   max-width: 105px;
   height: 22px;
 
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   border-radius: var(--radio-sm);
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.65));
   pointer-events: none;
@@ -214,18 +208,18 @@
 
 .card-juego:hover .badge-premium-icon,
 .card-juego:focus-visible .badge-premium-icon {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: scale(1.08);
 }
 
-/* animacion del tema 2 (filmina 10): al deslizar a la derecha las cards se inclinan por inercia */
+/* ANIMACION DEL TEMA FILMINA AL DESLIZAR A LA DERECHA LAS CARDS SE INCLINAN POR INERCIA */
 .carrusel-pista.deslizando-sig .card-juego {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: skewX(-8deg) scale(0.97);
 }
 
-/* y cuando retrocedemos a la izquierda se inclinan para el otro lado */
+/* Y CUANDO RETROCEDEMOS A LA IZQUIERDA SE INCLINAN PARA EL OTRO LADO */
 .carrusel-pista.deslizando-ant .card-juego {
-  /* 3. Detalles esteticos */
+  /* DETALLES ESTETICOS */
   transform: skewX(8deg) scale(0.97);
 }

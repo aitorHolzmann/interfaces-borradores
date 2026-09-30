@@ -1,11 +1,7 @@
-/* ==========================================================================
-   INTERACTIVIDAD GLOBAL — MAIN.JS
-   - Control del menú lateral (Sidebar / Hamburguesa)
-  - Controles de navegación del carrusel principal 3D
-   ========================================================================== */
+/* INTERACTIVIDAD GLOBAL MAIN JS CONTROL DEL MENU LATERAL SIDEBAR HAMBURGUESA CONTROLES DE NAVEGACION DEL CARRUSEL PRINCIPAL D */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 1. Control del Sidebar Móvil y Desktop ---
+  // CONTROL DEL SIDEBAR MOVIL Y DESKTOP
   const btnToggleSidebar = document.getElementById('btn-toggle-sidebar');
   const btnCerrarSidebar = document.getElementById('btn-cerrar-sidebar');
   const sidebar = document.getElementById('sidebar');
@@ -46,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 2. Control del Menú Desplegable de Perfil / Usuario ---
+  // CONTROL DEL MENU DESPLEGABLE DE PERFIL USUARIO
   const btnPerfil = document.getElementById('btn-perfil');
   const menuPerfil = document.getElementById('menu-perfil');
 
@@ -83,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnPerfil.addEventListener('click', toggleMenuPerfil);
   }
 
-  // Cerrar al clickear fuera del menú
+  // CERRAR AL CLICKEAR FUERA DEL MENU
   document.addEventListener('click', (e) => {
     if (menuPerfil && menuPerfil.classList.contains('abierto')) {
       if (!menuPerfil.contains(e.target) && !btnPerfil.contains(e.target)) {
@@ -92,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Cerrar al presionar la tecla Escape
+  // CERRAR AL PRESIONAR LA TECLA ESCAPE
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menuPerfil && menuPerfil.classList.contains('abierto')) {
       cerrarMenuPerfil();
@@ -100,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Opciones de demo: Editar Perfil y Biblioteca cierran el dropdown
+  // OPCIONES DE DEMO EDITAR PERFIL Y BIBLIOTECA CIERRAN EL DROPDOWN
   const menuPerfilEnlaces = document.querySelectorAll('.menu-desplegable-perfil a:not(:last-child)');
   menuPerfilEnlaces.forEach((enlace) => {
     enlace.addEventListener('click', (e) => {
@@ -109,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 3. Control del carrusel principal 3D ---
+  // CONTROL DEL CARRUSEL PRINCIPAL D
   const carruselPrincipal = document.getElementById('carrusel-principal-3d');
   const contenedorCarruselPrincipal = document.querySelector('.carrusel-principal-contenedor');
   const carruselPrincipalBtnAnt = document.getElementById('carrusel-principal-btn-ant');
@@ -122,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function rotarCarruselManual(direccion) {
     if (!carruselPrincipal) return;
 
-    // Cada cara está separada 120 grados (360 / 3)
+    // CADA CARA ESTA SEPARADA GRADOS
     if (direccion === 'sig') {
       anguloCarruselPrincipal -= 120;
     } else {
@@ -149,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rotarCarruselManual(direccion);
     pausarGiroAutomatico();
 
-    // Dejamos tiempo para inspeccionar la imagen elegida antes de continuar
+    // DEJAMOS TIEMPO PARA INSPECCIONAR LA IMAGEN ELEGIDA ANTES DE CONTINUAR
     timerReanudarAuto = setTimeout(() => {
       iniciarGiroAutomatico();
     }, 8000);
@@ -190,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     iniciarGiroAutomatico();
   }
 
-  // --- 4. Interacción de Comentarios en Sala de Juego ---
+  // INTERACCION DE COMENTARIOS EN SALA DE JUEGO
   const formNuevoComentario = document.getElementById('form-nuevo-comentario');
   const inputComentario = document.getElementById('input-comentario');
   const listaComentarios = document.getElementById('lista-comentarios');
@@ -239,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- 5. Control del Modal de Compra (Pase de Batalla) ---
+  // CONTROL DEL MODAL DE COMPRA PASE DE BATALLA
   const modalPaseBatalla = document.getElementById('modal-pase-batalla');
   const btnCerrarModal = document.getElementById('btn-cerrar-modal');
   const btnModalComprar = document.getElementById('btn-modal-comprar');
@@ -250,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalPaseBatalla.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 
-    // Foco accesible al botón de cierre
+    // FOCO ACCESIBLE AL BOTON DE CIERRE
     if (btnCerrarModal) {
       btnCerrarModal.focus();
     }
@@ -262,15 +258,15 @@ document.addEventListener('DOMContentLoaded', () => {
     modalPaseBatalla.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
 
-    // Si la URL contiene el hash, lo limpiamos sin recargar para anular :target
+    // SI LA URL CONTIENE EL HASH LO LIMPIAMOS SIN RECARGAR PARA ANULAR TARGET
     if (window.location.hash === '#modal-pase-batalla') {
       history.pushState('', document.title, window.location.pathname + window.location.search);
     }
   }
 
-  // Delegación de eventos para capturar clicks en botones de comprar o cards premium
+  // DELEGACION DE EVENTOS PARA CAPTURAR CLICKS EN BOTONES DE COMPRAR O CARDS PREMIUM
   document.addEventListener('click', (e) => {
-    // Si clickea el botón de comprar de cualquier card
+    // SI CLICKEA EL BOTON DE COMPRAR DE CUALQUIER CARD
     const btnComprar = e.target.closest('.btn-comprar');
     if (btnComprar) {
       e.preventDefault();
@@ -279,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Si clickea en cualquier lugar de una card premium
+    // SI CLICKEA EN CUALQUIER LUGAR DE UNA CARD PREMIUM
     const cardPremium = e.target.closest('.card-premium') || e.target.closest('#premium .card-juego');
     if (cardPremium) {
       e.preventDefault();
@@ -288,27 +284,27 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Botón de cierre (cruz)
+    // BOTON DE CIERRE CRUZ
     if (e.target.closest('#btn-cerrar-modal') || e.target.closest('.modal-btn-cerrar')) {
       cerrarModalPaseBatalla();
       return;
     }
 
-    // Clic fuera de la caja (sobre el backdrop oscuro)
+    // CLIC FUERA DE LA CAJA SOBRE EL BACKDROP OSCURO
     if (e.target === modalPaseBatalla) {
       cerrarModalPaseBatalla();
       return;
     }
   });
 
-  // Cerrar modal al presionar la tecla Escape (heurística de libertad y control)
+  // CERRAR MODAL AL PRESIONAR LA TECLA ESCAPE HEURISTICA DE LIBERTAD Y CONTROL
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalPaseBatalla && modalPaseBatalla.classList.contains('activo')) {
       cerrarModalPaseBatalla();
     }
   });
 
-  // Acción de compra dentro del modal (feedback visual en menos de 400ms)
+  // ACCION DE COMPRA DENTRO DEL MODAL FEEDBACK VISUAL EN MENOS DE MS
   if (btnModalComprar) {
     btnModalComprar.addEventListener('click', () => {
       const textoOriginal = btnModalComprar.textContent;
@@ -323,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 6. Carga dinámica de ficha de juego en game.html (Integración API v2) ---
+  // CARGA DINAMICA DE FICHA DE JUEGO EN GAME HTML INTEGRACION API V
   const paramsUrl = new URLSearchParams(window.location.search);
   const juegoIdParam = paramsUrl.get('id');
 
@@ -331,16 +327,16 @@ document.addEventListener('DOMContentLoaded', () => {
     obtenerJuegoPorId(juegoIdParam).then((juego) => {
       if (!juego) return;
 
-      // 1. Actualizar título de la página
+      // ACTUALIZAR TITULO DE LA PAGINA
       document.title = `${juego.name} — Sala de Juego`;
 
-      // 2. Actualizar breadcrumb y barra de ejecución
+      // ACTUALIZAR BREADCRUMB Y BARRA DE EJECUCION
       const breadcrumbTitulo = document.getElementById('game-breadcrumb-titulo');
       const barraTitulo = document.getElementById('game-barra-titulo');
       if (breadcrumbTitulo) breadcrumbTitulo.textContent = juego.name;
       if (barraTitulo) barraTitulo.textContent = juego.name;
 
-      // 3. Actualizar portada de fondo de la pantalla de juego
+      // ACTUALIZAR PORTADA DE FONDO DE LA PANTALLA DE JUEGO
       const splashPantalla = document.getElementById('game-splash-pantalla');
       const imagenFondo = juego.background_image || juego.background_image_low_res;
       if (splashPantalla && imagenFondo) {

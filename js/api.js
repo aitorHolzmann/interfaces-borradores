@@ -1,25 +1,13 @@
-/* ==========================================================================
-   SERVICIO DE INTEGRACIÓN API — VIDEOJUEGOS CÁTEDRA (v2)
-   Materia: Interfaces de Usuario e Interacción (TUDAI / UNCPBA)
-   API Oficial: https://github.com/jimartinezabadias/api-vj-interfaces
-   Endpoint v2: https://vj.interfaces.jima.com.ar/api/v2
-   ========================================================================== */
+/* INTEGRACION DE API URL DE REPOSITORIO HTTPS GITHUB COM JIMARTINEZABADIAS API VJ INTERFACES ENDPOINT HTTPS VJ INTERFACES JIMA COM AR API V */
 
 const API_CONFIG = {
   urlBase: 'https://vj.interfaces.jima.com.ar/api/v2',
   cacheKey: 'vj_catalogo_cache_v2',
   cacheTiempoMinutos: 30
 };
-
-/**
- * Obtiene el listado completo de videojuegos desde la API oficial de la cátedra.
- * Implementa caché en sessionStorage para optimizar rendimiento y reducir peticiones de red.
- * Si falla la conexión o no hay internet, retorna null para activar el fallback local.
- * 
- * @returns {Promise<Array|null>} Array de 80 videojuegos o null en caso de error.
- */
+/* OBTIENE EL LISTADO COMPLETO DE VIDEOJUEGOS DESDE LA API OFICIAL DE LA CATEDRA IMPLEMENTA CACHE EN SESSIONSTORAGE PARA OPTIMIZAR RENDIMIENTO Y REDUCIR PETICIONES DE RED SI FALLA LA CONEXION O NO HAY INTERNET RETORNA NULL PARA ACTIVAR EL FALLBACK LOCAL RETURNS PROMISE ARRAY NULL ARRAY DE VIDEOJUEGOS O NULL EN CASO DE ERROR */
 async function obtenerVideojuegosAPI() {
-  // 1. Intentar leer desde la caché de sesión
+  // INTENTAR LEER DESDE LA CACHE DE SESION
   try {
     const cacheGuardada = sessionStorage.getItem(API_CONFIG.cacheKey);
     if (cacheGuardada) {
@@ -33,7 +21,7 @@ async function obtenerVideojuegosAPI() {
     console.warn('No se pudo acceder a sessionStorage:', errorCache);
   }
 
-  // 2. Realizar la petición HTTP asíncrona mediante Fetch API nativa
+  // REALIZAR LA PETICION HTTP ASINCRONA MEDIANTE FETCH API NATIVA
   try {
     const respuesta = await fetch(API_CONFIG.urlBase, {
       method: 'GET',
@@ -52,14 +40,14 @@ async function obtenerVideojuegosAPI() {
       throw new Error('La respuesta de la API no contiene un array válido de juegos.');
     }
 
-    // 3. Guardar en caché para futuras navegaciones
+    // GUARDAR EN CACHE PARA FUTURAS NAVEGACIONES
     try {
       sessionStorage.setItem(API_CONFIG.cacheKey, JSON.stringify({
         datos: videojuegos,
         timestamp: Date.now()
       }));
     } catch (e) {
-      // Ignorar quota exceeded si la caché está llena
+      // IGNORAR QUOTA EXCEEDED SI LA CACHE ESTA LLENA
     }
 
     return videojuegos;
@@ -69,19 +57,13 @@ async function obtenerVideojuegosAPI() {
   }
 }
 
-/**
- * Transforma y clasifica los videojuegos devueltos por la API en la estructura
- * de categorías que utiliza nuestra plataforma (Top, Premium, Acción, Aventura, Estrategia).
- * 
- * @param {Array} juegosAPI - Listado crudo devuelto por la API v2.
- * @returns {Array} Listado categorizado compatible con renderizarCatalogo().
- */
+/* TRANSFORMA Y CLASIFICA LOS VIDEOJUEGOS DEVUELTOS POR LA API EN LA ESTRUCTURA DE CATEGORIAS QUE UTILIZA NUESTRA PLATAFORMA TOP PREMIUM ACCION AVENTURA ESTRATEGIA PARAM ARRAY JUEGOSAPI LISTADO CRUDO DEVUELTO POR LA API V RETURNS ARRAY LISTADO CATEGORIZADO COMPATIBLE CON RENDERIZARCATALOGO */
 function clasificarJuegosEnCategorias(juegosAPI) {
   if (!Array.isArray(juegosAPI) || juegosAPI.length === 0) {
     return null;
   }
 
-  // Helper para verificar géneros del juego
+  // HELPER PARA VERIFICAR GENEROS DEL JUEGO
   const tieneGenero = (juego, ...generosBuscados) => {
     if (!juego.genres || !Array.isArray(juego.genres)) return false;
     return juego.genres.some(g => 
@@ -89,22 +71,22 @@ function clasificarJuegosEnCategorias(juegosAPI) {
     );
   };
 
-  // 1. Categoría TOP: Juegos con mayor rating (rating >= 4.45)
+  // CATEGORIA TOP JUEGOS CON MAYOR RATING RATING
   const juegosTop = juegosAPI
     .filter(j => (j.rating || 0) >= 4.45)
     .slice(0, 8)
     .map(j => ({
       id: j.id,
       titulo: j.name,
-      // Se utiliza background_image_low_res (600x400) según recomendación oficial de la cátedra para vistas previas
+      // SE UTILIZA BACKGROUND IMAGE LOW RES X SEGUN RECOMENDACION OFICIAL DE LA CATEDRA PARA VISTAS PREVIAS
       imagen: j.background_image_low_res || j.background_image,
       enlace: `game.html?id=${j.id}`,
       rating: j.rating,
       premium: false
     }));
 
-  // 2. Categoría PREMIUM: Clasificación alta (4.3 <= rating < 4.45)
-  // Aseguramos que Peg Solitaire siempre esté primero como juego jugable de la entrega
+  // CATEGORIA PREMIUM CLASIFICACION ALTA RATING
+  // ASEGURAMOS QUE PEG SOLITAIRE SIEMPRE ESTE PRIMERO COMO JUEGO JUGABLE DE LA ENTREGA
   const juegosPremiumAPI = juegosAPI
     .filter(j => (j.rating || 0) >= 4.30 && (j.rating || 0) < 4.45)
     .slice(0, 7)
@@ -129,7 +111,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
     ...juegosPremiumAPI
   ];
 
-  // 3. Categoría ACCIÓN: Juegos del género Action
+  // CATEGORIA ACCION JUEGOS DEL GENERO ACTION
   const juegosAccion = juegosAPI
     .filter(j => tieneGenero(j, 'Action'))
     .slice(0, 8)
@@ -142,7 +124,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
       premium: false
     }));
 
-  // 4. Categoría AVENTURA: Juegos del género Adventure o Indie
+  // CATEGORIA AVENTURA JUEGOS DEL GENERO ADVENTURE O INDIE
   const juegosAventura = juegosAPI
     .filter(j => tieneGenero(j, 'Adventure', 'Indie'))
     .slice(0, 8)
@@ -155,7 +137,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
       premium: false
     }));
 
-  // 5. Categoría ESTRATEGIA: Juegos del género Strategy, RPG o Shooter
+  // CATEGORIA ESTRATEGIA JUEGOS DEL GENERO STRATEGY RPG O SHOOTER
   const juegosEstrategia = juegosAPI
     .filter(j => tieneGenero(j, 'Strategy', 'RPG', 'Shooter'))
     .slice(0, 8)
@@ -177,13 +159,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
   ];
 }
 
-/**
- * Busca un videojuego por su ID en los datos de la API.
- * Útil para cargar la ficha interactiva en game.html.
- * 
- * @param {string|number} id - Identificador del juego.
- * @returns {Promise<Object|null>}
- */
+/* BUSCA UN VIDEOJUEGO POR SU ID EN LOS DATOS DE LA API UTIL PARA CARGAR LA FICHA INTERACTIVA EN GAME HTML PARAM STRING NUMBER ID IDENTIFICADOR DEL JUEGO RETURNS PROMISE OBJECT NULL */
 async function obtenerJuegoPorId(id) {
   if (!id || id === 'peg-solitaire') return null;
 

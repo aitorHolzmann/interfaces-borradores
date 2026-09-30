@@ -1,22 +1,19 @@
-/* ==========================================================================
-   COMPONENTE: COMENTARIOS (FIDELIDAD FIGMA)
-   Optimizado con operadores relativos y etiquetas semánticas
-   ========================================================================== */
+/* COMPONENTE COMENTARIOS FIDELIDAD FIGMA OPTIMIZADO CON OPERADORES RELATIVOS Y ETIQUETAS SEMANTICAS */
 
 .seccion-comentarios {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 960px;
   margin: 40px auto;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
 .seccion-comentarios > h2 {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.6rem;
   font-weight: 500;
@@ -25,20 +22,20 @@
   text-transform: uppercase;
 }
 
-/* --- Formulario de Entrada de Comentario --- */
+/* FORMULARIO DE ENTRADA DE COMENTARIO */
 .comentario-form {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* Autor Actual (Avatar con Nombre Debajo) */
+/* AUTOR ACTUAL AVATAR CON NOMBRE DEBAJO */
 .comentario-autor-actual {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -47,57 +44,57 @@
 }
 
 .comentario-autor-actual > div {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 44px;
   height: 44px;
   overflow: hidden;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border: 1.5px solid var(--color-secundario);
   border-radius: var(--radio-redondo);
 }
 
 .comentario-autor-actual img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 32px;
   height: 32px;
 }
 
 .comentario-autor-actual > span {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 11px;
   text-align: center;
 }
 
-/* Barra de Entrada Blanca Estilo Píldora */
+/* BARRA DE ENTRADA BLANCA ESTILO PILDORA */
 .comentario-input-barra {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 44px;
   padding: 4px 12px 4px 20px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex: 1;
   align-items: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-blanco);
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .comentario-input-barra > input {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   flex: 1;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: none;
   color: var(--color-negro);
   font-size: var(--tamano-small);
@@ -106,20 +103,20 @@
 }
 
 .comentario-input-barra > input::placeholder {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
 }
 
 .comentario-input-barra > button {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 6px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background: none;
   border: none;
   cursor: pointer;
@@ -127,60 +124,60 @@
 }
 
 .comentario-input-barra > button:hover {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.15);
 }
 
 .comentario-input-barra > button img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 26px;
   height: 26px;
 }
 
-/* --- Lista Abierta de Comentarios --- */
+/* LISTA ABIERTA DE COMENTARIOS */
 .comentarios-lista {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding-left: 10px;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
 .comentario-item {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: flex-start;
   gap: 18px;
 }
 
 .comentario-item > div:first-child {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 40px;
   height: 40px;
   overflow: hidden;
 
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border: 1px solid var(--color-primario-claro2);
   border-radius: var(--radio-redondo);
 }
 
 .comentario-item > div:first-child img {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 30px;
   height: 30px;
 }
 
 .comentario-item > div:last-child {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -188,30 +185,30 @@
 }
 
 .comentario-item header {
-  /* 2. Disposición interna */
+  /* DISPOSICION INTERNA */
   display: flex;
   align-items: baseline;
   gap: 10px;
 }
 
 .comentario-item header strong {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
   font-size: var(--tamano-small);
   font-weight: 700;
 }
 
 .comentario-item header time {
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }
 
 .comentario-item p {
-  /* 1. Posicionamiento y modelo de caja */
+  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* 3. Detalles estéticos */
+  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.5;
