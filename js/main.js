@@ -1,7 +1,7 @@
 /* ==========================================================================
    INTERACTIVIDAD GLOBAL — MAIN.JS
    - Control del menú lateral (Sidebar / Hamburguesa)
-   - Controles de navegación en el tríptico del Hero
+  - Controles de navegación del carrusel principal 3D
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -109,44 +109,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 3. Control de Giro del Carrusel 3D del Hero ---
-  const carrusel3D = document.getElementById('hero-carrusel-3d');
-  const heroBtnAnt = document.getElementById('hero-btn-ant');
-  const heroBtnSig = document.getElementById('hero-btn-sig');
-  let anguloHero3D = 0;
+  // --- 3. Control del carrusel principal 3D ---
+  const carruselPrincipal = document.getElementById('carrusel-principal-3d');
+  const contenedorCarruselPrincipal = document.querySelector('.carrusel-principal-contenedor');
+  const carruselPrincipalBtnAnt = document.getElementById('carrusel-principal-btn-ant');
+  const carruselPrincipalBtnSig = document.getElementById('carrusel-principal-btn-sig');
+  let anguloCarruselPrincipal = 0;
+  let timerGiroAutomatico = null;
   let timerReanudarAuto = null;
+  const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function rotarCarruselManual(direccion) {
-    if (!carrusel3D) return;
-
-    // Desactivamos la animación CSS automática para tomar el control con JS
-    carrusel3D.style.animation = 'none';
+    if (!carruselPrincipal) return;
 
     // Cada cara está separada 120 grados (360 / 3)
     if (direccion === 'sig') {
-      anguloHero3D -= 120;
+      anguloCarruselPrincipal -= 120;
     } else {
-      anguloHero3D += 120;
+      anguloCarruselPrincipal += 120;
     }
 
-    carrusel3D.style.transform = `rotateY(${anguloHero3D}deg)`;
+    carruselPrincipal.style.transform = `rotateY(${anguloCarruselPrincipal}deg)`;
+  }
 
-    // Si pasan 8 segundos sin interacción manual, reactivamos el giro automático
+  function pausarGiroAutomatico() {
+    clearInterval(timerGiroAutomatico);
     clearTimeout(timerReanudarAuto);
+  }
+
+  function iniciarGiroAutomatico() {
+    if (!carruselPrincipal || prefiereMenosMovimiento.matches) return;
+    if (contenedorCarruselPrincipal.matches(':hover') || contenedorCarruselPrincipal.contains(document.activeElement)) return;
+
+    clearInterval(timerGiroAutomatico);
+    timerGiroAutomatico = setInterval(() => rotarCarruselManual('sig'), 4000);
+  }
+
+  function manejarGiroManual(direccion) {
+    rotarCarruselManual(direccion);
+    pausarGiroAutomatico();
+
+    // Dejamos tiempo para inspeccionar la imagen elegida antes de continuar
     timerReanudarAuto = setTimeout(() => {
-      if (carrusel3D) {
-        carrusel3D.style.animation = '';
-        carrusel3D.style.transform = '';
-      }
+      iniciarGiroAutomatico();
     }, 8000);
   }
 
-  if (heroBtnSig) {
-    heroBtnSig.addEventListener('click', () => rotarCarruselManual('sig'));
+  if (carruselPrincipalBtnSig) {
+    carruselPrincipalBtnSig.addEventListener('click', () => manejarGiroManual('sig'));
   }
 
-  if (heroBtnAnt) {
-    heroBtnAnt.addEventListener('click', () => rotarCarruselManual('ant'));
+  if (carruselPrincipalBtnAnt) {
+    carruselPrincipalBtnAnt.addEventListener('click', () => manejarGiroManual('ant'));
+  }
+
+  if (carruselPrincipal && contenedorCarruselPrincipal) {
+    contenedorCarruselPrincipal.addEventListener('mouseenter', pausarGiroAutomatico);
+    contenedorCarruselPrincipal.addEventListener('mouseleave', iniciarGiroAutomatico);
+    contenedorCarruselPrincipal.addEventListener('focusin', pausarGiroAutomatico);
+    contenedorCarruselPrincipal.addEventListener('focusout', () => {
+      if (!contenedorCarruselPrincipal.contains(document.activeElement)) iniciarGiroAutomatico();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        pausarGiroAutomatico();
+      } else {
+        iniciarGiroAutomatico();
+      }
+    });
+
+    prefiereMenosMovimiento.addEventListener('change', () => {
+      if (prefiereMenosMovimiento.matches) {
+        pausarGiroAutomatico();
+      } else {
+        iniciarGiroAutomatico();
+      }
+    });
+
+    iniciarGiroAutomatico();
   }
 
   // --- 4. Interacción de Comentarios en Sala de Juego ---
@@ -281,5 +322,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1100);
     });
   }
+
+  // --- 6. Carga dinámica de ficha de juego en game.html (Integración API v2) ---
+  const paramsUrl = new URLSearchParams(window.location.search);
+  const juegoIdParam = paramsUrl.get('id');
+
+  if (juegoIdParam && typeof obtenerJuegoPorId === 'function') {
+    obtenerJuegoPorId(juegoIdParam).then((juego) => {
+      if (!juego) return;
+
+      // 1. Actualizar título de la página
+      document.title = `${juego.name} — Sala de Juego`;
+
+      // 2. Actualizar breadcrumb y barra de ejecución
+      const breadcrumbTitulo = document.getElementById('game-breadcrumb-titulo');
+      const barraTitulo = document.getElementById('game-barra-titulo');
+      if (breadcrumbTitulo) breadcrumbTitulo.textContent = juego.name;
+      if (barraTitulo) barraTitulo.textContent = juego.name;
+
+      // 3. Actualizar portada de fondo de la pantalla de juego
+      const splashPantalla = document.getElementById('game-splash-pantalla');
+      const imagenFondo = juego.background_image || juego.background_image_low_res;
+      if (splashPantalla && imagenFondo) {
+        splashPantalla.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)), url('${imagenFondo}')`;
+        splashPantalla.style.backgroundPosition = 'center';
+        splashPantalla.style.backgroundSize = 'cover';
+      }
+    }).catch((err) => {
+      console.warn('No se pudo cargar la ficha dinámica del juego:', err);
+    });
+  }
 });
+
 

@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plataforma de Juegos — Inicio</title>
-  
   <!-- Estilos del Sistema -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
@@ -107,46 +106,46 @@
        ==================================================================== -->
   <main class="contenido-principal">
 
-    <!-- HERO: JUEGOS EN TENDENCIA (CARRUSEL 3D CON 3 FOTOS DEL MISMO JUEGO) -->
-    <section class="seccion-hero" aria-label="Juegos en Tendencia">
-      <h2 class="hero-titulo">¡PRUEBA NUESTRO NUEVO LANZAMIENTO!</h2>
+    <!-- CARRUSEL PRINCIPAL 3D: TRES VISTAS DE PEG SOLITAIRE -->
+    <section class="seccion-carrusel-principal" aria-label="Carrusel principal de Peg Solitaire">
+      <h2 class="carrusel-principal-titulo">¡PRUEBA NUESTRO NUEVO LANZAMIENTO!</h2>
 
-      <div class="hero-carrusel-contenedor">
+      <div class="carrusel-principal-contenedor">
         <!-- Flecha Izquierda -->
-        <button class="hero-flecha izquierda" id="hero-btn-ant" aria-label="Imagen anterior">
+        <button class="carrusel-principal-flecha izquierda" id="carrusel-principal-btn-ant" aria-label="Imagen anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
 
         <!-- Escena 3D con perspectiva -->
-        <div class="hero-escena-3d">
-          <div class="hero-carrusel-3d" id="hero-carrusel-3d">
+        <div class="carrusel-principal-escena-3d">
+          <div class="carrusel-principal-3d" id="carrusel-principal-3d">
             <!-- Cara 1: Tablero central -->
-            <a href="game.html" class="hero-card-3d cara-1" title="Jugar a Peg Solitaire">
-              <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+            <a href="game.html" class="carrusel-principal-tarjeta-3d cara-1" title="Jugar a Peg Solitaire">
+              <h3 class="carrusel-principal-juego-nombre">Peg Solitaire</h3>
               <img src="assets/images/peg_solitaire_hero.jpg" alt="Peg Solitaire Tablero">
-              <span class="btn-card-accion btn-hero-accion">JUGAR</span>
+              <span class="btn-card-accion btn-carrusel-principal-accion">JUGAR</span>
             </a>
 
             <!-- Cara 2: Detalle de juego -->
-            <a href="game.html" class="hero-card-3d cara-2" title="Jugar a Peg Solitaire">
-              <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+            <a href="game.html" class="carrusel-principal-tarjeta-3d cara-2" title="Jugar a Peg Solitaire">
+              <h3 class="carrusel-principal-juego-nombre">Peg Solitaire</h3>
               <img src="assets/images/game_solitaire_1.jpg" alt="Peg Solitaire Detalle">
-              <span class="btn-card-accion btn-hero-accion">JUGAR</span>
+              <span class="btn-card-accion btn-carrusel-principal-accion">JUGAR</span>
             </a>
 
             <!-- Cara 3: Vista táctica -->
-            <a href="game.html" class="hero-card-3d cara-3" title="Jugar a Peg Solitaire">
-              <h3 class="hero-juego-nombre">Peg Solitaire</h3>
+            <a href="game.html" class="carrusel-principal-tarjeta-3d cara-3" title="Jugar a Peg Solitaire">
+              <h3 class="carrusel-principal-juego-nombre">Peg Solitaire</h3>
               <img src="assets/images/game_scifi_2.jpg" alt="Peg Solitaire Táctica">
-              <span class="btn-card-accion btn-hero-accion">JUGAR</span>
+              <span class="btn-card-accion btn-carrusel-principal-accion">JUGAR</span>
             </a>
           </div>
         </div>
 
         <!-- Flecha Derecha -->
-        <button class="hero-flecha derecha" id="hero-btn-sig" aria-label="Siguiente imagen">
+        <button class="carrusel-principal-flecha derecha" id="carrusel-principal-btn-sig" aria-label="Siguiente imagen">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
@@ -155,8 +154,8 @@
     </section>
 
     <!-- ====================================================================
-         CATÁLOGO MODULAR DE CATEGORÍAS (RENDERIZADO DINÁMICO EN JS/CAROUSEL.JS)
-         Buenas prácticas: DRY, carruseles infinitos, animaciones skewX y hover.
+         CATÁLOGO MODULAR DE CATEGORÍAS
+         DRY, carruseles infinitos, animaciones skewX y hover.
          ==================================================================== -->
     <div id="contenedor-categorias" class="contenedor-categorias"></div>
 
@@ -168,7 +167,7 @@
   <footer class="footer-principal">
     <div class="footer-contenedor">
        
-      <!-- Caja 1: Marca y descripción -->
+      <!-- Marca y descripción -->
       <div class="footer-marca">
         <img src="assets/logo.png" alt="Logotipo Plataforma">
         <p>
@@ -176,7 +175,7 @@
         </p>
       </div>
 
-      <!-- Caja 2: Contenedor de links (Grid) -->
+      <!--Contenedor de links (grid) -->
       <div class="footer-links-grid">
         <div>
           <h4>Sobre nosotros</h4>
@@ -210,7 +209,7 @@
           </ul>
         </div>
 
-        <!-- Sección Soporte dentro del bloque de navegación -->
+        <!-- Sección soporte dentro del bloque de navegación -->
         <div class="footer-soporte">
           <h4>Soporte</h4>
           <div>
@@ -245,15 +244,14 @@
       <h3 id="modal-titulo" class="modal-titulo">Unete a las filas</h3>
       <div class="modal-linea-decorativa" aria-hidden="true"></div>
 
-      <!-- Texto Descriptivo -->
+      <!-- descripcion -->
       <p class="modal-descripcion">
         Para conocer la experiencia de juego y disfrutar de todo el contenido
       </p>
 
-      <!-- Subtítulo / Llamado a la Acción -->
       <h4 class="modal-subtitulo">COMPRAR PASE DE BATALLA</h4>
 
-      <!-- Contenedor Píldora de Precio y Botón Comprar -->
+      <!-- precio y boton para comprar -->
       <div class="modal-precio-contenedor">
         <span class="modal-precio-texto">$40 USD</span>
         <button type="button" class="btn-modal-comprar" id="btn-modal-comprar">Comprar</button>
@@ -262,6 +260,7 @@
   </div>
 
   <script src="js/loader.js"></script>
+  <script src="js/api.js"></script>
   <script src="js/carousel.js"></script>
   <script src="js/main.js"></script>
 </body>

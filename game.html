@@ -90,7 +90,7 @@
 
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs" aria-label="Ruta de navegación">
-      <a href="index.html">Home</a> &gt; <a href="index.html#premium">Premium</a> &gt; <span>Peg Solitaire</span>
+      <a href="index.html">Home</a> &gt; <a href="index.html#top" id="game-breadcrumb-categoria">Catálogo</a> &gt; <span id="game-breadcrumb-titulo">Peg Solitaire</span>
     </nav>
 
     <!-- ====================================================================
@@ -98,7 +98,7 @@
          ==================================================================== -->
     <section class="area-ejecucion-juego" aria-label="Área de Juego">
       
-      <div>
+      <div id="game-splash-pantalla">
         <!-- Splash con Botón Naranja "Jugar" -->
         <div>
           <button id="btn-iniciar-partida">
@@ -109,7 +109,7 @@
 
       <!-- Barra de Ejecución Inferior -->
       <div class="barra-ejecucion">
-        <span>Peg Solitaire</span>
+        <span id="game-barra-titulo">Peg Solitaire</span>
 
         <div>
           <!-- Icono 1: Guardar en Favoritos -->
@@ -345,6 +345,7 @@
     </div>
   </footer>
 
+  <script src="js/api.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

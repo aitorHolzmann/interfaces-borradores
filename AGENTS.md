@@ -32,7 +32,7 @@ Eres un **Senior Frontend & UX/UI Engineer** especializado en **JavaScript Vanil
 1. **3 Páginas Conectadas:** `index.html` (Home), `login.html` (Auth dual con validación visual en tiempo real y animación de éxito) y `game.html` (Sala de juego Peg Solitaire con comentarios interactivos).
 2. **Animaciones Hover en Botones (Mínimo 3 distintas):** Escala con sombra elevada, barrido de fondo mediante `::before`, y borde luminiscente / cambio de radio. *(El menú hamburguesa no cuenta).*
 3. **Pantalla de Carga (5s exactos):** Contador 0% a 100% en `loader.js`, animación geométrica CSS pura (`@keyframes`), y desvanecimiento suave.
-4. **Carrusel con Transición Real:** Transiciones fluidas animadas (ej. `hero-transicion` fade/slide), prohibidos saltos bruscos.
+4. **Carrusel con Transición Real:** Transiciones fluidas animadas (ej. `carrusel-principal-transicion` fade/slide), prohibidos saltos bruscos.
 5. **Mobile First en la Home:** Media queries progresivas `@media (min-width: ...)`. Base mono-columna en mobile.
 6. **Datos Reales y Sin Lorem Ipsum:** Títulos variados con `text-overflow: ellipsis`, portadas reales.
 
@@ -83,7 +83,7 @@ Eres un **Senior Frontend & UX/UI Engineer** especializado en **JavaScript Vanil
 ├── js/
 │   ├── loader.js               # Contador 0% a 100% en 5000ms exactos
 │   ├── auth.js                 # Validación de formularios y animación de éxito
-│   └── main.js                 # Sidebar, rotación suave del hero y comentarios
+│   └── main.js                 # Sidebar, rotación suave del carrusel principal y comentarios
 ├── apuntes/                 # Informes técnicos y resúmenes de estudio para coloquios
 ├── scripts/
 │   └── preview.sh              # Captura visual headless instantánea (Desktop/Mobile)

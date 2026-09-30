@@ -5,12 +5,12 @@
    ========================================================================== */
 
 /* --- AJUSTES BASE MOBILE (< 768px) --- */
-.hero-carrusel-contenedor {
+.carrusel-principal-contenedor {
   /* 1. Alineacion propia y modelo de caja */
   gap: 16px;
 }
 
-.hero-escena-3d {
+.carrusel-principal-escena-3d {
   /* 1. Alineacion propia y modelo de caja */
   width: 270px;
   height: 200px;
@@ -19,23 +19,23 @@
   perspective: 650px;
 }
 
-.hero-card-3d.cara-1 {
+.carrusel-principal-tarjeta-3d.cara-1 {
   /* 3. Detalles esteticos */
   transform: rotateY(0deg) translateZ(120px);
 }
 
-.hero-card-3d.cara-2 {
+.carrusel-principal-tarjeta-3d.cara-2 {
   /* 3. Detalles esteticos */
   transform: rotateY(120deg) translateZ(120px);
 }
 
-.hero-card-3d.cara-3 {
+.carrusel-principal-tarjeta-3d.cara-3 {
   /* 3. Detalles esteticos */
   transform: rotateY(240deg) translateZ(120px);
 }
 
-.hero-juego-nombre,
-.hero-card-3d h3 {
+.carrusel-principal-juego-nombre,
+.carrusel-principal-tarjeta-3d h3 {
   /* 3. Detalles esteticos */
   font-size: 18px;
 }
@@ -47,20 +47,20 @@
   height: 155px;
 }
 
-/* --- TABLET Y PANTALLAS MEDIANAS (min-width: 768px) --- */
+/* --- TABLET Y PANTALLAS MEDIANAS--- */
 @media (min-width: 768px) {
-  .seccion-hero > h2,
-  .hero-titulo {
+  .seccion-carrusel-principal > h2,
+  .carrusel-principal-titulo {
     /* 3. Detalles estéticos */
     font-size: 2.2rem;
   }
 
-  .hero-carrusel-contenedor {
+  .carrusel-principal-contenedor {
     /* 1. Alineacion propia y modelo de caja */
     gap: 45px;
   }
 
-  .hero-escena-3d {
+  .carrusel-principal-escena-3d {
     /* 1. Alineacion propia y modelo de caja */
     width: 360px;
     height: 260px;
@@ -69,23 +69,23 @@
     perspective: 850px;
   }
 
-  .hero-card-3d.cara-1 {
+  .carrusel-principal-tarjeta-3d.cara-1 {
     /* 3. Detalles esteticos */
     transform: rotateY(0deg) translateZ(160px);
   }
 
-  .hero-card-3d.cara-2 {
+  .carrusel-principal-tarjeta-3d.cara-2 {
     /* 3. Detalles esteticos */
     transform: rotateY(120deg) translateZ(160px);
   }
 
-  .hero-card-3d.cara-3 {
+  .carrusel-principal-tarjeta-3d.cara-3 {
     /* 3. Detalles esteticos */
     transform: rotateY(240deg) translateZ(160px);
   }
 
-  .hero-juego-nombre,
-  .hero-card-3d h3 {
+  .carrusel-principal-juego-nombre,
+  .carrusel-principal-tarjeta-3d h3 {
     /* 3. Detalles esteticos */
     font-size: 22px;
   }
@@ -100,8 +100,8 @@
 
 /* --- DESKTOP Y PANTALLAS GRANDES (min-width: 1024px) --- */
 @media (min-width: 1024px) {
-  .seccion-hero > h2,
-  .hero-titulo {
+  .seccion-carrusel-principal > h2,
+  .carrusel-principal-titulo {
     /* 3. Detalles estéticos */
     font-size: 2.5rem;
   }
@@ -208,7 +208,8 @@
 
   .badge-premium-icon {
     /* 1. Posicionamiento y modelo de caja */
-    width: 26px;
-    height: 26px;
+    width: auto;
+    max-width: 80px;
+    height: 18px;
   }
 }

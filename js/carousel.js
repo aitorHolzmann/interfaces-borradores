@@ -324,13 +324,13 @@ class CarruselInfinito {
 }
 
 // --- 3. Renderizador del Catálogo Dinámico en index.html ---
-function renderizarCatalogo(contenedorId = 'contenedor-categorias') {
+function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = CATALOGO_CATEGORIAS) {
   const contenedorPrincipal = document.getElementById(contenedorId);
   if (!contenedorPrincipal) return;
 
   contenedorPrincipal.innerHTML = '';
 
-  CATALOGO_CATEGORIAS.forEach((categoria) => {
+  catalogo.forEach((categoria) => {
     // 1. Crear sección semántica de la categoría
     const seccion = document.createElement('section');
     seccion.className = 'seccion-categoria';
@@ -384,7 +384,7 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias') {
         card.setAttribute('title', `Jugar a ${juego.titulo}`);
       }
 
-      // Si es premium, añadir badge circular de diamante azul
+      // Si es premium, añadir badge circular de diamante azul o corona
       let badgeHtml = '';
       if (juego.premium) {
         badgeHtml = `<img src="assets/icons/badge-premium.svg" alt="Premium" class="badge-premium-icon">`;
@@ -424,7 +424,24 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias') {
   });
 }
 
-// Inicializar el catálogo una vez cargado el DOM
-document.addEventListener('DOMContentLoaded', () => {
-  renderizarCatalogo('contenedor-categorias');
+// Inicializar el catálogo: render inmediato con datos locales + enriquecimiento asíncrono desde la API de la cátedra
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. Render inmediato con catálogo de respaldo local (evita pantalla en blanco si no hay internet)
+  renderizarCatalogo('contenedor-categorias', CATALOGO_CATEGORIAS);
+
+  // 2. Si el servicio de API está disponible, solicitar datos reales de la cátedra
+  if (typeof obtenerVideojuegosAPI === 'function' && typeof clasificarJuegosEnCategorias === 'function') {
+    try {
+      const juegosAPI = await obtenerVideojuegosAPI();
+      if (juegosAPI && juegosAPI.length > 0) {
+        const catalogoAPI = clasificarJuegosEnCategorias(juegosAPI);
+        if (catalogoAPI && catalogoAPI.length > 0) {
+          renderizarCatalogo('contenedor-categorias', catalogoAPI);
+          console.log(`Catálogo enriquecido exitosamente con ${juegosAPI.length} juegos reales desde la API de la cátedra (v2).`);
+        }
+      }
+    } catch (errorAPI) {
+      console.warn('Utilizando datos locales de fallback por fallo en API:', errorAPI);
+    }
+  }
 });

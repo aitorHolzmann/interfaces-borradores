@@ -56,7 +56,7 @@ La plataforma es un portal de juegos online con estética militar/bélica inspir
 | `8px` | Inputs, botones CTA |
 | `16px` | Tags de categoría |
 | `25px` | Imágenes de cards, esquinas superiores del footer |
-| `24px` | Imagen central del carrusel hero |
+| `24px` | Imagen central del carrusel principal |
 
 **Sombras y efectos:**
 - Panel login: `box-shadow: 0 0 20px 10px rgba(255,255,255,0.15)`
@@ -82,7 +82,7 @@ La plataforma es un portal de juegos online con estética militar/bélica inspir
 │   ├── components/
 │   │   ├── botones.css     ← Los 3 hovers distintos
 │   │   ├── cards.css       ← Cards de juego (overlay hover + ellipsis)
-│   │   ├── carrusel.css    ← Carrusel hero y de categorías
+│   │   ├── carrusel.css    ← Carrusel principal y carruseles de categorías
 │   │   ├── formularios.css ← Inputs, labels, validación visual
 │   │   ├── navegacion.css  ← Navbar, sidebar, hamburguesa
 │   │   ├── breadcrumbs.css ← Migas de pan
@@ -148,7 +148,7 @@ La plataforma es un portal de juegos online con estética militar/bélica inspir
   <nav class="sidebar" id="sidebar">...</nav>  <!-- sidebar desktop -->
   
   <main class="contenido-principal">
-    <section class="seccion-hero"><!-- Carrusel hero --></section>
+    <section class="seccion-carrusel-principal"><!-- Carrusel principal de Peg Solitaire --></section>
     <section class="seccion-categoria" data-categoria="top">...</section>
     <section class="seccion-categoria" data-categoria="premium">...</section>
     <section class="seccion-categoria" data-categoria="accion">...</section>
@@ -306,7 +306,7 @@ function moverCarrusel(direccion) {
 }
 ```
 
-- **Carrusel Hero:** 3 imágenes grandes con flechas laterales. Imagen central a `opacity: 1`, laterales a `opacity: 0.5` con `border-radius: 18px`.
+- **Carrusel principal:** 3 imágenes grandes de Peg Solitaire con flechas laterales. Imagen central a `opacity: 1`, laterales a `opacity: 0.5` con `border-radius: 18px`.
 - **Carruseles de categoría:** Scroll horizontal con flechas. Transición suave entre grupos de cards.
 
 **Justificación teórica:**
