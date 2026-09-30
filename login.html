@@ -93,19 +93,23 @@
       </header>
 
       <!-- FORMULARIO DE LOGIN INICIAR SESION -->
-      <form id="form-login" action="index.html" method="GET">
+      <form id="form-login" novalidate action="index.html" method="GET">
         
         <!-- CAMPO EMAIL -->
         <div>
           <input type="email" id="login-email" name="email" placeholder="Email" required autocomplete="email">
+          <small class="msg-error">Ingresa un correo electrónico válido</small>
         </div>
 
         <!-- CAMPO CONTRASENA -->
-        <div class="campo-password">
-          <input type="password" id="login-password" name="password" placeholder="Contraseña" required minlength="8" autocomplete="current-password">
-          <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="login-password">
-            <img src="assets/icons/icon-eye.svg" alt="Ver clave">
-          </button>
+        <div>
+          <div class="campo-password">
+            <input type="password" id="login-password" name="password" placeholder="Contraseña" required minlength="8" autocomplete="current-password">
+            <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="login-password">
+              <img src="assets/icons/icon-eye-off.svg" alt="Mostrar u ocultar clave">
+            </button>
+          </div>
+          <small class="msg-error">Mínimo 8 caracteres</small>
         </div>
 
         <!-- ENLACE OLVIDO -->
@@ -139,51 +143,57 @@
       </form>
 
       <!-- FORMULARIO DE REGISTRO -->
-      <form id="form-registro" class="oculto" action="index.html" method="GET">
+      <form id="form-registro" class="oculto" novalidate action="index.html" method="GET">
         
         <div>
-          <label for="reg-nombre">Nombre</label>
+          <label for="reg-nombre">Nombre <span class="campo-obligatorio">*</span></label>
           <input type="text" id="reg-nombre" name="nombre" placeholder="Nombre" required>
+          <small class="msg-error">El nombre es obligatorio</small>
         </div>
 
         <div>
-          <label for="reg-apellido">Apellido</label>
+          <label for="reg-apellido">Apellido <span class="campo-obligatorio">*</span></label>
           <input type="text" id="reg-apellido" name="apellido" placeholder="Apellido" required>
+          <small class="msg-error">El apellido es obligatorio</small>
         </div>
 
         <div>
-          <label for="reg-edad">Edad</label>
+          <label for="reg-edad">Edad <span class="campo-obligatorio">*</span></label>
           <input type="number" id="reg-edad" name="edad" placeholder="Edad" min="13" max="99" required>
+          <small class="msg-error">Debes tener entre 13 y 99 años</small>
         </div>
 
         <div>
-          <label for="reg-email">Email</label>
+          <label for="reg-email">Email <span class="campo-obligatorio">*</span></label>
           <input type="email" id="reg-email" name="email" placeholder="Email" required>
+          <small class="msg-error">Ingresa un correo electrónico válido</small>
         </div>
 
         <div>
           <label for="reg-usuario">Usuario</label>
-          <input type="text" id="reg-usuario" name="usuario" placeholder="Usuario" required>
+          <input type="text" id="reg-usuario" name="usuario" placeholder="Usuario">
         </div>
 
         <div>
-          <label for="reg-password">Contraseña</label>
+          <label for="reg-password">Contraseña <span class="campo-obligatorio">*</span></label>
           <div class="campo-password">
             <input type="password" id="reg-password" name="password" placeholder="Contraseña" required minlength="8">
             <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="reg-password">
-              <img src="assets/icons/icon-eye.svg" alt="Ver clave">
+              <img src="assets/icons/icon-eye-off.svg" alt="Mostrar u ocultar clave">
             </button>
           </div>
+          <small class="msg-error">Mínimo 8 caracteres</small>
         </div>
 
         <div>
-          <label for="reg-password-repeat">Repetir contraseña</label>
+          <label for="reg-password-repeat">Repetir contraseña <span class="campo-obligatorio">*</span></label>
           <div class="campo-password">
             <input type="password" id="reg-password-repeat" name="password_repeat" placeholder="Contraseña" required minlength="8">
             <button type="button" class="btn-toggle-password" aria-label="Mostrar contraseña" data-target="reg-password-repeat">
-              <img src="assets/icons/icon-eye.svg" alt="Ver clave">
+              <img src="assets/icons/icon-eye-off.svg" alt="Mostrar u ocultar clave">
             </button>
           </div>
+          <small class="msg-error">Las contraseñas deben coincidir</small>
         </div>
 
         <!-- CHECKBOX TERMINOS -->
@@ -198,9 +208,8 @@
             <input type="checkbox" id="recaptcha-mock" required>
             <span>No soy un robot</span>
           </label>
-          <div>
+          <div class="recaptcha-logo-contenedor">
             <img src="assets/icons/recaptcha.svg" alt="reCAPTCHA">
-            <span>reCAPTCHA</span>
           </div>
         </div>
 

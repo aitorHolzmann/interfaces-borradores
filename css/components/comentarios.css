@@ -76,16 +76,33 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+.comentario-input-barra > textarea,
 .comentario-input-barra > input {
+  width: 100%;
+  max-height: 20px;
+  padding: 0;
+
+  display: block;
   flex: 1;
 
-  background: none;
+  background: transparent;
   color: var(--color-negro);
   font-size: var(--tamano-small);
   border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  resize: none;
+}
+
+.comentario-input-barra > textarea:focus,
+.comentario-input-barra > input:focus {
+  border: none;
+  box-shadow: none;
   outline: none;
 }
 
+.comentario-input-barra > textarea::placeholder,
 .comentario-input-barra > input::placeholder {
   color: var(--color-gris-neutro);
 }

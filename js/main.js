@@ -168,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     iniciarGiroAutomatico();
   }
-
   // INTERACCION DE COMENTARIOS EN SALA DE JUEGO
   const formNuevoComentario = document.getElementById('form-nuevo-comentario');
   const inputComentario = document.getElementById('input-comentario');

@@ -8,10 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const authTitulo = document.getElementById('auth-titulo');
   const authSeccion = document.getElementById('auth-seccion');
 
-  // ALTERNAR A MODO REGISTRO
-  if (linkIrRegistro) {
-    linkIrRegistro.addEventListener('click', (e) => {
-      e.preventDefault();
+  // --- 1. Alternancia entre Modo Login y Modo Registro ---
+  function cambiarModo(esRegistro) {
+    if (!formLogin || !formRegistro) return;
+
+    if (esRegistro) {
       formLogin.classList.add('oculto');
       formRegistro.classList.remove('oculto');
       if (authTitulo) authTitulo.innerHTML = 'Registrate<br>Soldado!';
@@ -19,37 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         authSeccion.classList.remove('modo-login');
         authSeccion.classList.add('modo-registro');
       }
-    });
-  }
-
-  // ALTERNAR A MODO LOGIN
-  if (linkIrLogin) {
-    linkIrLogin.addEventListener('click', (e) => {
-      e.preventDefault();
-      formRegistro.classList.add('oculto');
-      formLogin.classList.remove('oculto');
-      if (authTitulo) authTitulo.innerHTML = 'Inicia<br>Soldado!';
-      if (authSeccion) {
-        authSeccion.classList.remove('modo-registro');
-        authSeccion.classList.add('modo-login');
-      }
-    });
-  }
-
-  // COMPROBACION DE PARAMETRO EN URL O HASH EJ LOGIN HTML MODO REGISTRO O REGISTRO
-  function aplicarModoSegunUrl() {
-    const esRegistro = window.location.hash === '#registro' || window.location.search.includes('registro');
-    const esLogin = window.location.hash === '#login' || window.location.search.includes('login');
-
-    if (esRegistro && linkIrRegistro) {
-      formLogin.classList.add('oculto');
-      formRegistro.classList.remove('oculto');
-      if (authTitulo) authTitulo.innerHTML = 'Registrate<br>Soldado!';
-      if (authSeccion) {
-        authSeccion.classList.remove('modo-login');
-        authSeccion.classList.add('modo-registro');
-      }
-    } else if (esLogin && linkIrLogin) {
+    } else {
       formRegistro.classList.add('oculto');
       formLogin.classList.remove('oculto');
       if (authTitulo) authTitulo.innerHTML = 'Inicia<br>Soldado!';
@@ -60,10 +31,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  if (linkIrRegistro) {
+    linkIrRegistro.addEventListener('click', (e) => {
+      e.preventDefault();
+      cambiarModo(true);
+    });
+  }
+
+  if (linkIrLogin) {
+    linkIrLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      cambiarModo(false);
+    });
+  }
+
+  // Comprobar si la URL viene con hash #registro o query param
+  function aplicarModoSegunUrl() {
+    const esRegistro = window.location.hash === '#registro' || window.location.search.includes('registro');
+    if (esRegistro) {
+      cambiarModo(true);
+    } else if (window.location.hash === '#login' || window.location.search.includes('login')) {
+      cambiarModo(false);
+    }
+  }
+
   aplicarModoSegunUrl();
   window.addEventListener('hashchange', aplicarModoSegunUrl);
 
-  // TOGGLE DE VISIBILIDAD DE CONTRASENA
+  // --- 2. Visibilidad de Contraseñas ---
   const toggleButtons = document.querySelectorAll('.btn-toggle-password');
   toggleButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -71,34 +66,39 @@ document.addEventListener('DOMContentLoaded', () => {
       const input = document.getElementById(targetId);
       if (!input) return;
 
-      if (input.type === 'password') {
-        input.type = 'text';
-      } else {
-        input.type = 'password';
+      const mostrar = input.type === 'password';
+      input.type = mostrar ? 'text' : 'password';
+
+      const img = btn.querySelector('img');
+      if (img) {
+        img.src = mostrar ? 'assets/icons/icon-eye.svg' : 'assets/icons/icon-eye-off.svg';
+        img.alt = mostrar ? 'Ocultar contraseña' : 'Ver contraseña';
+      }
+      btn.setAttribute('aria-label', mostrar ? 'Ocultar contraseña' : 'Mostrar contraseña');
+
+      if (input.dataset.tocado === 'true') {
+        validarInput(input);
       }
     });
   });
 
-  // 
-  // VALIDACION Y ENVIO DE FORMULARIOS
-  // 
-
-  const inputs = document.querySelectorAll('form input:not([type="checkbox"])');
+  // --- 3. Validación de Campos en Tiempo Real ---
+  const inputs = document.querySelectorAll('.panel-auth input:not([type="checkbox"])');
 
   const validarInput = (input) => {
     let esValido = false;
-    
-    // REGLAS DE VALIDACION SIMPLES
+    const esCampoPassword = input.type === 'password' || input.id.includes('password');
+
     if (input.type === 'email') {
       esValido = input.validity.valid && input.value.includes('.') && input.value.includes('@');
-    } else if (input.type === 'password') {
+    } else if (esCampoPassword) {
       esValido = input.value.length >= 8;
-      // COMPROBAR COINCIDENCIA SI ES REPETIR CONTRASENA
+
       if (input.id === 'reg-password-repeat') {
         const pass = document.getElementById('reg-password').value;
         esValido = input.value.length >= 8 && input.value === pass;
       }
-      // ACTUALIZAR EL DE REPETIR SI CAMBIA EL ORIGINAL
+
       if (input.id === 'reg-password') {
         const passRepeat = document.getElementById('reg-password-repeat');
         if (passRepeat && passRepeat.value.length > 0) {
@@ -106,74 +106,74 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     } else if (input.type === 'number' && input.id === 'reg-edad') {
-      const edad = parseInt(input.value);
-      esValido = edad >= 13 && edad <= 99;
+      const edad = parseInt(input.value, 10);
+      esValido = !isNaN(edad) && edad >= 13 && edad <= 99;
+    } else if (input.id === 'reg-usuario') {
+      esValido = true;
     } else {
-      // NOMBRE APELLIDO USUARIO TEXTO GENERICO
       esValido = input.value.trim() !== '';
     }
 
-    // APLICAR CLASES VISUALES
+    const contenedor = input.closest('div:not(.campo-password)') || input.parentElement;
+    const msgError = contenedor ? contenedor.querySelector('.msg-error') : null;
+
     if (esValido) {
       input.classList.add('input-valido');
       input.classList.remove('input-invalido');
+      if (msgError) msgError.classList.remove('visible');
     } else {
       input.classList.remove('input-valido');
-      // SOLO MARCAR INVALIDO SI YA FUE TOCADO BLUR
       if (input.dataset.tocado === 'true') {
         input.classList.add('input-invalido');
+        if (msgError) msgError.classList.add('visible');
+      } else {
+        if (msgError) msgError.classList.remove('visible');
       }
     }
-    
+
     return esValido;
   };
 
-  inputs.forEach(input => {
-    input.addEventListener('input', () => {
-      validarInput(input);
-    });
-
+  inputs.forEach((input) => {
+    input.addEventListener('input', () => validarInput(input));
     input.addEventListener('blur', () => {
       input.dataset.tocado = 'true';
       validarInput(input);
     });
   });
 
+  // --- 4. Envío y Animación de Éxito ---
   const manejarSubmit = (e, form, mensaje) => {
     e.preventDefault();
-    
-    // FORZAR VALIDACION EN TODOS LOS INPUTS DEL FORM
-    const formInputs = form.querySelectorAll('.input-formulario');
+
+    const formInputs = form.querySelectorAll('input:not([type="checkbox"])');
     let formValido = true;
-    
-    formInputs.forEach(input => {
+
+    formInputs.forEach((input) => {
       input.dataset.tocado = 'true';
       if (!validarInput(input)) {
         formValido = false;
       }
     });
 
-    // CHECKBOX DE TERMINOS Y RECAPTCHA SOLO EN REGISTRO
     const checkboxes = form.querySelectorAll('input[type="checkbox"][required]');
-    checkboxes.forEach(chk => {
+    checkboxes.forEach((chk) => {
       if (!chk.checked) formValido = false;
     });
 
     if (formValido) {
-      // CREAR MENSAJE DE EXITO
+      const panelAuth = document.getElementById('panel-autenticacion');
+      if (!panelAuth || panelAuth.querySelector('.mensaje-exito')) return;
+
       const mensajeExito = document.createElement('div');
       mensajeExito.className = 'mensaje-exito';
       mensajeExito.setAttribute('role', 'status');
       mensajeExito.setAttribute('aria-live', 'polite');
       mensajeExito.textContent = mensaje;
-      
-      const panelAuth = document.getElementById('panel-autenticacion');
       panelAuth.appendChild(mensajeExito);
 
-      // CAMBIAR CLASE EN EL SIGUIENTE FRAME PARA ACTIVAR LA TRANSICION CSS
       requestAnimationFrame(() => mensajeExito.classList.add('visible'));
 
-      // REDIRIGIR DESPUES DE SEGUNDOS
       setTimeout(() => {
         window.location.href = 'index.html';
       }, 2000);

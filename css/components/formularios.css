@@ -1,25 +1,31 @@
-/* COMPONENTE FORMULARIOS E INPUTS OPTIMIZADO CON OPERADORES RELATIVOS Y ELIMINACION DE CLASES REDUNDANTES */
+/* COMPONENTE FORMULARIOS E INPUTS */
 
-/* GRUPO O FILA DE CAMPO EN FORMULARIOS */
-form > div {
+/* GRUPO O FILA DE CAMPO EN FORMULARIOS DE AUTENTICACION */
+.panel-auth form > div:not(.auth-sociales):not(.recaptcha-card) {
   position: relative;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 
   text-align: left;
 }
 
-form label {
+.panel-auth form label {
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 400;
 }
 
-/* ENVOLTORIO ESPECIFICO CUANDO UN INPUT TIENE BOTON INTERNO EJ CONTRASENA */
+.campo-obligatorio {
+  margin-left: 2px;
+  color: var(--color-secundario);
+  font-weight: 700;
+}
+
+/* ENVOLTORIO ESPECIFICO CUANDO UN INPUT TIENE BOTON INTERNO */
 .campo-password {
   position: relative;
   width: 100%;
@@ -28,8 +34,12 @@ form label {
   align-items: center;
 }
 
+.campo-password input {
+  padding-right: 44px;
+}
+
 /* INPUT CON FONDO BLANCO DEL PROTOTIPO ORIGINAL */
-form input:not([type="checkbox"]) {
+.panel-auth form input:not([type="checkbox"]) {
   width: 100%;
   min-height: 42px;
   padding: 8px 14px;
@@ -42,11 +52,11 @@ form input:not([type="checkbox"]) {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-form input:not([type="checkbox"])::placeholder {
+.panel-auth form input:not([type="checkbox"])::placeholder {
   color: var(--color-gris-neutro);
 }
 
-form input:not([type="checkbox"]):focus {
+.panel-auth form input:not([type="checkbox"]):focus {
   border-color: var(--color-secundario);
   box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
   outline: none;
@@ -55,8 +65,11 @@ form input:not([type="checkbox"]):focus {
 /* ICONO OJO VER OCULTAR CONTRASENA */
 .btn-toggle-password {
   position: absolute;
-  right: 12px;
-  padding: 4px;
+  top: 50%;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
 
   display: flex;
   align-items: center;
@@ -64,15 +77,14 @@ form input:not([type="checkbox"]):focus {
 
   background: none;
   border: none;
+  transform: translateY(-50%);
   cursor: pointer;
 }
 
-.btn-toggle-password svg,
 .btn-toggle-password img {
-  width: 20px;
-  height: 20px;
-
-  filter: invert(0.2);
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 /* CHECKBOX DE TERMINOS REGISTRO */
@@ -106,11 +118,11 @@ form input:not([type="checkbox"]):focus {
 }
 
 /* MOCKUP RECAPTCHA EN REGISTRO */
-.recaptcha-card {
+.panel-auth form .recaptcha-card {
   width: 100%;
   max-width: 300px;
-  margin: 6px auto 14px;
-  padding: 8px 12px;
+  margin: 8px auto 14px;
+  padding: 8px 14px;
 
   display: flex;
   align-items: center;
@@ -118,39 +130,64 @@ form input:not([type="checkbox"]):focus {
 
   background-color: var(--color-recaptcha-fondo);
   border: 1px solid var(--color-recaptcha-borde);
-  border-radius: 4px;
+  border-radius: var(--radio-sm);
 }
 
-.recaptcha-card > label {
+.panel-auth form .recaptcha-card label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 
-  color: var(--color-negro);
+  color: var(--color-recaptcha-texto);
   font-family: Arial, sans-serif;
   font-size: 13px;
-}
-
-.recaptcha-card input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-
+  font-weight: 500;
   cursor: pointer;
 }
 
-.recaptcha-card > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  color: var(--color-gris-neutro);
-  font-family: Arial, sans-serif;
-  font-size: 9px;
+.panel-auth form .recaptcha-card label span {
+  color: var(--color-recaptcha-texto);
 }
 
-.recaptcha-card img {
+.panel-auth form .recaptcha-card input[type="checkbox"] {
   width: 24px;
   height: 24px;
+  margin: 0;
+
+  accent-color: var(--color-recaptcha-azul);
+  cursor: pointer;
+}
+
+.panel-auth form .recaptcha-card .recaptcha-logo-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-auth form .recaptcha-card .recaptcha-logo-contenedor img {
+  width: 38px;
+  height: 34px;
+  object-fit: contain;
+}
+
+/* TEXTO EXPLICATIVO DE ERROR DEBAJO DEL INPUT */
+.msg-error {
+  min-height: 14px;
+  margin-top: 2px;
+
+  display: block;
+
+  color: var(--color-error);
+  font-size: 11px;
+  line-height: 1.2;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.msg-error.visible {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* ESTADOS DE VALIDACION VISUAL EN TIEMPO REAL */
