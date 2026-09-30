@@ -1,7 +1,6 @@
 /* COMPONENTE PANTALLA DE CARGA LOADER S REQUERIMIENTO MANDATORIO N OPTIMIZADO CON OPERADORES RELATIVOS */
 
 .pantalla-carga {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: fixed;
   top: 0;
   left: 0;
@@ -9,12 +8,10 @@
   width: 100vw;
   height: 100vh;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-fondo);
   opacity: 1;
   visibility: visible;
@@ -22,67 +19,56 @@
 }
 
 .pantalla-carga.loader-oculto {
-  /* DETALLES ESTETICOS */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
 .pantalla-carga > div {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 
-  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 /* CONTENEDOR DEL LOGO EN CARGA */
 .loader-logo {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 220px;
   aspect-ratio: 587 / 425;
 
-  /* DETALLES ESTETICOS */
   transition: transform 0.4s ease-in-out;
 }
 
 .loader-logo.pulsando {
-  /* DETALLES ESTETICOS */
   transform: scale(1.06);
 }
 
 .loader-logo img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
 
-  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 /* SILUETA OSCURA DE FONDO GUIA */
 .loader-logo img:first-child {
-  /* DETALLES ESTETICOS */
   opacity: 0.1;
   filter: grayscale(1);
 }
 
 /* LOGO A COLOR QUE SE VA REVELANDO DE ABAJO HACIA ARRIBA */
 .loader-logo img:last-child {
-  /* DETALLES ESTETICOS */
   clip-path: inset(100% 0 0 0);
   filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.4));
   transition: clip-path 0.05s linear;
 }
 
 .pantalla-carga p {
-  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
   font-size: 2rem;
   font-weight: 700;
@@ -90,7 +76,6 @@
 }
 
 .pantalla-carga span {
-  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }

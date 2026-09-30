@@ -163,10 +163,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // CREAR MENSAJE DE EXITO
       const mensajeExito = document.createElement('div');
       mensajeExito.className = 'mensaje-exito';
+      mensajeExito.setAttribute('role', 'status');
+      mensajeExito.setAttribute('aria-live', 'polite');
       mensajeExito.textContent = mensaje;
       
       const panelAuth = document.getElementById('panel-autenticacion');
       panelAuth.appendChild(mensajeExito);
+
+      // CAMBIAR CLASE EN EL SIGUIENTE FRAME PARA ACTIVAR LA TRANSICION CSS
+      requestAnimationFrame(() => mensajeExito.classList.add('visible'));
 
       // REDIRIGIR DESPUES DE SEGUNDOS
       setTimeout(() => {

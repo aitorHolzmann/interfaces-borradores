@@ -1,19 +1,16 @@
 /* COMPONENTE COMENTARIOS FIDELIDAD FIGMA OPTIMIZADO CON OPERADORES RELATIVOS Y ETIQUETAS SEMANTICAS */
 
 .seccion-comentarios {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 960px;
   margin: 40px auto;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
 .seccion-comentarios > h2 {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.6rem;
   font-weight: 500;
@@ -24,10 +21,8 @@
 
 /* FORMULARIO DE ENTRADA DE COMENTARIO */
 .comentario-form {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   gap: 20px;
@@ -35,7 +30,6 @@
 
 /* AUTOR ACTUAL AVATAR CON NOMBRE DEBAJO */
 .comentario-autor-actual {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -44,30 +38,25 @@
 }
 
 .comentario-autor-actual > div {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 44px;
   height: 44px;
   overflow: hidden;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border: 1.5px solid var(--color-secundario);
   border-radius: var(--radio-redondo);
 }
 
 .comentario-autor-actual img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 32px;
   height: 32px;
 }
 
 .comentario-autor-actual > span {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 11px;
   text-align: center;
@@ -75,26 +64,21 @@
 
 /* BARRA DE ENTRADA BLANCA ESTILO PILDORA */
 .comentario-input-barra {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 44px;
   padding: 4px 12px 4px 20px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex: 1;
   align-items: center;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-blanco);
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .comentario-input-barra > input {
-  /* DISPOSICION INTERNA */
   flex: 1;
 
-  /* DETALLES ESTETICOS */
   background: none;
   color: var(--color-negro);
   font-size: var(--tamano-small);
@@ -103,20 +87,16 @@
 }
 
 .comentario-input-barra > input::placeholder {
-  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
 }
 
 .comentario-input-barra > button {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 6px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background: none;
   border: none;
   cursor: pointer;
@@ -124,60 +104,50 @@
 }
 
 .comentario-input-barra > button:hover {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.15);
 }
 
 .comentario-input-barra > button img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 26px;
   height: 26px;
 }
 
 /* LISTA ABIERTA DE COMENTARIOS */
 .comentarios-lista {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding-left: 10px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
 .comentario-item {
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: flex-start;
   gap: 18px;
 }
 
 .comentario-item > div:first-child {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 40px;
   height: 40px;
   overflow: hidden;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border: 1px solid var(--color-primario-claro2);
   border-radius: var(--radio-redondo);
 }
 
 .comentario-item > div:first-child img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 30px;
   height: 30px;
 }
 
 .comentario-item > div:last-child {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -185,30 +155,25 @@
 }
 
 .comentario-item header {
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: baseline;
   gap: 10px;
 }
 
 .comentario-item header strong {
-  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
   font-size: var(--tamano-small);
   font-weight: 700;
 }
 
 .comentario-item header time {
-  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }
 
 .comentario-item p {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.5;

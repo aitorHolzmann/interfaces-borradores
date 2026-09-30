@@ -1,40 +1,30 @@
 /* PAGINA LOGIN Y REGISTRO LOGIN CSS FIDELIDAD FIGMA OPTIMIZADO CON OPERADORES RELATIVOS Y ELIMINACION DE CLASES ATOMICAS */
 
 .pagina-auth-layout {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 100vh;
-
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
-
-  /* DETALLES ESTETICOS */
   background-color: var(--color-fondo);
 }
 
 /* ACOPLE DIRECTO DEL FOOTER A LA SECCION HERO */
 .pagina-auth-layout .footer-principal {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-top: 0;
 
-  /* DETALLES ESTETICOS */
   border-radius: 0;
 }
 
 .auth-hero-seccion {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   min-height: calc(100vh - var(--altura-nav));
   padding: 40px 10%;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: flex-end; /* PANEL UBICADO HACIA LA DERECHA */
 
-  /* DETALLES ESTETICOS */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -42,33 +32,27 @@
 
 /* FONDOS ESPECIFICOS POR MODO */
 .auth-hero-seccion.modo-login {
-  /* DETALLES ESTETICOS */
   background-image: var(--gradiente-fondo-login), url('../assets/fondo_login.jpg');
 }
 
 .auth-hero-seccion.modo-registro {
-  /* DISPOSICION INTERNA */
   justify-content: flex-start;
 
-  /* DETALLES ESTETICOS */
   background-image: var(--gradiente-fondo-registro), url('../assets/fondo_signin.jpg');
 }
 
 /* PANEL TRANSLUCIDO MILITAR */
 .panel-auth {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 420px;
   padding: 24px 26px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* DETALLES ESTETICOS */
   background-color: rgba(45, 52, 22, 0.7);
   border: 1.5px solid var(--color-primario-claro);
   border-radius: var(--radio-md);
@@ -78,30 +62,24 @@
 
 /* ENCABEZADO DEL PANEL */
 .panel-auth > header {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-bottom: 14px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
 
-  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .panel-auth > header > img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: auto;
   height: 38px;
 
-  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 .panel-auth > header > h1 {
-  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
   font-size: 1.45rem;
   font-weight: 700;
@@ -110,24 +88,19 @@
 }
 
 .panel-auth > form {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
 }
 
 /* ENLACE OLVIDO DE CONTRASENA */
 .panel-auth form > a {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   margin: 6px 0 14px;
 
-  /* DISPOSICION INTERNA */
   display: block;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   text-align: center;
@@ -136,16 +109,13 @@
 }
 
 .panel-auth form > a:hover {
-  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 /* TEXTO SEPARADOR */
 .auth-separador-texto {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 14px 0 10px;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
   text-align: center;
@@ -153,27 +123,22 @@
 
 /* FILA DE BOTONES SOCIALES */
 .auth-sociales {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
 
-  /* DISPOSICION INTERNA */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
 .auth-sociales > button {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 40px;
   padding: 8px 12px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  /* DETALLES ESTETICOS */
   font-family: Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -184,34 +149,28 @@
 }
 
 .auth-sociales > button:hover {
-  /* DETALLES ESTETICOS */
   opacity: 0.9;
 }
 
 .auth-sociales img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 18px;
   height: 18px;
 }
 
 .auth-sociales > button:first-child {
-  /* DETALLES ESTETICOS */
   background-color: var(--color-facebook);
   color: var(--color-blanco);
 }
 
 .auth-sociales > button:last-child {
-  /* DETALLES ESTETICOS */
   background-color: var(--color-google-fondo);
   color: var(--color-negro);
 }
 
 /* PIE DE AUTENTICACION TOGGLE */
 .auth-toggle-footer {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-top: 14px;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   text-align: center;
@@ -219,7 +178,6 @@
 
 .auth-toggle-footer a,
 .auth-toggle-link {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-weight: 700;
   text-decoration: underline;
@@ -228,24 +186,20 @@
 
 .auth-toggle-footer a:hover,
 .auth-toggle-link:hover {
-  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 @media (max-width: 800px) {
   .auth-hero-seccion,
   .auth-hero-seccion.modo-registro {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     padding: 30px 16px;
 
-    /* DISPOSICION INTERNA */
     justify-content: center;
   }
 }
 
 /* ANIMACION DE EXITO VALIDACION VISUAL */
 .mensaje-exito {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   top: 0;
   left: 0;
@@ -253,28 +207,22 @@
   height: 100%;
   z-index: 20;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background-color: rgba(45, 52, 22, 0.98);
   color: var(--color-exito);
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
   border-radius: var(--radio-md);
-  animation: aparecerExito 0.5s ease forwards;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-@keyframes aparecerExito {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.mensaje-exito.visible {
+  opacity: 1;
+  transform: scale(1);
 }

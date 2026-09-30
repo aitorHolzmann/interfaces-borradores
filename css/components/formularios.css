@@ -2,22 +2,18 @@
 
 /* GRUPO O FILA DE CAMPO EN FORMULARIOS */
 form > div {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   margin-bottom: 12px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 4px;
 
-  /* DETALLES ESTETICOS */
   text-align: left;
 }
 
 form label {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 400;
@@ -25,23 +21,19 @@ form label {
 
 /* ENVOLTORIO ESPECIFICO CUANDO UN INPUT TIENE BOTON INTERNO EJ CONTRASENA */
 .campo-password {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
 }
 
 /* INPUT CON FONDO BLANCO DEL PROTOTIPO ORIGINAL */
 form input:not([type="checkbox"]) {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   min-height: 42px;
   padding: 8px 14px;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-blanco);
   color: var(--color-negro);
   font-size: var(--tamano-small);
@@ -51,12 +43,10 @@ form input:not([type="checkbox"]) {
 }
 
 form input:not([type="checkbox"])::placeholder {
-  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
 }
 
 form input:not([type="checkbox"]):focus {
-  /* DETALLES ESTETICOS */
   border-color: var(--color-secundario);
   box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
   outline: none;
@@ -64,17 +54,14 @@ form input:not([type="checkbox"]):focus {
 
 /* ICONO OJO VER OCULTAR CONTRASENA */
 .btn-toggle-password {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   right: 12px;
   padding: 4px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background: none;
   border: none;
   cursor: pointer;
@@ -82,25 +69,20 @@ form input:not([type="checkbox"]):focus {
 
 .btn-toggle-password svg,
 .btn-toggle-password img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 20px;
   height: 20px;
 
-  /* DETALLES ESTETICOS */
   filter: invert(0.2);
 }
 
 /* CHECKBOX DE TERMINOS REGISTRO */
 .grupo-checkbox {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 10px 0 14px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: flex-start;
   gap: 10px;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.4;
@@ -108,19 +90,16 @@ form input:not([type="checkbox"]):focus {
 }
 
 .grupo-checkbox input[type="checkbox"] {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 18px;
   min-width: 18px;
   height: 18px;
   margin-top: 1px;
 
-  /* DETALLES ESTETICOS */
   accent-color: var(--color-secundario);
   cursor: pointer;
 }
 
 .grupo-checkbox a {
-  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
   font-weight: 500;
   text-decoration: underline;
@@ -128,71 +107,59 @@ form input:not([type="checkbox"]):focus {
 
 /* MOCKUP RECAPTCHA EN REGISTRO */
 .recaptcha-card {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 300px;
   margin: 6px auto 14px;
   padding: 8px 12px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-recaptcha-fondo);
   border: 1px solid var(--color-recaptcha-borde);
   border-radius: 4px;
 }
 
 .recaptcha-card > label {
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   gap: 10px;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-negro);
   font-family: Arial, sans-serif;
   font-size: 13px;
 }
 
 .recaptcha-card input[type="checkbox"] {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 22px;
   height: 22px;
 
-  /* DETALLES ESTETICOS */
   cursor: pointer;
 }
 
 .recaptcha-card > div {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-family: Arial, sans-serif;
   font-size: 9px;
 }
 
 .recaptcha-card img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 24px;
   height: 24px;
 }
 
 /* ESTADOS DE VALIDACION VISUAL EN TIEMPO REAL */
 .input-valido {
-  /* DETALLES ESTETICOS */
   border-color: var(--color-exito) !important;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3) !important;
 }
 
 .input-invalido {
-  /* DETALLES ESTETICOS */
   border-color: var(--color-error) !important;
   box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.3) !important;
 }

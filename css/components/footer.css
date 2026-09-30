@@ -1,13 +1,11 @@
 /* COMPONENTE FAT FOOTER INSTITUCIONAL OPTIMIZADO CON OPERADORES RELATIVOS Y ELIMINACION DE WRAPPERS INNECESARIOS */
 
 .footer-principal {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   margin-top: 60px;
   overflow: hidden;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-primario-oscuro);
   border-top: 1px solid var(--color-secundario);
   border-radius: var(--radio-card) var(--radio-card) 0 0;
@@ -16,38 +14,31 @@
 }
 
 .footer-principal h4 {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   margin-bottom: 14px;
 
-  /* DETALLES ESTETICOS */
   font-size: var(--tamano-h3);
   border-bottom: 1.5px solid var(--color-blanco);
   text-align: center;
 }
 
 .footer-principal a {
-  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   gap: 10px;
 
-  /* DETALLES ESTETICOS */
   white-space: nowrap;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-principal a:hover {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: translateX(4px);
 
-  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 /* CONTENEDOR PRINCIPAL CAJAS PRINCIPALES */
 .footer-principal > .footer-contenedor {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: var(--ancho-maximo);
   margin: 0 auto;
@@ -62,35 +53,28 @@
 
 /* CAJA MARCA Y DESCRIPCION IZQUIERDA EN DESKTOP */
 .footer-contenedor > .footer-marca {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 360px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 
-  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .footer-marca > img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: auto;
   height: 190px;
 
-  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 .footer-marca > p {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 360px;
 
-  /* DETALLES ESTETICOS */
   font-size: inherit;
   line-height: 1.6;
   text-align: center;
@@ -98,7 +82,6 @@
 
 /* CAJA GRILLA DE ENLACES Y NAVEGACION DERECHA EN DESKTOP */
 .footer-contenedor > .footer-links-grid {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 970px;
 
@@ -108,65 +91,53 @@
   gap: 28px;
   justify-items: center;
 
-  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .footer-links-grid > div {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 260px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .footer-links-grid ul {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
 
-  /* DETALLES ESTETICOS */
   list-style: none;
 }
 
 .footer-links-grid a img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 18px;
   height: 18px;
 
-  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 /* BLOQUE SOPORTE OCUPA TODO EL ANCHO DE LA GRILLA DE LINKS */
 .footer-links-grid > .footer-soporte {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 100%;
   margin-top: 10px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
 
-  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .footer-soporte > h4 {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   max-width: 620px;
 }
 
 .footer-soporte > div {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 620px;
 
@@ -176,25 +147,20 @@
   gap: 10px;
   justify-items: center;
 
-  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 /* BARRA INFERIOR DE COPYRIGHT */
 .footer-principal > .footer-bottom {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 16px 20px;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-primario-oscuro2);
   text-align: center;
 }
 
 .footer-bottom > p {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* DETALLES ESTETICOS */
   font-size: var(--tamano-small);
   line-height: 1.4;
 }
@@ -202,7 +168,6 @@
 /* RESPONSIVE TABLET MIN WIDTH PX */
 @media (min-width: 600px) {
   .footer-principal {
-    /* DETALLES ESTETICOS */
     font-size: var(--tamano-body);
   }
 
@@ -212,39 +177,31 @@
   }
 
   .footer-links-grid > div {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     max-width: 100%;
 
-    /* DISPOSICION INTERNA */
     align-items: flex-start;
   }
 
   .footer-links-grid > div > h4 {
-    /* DETALLES ESTETICOS */
     text-align: left;
   }
 
   .footer-links-grid ul {
-    /* DISPOSICION INTERNA */
     align-items: flex-start;
   }
 
   .footer-links-grid > .footer-soporte {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     grid-column: 1 / -1;
   }
 
   .footer-soporte > h4 {
-    /* DETALLES ESTETICOS */
     text-align: center;
   }
 
   .footer-soporte > div {
-    /* DISPOSICION INTERNA */
     grid-template-columns: repeat(2, 1fr);
     justify-items: start;
 
-    /* DETALLES ESTETICOS */
     text-align: left;
   }
 }

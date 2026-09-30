@@ -2,42 +2,34 @@
 
 /* AJUSTES BASE MOBILE PX */
 .carrusel-principal-contenedor {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   gap: 16px;
 }
 
 .carrusel-principal-escena-3d {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 270px;
   height: 200px;
 
-  /* DETALLES ESTETICOS */
   perspective: 650px;
 }
 
 .carrusel-principal-tarjeta-3d.cara-1 {
-  /* DETALLES ESTETICOS */
   transform: rotateY(0deg) translateZ(120px);
 }
 
 .carrusel-principal-tarjeta-3d.cara-2 {
-  /* DETALLES ESTETICOS */
   transform: rotateY(120deg) translateZ(120px);
 }
 
 .carrusel-principal-tarjeta-3d.cara-3 {
-  /* DETALLES ESTETICOS */
   transform: rotateY(240deg) translateZ(120px);
 }
 
 .carrusel-principal-juego-nombre,
 .carrusel-principal-tarjeta-3d h3 {
-  /* DETALLES ESTETICOS */
   font-size: 18px;
 }
 
 .card-juego {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 210px;
   min-width: 210px;
   height: 155px;
@@ -47,47 +39,38 @@
 @media (min-width: 768px) {
   .seccion-carrusel-principal > h2,
   .carrusel-principal-titulo {
-    /* DETALLES ESTETICOS */
     font-size: 2.2rem;
   }
 
   .carrusel-principal-contenedor {
-    /* ALINEACION PROPIA Y MODELO DE CAJA */
     gap: 45px;
   }
 
   .carrusel-principal-escena-3d {
-    /* ALINEACION PROPIA Y MODELO DE CAJA */
     width: 360px;
     height: 260px;
 
-    /* DETALLES ESTETICOS */
     perspective: 850px;
   }
 
   .carrusel-principal-tarjeta-3d.cara-1 {
-    /* DETALLES ESTETICOS */
     transform: rotateY(0deg) translateZ(160px);
   }
 
   .carrusel-principal-tarjeta-3d.cara-2 {
-    /* DETALLES ESTETICOS */
     transform: rotateY(120deg) translateZ(160px);
   }
 
   .carrusel-principal-tarjeta-3d.cara-3 {
-    /* DETALLES ESTETICOS */
     transform: rotateY(240deg) translateZ(160px);
   }
 
   .carrusel-principal-juego-nombre,
   .carrusel-principal-tarjeta-3d h3 {
-    /* DETALLES ESTETICOS */
     font-size: 22px;
   }
 
   .card-juego {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: 230px;
     min-width: 230px;
     height: 165px;
@@ -98,33 +81,28 @@
 @media (min-width: 1024px) {
   .seccion-carrusel-principal > h2,
   .carrusel-principal-titulo {
-    /* DETALLES ESTETICOS */
     font-size: 2.5rem;
   }
 
   .hero-triptico > div,
   .hero-foto-lateral {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: 280px;
     height: 250px;
   }
 
   .hero-triptico > a,
   .hero-foto-central {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: 440px;
     height: 330px;
   }
 
   .card-juego {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: 245px;
     min-width: 245px;
     height: 175px;
   }
 
   .seccion-categoria {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     padding: 0 40px;
   }
 }
@@ -132,78 +110,63 @@
 /* PANTALLAS MUY PEQUENAS PX */
 @media (max-width: 480px) {
   .nav-principal {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     padding: 0 10px;
   }
 
   .nav-principal > .nav-contenedor {
-    /* DISPOSICION INTERNA */
     gap: 10px;
   }
 
   .nav-contenedor > .nav-izquierda {
-    /* DISPOSICION INTERNA */
     gap: 8px;
   }
 
   .nav-izquierda > a > img {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     height: 38px;
   }
 
   .nav-centro form > input[type="search"] {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     height: 36px;
     padding: 6px 36px 6px 12px;
 
-    /* DETALLES ESTETICOS */
     font-size: var(--tamano-small);
   }
 
   .nav-centro form > button {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     right: 10px;
   }
 
   .perfil-menu-contenedor > button {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: 36px;
     height: 36px;
   }
 
   .perfil-menu-contenedor > button img {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: 24px;
     height: 24px;
   }
 
   .perfil-menu-contenedor {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     min-width: 140px;
   }
 
   .hero-triptico h3 {
-    /* DETALLES ESTETICOS */
     font-size: 20px;
   }
 
   .card-juego {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: 180px;
     min-width: 180px;
     height: 135px;
   }
 
   .card-juego > span {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     bottom: 6px;
 
-    /* DETALLES ESTETICOS */
     font-size: 14px;
   }
 
   .badge-premium-icon {
-    /* POSICIONAMIENTO Y MODELO DE CAJA */
     width: auto;
     max-width: 80px;
     height: 18px;

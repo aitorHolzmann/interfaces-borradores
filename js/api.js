@@ -80,13 +80,13 @@ function clasificarJuegosEnCategorias(juegosAPI) {
       titulo: j.name,
       // SE UTILIZA BACKGROUND IMAGE LOW RES X SEGUN RECOMENDACION OFICIAL DE LA CATEDRA PARA VISTAS PREVIAS
       imagen: j.background_image_low_res || j.background_image,
-      enlace: `game.html?id=${j.id}`,
+      enlace: 'game.html',
       rating: j.rating,
       premium: false
     }));
 
   // CATEGORIA PREMIUM CLASIFICACION ALTA RATING
-  // ASEGURAMOS QUE PEG SOLITAIRE SIEMPRE ESTE PRIMERO COMO JUEGO JUGABLE DE LA ENTREGA
+  // ASEGURAMOS QUE PEG SOLITAIRE ESTE PRIMERO 
   const juegosPremiumAPI = juegosAPI
     .filter(j => (j.rating || 0) >= 4.30 && (j.rating || 0) < 4.45)
     .slice(0, 7)
@@ -103,7 +103,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
     {
       id: 'peg-solitaire',
       titulo: 'Peg Solitaire',
-      imagen: 'assets/images/peg_solitaire_hero.jpg',
+      imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%205.png',
       enlace: 'javascript:void(0);',
       rating: 4.9,
       premium: true
@@ -119,7 +119,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
       id: j.id,
       titulo: j.name,
       imagen: j.background_image_low_res || j.background_image,
-      enlace: `game.html?id=${j.id}`,
+      enlace: 'game.html',
       rating: j.rating,
       premium: false
     }));
@@ -132,7 +132,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
       id: j.id,
       titulo: j.name,
       imagen: j.background_image_low_res || j.background_image,
-      enlace: `game.html?id=${j.id}`,
+      enlace: 'game.html',
       rating: j.rating,
       premium: false
     }));
@@ -145,7 +145,7 @@ function clasificarJuegosEnCategorias(juegosAPI) {
       id: j.id,
       titulo: j.name,
       imagen: j.background_image_low_res || j.background_image,
-      enlace: `game.html?id=${j.id}`,
+      enlace: 'game.html',
       rating: j.rating,
       premium: false
     }));

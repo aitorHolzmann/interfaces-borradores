@@ -6,7 +6,6 @@
 *,
 *::before,
 *::after {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -14,18 +13,15 @@
 
 /* RAIZ DEL DOCUMENTO */
 html {
-  /* DETALLES ESTETICOS */
   color-scheme: dark;
   font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   min-height: 100vh;
   overflow-x: hidden;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-fondo);
   color: var(--color-blanco);
   font-family: var(--fuente-principal);
@@ -36,7 +32,6 @@ body {
 
 /* TIPOGRAFIA */
 h1, h2, h3, h4, h5, h6 {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-family: var(--fuente-principal);
   font-weight: 700;
@@ -44,51 +39,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  /* DETALLES ESTETICOS */
   font-size: 2.5rem; /* PX MOBILE */
   line-height: 1.2;
 }
 
 h2 {
-  /* DETALLES ESTETICOS */
   font-size: 1.8rem; /* PX MOBILE */
   line-height: 1.3;
 }
 
 h3 {
-  /* DETALLES ESTETICOS */
   font-size: 1.3rem; /* PX MOBILE */
   line-height: 1.4;
 }
 
 p {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   margin-bottom: 0.5rem;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-body);
 }
 
 small {
-  /* DETALLES ESTETICOS */
   color: var(--color-gris-neutro);
   font-size: var(--tamano-small);
 }
 
 /* ENLACES Y BOTONES BASE */
 a {
-  /* DISPOSICION INTERNA */
   display: inline-block;
 
-  /* DETALLES ESTETICOS */
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 button, input, select, textarea {
-  /* DETALLES ESTETICOS */
   background: none;
   color: inherit;
   font-family: inherit;
@@ -98,73 +84,60 @@ button, input, select, textarea {
 }
 
 button {
-  /* DETALLES ESTETICOS */
   cursor: pointer;
   user-select: none;
 }
 
 /* IMAGENES Y MULTIMEDIA */
 img, svg {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   max-width: 100%;
   height: auto;
 
-  /* DISPOSICION INTERNA */
   display: block;
 }
 
 /* BARRA DE SCROLL TEMATICA MILITAR */
 ::-webkit-scrollbar {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  /* DETALLES ESTETICOS */
   background: var(--color-superficie-oscura);
 }
 
 ::-webkit-scrollbar-thumb {
-  /* DETALLES ESTETICOS */
   background: var(--color-primario);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  /* DETALLES ESTETICOS */
   background: var(--color-primario-claro);
 }
 
 /* CLASES DE UTILIDAD COMUNES */
 .texto-centrado {
-  /* DETALLES ESTETICOS */
   text-align: center;
 }
 
 .texto-secundario,
 .texto-acento {
-  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 .texto-primario-claro {
-  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
 }
 
 .texto-premium {
-  /* DETALLES ESTETICOS */
   color: var(--color-premium);
 }
 
 .oculto {
-  /* DISPOSICION INTERNA */
   display: none !important;
 }
 
 .sr-only {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   width: 1px;
   height: 1px;
@@ -173,7 +146,6 @@ img, svg {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
 
-  /* DETALLES ESTETICOS */
   white-space: nowrap;
   border: 0;
 }

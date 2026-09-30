@@ -1,4 +1,4 @@
-/* CARRUSELES INFINITOS Y CATALOGO DE JUEGOS CAROUSEL JS RENDERIZADO DINAMICO DE CATEGORIAS Y CARDS DESDE DATOS ESTRUCTURADOS DRY LOGICA DE CARRUSEL INFINITO MEDIANTE ROTACION CIRCULAR DE NODOS EN EL DOM ANIMACION DE DEFORMACION POR INERCIA FISICA SKEWX AL DESLIZAR TEMA SOPORTE PARA NAVEGACION CON FLECHAS TACTICAS Y SWIPE TACTIL DRAG DE MOUSE */
+/* CARRUSELES DE CATEGORIAS: RENDERIZADO DESDE DATOS Y DESPLAZAMIENTO HORIZONTAL FINITO */
 
 // CATALOGO DE RESPALDO LOCAL PARA RENDERIZAR INMEDIATAMENTE Y SOPORTAR OFFLINE
 const CATALOGO_CATEGORIAS = [
@@ -8,37 +8,37 @@ const CATALOGO_CATEGORIAS = [
     juegos: [
       {
         titulo: 'Breach Point',
-        imagen: 'assets/images/game_action_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2010.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Street Battle',
-        imagen: 'assets/images/game_action_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2012.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Elite Marksman',
-        imagen: 'assets/images/game_sniper_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2013.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Firebase Combat',
-        imagen: 'assets/images/game_combat_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2014.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Desert Recon Patrol',
-        imagen: 'assets/images/game_military_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%207.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Geopolitical Struggle & Global Intelligence',
-        imagen: 'assets/images/game_military_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%209.png',
         enlace: 'game.html',
         premium: false
       }
@@ -50,37 +50,37 @@ const CATALOGO_CATEGORIAS = [
     juegos: [
       {
         titulo: 'Armada Tactical',
-        imagen: 'assets/images/game_space_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%206.png',
         enlace: 'game.html',
         premium: true
       },
       {
         titulo: 'Peg Solitaire',
-        imagen: 'assets/images/peg_solitaire_hero.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%205.png',
         enlace: 'game.html',
         premium: true
       },
       {
         titulo: 'Iron Fist Armored Tank',
-        imagen: 'assets/images/game_tank_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%204.png',
         enlace: 'game.html',
         premium: true
       },
       {
         titulo: 'Velocity Extreme Racing',
-        imagen: 'assets/images/game_racing_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%203.png',
         enlace: 'game.html',
         premium: true
       },
       {
         titulo: 'Starfleet Tactical Battlefleet Command',
-        imagen: 'assets/images/game_space_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%207.png',
         enlace: 'game.html',
         premium: true
       },
       {
         titulo: 'Cybernetic Warfare 2099',
-        imagen: 'assets/images/game_cyber_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%208.png',
         enlace: 'game.html',
         premium: true
       }
@@ -92,37 +92,79 @@ const CATALOGO_CATEGORIAS = [
     juegos: [
       {
         titulo: 'Frontline Assault',
-        imagen: 'assets/images/game_action_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%203.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Urban Warfare Operations',
-        imagen: 'assets/images/game_combat_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%204.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Special Operations Blackout',
-        imagen: 'assets/images/game_military_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%205.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Sector 4 Drone Recon',
-        imagen: 'assets/images/game_scifi_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%206.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Air Superiority Dogfight',
-        imagen: 'assets/images/game_flight_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%208.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Cyber Strike Infiltration',
-        imagen: 'assets/images/game_scifi_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%209.png',
+        enlace: 'game.html',
+        premium: false
+      }
+    ]
+  },
+  {
+    id: 'aventura',
+    titulo: 'Aventura',
+    juegos: [
+      {
+        titulo: 'Lost Horizon Expedition',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%2010.png',
+        enlace: 'game.html',
+        premium: false
+      },
+      {
+        titulo: 'Mystic Valley Quest',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%203.png',
+        enlace: 'game.html',
+        premium: false
+      },
+      {
+        titulo: 'Jungle Relic Hunters',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%205.png',
+        enlace: 'game.html',
+        premium: false
+      },
+      {
+        titulo: 'The Last Starfarer',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%206.png',
+        enlace: 'game.html',
+        premium: false
+      },
+      {
+        titulo: 'Forgotten Kingdoms',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%208.png',
+        enlace: 'game.html',
+        premium: false
+      },
+      {
+        titulo: 'Beyond the Ancient Gate',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%209.png',
         enlace: 'game.html',
         premium: false
       }
@@ -134,37 +176,37 @@ const CATALOGO_CATEGORIAS = [
     juegos: [
       {
         titulo: 'Galactic Warfare Hegemony',
-        imagen: 'assets/images/game_strategy_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%202.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Naval Special Operations Command',
-        imagen: 'assets/images/game_strategy_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%204.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Armor Tactics Division',
-        imagen: 'assets/images/game_tank_1.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%205.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Siege Commander Alpha',
-        imagen: 'assets/images/game_scifi_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%206.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Orbital Defense Network',
-        imagen: 'assets/images/game_space_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%207.png',
         enlace: 'game.html',
         premium: false
       },
       {
         titulo: 'Total Resistance Front',
-        imagen: 'assets/images/game_military_2.jpg',
+        imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%208.png',
         enlace: 'game.html',
         premium: false
       }
@@ -172,148 +214,46 @@ const CATALOGO_CATEGORIAS = [
   }
 ];
 
-// CLASE CARRUSELINFINITO
-class CarruselInfinito {
+// CARRUSEL FINITO: AVANZA UNA TARJETA Y SE DETIENE EN LOS EXTREMOS
+class CarruselCategoria {
   constructor(contenedor) {
     this.contenedor = contenedor;
     this.pista = contenedor.querySelector('.carrusel-pista');
+    this.viewport = contenedor.querySelector('.carrusel-viewport');
     this.btnAnt = contenedor.querySelector('.carrusel-flecha.izquierda');
     this.btnSig = contenedor.querySelector('.carrusel-flecha.derecha');
+    this.desplazamiento = 0;
 
-    this.enAnimacion = false;
-    this.duracionMs = 380;
-    this.timerSeguridad = null;
-
-    // VARIABLES PARA SOPORTE DE ARRASTRE SWIPE
-    this.inicioX = 0;
-    this.distanciaArrastre = 0;
-    this.estaArrastrando = false;
-
-    this.iniciarEventos();
+    this.btnSig.addEventListener('click', () => this.mover(1));
+    this.btnAnt.addEventListener('click', () => this.mover(-1));
+    window.addEventListener('resize', () => this.actualizarEstado());
+    this.actualizarEstado();
   }
 
-  // OBTIENE EL PASO EXACTO DE DESPLAZAMIENTO SEGUN EL ANCHO DE LA PRIMERA CARD Y EL GAP
+  // CALCULA EL ANCHO DE UNA TARJETA MAS EL ESPACIO ENTRE TARJETAS
   obtenerPaso() {
     const primeraCard = this.pista.querySelector('.card-juego');
-    if (!primeraCard) return 265;
+    if (!primeraCard) return 0;
     const estiloPista = window.getComputedStyle(this.pista);
     const gap = parseFloat(estiloPista.gap) || 20;
     return primeraCard.offsetWidth + gap;
   }
 
-  // DESPLAZAMIENTO HACIA LA DERECHA SIGUIENTE CON DEFORMACION INERCIAL SKEWX DEG
-  avanzar() {
-    if (this.enAnimacion || this.pista.children.length <= 1) return;
-    this.enAnimacion = true;
-
-    const paso = this.obtenerPaso();
-
-    // APLICAR CLASE DE DEFORMACION POR INERCIA HACIA ADELANTE
-    this.pista.classList.add('deslizando-sig');
-    this.pista.style.transition = `transform ${this.duracionMs}ms cubic-bezier(0.25, 1, 0.5, 1)`;
-    this.pista.style.transform = `translateX(-${paso}px)`;
-
-    // AL FINALIZAR LA TRANSICION ROTAR NODO EN EL DOM Y RESETEAR POSICION
-    const finalizarAvance = () => {
-      clearTimeout(this.timerSeguridad);
-      this.pista.removeEventListener('transitionend', onEnd);
-
-      this.pista.style.transition = 'none';
-      // MOVER EL PRIMER ELEMENTO AL FINAL DE LA PISTA
-      this.pista.appendChild(this.pista.firstElementChild);
-      this.pista.style.transform = 'translateX(0)';
-      this.pista.classList.remove('deslizando-sig');
-
-      // FORZAR REFLUJO PARA LIMPIAR ESTILOS ANTES DE LA PROXIMA ANIMACION
-      void this.pista.offsetWidth;
-      this.pista.style.transition = '';
-      this.enAnimacion = false;
-    };
-
-    const onEnd = (e) => {
-      if (e.target === this.pista && e.propertyName === 'transform') {
-        finalizarAvance();
-      }
-    };
-
-    this.pista.addEventListener('transitionend', onEnd);
-    this.timerSeguridad = setTimeout(finalizarAvance, this.duracionMs + 60);
+  // ACTUALIZA LOS LIMITES Y DESHABILITA LA FLECHA CUANDO LLEGA A UN EXTREMO
+  actualizarEstado() {
+    const maximo = Math.max(0, this.pista.scrollWidth - this.viewport.clientWidth);
+    this.desplazamiento = Math.min(this.desplazamiento, maximo);
+    this.pista.style.transform = `translateX(-${this.desplazamiento}px)`;
+    this.btnAnt.disabled = this.desplazamiento === 0;
+    this.btnSig.disabled = this.desplazamiento >= maximo;
   }
 
-  // DESPLAZAMIENTO HACIA LA IZQUIERDA ANTERIOR CON DEFORMACION INERCIAL SKEWX DEG
-  retroceder() {
-    if (this.enAnimacion || this.pista.children.length <= 1) return;
-    this.enAnimacion = true;
-
+  // MUEVE LA PISTA UNA TARJETA Y LIMITA EL RESULTADO ENTRE EL PRINCIPIO Y EL FINAL
+  mover(direccion) {
     const paso = this.obtenerPaso();
-
-    // MOVER EL ULTIMO ELEMENTO AL INICIO INMEDIATAMENTE SIN TRANSICION
-    this.pista.style.transition = 'none';
-    this.pista.insertBefore(this.pista.lastElementChild, this.pista.firstElementChild);
-    this.pista.style.transform = `translateX(-${paso}px)`;
-    this.pista.classList.add('deslizando-ant');
-
-    // FORZAR REFLUJO DEL NAVEGADOR
-    void this.pista.offsetWidth;
-
-    // ANIMAR HACIA LA POSICION NEUTRA TRANSLATEX
-    this.pista.style.transition = `transform ${this.duracionMs}ms cubic-bezier(0.25, 1, 0.5, 1)`;
-    this.pista.style.transform = 'translateX(0)';
-
-    const finalizarRetroceso = () => {
-      clearTimeout(this.timerSeguridad);
-      this.pista.removeEventListener('transitionend', onEnd);
-
-      this.pista.classList.remove('deslizando-ant');
-      this.pista.style.transition = '';
-      this.pista.style.transform = '';
-      this.enAnimacion = false;
-    };
-
-    const onEnd = (e) => {
-      if (e.target === this.pista && e.propertyName === 'transform') {
-        finalizarRetroceso();
-      }
-    };
-
-    this.pista.addEventListener('transitionend', onEnd);
-    this.timerSeguridad = setTimeout(finalizarRetroceso, this.duracionMs + 60);
-  }
-
-  // ASOCIACION DE LISTENERS PARA BOTONES Y GESTOS TACTILES
-  iniciarEventos() {
-    if (this.btnSig) {
-      this.btnSig.addEventListener('click', () => this.avanzar());
-    }
-
-    if (this.btnAnt) {
-      this.btnAnt.addEventListener('click', () => this.retroceder());
-    }
-
-    // SOPORTE TACTIL MOUSE SWIPE
-    this.pista.addEventListener('pointerdown', (e) => {
-      this.inicioX = e.clientX;
-      this.estaArrastrando = true;
-      this.distanciaArrastre = 0;
-    });
-
-    window.addEventListener('pointermove', (e) => {
-      if (!this.estaArrastrando) return;
-      this.distanciaArrastre = e.clientX - this.inicioX;
-    });
-
-    window.addEventListener('pointerup', () => {
-      if (!this.estaArrastrando) return;
-      this.estaArrastrando = false;
-
-      // UMBRAL DE PX PARA ACTIVAR EL AVANCE O RETROCESO
-      if (this.distanciaArrastre < -45) {
-        this.avanzar();
-      } else if (this.distanciaArrastre > 45) {
-        this.retroceder();
-      }
-      this.distanciaArrastre = 0;
-    });
+    const maximo = Math.max(0, this.pista.scrollWidth - this.viewport.clientWidth);
+    this.desplazamiento = Math.max(0, Math.min(this.desplazamiento + paso * direccion, maximo));
+    this.actualizarEstado();
   }
 }
 
@@ -413,8 +353,8 @@ function renderizarCatalogo(contenedorId = 'contenedor-categorias', catalogo = C
     seccion.appendChild(carruselContenedor);
     contenedorPrincipal.appendChild(seccion);
 
-    // INSTANCIAR LA LOGICA DE CARRUSEL INFINITO PARA ESTA CATEGORIA
-    new CarruselInfinito(carruselContenedor);
+    // CONECTAR LAS FLECHAS CON EL DESPLAZAMIENTO FINITO DE ESTA CATEGORIA
+    new CarruselCategoria(carruselContenedor);
   });
 }
 

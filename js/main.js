@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let anguloCarruselPrincipal = 0;
   let timerGiroAutomatico = null;
   let timerReanudarAuto = null;
-  const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function rotarCarruselManual(direccion) {
     if (!carruselPrincipal) return;
@@ -134,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function iniciarGiroAutomatico() {
-    if (!carruselPrincipal || prefiereMenosMovimiento.matches) return;
+    if (!carruselPrincipal) return;
     if (contenedorCarruselPrincipal.matches(':hover') || contenedorCarruselPrincipal.contains(document.activeElement)) return;
 
     clearInterval(timerGiroAutomatico);
@@ -169,14 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
-        pausarGiroAutomatico();
-      } else {
-        iniciarGiroAutomatico();
-      }
-    });
-
-    prefiereMenosMovimiento.addEventListener('change', () => {
-      if (prefiereMenosMovimiento.matches) {
         pausarGiroAutomatico();
       } else {
         iniciarGiroAutomatico();

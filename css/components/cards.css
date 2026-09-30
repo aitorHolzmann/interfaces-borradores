@@ -1,8 +1,7 @@
-/* CARDS DE JUEGOS ESTILOS Y ANIMACIONES FIDELIDAD FIGMA TEMA REPOSO SOLO SE VE LA FOTO LIMPIA Y EL BADGE SI ES PREMIUM HOVER LA TARJETA SE AGRANDA SUBE CON Z INDEX APARECE EL TITULO Y EL BOTON BOTON DE ACCION JUGAR O COMPRAR EN PREMIUM CON ESTILOS DE GAME HTML Y HOVER PROPIO DESLIZAMIENTO EFECTO DE INERCIA CON SKEWX SEGUN EL TEMA DE LA CATEDRA */
+/* CARDS DE JUEGOS: PORTADA, BADGE, TITULO Y ACCION CON ESTADOS HOVER Y FOCUS */
 
 /* TARJETA BASE TAMANO FIJO PARA QUE NO SE DEFORME EN EL FLEX BORDES REDONDEADOS Y TRANSICION SUAVE */
 .card-juego {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: relative;
   z-index: 1;
   width: 245px;
@@ -10,11 +9,9 @@
   height: 175px;
   overflow: hidden;
 
-  /* DISPOSICION INTERNA */
   display: block;
   flex: 0 0 auto;
 
-  /* DETALLES ESTETICOS */
   border-radius: var(--radio-card);
   box-shadow: var(--sombra-card);
   text-decoration: none;
@@ -24,7 +21,6 @@
 
 /* SOMBREADO NEGRO ABAJO QUE ARRANCA TRANSPARENTE PARA QUE CUANDO SUBA EL TEXTO SE LEA DE DIEZ SIN TAPAR TODA LA FOTO */
 .card-juego::after {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   content: "";
   position: absolute;
   right: 0;
@@ -33,7 +29,6 @@
   z-index: 2;
   height: 65%;
 
-  /* DETALLES ESTETICOS */
   background: linear-gradient(to top, rgba(14, 16, 14, 0.95) 0%, rgba(14, 16, 14, 0.6) 60%, transparent 100%);
   opacity: 0;
   pointer-events: none;
@@ -43,10 +38,8 @@
 /* HOVER Y FOCUS CUANDO PASAS EL MOUSE O NAVEGAS CON TECLADO TAB AGRANDAMOS LA CARD UN Y LE METEMOS Z INDEX ALTO PARA QUE NO QUEDE ABAJO DE LAS VECINAS */
 .card-juego:hover,
 .card-juego:focus-visible {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   z-index: 10;
 
-  /* DETALLES ESTETICOS */
   box-shadow: var(--sombra-card-hover), 0 0 16px rgba(130, 142, 59, 0.45);
   transform: scale(1.08);
 }
@@ -54,20 +47,16 @@
 /* ACTIVAMOS EL SOMBREADO OSCURO EN HOVER PARA DARLE CONTRASTE AL TEXTO */
 .card-juego:hover::after,
 .card-juego:focus-visible::after {
-  /* DETALLES ESTETICOS */
   opacity: 1;
 }
 
 /* FOTO DE PORTADA DEL JUEGO */
 .card-img {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   width: 100%;
   height: 100%;
 
-  /* DISPOSICION INTERNA */
   display: block;
 
-  /* DETALLES ESTETICOS */
   object-fit: cover;
   transition: transform 0.35s ease;
 }
@@ -75,13 +64,11 @@
 /* UN ZOOM CHIQUITO A LA IMAGEN CUANDO PASAMOS EL CURSOR PARA QUE QUEDE MAS VIVO */
 .card-juego:hover .card-img,
 .card-juego:focus-visible .card-img {
-  /* DETALLES ESTETICOS */
   transform: scale(1.04);
 }
 
 /* BOTON DE ACCION RAPIDA JUGAR COMPRAR QUE APARECE EN EL CENTRO DE LA CARD AL HACER HOVER */
 .btn-card-accion {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: 40%;
   left: 50%;
@@ -89,12 +76,10 @@
   z-index: 5;
   padding: 8px 24px;
 
-  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   color: var(--color-blanco);
   font-size: 13px;
@@ -112,17 +97,14 @@
 /* EN HOVER DE LA CARD EL BOTON SE HACE VISIBLE Y TOMA SU TAMANO NATURAL */
 .card-juego:hover .btn-card-accion,
 .card-juego:focus-visible .btn-card-accion {
-  /* DETALLES ESTETICOS */
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
 /* HOVER PROPIO DEL BOTON JUGAR SE ELEVA UN TOQUE SE LLENA DE NARANJA Y LARGA UN BRILLO GLOW */
 .btn-card-accion:hover {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   transform: translate(-50%, -56%) scale(1.06);
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border-color: var(--color-acento-claro);
@@ -130,21 +112,17 @@
 }
 
 .btn-card-accion:active {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   transform: translate(-50%, -48%) scale(0.96);
 }
 
 /* ESTILO ESPECIAL PARA EL BOTON COMPRAR DE LOS JUEGOS PREMIUM BORDE Y GLOW DORADO */
 .btn-card-accion.btn-comprar {
-  /* DETALLES ESTETICOS */
   border-color: var(--color-premium);
 }
 
 .btn-card-accion.btn-comprar:hover {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   transform: translate(-50%, -56%) scale(1.06);
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-premium);
   color: var(--color-negro);
   border-color: var(--color-blanco);
@@ -153,7 +131,6 @@
 
 /* TITULO DEL JUEGO LETRA AGRANDADA Y BIEN LEGIBLE RELLENO BLANCO Y BORDES NEGROS */
 .card-titulo {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   right: 8px;
   bottom: 12px;
@@ -163,7 +140,6 @@
   padding: 0 4px;
   overflow: hidden;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 17px;
   font-weight: 700;
@@ -183,14 +159,12 @@
 /* CUANDO HACEMOS HOVER EL TITULO SUBE A SU POSICION NATURAL Y SE HACE VISIBLE CON TRANSICION SUAVE */
 .card-juego:hover .card-titulo,
 .card-juego:focus-visible .card-titulo {
-  /* DETALLES ESTETICOS */
   opacity: 1;
   transform: translateY(0);
 }
 
 /* INSIGNIA PARA IDENTIFICAR LOS JUEGOS PREMIUM */
 .badge-premium-icon {
-  /* ALINEACION PROPIA Y MODELO DE CAJA */
   position: absolute;
   top: 10px;
   left: 10px;
@@ -199,7 +173,6 @@
   max-width: 105px;
   height: 22px;
 
-  /* DETALLES ESTETICOS */
   border-radius: var(--radio-sm);
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.65));
   pointer-events: none;
@@ -208,18 +181,6 @@
 
 .card-juego:hover .badge-premium-icon,
 .card-juego:focus-visible .badge-premium-icon {
-  /* DETALLES ESTETICOS */
   transform: scale(1.08);
 }
 
-/* ANIMACION DEL TEMA FILMINA AL DESLIZAR A LA DERECHA LAS CARDS SE INCLINAN POR INERCIA */
-.carrusel-pista.deslizando-sig .card-juego {
-  /* DETALLES ESTETICOS */
-  transform: skewX(-8deg) scale(0.97);
-}
-
-/* Y CUANDO RETROCEDEMOS A LA IZQUIERDA SE INCLINAN PARA EL OTRO LADO */
-.carrusel-pista.deslizando-ant .card-juego {
-  /* DETALLES ESTETICOS */
-  transform: skewX(8deg) scale(0.97);
-}

@@ -1,13 +1,11 @@
 /* PAGINA EJECUCION DE JUEGO GAME CSS FIDELIDAD FIGMA OPTIMIZADO CON OPERADORES RELATIVOS Y ESTRUCTURA DE PARTES */
 
 .pagina-juego-main {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 24px 60px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -16,40 +14,33 @@
 /* BREADCRUMBS DE NAVEGACION */
 .breadcrumbs,
 .game-breadcrumbs {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-bottom: -15px;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-body);
 }
 
 .breadcrumbs a,
 .game-breadcrumbs a {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   transition: color 0.2s ease;
 }
 
 .breadcrumbs a:hover,
 .game-breadcrumbs a:hover {
-  /* DETALLES ESTETICOS */
   color: var(--color-secundario);
 }
 
 .breadcrumbs span,
 .game-breadcrumbs span {
-  /* DETALLES ESTETICOS */
   color: var(--color-primario-claro);
 }
 
 /* AREA DE EJECUCION DEL JUEGO X */
 .area-ejecucion-juego {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   overflow: hidden;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border-radius: var(--radio-md) var(--radio-md) 0 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
@@ -57,17 +48,14 @@
 
 .area-ejecucion-juego > div:first-child,
 .pantalla-juego-contenedor {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   width: 100%;
   height: 480px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background-image: url('../assets/images/peg_solitaire_hero.jpg');
   background-position: center;
   background-size: cover;
@@ -76,15 +64,12 @@
 /* SPLASH CON FONDO OSCURO TRANSLUCIDO Y BOTON NARANJA JUGAR */
 .area-ejecucion-juego > div:first-child > div,
 .caja-controles-juego {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 30px 48px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   backdrop-filter: blur(4px);
   background-color: rgba(20, 23, 20, 0.75);
   border-radius: var(--radio-md);
@@ -92,13 +77,11 @@
 
 .area-ejecucion-juego button#btn-iniciar-partida,
 .btn-jugar-splash {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   overflow: hidden;
   z-index: 1;
   padding: 14px 52px;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   color: var(--color-blanco);
   font-size: 1.4rem;
@@ -112,7 +95,6 @@
 
 .area-ejecucion-juego button#btn-iniciar-partida:hover,
 .btn-jugar-splash:hover {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   border-color: var(--color-secundario);
   box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5), inset 0 0 0 100px var(--color-secundario);
@@ -120,23 +102,19 @@
 
 .area-ejecucion-juego button#btn-iniciar-partida:focus-visible,
 .btn-jugar-splash:focus-visible {
-  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 3px;
 }
 
 /* BARRA DE EJECUCION INFERIOR */
 .barra-ejecucion {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   height: 52px;
   padding: 0 20px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border-radius: 0 0 var(--radio-md) var(--radio-md);
   border: 1px solid var(--color-secundario);
@@ -144,7 +122,6 @@
 
 .barra-ejecucion > span,
 .barra-ejecucion-titulo {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 16px;
   font-weight: 500;
@@ -152,7 +129,6 @@
 
 .barra-ejecucion > div,
 .barra-ejecucion-botonera {
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   gap: 16px;
@@ -160,15 +136,12 @@
 
 .barra-ejecucion button,
 .barra-ejecucion-btn {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 8px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background: none;
   border: 1.5px solid transparent;
   border-radius: var(--radio-sm);
@@ -178,10 +151,8 @@
 
 .barra-ejecucion button:hover,
 .barra-ejecucion-btn:hover {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.15);
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   border-color: var(--color-secundario);
   border-radius: var(--radio-lg);
@@ -190,7 +161,6 @@
 
 .barra-ejecucion button:focus-visible,
 .barra-ejecucion-btn:focus-visible {
-  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }
@@ -199,17 +169,14 @@
 .barra-ejecucion button svg,
 .barra-ejecucion-btn img,
 .barra-ejecucion-btn svg {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 20px;
   height: 20px;
 }
 
 /* SECCION COMO JUGAR Y GALERIA */
 .seccion-about-juego {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-top: 10px;
 
-  /* DISPOSICION INTERNA */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
@@ -217,7 +184,6 @@
 
 /* COLUMNA INSTRUCCIONES */
 .contenedor-instrucciones {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -225,7 +191,6 @@
 
 .contenedor-instrucciones > h2,
 .instrucciones-titulo {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.6rem;
   font-weight: 500;
@@ -234,7 +199,6 @@
 }
 
 .lista-reglas {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -242,10 +206,8 @@
 
 .lista-reglas > article h3,
 .item-regla h3 {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin-bottom: 4px;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.15rem;
   font-weight: 500;
@@ -253,10 +215,8 @@
 
 .lista-reglas > article p,
 .item-regla p {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   line-height: 1.5;
@@ -264,18 +224,15 @@
 
 /* TARJETA DE CONTROLES RESUMIDA MOUSE */
 .card-controles {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   padding: 16px 20px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  /* DETALLES ESTETICOS */
   background: none;
   border: 1px solid var(--color-primario);
   border-radius: var(--radio-md);
@@ -284,10 +241,8 @@
 
 .card-controles > h3,
 .card-controles-titulo {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.15rem;
   font-weight: 600;
@@ -296,20 +251,16 @@
 
 .card-controles > img,
 .icono-mouse {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 44px;
   height: 44px;
 
-  /* DETALLES ESTETICOS */
   object-fit: contain;
 }
 
 .card-controles > p,
 .card-controles-texto {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   margin: 0;
 
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: var(--tamano-small);
   font-weight: 500;
@@ -318,7 +269,6 @@
 
 /* COLUMNA GALERIA */
 .contenedor-galeria {
-  /* DISPOSICION INTERNA */
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -326,7 +276,6 @@
 
 .contenedor-galeria > h2,
 .galeria-titulo {
-  /* DETALLES ESTETICOS */
   color: var(--color-blanco);
   font-size: 1.6rem;
   font-weight: 500;
@@ -335,7 +284,6 @@
 }
 
 .galeria-grilla {
-  /* DISPOSICION INTERNA */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
@@ -343,41 +291,34 @@
 
 .galeria-grilla > div,
 .galeria-item {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   height: 160px;
   overflow: hidden;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-superficie-oscura);
   border-radius: var(--radio-md);
 }
 
 .galeria-grilla img {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   width: 100%;
   height: 100%;
 
-  /* DETALLES ESTETICOS */
   object-fit: cover;
 }
 
 /* BOTON DE PLAY NARANJA GRANDE EN LA GALERIA */
 .btn-galeria-play,
 .btn-galeria-play-overlay {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: absolute;
   top: 50%;
   left: 50%;
   width: 50px;
   height: 50px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
   cursor: pointer;
   transform: translate(-50%, -50%);
@@ -386,13 +327,11 @@
 
 .btn-galeria-play:hover,
 .btn-galeria-play-overlay:hover {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: translate(-50%, -50%) scale(1.15);
 }
 
 @media (max-width: 850px) {
   .seccion-about-juego {
-    /* DISPOSICION INTERNA */
     grid-template-columns: 1fr;
     gap: 40px;
   }

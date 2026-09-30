@@ -2,19 +2,16 @@
 
 /* BOTON BASE */
 .btn {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   min-height: 44px;
   padding: 10px 20px;
   overflow: hidden;
 
-  /* DISPOSICION INTERNA */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 
-  /* DETALLES ESTETICOS */
   color: inherit;
   font-size: var(--tamano-body);
   font-weight: 700;
@@ -29,10 +26,8 @@
 /* EFECTO ESCALA CON SOMBRA ELEVADA */
 .btn-efecto-escala,
 .btn-auth-submit {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   min-height: 44px;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   color: var(--color-blanco);
   border: 1px solid var(--color-secundario);
@@ -44,62 +39,51 @@
 
 .btn-efecto-escala:hover,
 .btn-auth-submit:hover {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.04);
 
-  /* DETALLES ESTETICOS */
   box-shadow: 0 8px 25px rgba(255, 107, 0, 0.6);
   filter: brightness(0.95);
 }
 
 .btn-efecto-escala:focus-visible,
 .btn-auth-submit:focus-visible {
-  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }
 
 /* EFECTO BARRIDO DE FONDO HORIZONTAL CON BEFORE */
 .btn-efecto-barrido {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   position: relative;
   z-index: 1;
   overflow: hidden;
 
-  /* DETALLES ESTETICOS */
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-efecto-barrido::before {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   transform: translateX(-100%);
   transition: transform 0.35s ease;
 }
 
 .btn-efecto-barrido:hover::before {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: translateX(0);
 }
 
 /* EFECTO BORDE LUMINISCENTE GLOW Y CAMBIO DE BORDER RADIUS */
 .btn-efecto-glow,
 .barra-ejecucion button {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   padding: 8px;
 
-  /* DISPOSICION INTERNA */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* DETALLES ESTETICOS */
   background: none;
   border: 1.5px solid transparent;
   border-radius: var(--radio-sm);
@@ -109,10 +93,8 @@
 
 .btn-efecto-glow:hover,
 .barra-ejecucion button:hover {
-  /* POSICIONAMIENTO Y MODELO DE CAJA */
   transform: scale(1.15);
 
-  /* DETALLES ESTETICOS */
   background-color: var(--color-secundario);
   border-color: var(--color-secundario);
   border-radius: var(--radio-lg);
@@ -121,7 +103,6 @@
 
 .btn-efecto-glow:focus-visible,
 .barra-ejecucion button:focus-visible {
-  /* DETALLES ESTETICOS */
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
 }
