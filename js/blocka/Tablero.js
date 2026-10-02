@@ -67,31 +67,26 @@ class Tablero {
       this.piezas[i].angulo = angulos[Math.floor(Math.random() * 4)];
     }
 
-    // Contar cuantas tienen angulo distinto de 0
+    // Contar cuantas tienen angulo distinto de 0 y registrarlo
     var noResueltas = 0;
+    var indicesResueltas = [];
+
     for (var i = 0; i < this.piezas.length; i++) {
       if (this.piezas[i].angulo !== 0) {
         noResueltas++;
+      } else {
+        indicesResueltas.push(i);
       }
     }
 
-    // Si son menos de 2, forzar rotacion en piezas al azar
+    // Si son menos de 2, forzar rotacion en piezas que estan resueltas
     if (noResueltas < 2) {
       var angulosForzados = [90, 180, 270];
-      var indicesDisponibles = [];
-
-      // Recolectar indices de piezas que estan en 0 grados
-      for (var i = 0; i < this.piezas.length; i++) {
-        if (this.piezas[i].angulo === 0) {
-          indicesDisponibles.push(i);
-        }
-      }
-
-      // Forzar al menos 2 piezas con angulo != 0
       var faltantes = 2 - noResueltas;
-      for (var j = 0; j < faltantes && indicesDisponibles.length > 0; j++) {
-        var idxAleatorio = Math.floor(Math.random() * indicesDisponibles.length);
-        var idxPieza = indicesDisponibles.splice(idxAleatorio, 1)[0];
+
+      for (var j = 0; j < faltantes && indicesResueltas.length > 0; j++) {
+        var idxAleatorio = Math.floor(Math.random() * indicesResueltas.length);
+        var idxPieza = indicesResueltas.splice(idxAleatorio, 1)[0];
         this.piezas[idxPieza].angulo = angulosForzados[Math.floor(Math.random() * 3)];
       }
     }
