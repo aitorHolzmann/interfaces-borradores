@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peg Solitaire — Sala de Juego</title>
+  <title>BLOCKA — Sala de Juego</title>
   
   <!-- ESTILOS DEL SISTEMA -->
   <link rel="stylesheet" href="css/variables.css">
@@ -86,7 +86,7 @@
 
     <!-- BREADCRUMBS -->
     <nav class="breadcrumbs" aria-label="Ruta de navegación">
-      <a href="index.html">Home</a> &gt; <a href="index.html#top" id="game-breadcrumb-categoria">Catálogo</a> &gt; <span id="game-breadcrumb-titulo">Peg Solitaire</span>
+      <a href="index.html">Home</a> &gt; <a href="index.html#top" id="game-breadcrumb-categoria">Catálogo</a> &gt; <span id="game-breadcrumb-titulo">BLOCKA</span>
     </nav>
 
     <!-- AREA DE EJECUCION DEL JUEGO X CON SPLASH MINIMALISTA -->
@@ -103,7 +103,14 @@
 
       <!-- BARRA DE EJECUCION INFERIOR -->
       <div class="barra-ejecucion">
-        <span id="game-barra-titulo">Peg Solitaire</span>
+        <span id="game-barra-titulo">BLOCKA</span>
+
+        <!-- HUD DEL JUEGO BLOCKA -->
+        <div class="blocka-hud" id="blocka-hud" style="display: none;">
+          <span class="blocka-nivel" id="blocka-nivel">Nivel 1</span>
+          <span class="blocka-timer" id="blocka-timer">0s</span>
+          <span class="blocka-record" id="blocka-record">Récord: --</span>
+        </div>
 
         <div>
           <!-- ICONO GUARDAR EN FAVORITOS -->
@@ -137,17 +144,17 @@
           <div class="card-controles">
             <h3>Controles</h3>
             <img src="assets/icons/icon-mouse.svg" alt="Controles con mouse">
-            <p>Seleccionar y moverse</p>
+            <p>Clic izquierdo y derecho para rotar</p>
           </div>
 
           <article>
             <h3>Objetivo</h3>
-            <p>Eliminá fichas saltando sobre ellas hasta que quede una sola en todo el tablero (idealmente en el centro).</p>
+            <p>Rotá las piezas de la imagen hasta que todas queden en su orientación correcta y se revele la imagen original a todo color.</p>
           </article>
 
           <article>
-            <h3>Reglas de salto</h3>
-            <p>Saltá en línea recta (horizontal o vertical) sobre una ficha adyacente hacia un casillero vacío. No se permiten diagonales.</p>
+            <h3>Rotación</h3>
+            <p>Clic izquierdo rota la pieza 90° a la izquierda (antihorario). Clic derecho rota 90° a la derecha (horario). Completá los 3 niveles con filtros distintos.</p>
           </article>
         </div>
       </div>
@@ -158,11 +165,11 @@
         
         <div class="galeria-grilla">
           <div>
-            <img src="assets/images/peg_solitaire_hero.jpg" alt="Despliegue inicial">
+            <img src="assets/images/images-game/2.jpeg" alt="Despliegue inicial">
           </div>
           
           <div>
-            <img src="assets/images/game_solitaire_1.jpg" alt="Avance táctico">
+            <img src="assets/images/images-game/3.jpeg" alt="Avance táctico">
             <!-- BOTON NARANJA DE PLAY CENTRADO -->
             <div class="btn-galeria-play" title="Ver jugada">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -172,11 +179,11 @@
           </div>
 
           <div>
-            <img src="assets/images/game_scifi_2.jpg" alt="Objetivo final">
+            <img src="assets/images/images-game/4.jpeg" alt="Objetivo final">
           </div>
 
           <div>
-            <img src="assets/images/game_action_1.jpg" alt="Victoria total">
+            <img src="assets/images/images-game/5.jpeg" alt="Victoria total">
           </div>
         </div>
       </div>
@@ -332,5 +339,12 @@
 
   <script src="js/api.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- BLOCKA — Videojuego Entregable 3 -->
+  <script src="js/blocka/filtros.js"></script>
+  <script src="js/blocka/configuracion.js"></script>
+  <script src="js/blocka/Pieza.js"></script>
+  <script src="js/blocka/Tablero.js"></script>
+  <script src="js/blocka/blocka.js"></script>
 </body>
 </html>

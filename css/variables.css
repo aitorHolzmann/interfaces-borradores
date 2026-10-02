@@ -60,4 +60,9 @@
   --ancho-maximo: 1440px;
   --altura-nav: 81px;
   --ancho-sidebar: 260px;
+
+  /* JUEGO BLOCKA */
+  --color-grilla-blocka: rgba(255, 255, 255, 0.15);
+  --color-pieza-hover: rgba(255, 107, 0, 0.5);
+  --color-victoria-glow: rgba(76, 175, 80, 0.6);
 }

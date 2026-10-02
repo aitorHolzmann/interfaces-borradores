@@ -142,8 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 4. Envío y Animación de Éxito ---
-  const manejarSubmit = (e, form, mensaje) => {
+  // --- 4. Envío y Confirmación de Éxito ---
+  const manejarSubmit = (e, form) => {
     e.preventDefault();
 
     const formInputs = form.querySelectorAll('input:not([type="checkbox"])');
@@ -162,28 +162,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (formValido) {
-      const panelAuth = document.getElementById('panel-autenticacion');
-      if (!panelAuth || panelAuth.querySelector('.mensaje-exito')) return;
+      const panelAuth = form.closest('.panel-auth');
+      const overlayExito = panelAuth ? panelAuth.querySelector('.overlay-exito') : null;
+      const marcaExito = panelAuth ? panelAuth.querySelector('.marca-exito') : null;
+      if (!overlayExito || !marcaExito || overlayExito.classList.contains('visible')) return;
 
-      const mensajeExito = document.createElement('div');
-      mensajeExito.className = 'mensaje-exito';
-      mensajeExito.setAttribute('role', 'status');
-      mensajeExito.setAttribute('aria-live', 'polite');
-      mensajeExito.textContent = mensaje;
-      panelAuth.appendChild(mensajeExito);
-
-      requestAnimationFrame(() => mensajeExito.classList.add('visible'));
+      overlayExito.classList.add('visible');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => marcaExito.classList.add('dibujada'));
+      });
 
       setTimeout(() => {
         window.location.href = 'index.html';
-      }, 2000);
+      }, 1500);
     }
   };
 
   if (formLogin) {
-    formLogin.addEventListener('submit', (e) => manejarSubmit(e, formLogin, '¡Bienvenido de vuelta, soldado!'));
+    formLogin.addEventListener('submit', (e) => manejarSubmit(e, formLogin));
   }
   if (formRegistro) {
-    formRegistro.addEventListener('submit', (e) => manejarSubmit(e, formRegistro, '¡Registro exitoso, soldado!'));
+    formRegistro.addEventListener('submit', (e) => manejarSubmit(e, formRegistro));
   }
 });

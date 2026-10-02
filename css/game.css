@@ -56,7 +56,7 @@
   align-items: center;
   justify-content: center;
 
-  background-image: url('../assets/images/peg_solitaire_hero.jpg');
+  background-image: url('../assets/images/images-game/1.jpeg');
   background-position: center;
   background-size: cover;
 }
@@ -88,16 +88,16 @@
   font-weight: 700;
   border: 2px solid var(--color-secundario);
   border-radius: var(--radio-md);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 0 0 var(--color-secundario);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 0 100px var(--color-secundario);
   cursor: pointer;
-  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.35s ease;
+  transition: all 0.4s ease;
 }
 
 .area-ejecucion-juego button#btn-iniciar-partida:hover,
 .btn-jugar-splash:hover {
   color: var(--color-blanco);
-  border-color: var(--color-secundario);
-  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5), inset 0 0 0 100px var(--color-secundario);
+  border-color: var(--color-error);
+  box-shadow: 0 6px 20px var(--color-error), inset 0 0 0 0px var(--color-error);
 }
 
 .area-ejecucion-juego button#btn-iniciar-partida:focus-visible,
@@ -335,4 +335,93 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+}
+
+/* BLOCKA — CANVAS DEL JUEGO */
+#game-splash-pantalla canvas {
+  max-width: 100%;
+  height: 100%;
+
+  display: block;
+
+  cursor: default;
+  border-radius: var(--radio-sm);
+}
+
+/* HUD DE BLOCKA EN LA BARRA DE EJECUCION */
+.blocka-hud {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.blocka-nivel {
+  color: var(--color-secundario);
+  font-size: var(--tamano-body);
+  font-weight: 700;
+}
+
+.blocka-timer {
+  color: var(--color-blanco);
+  font-size: var(--tamano-body);
+  font-weight: 500;
+}
+
+.blocka-record {
+  color: var(--color-primario-claro);
+  font-size: var(--tamano-small);
+  font-weight: 500;
+}
+
+/* OVERLAY POST-VICTORIA */
+.blocka-overlay-victoria {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  padding: 16px 28px;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  backdrop-filter: blur(6px);
+  background-color: rgba(20, 23, 20, 0.88);
+  border: 1px solid var(--color-exito);
+  border-radius: var(--radio-md);
+  transform: translateX(-50%);
+}
+
+.blocka-victoria-texto {
+  color: var(--color-exito);
+  font-size: var(--tamano-small);
+  font-weight: 600;
+}
+
+.blocka-btn-victoria {
+  padding: 8px 18px;
+
+  background-color: var(--color-secundario);
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.blocka-btn-victoria:hover {
+  background-color: var(--color-error);
+  transform: scale(1.05);
+}
+
+.blocka-btn-menu {
+  background-color: transparent;
+  border: 1px solid var(--color-primario-claro);
+}
+
+.blocka-btn-menu:hover {
+  background-color: var(--color-primario-oscuro);
+  border-color: var(--color-secundario);
 }

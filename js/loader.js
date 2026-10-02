@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!pantallaCarga || !textoPorcentaje) return;
 
     let progreso = 0;
-    const duracionMs = 5000;    // SEGUNDOS EXACTOS EN MILISEGUNDOS
+    const duracionMs = 1000;    // SEGUNDOS EXACTOS EN MILISEGUNDOS
     const intervaloMs = 50;     // CADA CUANTO SE ACTUALIZA MS VECES POR SEGUNDO
     const incremento = 100 / (duracionMs / intervaloMs); // POR CADA TICK
 

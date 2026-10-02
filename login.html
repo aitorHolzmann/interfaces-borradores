@@ -85,6 +85,12 @@
   <main class="auth-hero-seccion modo-login" id="auth-seccion">
     
     <article class="panel-auth" id="panel-autenticacion">
+      <div class="overlay-exito" aria-hidden="true">
+        <div class="marca-exito">
+          <div class="lado-corto"></div>
+          <div class="lado-largo"></div>
+        </div>
+      </div>
       
       <!-- LOGO DEL PANEL -->
       <header>
@@ -144,7 +150,6 @@
 
       <!-- FORMULARIO DE REGISTRO -->
       <form id="form-registro" class="oculto" novalidate action="index.html" method="GET">
-        
         <div>
           <label for="reg-nombre">Nombre <span class="campo-obligatorio">*</span></label>
           <input type="text" id="reg-nombre" name="nombre" placeholder="Nombre" required>
