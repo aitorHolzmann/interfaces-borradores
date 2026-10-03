@@ -50,7 +50,7 @@
 .pantalla-juego-contenedor {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 500px;
 
   display: flex;
   align-items: center;
@@ -59,6 +59,13 @@
   background-image: url('../assets/images/images-game/1.jpeg');
   background-position: center;
   background-size: cover;
+  background-color: var(--color-superficie-oscura);
+}
+
+.area-ejecucion-juego > div:first-child.en-juego,
+.pantalla-juego-contenedor.en-juego {
+  background-image: none;
+  background-color: var(--color-superficie-oscura);
 }
 
 /* SPLASH CON FONDO OSCURO TRANSLUCIDO Y BOTON NARANJA JUGAR */
@@ -134,7 +141,7 @@
   gap: 16px;
 }
 
-.barra-ejecucion button,
+.barra-ejecucion button:not(.btn-blocka-ayuda),
 .barra-ejecucion-btn {
   padding: 8px;
 
@@ -149,7 +156,7 @@
   transition: all 0.25s ease;
 }
 
-.barra-ejecucion button:hover,
+.barra-ejecucion button:not(.btn-blocka-ayuda):hover,
 .barra-ejecucion-btn:hover {
   transform: scale(1.15);
 
@@ -159,7 +166,7 @@
   box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
 }
 
-.barra-ejecucion button:focus-visible,
+.barra-ejecucion button:not(.btn-blocka-ayuda):focus-visible,
 .barra-ejecucion-btn:focus-visible {
   outline: 2px solid var(--color-blanco);
   outline-offset: 2px;
@@ -339,7 +346,7 @@
 
 /* BLOCKA — CANVAS DEL JUEGO */
 #game-splash-pantalla canvas {
-  max-width: 100%;
+  width: 100%;
   height: 100%;
 
   display: block;
@@ -352,25 +359,47 @@
 .blocka-hud {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.blocka-hud-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.barra-ejecucion-acciones {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.barra-ejecucion-iconos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .blocka-nivel {
   color: var(--color-secundario);
   font-size: var(--tamano-body);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .blocka-timer {
   color: var(--color-blanco);
   font-size: var(--tamano-body);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .blocka-record {
   color: var(--color-primario-claro);
   font-size: var(--tamano-small);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 /* OVERLAY POST-VICTORIA */
@@ -424,4 +453,504 @@
 .blocka-btn-menu:hover {
   background-color: var(--color-primario-oscuro);
   border-color: var(--color-secundario);
+}
+
+/* CONTENIDO DEL SPLASH MENU DINAMICO */
+.blocka-splash-contenido {
+  width: 100%;
+  max-width: 420px;
+  padding: 16px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  background-color: rgba(20, 23, 20, 0.92);
+  border: 1px solid var(--color-primario-claro);
+  border-radius: var(--radio-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.blocka-menu-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.blocka-menu-titulo {
+  color: var(--color-secundario);
+  font-size: var(--tamano-h3);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.blocka-menu-subtitulo {
+  color: var(--color-modal-desc);
+  font-size: var(--tamano-small);
+  text-align: center;
+}
+
+/* LISTA SCROLLEABLE DE NIVELES (ENCAPSULACION Y SCROLL VERTICAL) */
+.blocka-lista-niveles {
+  width: 100%;
+  max-height: 185px;
+  padding-right: 4px;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.blocka-lista-niveles::-webkit-scrollbar {
+  width: 6px;
+}
+
+.blocka-lista-niveles::-webkit-scrollbar-track {
+  background: var(--color-superficie-oscura);
+  border-radius: var(--radio-sm);
+}
+
+.blocka-lista-niveles::-webkit-scrollbar-thumb {
+  background: var(--color-primario-claro);
+  border-radius: var(--radio-sm);
+}
+
+.blocka-nivel-card {
+  padding: 8px 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  background-color: var(--color-superficie-oscura);
+  border: 1px solid var(--color-primario-oscuro);
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+}
+
+.blocka-nivel-card:hover {
+  background-color: var(--color-primario-oscuro2);
+  border-color: var(--color-primario-claro);
+  transform: translateY(-1px);
+}
+
+.blocka-nivel-card.seleccionado {
+  background-color: var(--color-primario-oscuro);
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.35);
+}
+
+.blocka-card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.blocka-card-nombre {
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
+  font-weight: 700;
+}
+
+.blocka-card-detalles {
+  color: var(--color-modal-desc);
+  font-size: 12px;
+}
+
+.blocka-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.blocka-card-tiempo {
+  color: var(--color-secundario);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.blocka-card-record {
+  color: var(--color-exito);
+  font-size: 11px;
+}
+
+/* TOGGLE MODO CONTRARRELOJ */
+.blocka-toggle-timer {
+  margin-top: 2px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.blocka-toggle-timer input {
+  width: 16px;
+  height: 16px;
+
+  cursor: pointer;
+  accent-color: var(--color-secundario);
+}
+
+.blocka-toggle-texto {
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
+  font-weight: 600;
+}
+
+/* BOTON JUGAR DEL MENU */
+.btn-jugar-blocka {
+  padding: 10px 28px;
+
+  background-color: var(--color-secundario);
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-jugar-blocka:hover {
+  background-color: var(--color-error);
+  transform: scale(1.04);
+  box-shadow: 0 0 14px rgba(255, 107, 0, 0.45);
+}
+
+/* BOTON SALIR EN HUD (NIELSEN #3 Y #5) */
+.btn-blocka-salir {
+  padding: 6px 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  background-color: var(--color-primario-oscuro);
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
+  font-weight: 600;
+  border: 1px solid var(--color-primario-claro);
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-blocka-salir:hover {
+  background-color: var(--color-primario);
+  border-color: var(--color-error);
+  transform: scale(1.04);
+}
+
+/* BOTON DE AYUDITA EN HUD (EXTRA 3) */
+.btn-blocka-ayuda {
+  padding: 6px 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background-color: var(--color-primario-oscuro);
+  color: var(--color-blanco);
+  font-size: var(--tamano-small);
+  font-weight: 600;
+  border: 1px solid var(--color-primario-claro);
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-blocka-ayuda:hover:not(:disabled) {
+  background-color: var(--color-primario);
+  border-color: var(--color-secundario);
+  transform: scale(1.04);
+}
+
+.btn-blocka-ayuda:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: var(--color-gris-neutro);
+}
+
+.ayuda-costo {
+  color: var(--color-error);
+  font-size: 12px;
+}
+
+/* CONTENEDOR DE TIMER Y PENALIZACION FLOTANTE */
+.blocka-timer-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.blocka-timer.tiempo-urgente {
+  color: var(--color-error);
+  font-weight: 700;
+  animation: pulsoUrgente 1s infinite alternate;
+}
+
+@keyframes pulsoUrgente {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.blocka-penalizacion-flotante {
+  position: absolute;
+  top: -18px;
+  right: -10px;
+  z-index: 5;
+
+  color: var(--color-error);
+  font-size: 13px;
+  font-weight: 700;
+  animation: animacionPenalizacion 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes animacionPenalizacion {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-16px); }
+}
+
+/* OVERLAY DE SORTEO DE IMAGEN (EXTRA 1) */
+.blocka-sorteo-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 24px;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  background-color: rgba(10, 13, 10, 0.94);
+  border-radius: var(--radio-sm);
+  transition: opacity 0.4s ease;
+}
+
+.blocka-sorteo-titulo {
+  color: var(--color-secundario);
+  font-size: var(--tamano-h3);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.blocka-sorteo-subtitulo {
+  color: var(--color-modal-desc);
+  font-size: var(--tamano-small);
+  text-align: center;
+}
+
+.blocka-sorteo-grilla {
+  width: 100%;
+  max-width: 400px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.blocka-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radio-sm);
+  opacity: 0.45;
+  transform: scale(0.96);
+  transition: border-color 0.15s ease, opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.blocka-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blocka-thumb.activo {
+  border-color: var(--color-secundario);
+  opacity: 1;
+  transform: scale(1.06);
+  box-shadow: 0 0 16px rgba(255, 107, 0, 0.8);
+}
+
+.blocka-thumb.ganador {
+  border-color: var(--color-exito);
+  opacity: 1;
+  transform: scale(1.12);
+  box-shadow: 0 0 24px rgba(76, 175, 80, 0.9);
+}
+
+/* OVERLAY DE DERROTA (EXTRA 4) */
+.blocka-overlay-derrota {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 24px;
+  z-index: 15;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  backdrop-filter: blur(8px);
+  background-color: rgba(20, 10, 10, 0.92);
+  border: 2px solid var(--color-error);
+  border-radius: var(--radio-sm);
+}
+
+.blocka-derrota-titulo {
+  color: var(--color-error);
+  font-size: var(--tamano-h3);
+  font-weight: 700;
+  text-align: center;
+}
+
+.blocka-derrota-texto {
+  color: var(--color-modal-desc);
+  font-size: var(--tamano-body);
+  text-align: center;
+}
+
+.blocka-derrota-botones {
+  margin-top: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* RESPONSIVE HUD BLOCKA PARA PANTALLAS PEQUEÑAS */
+@media (max-width: 650px) {
+  .area-ejecucion-juego > div:first-child,
+  .pantalla-juego-contenedor {
+    height: 480px;
+    min-height: 460px;
+  }
+
+  /* MODAL COMPACTO PARA QUE NUNCA DESBORDE EN TELEFONO */
+  .blocka-splash-contenido {
+    width: 92%;
+    max-width: 360px;
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .blocka-lista-niveles {
+    max-height: 135px;
+    gap: 6px;
+  }
+
+  .blocka-nivel-card {
+    padding: 6px 10px;
+  }
+
+  .btn-jugar-blocka {
+    padding: 9px 24px;
+    font-size: 13px;
+  }
+
+  /* BARRA DE EJECUCION EN 2 FILAS EN MOBILE */
+  .barra-ejecucion {
+    height: auto;
+    min-height: 52px;
+    padding: 10px 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .barra-ejecucion > span#game-barra-titulo {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-secundario);
+    letter-spacing: 1px;
+  }
+
+  /* FILA 1 EN MOBILE (CONTROLES DE PARTIDA ACTIVOS) */
+  .blocka-hud {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .blocka-hud-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .blocka-nivel,
+  .blocka-timer {
+    font-size: var(--tamano-small);
+  }
+
+  .btn-blocka-salir,
+  .btn-blocka-ayuda {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  /* FILA 2 EN MOBILE (RECORD Y ACCIONES) */
+  .barra-ejecucion-acciones {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 6px;
+  }
+
+  .blocka-record {
+    color: var(--color-exito);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .barra-ejecucion-iconos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
+
+  .barra-ejecucion button:not(.btn-blocka-ayuda):not(.btn-blocka-salir),
+  .barra-ejecucion-btn {
+    padding: 6px;
+  }
 }

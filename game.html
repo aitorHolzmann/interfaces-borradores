@@ -93,40 +93,49 @@
     <section class="area-ejecucion-juego" aria-label="Área de Juego">
       
       <div id="game-splash-pantalla">
-        <!-- SPLASH CON BOTON NARANJA JUGAR -->
-        <div>
-          <button id="btn-iniciar-partida">
-            Jugar
-          </button>
-        </div>
+        <!-- CONTENEDOR DEL MENU DE INICIO (CARGA DINAMICA DESDE JS) -->
+        <div class="blocka-splash-contenido" id="blocka-splash-menu"></div>
       </div>
 
       <!-- BARRA DE EJECUCION INFERIOR -->
       <div class="barra-ejecucion">
         <span id="game-barra-titulo">BLOCKA</span>
 
-        <!-- HUD DEL JUEGO BLOCKA -->
+        <!-- HUD DEL JUEGO BLOCKA (FILA 1 EN MOBILE / IZQUIERDA EN DESKTOP) -->
         <div class="blocka-hud" id="blocka-hud" style="display: none;">
-          <span class="blocka-nivel" id="blocka-nivel">Nivel 1</span>
-          <span class="blocka-timer" id="blocka-timer">0s</span>
-          <span class="blocka-record" id="blocka-record">Récord: --</span>
+          <button type="button" id="btn-blocka-salir" class="btn-blocka-salir" title="Salir al menú principal del juego">
+            ← Salir
+          </button>
+          <div class="blocka-hud-info">
+            <span class="blocka-nivel" id="blocka-nivel">Nivel 1</span>
+            <div class="blocka-timer-wrapper">
+              <span class="blocka-timer" id="blocka-timer">0s</span>
+            </div>
+          </div>
+          <button type="button" id="btn-blocka-ayuda" class="btn-blocka-ayuda" title="Ubicar y fijar una subimagen (+5s)">
+            💡 Ayudita <span class="ayuda-costo">(+5s)</span>
+          </button>
         </div>
 
-        <div>
-          <!-- ICONO GUARDAR EN FAVORITOS -->
-          <button id="btn-guardar-juego" title="Guardar">
-            <img src="assets/icons/icon-save.svg" alt="Guardar">
-          </button>
+        <!-- FILA DE ACCIONES (FILA 2 EN MOBILE CON RECORD / DERECHA EN DESKTOP) -->
+        <div class="barra-ejecucion-acciones">
+          <span class="blocka-record" id="blocka-record" style="display: none;">Récord: --</span>
+          <div class="barra-ejecucion-iconos">
+            <!-- ICONO GUARDAR EN FAVORITOS -->
+            <button id="btn-guardar-juego" title="Guardar">
+              <img src="assets/icons/icon-save.svg" alt="Guardar">
+            </button>
 
-          <!-- ICONO COMPARTIR -->
-          <button id="btn-compartir-juego" title="Compartir">
-            <img src="assets/icons/icon-share.svg" alt="Compartir">
-          </button>
+            <!-- ICONO COMPARTIR -->
+            <button id="btn-compartir-juego" title="Compartir">
+              <img src="assets/icons/icon-share.svg" alt="Compartir">
+            </button>
 
-          <!-- ICONO PANTALLA COMPLETA -->
-          <button id="btn-fullscreen" title="Pantalla Completa">
-            <img src="assets/icons/icon-fullscreen.svg" alt="Pantalla Completa">
-          </button>
+            <!-- ICONO PANTALLA COMPLETA -->
+            <button id="btn-fullscreen" title="Pantalla Completa">
+              <img src="assets/icons/icon-fullscreen.svg" alt="Pantalla Completa">
+            </button>
+          </div>
         </div>
       </div>
 
@@ -154,7 +163,12 @@
 
           <article>
             <h3>Rotación</h3>
-            <p>Clic izquierdo rota la pieza 90° a la izquierda (antihorario). Clic derecho rota 90° a la derecha (horario). Completá los 3 niveles con filtros distintos.</p>
+            <p>Clic izquierdo rota la pieza 90° a la izquierda (antihorario). Clic derecho rota 90° a la derecha (horario). Completá los niveles con filtros distintos.</p>
+          </article>
+
+          <article>
+            <h3>Ayudita y Modo Contrarreloj</h3>
+            <p>Usá el botón 💡 Ayudita si te trabás: ubica y bloquea una subimagen sumando +5s de penalización. Si activás el Modo Contrarreloj en el menú, debés resolver la Blocka antes del tiempo límite del nivel.</p>
           </article>
         </div>
       </div>

@@ -61,7 +61,7 @@ elif [[ "$PAGINA" == *"index.html"* ]]; then
 fi
 
 # Ejecutar Chromium en modo headless
-chromium --headless --disable-gpu $EXTRA_FLAGS --screenshot="$ARCHIVO_SALIDA" --window-size="$DIMENSIONES" "file://$RUTA_HTML" >/dev/null 2>&1
+chromium --headless --disable-gpu --allow-file-access-from-files $EXTRA_FLAGS --screenshot="$ARCHIVO_SALIDA" --window-size="$DIMENSIONES" "file://$RUTA_HTML" >/dev/null 2>&1
 
 # Imprimir la ruta absoluta del archivo generado para que view_file pueda abrirlo
 echo "$ARCHIVO_SALIDA"
