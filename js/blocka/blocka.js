@@ -8,7 +8,6 @@ class JuegoBlocka {
     this.tablero = null;
     this.nivelActual = 1;
     this.nivelSeleccionado = 1;
-    this.piezasConfiguradas = 4;
     this.modoContrarreloj = false;
     this.tiempoTranscurrido = 0;
     this.tiempoRestante = 0;
@@ -125,39 +124,6 @@ class JuegoBlocka {
       btnJugar.textContent = 'JUGAR NIVEL ' + self.nivelSeleccionado;
     }
 
-    /* SELECTOR DE CANTIDAD DE SUBIMAGENES */
-    var selectorPiezas = document.createElement('div');
-    selectorPiezas.className = 'blocka-selector-piezas';
-
-    var opcionesPiezas = [4, 6, 8];
-    var botonesPiezas = [];
-
-    function actualizarPillsPiezas() {
-      for (var p = 0; p < botonesPiezas.length; p++) {
-        var cant = opcionesPiezas[p];
-        if (cant === self.piezasConfiguradas) {
-          botonesPiezas[p].classList.add('activo');
-        } else {
-          botonesPiezas[p].classList.remove('activo');
-        }
-      }
-    }
-
-    for (var op = 0; op < opcionesPiezas.length; op++) {
-      (function(cant) {
-        var btnPill = document.createElement('button');
-        btnPill.type = 'button';
-        btnPill.className = 'btn-pill-pieza' + (self.piezasConfiguradas === cant ? ' activo' : '');
-        btnPill.textContent = cant + ' PIEZAS';
-        btnPill.addEventListener('click', function() {
-          self.piezasConfiguradas = cant;
-          actualizarPillsPiezas();
-        });
-        selectorPiezas.appendChild(btnPill);
-        botonesPiezas.push(btnPill);
-      })(opcionesPiezas[op]);
-    }
-
     for (var i = 0; i < NIVELES.length; i++) {
       (function(nivel) {
         var card = document.createElement('div');
@@ -201,8 +167,6 @@ class JuegoBlocka {
 
         function seleccionarEsteNivel() {
           self.nivelSeleccionado = nivel.numero;
-          self.piezasConfiguradas = nivel.piezas;
-          actualizarPillsPiezas();
           var todas = listaNiveles.querySelectorAll('.blocka-nivel-card');
           for (var k = 0; k < todas.length; k++) {
             todas[k].classList.remove('seleccionado');
@@ -226,7 +190,6 @@ class JuegoBlocka {
     }
 
     contenedorMenu.appendChild(listaNiveles);
-    contenedorMenu.appendChild(selectorPiezas);
 
     /* TOGGLE DE MODO CONTRARRELOJ */
     var toggleLabel = document.createElement('label');
@@ -373,15 +336,8 @@ class JuegoBlocka {
       /* NORMALIZAR IMAGEN ORIGINAL */
       self.procesarImagen(img);
 
-      /* DETERMINAR DIMENSIONES SEGUN CONFIGURACION DE PIEZAS */
-      var conf = (typeof CONFIG_PIEZAS !== 'undefined' && CONFIG_PIEZAS[self.piezasConfiguradas]) ? CONFIG_PIEZAS[self.piezasConfiguradas] : {
-        piezas: configNivel.piezas,
-        filas: configNivel.filas,
-        columnas: configNivel.columnas
-      };
-
-      /* CREAR TABLERO Y SUBIMAGENES CON FILTRO APLICADO */
-      self.tablero = new Tablero(conf.filas, conf.columnas, self.canvas.width, self.canvas.height);
+      /* CREAR TABLERO Y SUBIMAGENES CON FILTRO APLICADO SEGUN EL NIVEL */
+      self.tablero = new Tablero(configNivel.filas, configNivel.columnas, self.canvas.width, self.canvas.height);
       self.tablero.crearPiezas(self.canvasOriginal, configNivel.filtro);
       self.tablero.desordenar();
 

@@ -32,7 +32,7 @@ El Entregable Nº 3 requiere desarrollar sobre la plataforma web existente un vi
 
 ### 1.2. Puntos Extras Implementados (Promoción Máxima)
 1. **Extra 1 — Ruleta de Thumbnails:** Animación previa desacelerada con ciclo de focos sobre el banco de imágenes que frena exactamente en la imagen sorteada.
-2. **Extra 2 — Configuración de Subimágenes:** Selector dinámico para jugar con 4, 6 u 8 piezas cuadradas.
+2. **Extra 2 — Configuración de Subimágenes (4, 6 y 8 Piezas):** Cada nivel encapsula su propia cantidad de subimágenes y dimensiones de grilla (Nivel 1 con 4 piezas, Nivel 2 con 6 piezas, Nivel 3 con 8 piezas).
 3. **Extra 3 — Mecánica de "Ayudita":** Resuelve y bloquea una pieza desordenada, sumando una penalización de 5 segundos. La pieza queda destacada en el Canvas con un marco verde esmeralda y un badge circular distintivo "OK".
 4. **Extra 4 — Modo Contrarreloj y Derrota por Timeout:** Posibilidad de activar tiempo límite por nivel con cuenta regresiva en el HUD (`⏳`), alerta visual urgente en los últimos 10 segundos y pantalla de Game Over con opción de reintentar.
 
@@ -43,12 +43,12 @@ El Entregable Nº 3 requiere desarrollar sobre la plataforma web existente un vi
 | Archivo | Rol y Responsabilidad |
 |---|---|
 | [`game.html`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/game.html) | Estructura semántica, viewport de Canvas dentro del splash, controles del HUD, instrucciones y galería con capturas reales de Blocka. |
-| [`css/game.css`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/css/game.css) | Estilos del splash menu, selector de piezas (`.btn-pill-pieza`), HUD interactivo, animaciones de sorteo, overlays de victoria y derrota, y reglas responsive mobile-first. |
-| [`js/blocka/configuracion.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/configuracion.js) | Constantes del juego, banco de imágenes, diccionario `CONFIG_PIEZAS` (4, 6 y 8) y arreglo de niveles data-driven con filtros y tiempos límites. |
+| [`css/game.css`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/css/game.css) | Estilos del splash menu, HUD interactivo, animaciones de sorteo, overlays de victoria y derrota, y reglas responsive mobile-first. |
+| [`js/blocka/configuracion.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/configuracion.js) | Constantes del juego, banco de imágenes y arreglo `NIVELES` data-driven con definición de piezas (4, 6 y 8), grilla, filtros y tiempos límites. |
 | [`js/blocka/filtros.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/filtros.js) | Funciones puras de procesamiento de píxeles: `escalaDeGrises`, `brillo`, `negativo` y `filtroMixto`. |
 | [`js/blocka/Pieza.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/Pieza.js) | Clase individual para cada subimagen: posición $(x, y)$, ángulo, rotación matricial con `save()`, `translate()`, `rotate()` y `restore()`, hit-test geométrico AABB y dibujo del badge de ayudita. |
 | [`js/blocka/Tablero.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/Tablero.js) | Gestión de la grilla de celdas cuadradas, recorte de subimágenes en mini-canvas individuales, aplicación de filtros por subimagen, verificación de victoria y fijación de piezas para la ayudita. |
-| [`js/blocka/blocka.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/blocka.js) | Orquestador principal (`JuegoBlocka`): controla ciclo de vida, eventos del mouse, animación de ruleta, selector de subimágenes, temporizador, persistencia en `localStorage` y overlays. |
+| [`js/blocka/blocka.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/blocka.js) | Orquestador principal (`JuegoBlocka`): controla ciclo de vida, eventos del mouse, animación de ruleta, inicialización según el nivel, temporizador, persistencia en `localStorage` y overlays. |
 
 ---
 
@@ -179,7 +179,7 @@ obtenerCoordenadasMouse(evento) {
 - **Heurística de Nielsen Nº 5 (Prevención de errores) y Ley de Fitts:**  
   Los botones "← Salir" y "💡 Ayudita" están espacialmente separados en los extremos del HUD para impedir toques accidentales. Salir requiere confirmación cuando una partida está en curso.
 - **Ley de Hick:**  
-  La selección de dificultad en el menú agrupa claramente la configuración en tarjetas scrolleables y permite personalizar las subimágenes (4, 6 u 8) mediante botones tipo pill compactos.
+  La selección de dificultad en el menú agrupa claramente cada nivel con su configuración fija (cantidad de piezas, dimensiones y filtro) en tarjetas scrolleables, reduciendo la carga cognitiva y evitando opciones redundantes.
 - **Leyes de la Gestalt (Cierre y Buena Continuidad):**  
   El usuario percibe visualmente los fragmentos desorientados de la imagen e intenta mentalmente "cerrar" la continuidad espacial de la fotografía para inferir los giros correctos.
 

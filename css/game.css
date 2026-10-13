@@ -582,58 +582,6 @@
   font-size: 11px;
 }
 
-/* SELECTOR DE SUBIMAGENES SEGUN EXTRA DOS */
-.blocka-selector-piezas {
-  width: 100%;
-  margin-top: 4px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.blocka-selector-titulo {
-  color: var(--color-secundario);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.blocka-pills-piezas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.btn-pill-pieza {
-  padding: 5px 12px;
-
-  background-color: var(--color-superficie-oscura);
-  color: var(--color-blanco);
-  font-size: 11px;
-  font-weight: 600;
-  border: 1px solid var(--color-primario-oscuro);
-  border-radius: var(--radio-sm);
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-}
-
-.btn-pill-pieza:hover {
-  background-color: var(--color-primario-oscuro2);
-  border-color: var(--color-primario-claro);
-  transform: translateY(-1px);
-}
-
-.btn-pill-pieza.activo {
-  background-color: var(--color-secundario);
-  color: var(--color-blanco);
-  border-color: var(--color-secundario);
-  box-shadow: 0 0 8px rgba(255, 107, 0, 0.4);
-}
-
 /* TOGGLE MODO CONTRARRELOJ */
 .blocka-toggle-timer {
   margin-top: 2px;
@@ -967,11 +915,6 @@
   .blocka-nivel,
   .blocka-timer {
     font-size: var(--tamano-small);
-  }
-
-  .btn-pill-pieza {
-    padding: 4px 8px;
-    font-size: 10px;
   }
 
   .btn-blocka-salir,

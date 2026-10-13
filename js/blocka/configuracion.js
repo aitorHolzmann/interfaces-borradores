@@ -13,13 +13,6 @@ var BANCO_IMAGENES = [
   'assets/images/puzzles/puzzle-6.jpg'
 ];
 
-/* CONFIGURACION DE SUBIMAGENES SEGUN CONSIGNA EXTRA */
-var CONFIG_PIEZAS = {
-  4: { piezas: 4, filas: 2, columnas: 2, etiqueta: '4 PIEZAS' },
-  6: { piezas: 6, filas: 2, columnas: 3, etiqueta: '6 PIEZAS' },
-  8: { piezas: 8, filas: 2, columnas: 4, etiqueta: '8 PIEZAS' }
-};
-
 /* CONFIGURACION DE NIVELES */
 var NIVELES = [
   {
