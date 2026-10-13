@@ -196,3 +196,4 @@ obtenerCoordenadasMouse(evento) {
 > *Además, completamos los cuatro puntos extras de la cátedra: la ruleta de thumbnails desacelerada sincrónica, la configuración de subimágenes en 4, 6 u 8 piezas, la mecánica de Ayudita con penalización de 5 segundos y badge visual en Canvas, y el Modo Contrarreloj con cuenta regresiva y pantalla de Game Over con revancha.*
 > 
 > *Todo el diseño respeta las heurísticas de Nielsen y las leyes de Fitts y Gestalt vistas en la teoría."*
+

@@ -79,6 +79,11 @@ class JuegoBlocka {
       setTimeout(function() {
         self.manejarDerrota();
       }, 500);
+    } else if (window.location.hash === '#test-victoria') {
+      this.iniciarPartidaConImagen(1, BANCO_IMAGENES[0], NIVELES[0]);
+      setTimeout(function() {
+        self.verificarYMostrarVictoria();
+      }, 500);
     }
   }
 
