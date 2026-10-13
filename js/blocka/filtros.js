@@ -1,11 +1,6 @@
-/* FILTROS DE IMAGEN — Funciones puras de transformacion de pixeles
-   Cada funcion recibe un ImageData, modifica su data[] in-place y lo retorna.
-   El canal Alpha (data[i+3]) nunca se toca. */
+/* FILTROS DE IMAGEN FUNCIONES PURAS DE TRANSFORMACION DE PIXELES */
 
-/**
- * Escala de grises con ponderacion perceptual ITU-R BT.601.
- * Formula: gris = 0.299*R + 0.587*G + 0.114*B
- */
+/* ESCALA DE GRISES CON PONDERACION PERCEPTUAL ITU SEGUN TEMA */
 function escalaDeGrises(imageData) {
   var data = imageData.data;
 
@@ -19,11 +14,7 @@ function escalaDeGrises(imageData) {
   return imageData;
 }
 
-/**
- * Ajuste de brillo multiplicativo.
- * factor > 1 aclara, factor < 1 oscurece.
- * Uint8ClampedArray clampea automaticamente a [0, 255].
- */
+/* AJUSTE DE BRILLO PORCENTUAL SEGUN TEMA */
 function brillo(imageData, factor) {
   var data = imageData.data;
 
@@ -36,10 +27,7 @@ function brillo(imageData, factor) {
   return imageData;
 }
 
-/**
- * Negativo / inversion cromatica.
- * Formula: canal = 255 - canal
- */
+/* NEGATIVO E INVERSION CROMATICA SEGUN TEMA */
 function negativo(imageData) {
   var data = imageData.data;
 
@@ -50,4 +38,16 @@ function negativo(imageData) {
   }
 
   return imageData;
+}
+
+/* FILTRO MIXTO POR SUBIMAGEN SEGUN CONSIGNA */
+function filtroMixto(imageData, fila, columna, indice) {
+  var listaFiltros = [
+    escalaDeGrises,
+    function(d) { return brillo(d, 1.3); },
+    negativo
+  ];
+
+  var indiceElegido = (typeof indice === 'number') ? (indice % listaFiltros.length) : 0;
+  return listaFiltros[indiceElegido](imageData);
 }

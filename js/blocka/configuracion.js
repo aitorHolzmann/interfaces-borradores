@@ -1,12 +1,9 @@
-/* CONFIGURACION DEL JUEGO BLOCKA — Datos constantes y niveles (Data-Driven)
-   Define el banco de imagenes, tamano del canvas y los niveles del juego.
-   Cada nivel encapsula su propia cantidad de piezas (filas x columnas),
-   su filtro de imagen y su tiempo maximo en caso de jugar en Modo Contrarreloj. */
+/* CONFIGURACION DEL JUEGO BLOCKA DATOS CONSTANTES Y NIVELES */
 
-/** Tamano logico del canvas en pixeles (cuadrado) */
+/* TAMANO LOGICO DEL CANVAS EN PIXELES */
 var TAMANO_CANVAS = 480;
 
-/** Banco de imagenes cuadradas para el puzzle (minimo 6) */
+/* BANCO DE IMAGENES PARA EL PUZZLE */
 var BANCO_IMAGENES = [
   'assets/images/puzzles/puzzle-1.jpg',
   'assets/images/puzzles/puzzle-2.jpg',
@@ -16,70 +13,68 @@ var BANCO_IMAGENES = [
   'assets/images/puzzles/puzzle-6.jpg'
 ];
 
-/**
- * Configuracion de niveles.
- * Cada nivel encapsula su propia dificultad:
- * - filas y columnas (la celda siempre se calcula cuadrada)
- * - piezas totales
- * - filtro de imagen aplicado
- * - tiempo maximo sugerido para el Modo Contrarreloj
- */
+/* CONFIGURACION DE SUBIMAGENES SEGUN CONSIGNA EXTRA */
+var CONFIG_PIEZAS = {
+  4: { piezas: 4, filas: 2, columnas: 2, etiqueta: '4 PIEZAS' },
+  6: { piezas: 6, filas: 2, columnas: 3, etiqueta: '6 PIEZAS' },
+  8: { piezas: 8, filas: 2, columnas: 4, etiqueta: '8 PIEZAS' }
+};
+
+/* CONFIGURACION DE NIVELES */
 var NIVELES = [
   {
     numero: 1,
-    nombre: 'Nivel 1 — Recluta',
+    nombre: 'NIVEL RECLUTA',
     filas: 2,
     columnas: 2,
     piezas: 4,
     filtro: escalaDeGrises,
-    nombreFiltro: 'Escala de Grises',
+    nombreFiltro: 'ESCALA DE GRISES',
     tiempoMaximo: 60
   },
   {
     numero: 2,
-    nombre: 'Nivel 2 — Veterano',
+    nombre: 'NIVEL VETERANO',
     filas: 2,
     columnas: 3,
     piezas: 6,
     filtro: function(data) { return brillo(data, 1.3); },
-    nombreFiltro: 'Brillo (+30%)',
+    nombreFiltro: 'BRILLO',
     tiempoMaximo: 50
   },
   {
     numero: 3,
-    nombre: 'Nivel 3 — Comandante',
+    nombre: 'NIVEL COMANDANTE',
     filas: 2,
     columnas: 4,
     piezas: 8,
     filtro: negativo,
-    nombreFiltro: 'Negativo Cromático',
+    nombreFiltro: 'NEGATIVO',
     tiempoMaximo: 45
   },
   {
     numero: 4,
-    nombre: 'Nivel 4 — Táctico',
+    nombre: 'NIVEL TACTICO',
     filas: 2,
     columnas: 3,
     piezas: 6,
-    filtro: negativo,
-    nombreFiltro: 'Negativo Cromático',
-    tiempoMaximo: 35
+    filtro: filtroMixto,
+    nombreFiltro: 'FILTROS MIXTOS POR SUBIMAGEN',
+    tiempoMaximo: 40
   },
   {
     numero: 5,
-    nombre: 'Nivel 5 — Maestro',
+    nombre: 'NIVEL MAESTRO',
     filas: 2,
     columnas: 4,
     piezas: 8,
-    filtro: escalaDeGrises,
-    nombreFiltro: 'Escala de Grises',
-    tiempoMaximo: 30
+    filtro: filtroMixto,
+    nombreFiltro: 'FILTROS MIXTOS POR SUBIMAGEN',
+    tiempoMaximo: 35
   }
 ];
 
-/**
- * Devuelve una ruta aleatoria del banco de imagenes.
- */
+/* SELECCION ALEATORIA DE IMAGEN DEL BANCO */
 function imagenAleatoria() {
   var indice = Math.floor(Math.random() * BANCO_IMAGENES.length);
   return BANCO_IMAGENES[indice];

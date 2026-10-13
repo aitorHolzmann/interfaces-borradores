@@ -344,7 +344,7 @@
   }
 }
 
-/* BLOCKA — CANVAS DEL JUEGO */
+/* BLOCKA CANVAS DEL JUEGO */
 #game-splash-pantalla canvas {
   width: 100%;
   height: 100%;
@@ -402,7 +402,7 @@
   white-space: nowrap;
 }
 
-/* OVERLAY POST-VICTORIA */
+/* OVERLAY POST VICTORIA */
 .blocka-overlay-victoria {
   position: absolute;
   bottom: 20px;
@@ -493,7 +493,7 @@
   text-align: center;
 }
 
-/* LISTA SCROLLEABLE DE NIVELES (ENCAPSULACION Y SCROLL VERTICAL) */
+/* LISTA SCROLLEABLE DE NIVELES ENCAPSULACION Y SCROLL VERTICAL */
 .blocka-lista-niveles {
   width: 100%;
   max-height: 185px;
@@ -582,6 +582,58 @@
   font-size: 11px;
 }
 
+/* SELECTOR DE SUBIMAGENES SEGUN EXTRA DOS */
+.blocka-selector-piezas {
+  width: 100%;
+  margin-top: 4px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.blocka-selector-titulo {
+  color: var(--color-secundario);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.blocka-pills-piezas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-pill-pieza {
+  padding: 5px 12px;
+
+  background-color: var(--color-superficie-oscura);
+  color: var(--color-blanco);
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--color-primario-oscuro);
+  border-radius: var(--radio-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-pill-pieza:hover {
+  background-color: var(--color-primario-oscuro2);
+  border-color: var(--color-primario-claro);
+  transform: translateY(-1px);
+}
+
+.btn-pill-pieza.activo {
+  background-color: var(--color-secundario);
+  color: var(--color-blanco);
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 8px rgba(255, 107, 0, 0.4);
+}
+
 /* TOGGLE MODO CONTRARRELOJ */
 .blocka-toggle-timer {
   margin-top: 2px;
@@ -629,7 +681,7 @@
   box-shadow: 0 0 14px rgba(255, 107, 0, 0.45);
 }
 
-/* BOTON SALIR EN HUD (NIELSEN #3 Y #5) */
+/* BOTON SALIR EN HUD NIELSEN TRES Y CINCO */
 .btn-blocka-salir {
   padding: 6px 12px;
 
@@ -653,7 +705,7 @@
   transform: scale(1.04);
 }
 
-/* BOTON DE AYUDITA EN HUD (EXTRA 3) */
+/* BOTON DE AYUDITA EN HUD EXTRA TRES */
 .btn-blocka-ayuda {
   padding: 6px 14px;
 
@@ -724,7 +776,7 @@
   100% { opacity: 0; transform: translateY(-16px); }
 }
 
-/* OVERLAY DE SORTEO DE IMAGEN (EXTRA 1) */
+/* OVERLAY DE SORTEO DE IMAGEN EXTRA UNO */
 .blocka-sorteo-overlay {
   position: absolute;
   top: 0;
@@ -802,7 +854,7 @@
   box-shadow: 0 0 24px rgba(76, 175, 80, 0.9);
 }
 
-/* OVERLAY DE DERROTA (EXTRA 4) */
+/* OVERLAY DE DERROTA EXTRA CUATRO */
 .blocka-overlay-derrota {
   position: absolute;
   top: 0;
@@ -845,7 +897,7 @@
   gap: 14px;
 }
 
-/* RESPONSIVE HUD BLOCKA PARA PANTALLAS PEQUEÑAS */
+/* RESPONSIVE HUD BLOCKA PARA PANTALLAS PEQUENAS */
 @media (max-width: 650px) {
   .area-ejecucion-juego > div:first-child,
   .pantalla-juego-contenedor {
@@ -875,7 +927,7 @@
     font-size: 13px;
   }
 
-  /* BARRA DE EJECUCION EN 2 FILAS EN MOBILE */
+  /* BARRA DE EJECUCION EN DOS FILAS EN MOBILE */
   .barra-ejecucion {
     height: auto;
     min-height: 52px;
@@ -896,7 +948,7 @@
     letter-spacing: 1px;
   }
 
-  /* FILA 1 EN MOBILE (CONTROLES DE PARTIDA ACTIVOS) */
+  /* FILA UNO EN MOBILE CONTROLES DE PARTIDA ACTIVOS */
   .blocka-hud {
     width: 100%;
 
@@ -917,13 +969,18 @@
     font-size: var(--tamano-small);
   }
 
+  .btn-pill-pieza {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
   .btn-blocka-salir,
   .btn-blocka-ayuda {
     padding: 6px 10px;
     font-size: 12px;
   }
 
-  /* FILA 2 EN MOBILE (RECORD Y ACCIONES) */
+  /* FILA DOS EN MOBILE RECORD Y ACCIONES */
   .barra-ejecucion-acciones {
     width: 100%;
 

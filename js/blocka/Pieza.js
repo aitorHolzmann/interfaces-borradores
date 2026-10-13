@@ -1,19 +1,7 @@
-/* CLASE PIEZA — Subimagen individual del puzzle con posicion y rotacion.
-   Inspirada en la jerarquia Figure > Rect del Tema 4 de catedra.
-   Cada pieza almacena su subimagen en un mini-canvas propio para poder
-   dibujarla con drawImage() dentro de save/translate/rotate/restore. */
+/* CLASE PIEZA SUBIMAGEN INDIVIDUAL DEL PUZZLE CON POSICION Y ROTACION */
 
 class Pieza {
 
-  /**
-   * @param {Number} fila      Fila en la grilla (0-indexed)
-   * @param {Number} columna   Columna en la grilla (0-indexed)
-   * @param {Number} x         Posicion X en el canvas principal (px)
-   * @param {Number} y         Posicion Y en el canvas principal (px)
-   * @param {Number} ancho     Ancho de la celda (px)
-   * @param {Number} alto      Alto de la celda (px)
-   * @param {HTMLCanvasElement} imagen  Mini-canvas con la subimagen recortada
-   */
   constructor(fila, columna, x, y, ancho, alto, imagen) {
     this.fila = fila;
     this.columna = columna;
@@ -26,10 +14,7 @@ class Pieza {
     this.bloqueada = false;
   }
 
-  /**
-   * Dibuja la pieza en el canvas con su rotacion actual.
-   * Usa save/translate/rotate/drawImage/restore para rotar sobre el centro.
-   */
+  /* DIBUJO DE LA PIEZA CON ROTACION MATRICIAL SEGUN TEMA */
   dibujar(ctx) {
     var centroX = this.x + this.ancho / 2;
     var centroY = this.y + this.alto / 2;
@@ -39,13 +24,36 @@ class Pieza {
     ctx.rotate(this.angulo * Math.PI / 180);
     ctx.drawImage(this.imagen, -this.ancho / 2, -this.alto / 2, this.ancho, this.alto);
     ctx.restore();
+
+    /* INDICADOR VISUAL DE PIEZA FIJA BLOQUEADA POR AYUDITA SEGUN EXTRA */
+    if (this.bloqueada) {
+      ctx.save();
+      ctx.strokeStyle = '#00E676';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(this.x + 2, this.y + 2, this.ancho - 4, this.alto - 4);
+
+      /* BADGE CIRCULAR DE PIEZA RESUELTA EN ESQUINA SUPERIOR DERECHA */
+      var radioBadge = 11;
+      var badgeX = this.x + this.ancho - radioBadge - 5;
+      var badgeY = this.y + radioBadge + 5;
+
+      ctx.beginPath();
+      ctx.arc(badgeX, badgeY, radioBadge, 0, Math.PI * 2);
+      ctx.fillStyle = '#00E676';
+      ctx.fill();
+      ctx.closePath();
+
+      /* TEXTO DE CONFIRMACION DENTRO DEL BADGE */
+      ctx.fillStyle = '#0A0C0A';
+      ctx.font = 'bold 10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('OK', badgeX, badgeY);
+      ctx.restore();
+    }
   }
 
-  /**
-   * Rota la pieza 90 grados en el sentido indicado.
-   * 'izquierda' = antihorario (-90), 'derecha' = horario (+90).
-   * El angulo siempre queda en [0, 90, 180, 270].
-   */
+  /* ROTACION EN SENTIDO INDICADO */
   rotar(sentido) {
     if (this.bloqueada) return;
 
@@ -56,16 +64,12 @@ class Pieza {
     }
   }
 
-  /**
-   * Retorna true si la pieza esta en su orientacion correcta (0 grados).
-   */
+  /* COMPROBACION DE ORIENTACION CORRECTA */
   estaResuelta() {
     return this.angulo === 0;
   }
 
-  /**
-   * Hit-test AABB: retorna true si el punto (mx, my) cae dentro de la pieza.
-   */
+  /* HIT TESTING GEOMETRICO DE CAJA DELIMITADORA SEGUN TEMA */
   contienePunto(mx, my) {
     return mx >= this.x && mx <= this.x + this.ancho &&
            my >= this.y && my <= this.y + this.alto;

@@ -1,13 +1,4 @@
-/* CLASE JUEGO BLOCKA — Orquestador principal del videojuego.
-   Conecta el DOM de game.html con la logica del canvas 2D nativo.
-   
-   FASE 1 (Base): Setup de niveles, filtros, timer, victoria y records en localStorage.
-   FASE 2 (Extras):
-     - Extra 1: Sorteo visual previo de imagen con animacion de thumbnails (ruleta).
-     - Extra 2: Configuracion de cantidad de subimagenes (4, 6 u 8 piezas cuadradas).
-     - Extra 3: Mecanica de Ayudita (+5s penalizacion, pieza fija y bloqueada con badge).
-     - Extra 4: Límite de tiempo maximo, cuenta regresiva y derrota por timeout.
-*/
+/* CLASE JUEGO BLOCKA ORQUESTADOR PRINCIPAL DEL VIDEOJUEGO */
 
 class JuegoBlocka {
 
@@ -17,7 +8,8 @@ class JuegoBlocka {
     this.tablero = null;
     this.nivelActual = 1;
     this.nivelSeleccionado = 1;
-    this.modoContrarreloj = false; // Toggleable desde el menú de inicio
+    this.piezasConfiguradas = 4;
+    this.modoContrarreloj = false;
     this.tiempoTranscurrido = 0;
     this.tiempoRestante = 0;
     this.tiempoMaximo = null;
@@ -28,18 +20,15 @@ class JuegoBlocka {
     this.piezaHover = null;
   }
 
-  /**
-   * Punto de entrada. Se llama en DOMContentLoaded.
-   * Renderiza el menú dinámico de niveles, conecta botones del HUD y carga records.
-   */
+  /* PUNTO DE ENTRADA AL CARGAR EL DOCUMENTO */
   iniciar() {
     var self = this;
-    window.juego = this; // Exponer en window para depuración y tests
+    window.juego = this;
 
-    // Renderizar menú dinámico de inicio con niveles y toggle de contrarreloj
+    /* RENDERIZA EL MENU DINAMICO DE INICIO */
     this.renderizarMenuInicio();
 
-    // Botón Salir en el HUD (Heurística Nielsen #3 Control y Libertad, y #5 Prevención de Errores)
+    /* BOTON SALIR EN EL PANEL DE CONTROL */
     var btnSalir = document.getElementById('btn-blocka-salir');
     if (btnSalir) {
       btnSalir.addEventListener('click', function() {
@@ -53,7 +42,7 @@ class JuegoBlocka {
       });
     }
 
-    // Botón de Ayudita en el HUD (Extra 3)
+    /* BOTON DE AYUDITA EN EL PANEL DE CONTROL */
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda) {
       btnAyuda.addEventListener('click', function() {
@@ -61,14 +50,14 @@ class JuegoBlocka {
       });
     }
 
-    // Resize ultra minimo y seguro: solo reajusta si estamos en partida activa
+    /* REAJUSTE DE DIMENSIONES ANTE CAMBIO DE VENTANA */
     window.addEventListener('resize', function() {
       if (self.jugando) {
         self.ajustarDimensiones();
       }
     });
 
-    // Hooks de pruebas de estado
+    /* HOOKS DE PRUEBA DE ESTADO */
     if (window.location.hash === '#test-sorteo') {
       this.animarSorteoImagen(function() {});
     } else if (window.location.hash === '#test-partida') {
@@ -77,6 +66,8 @@ class JuegoBlocka {
       this.iniciarPartidaConImagen(2, BANCO_IMAGENES[0], NIVELES[1]);
     } else if (window.location.hash === '#test-nivel3') {
       this.iniciarPartidaConImagen(3, BANCO_IMAGENES[0], NIVELES[2]);
+    } else if (window.location.hash === '#test-nivel4') {
+      this.iniciarPartidaConImagen(4, BANCO_IMAGENES[0], NIVELES[3]);
     } else if (window.location.hash === '#test-ayudita') {
       this.iniciarPartidaConImagen(1, BANCO_IMAGENES[0], NIVELES[0]);
       setTimeout(function() {
@@ -91,11 +82,7 @@ class JuegoBlocka {
     }
   }
 
-  /**
-   * Renderiza dinámicamente el menú de inicio de Blocka dentro del contenedor splash.
-   * Encapsula los niveles cargados desde JS (grilla, filtro, tiempo máximo),
-   * soporte de scroll vertical si hay muchos niveles, y toggle de modo Contrarreloj.
-   */
+  /* RENDERIZA EL MENU DINAMICO DE INICIO */
   renderizarMenuInicio() {
     var self = this;
     var contenedorMenu = document.getElementById('blocka-splash-menu');
@@ -103,7 +90,7 @@ class JuegoBlocka {
 
     contenedorMenu.innerHTML = '';
 
-    // Encabezado del menú
+    /* ENCABEZADO DEL MENU */
     var header = document.createElement('div');
     header.className = 'blocka-menu-header';
 
@@ -119,7 +106,7 @@ class JuegoBlocka {
 
     contenedorMenu.appendChild(header);
 
-    // Lista scrolleable de niveles (scroll vertical si son muchos)
+    /* LISTA DESPLAZABLE DE NIVELES */
     var listaNiveles = document.createElement('div');
     listaNiveles.className = 'blocka-lista-niveles';
     listaNiveles.setAttribute('role', 'radiogroup');
@@ -131,6 +118,39 @@ class JuegoBlocka {
 
     function actualizarTextoBoton() {
       btnJugar.textContent = 'JUGAR NIVEL ' + self.nivelSeleccionado;
+    }
+
+    /* SELECTOR DE CANTIDAD DE SUBIMAGENES */
+    var selectorPiezas = document.createElement('div');
+    selectorPiezas.className = 'blocka-selector-piezas';
+
+    var opcionesPiezas = [4, 6, 8];
+    var botonesPiezas = [];
+
+    function actualizarPillsPiezas() {
+      for (var p = 0; p < botonesPiezas.length; p++) {
+        var cant = opcionesPiezas[p];
+        if (cant === self.piezasConfiguradas) {
+          botonesPiezas[p].classList.add('activo');
+        } else {
+          botonesPiezas[p].classList.remove('activo');
+        }
+      }
+    }
+
+    for (var op = 0; op < opcionesPiezas.length; op++) {
+      (function(cant) {
+        var btnPill = document.createElement('button');
+        btnPill.type = 'button';
+        btnPill.className = 'btn-pill-pieza' + (self.piezasConfiguradas === cant ? ' activo' : '');
+        btnPill.textContent = cant + ' PIEZAS';
+        btnPill.addEventListener('click', function() {
+          self.piezasConfiguradas = cant;
+          actualizarPillsPiezas();
+        });
+        selectorPiezas.appendChild(btnPill);
+        botonesPiezas.push(btnPill);
+      })(opcionesPiezas[op]);
     }
 
     for (var i = 0; i < NIVELES.length; i++) {
@@ -176,6 +196,8 @@ class JuegoBlocka {
 
         function seleccionarEsteNivel() {
           self.nivelSeleccionado = nivel.numero;
+          self.piezasConfiguradas = nivel.piezas;
+          actualizarPillsPiezas();
           var todas = listaNiveles.querySelectorAll('.blocka-nivel-card');
           for (var k = 0; k < todas.length; k++) {
             todas[k].classList.remove('seleccionado');
@@ -199,8 +221,9 @@ class JuegoBlocka {
     }
 
     contenedorMenu.appendChild(listaNiveles);
+    contenedorMenu.appendChild(selectorPiezas);
 
-    // Toggle de Modo Contrarreloj (Tiempo límite)
+    /* TOGGLE DE MODO CONTRARRELOJ */
     var toggleLabel = document.createElement('label');
     toggleLabel.className = 'blocka-toggle-timer';
     toggleLabel.title = 'Si se activa, deberás resolver el puzzle antes del tiempo límite del nivel.';
@@ -221,7 +244,7 @@ class JuegoBlocka {
     toggleLabel.appendChild(textoToggle);
     contenedorMenu.appendChild(toggleLabel);
 
-    // Botón Jugar
+    /* BOTON JUGAR */
     actualizarTextoBoton();
     btnJugar.addEventListener('click', function() {
       self.nivelActual = self.nivelSeleccionado;
@@ -231,10 +254,7 @@ class JuegoBlocka {
     contenedorMenu.appendChild(btnJugar);
   }
 
-  /**
-   * Vuelve al menú principal del juego Blocka.
-   * Detiene el temporizador, oculta canvas y HUD, y vuelve a mostrar el selector de niveles.
-   */
+  /* VUELVE AL MENU PRINCIPAL DEL JUEGO */
   volverAlMenu() {
     this.detenerTimer();
     this.jugando = false;
@@ -286,11 +306,7 @@ class JuegoBlocka {
     this.renderizarMenuInicio();
   }
 
-  /**
-   * Configura e inicia un nivel.
-   * Orquesta primero la animación de selección de imagen (Extra 1)
-   * y luego procesa la partida con la imagen sorteada.
-   */
+  /* CONFIGURA E INICIA UN NIVEL */
   configurarNivel(numNivel) {
     var self = this;
     var configNivel = NIVELES[numNivel - 1];
@@ -300,27 +316,24 @@ class JuegoBlocka {
       return;
     }
 
-    // Limpiar estado previo
+    /* LIMPIAR ESTADO PREVIO */
     this.detenerTimer();
     this.jugando = false;
     this.piezaHover = null;
     this.ocultarOverlayVictoria();
     this.ocultarOverlayDerrota();
 
-    // Sorteo animado de imagen previa (Extra 1)
+    /* SORTEO ANIMADO DE IMAGEN PREVIA */
     this.animarSorteoImagen(function(rutaImagen) {
       self.iniciarPartidaConImagen(numNivel, rutaImagen, configNivel);
     });
   }
 
-  /**
-   * Carga la imagen seleccionada por el sorteo, aplica el filtro del nivel,
-   * crea el tablero según las filas y columnas encapsuladas en el nivel y arranca el temporizador.
-   */
+  /* CARGA LA IMAGEN Y CREA EL TABLERO */
   iniciarPartidaConImagen(numNivel, rutaImagen, configNivel) {
     var self = this;
 
-    // Resetear tiempos
+    /* REINICIAR TIEMPOS */
     this.tiempoTranscurrido = 0;
     if (this.modoContrarreloj) {
       this.tiempoMaximo = configNivel.tiempoMaximo;
@@ -330,18 +343,18 @@ class JuegoBlocka {
       this.tiempoRestante = null;
     }
 
-    // Cargar imagen sorteada
+    /* CARGAR IMAGEN SORTEADA */
     var img = new Image();
     img.src = rutaImagen;
 
     img.onload = function() {
-      // Asegurar contenedor en modo juego y dimensiones sincronizadas
+      /* CONTENEDOR EN MODO JUEGO */
       var contenedor = document.getElementById('game-splash-pantalla');
       if (contenedor) {
         contenedor.classList.add('en-juego');
       }
 
-      // Crear canvas si aún no existe, o asegurar visibilidad y tamaño
+      /* CREAR O REUTILIZAR CANVAS */
       if (!self.canvas) {
         self.crearCanvas();
       } else {
@@ -352,28 +365,35 @@ class JuegoBlocka {
         }
       }
 
-      // Procesar imagen: normalizar tamaño y aplicar filtro del nivel
-      var canvasFiltrado = self.procesarImagen(img, configNivel.filtro);
+      /* NORMALIZAR IMAGEN ORIGINAL */
+      self.procesarImagen(img);
 
-      // Crear tablero con dimensiones dinamicas del canvas
-      self.tablero = new Tablero(configNivel.filas, configNivel.columnas, self.canvas.width, self.canvas.height);
-      self.tablero.crearPiezas(canvasFiltrado);
+      /* DETERMINAR DIMENSIONES SEGUN CONFIGURACION DE PIEZAS */
+      var conf = (typeof CONFIG_PIEZAS !== 'undefined' && CONFIG_PIEZAS[self.piezasConfiguradas]) ? CONFIG_PIEZAS[self.piezasConfiguradas] : {
+        piezas: configNivel.piezas,
+        filas: configNivel.filas,
+        columnas: configNivel.columnas
+      };
+
+      /* CREAR TABLERO Y SUBIMAGENES CON FILTRO APLICADO */
+      self.tablero = new Tablero(conf.filas, conf.columnas, self.canvas.width, self.canvas.height);
+      self.tablero.crearPiezas(self.canvasOriginal, configNivel.filtro);
       self.tablero.desordenar();
 
-      // Dibujar en el canvas principal
+      /* DIBUJAR EN EL CANVAS */
       self.redibujar();
 
-      // Habilitar botón de ayudita en el HUD (Extra 3)
+      /* HABILITAR BOTON DE AYUDITA */
       var btnAyuda = document.getElementById('btn-blocka-ayuda');
       if (btnAyuda) {
         btnAyuda.disabled = false;
       }
 
-      // Actualizar HUD
+      /* ACTUALIZAR PANEL DE CONTROL */
       self.actualizarHUD(numNivel);
       self.mostrarRecordEnHUD(numNivel);
 
-      // Iniciar timer y marcar como jugando
+      /* INICIAR TEMPORIZADOR */
       self.jugando = true;
       self.iniciarTimer();
     };
@@ -383,11 +403,7 @@ class JuegoBlocka {
     };
   }
 
-  /**
-   * EXTRA 1: Animación de selección visual de imagen (ruleta de thumbnails).
-   * Recorrido animado desacelerado (~1.6 segundos) que frena de forma exacta
-   * y sincrónica en la imagen elegida para jugarse.
-   */
+  /* ANIMACION DE RULETA PARA SELECCION DE IMAGEN */
   animarSorteoImagen(callback) {
     var self = this;
     var contenedor = document.getElementById('game-splash-pantalla');
@@ -398,13 +414,13 @@ class JuegoBlocka {
 
     this.sorteando = true;
 
-    // Ocultar splash o canvas temporalmente
+    /* OCULTAR ELEMENTOS DEL CONTENEDOR */
     var hijos = contenedor.children;
     for (var i = 0; i < hijos.length; i++) {
       hijos[i].style.display = 'none';
     }
 
-    // Crear overlay del sorteo
+    /* CREAR SUPERFICIE DE SORTEO */
     var overlay = document.createElement('div');
     overlay.id = 'blocka-sorteo-overlay';
     overlay.className = 'blocka-sorteo-overlay';
@@ -437,7 +453,7 @@ class JuegoBlocka {
 
     contenedor.appendChild(overlay);
 
-    // Seleccionar índice ganador y calcular pasos exactos para sincronicidad 100%
+    /* SELECCIONAR INDICE GANADOR */
     var indiceGanador = Math.floor(Math.random() * BANCO_IMAGENES.length);
     var vueltas = 2;
     var totalPasos = vueltas * BANCO_IMAGENES.length + indiceGanador;
@@ -448,25 +464,22 @@ class JuegoBlocka {
 
       for (var k = 0; k < thumbsElements.length; k++) {
         thumbsElements[k].classList.remove('activo');
-        thumbsElements[k].classList.remove('ganador');
       }
+      thumbsElements[indiceActual].classList.add('activo');
 
-      if (paso < totalPasos) {
-        thumbsElements[indiceActual].classList.add('activo');
-        paso++;
+      paso++;
+
+      if (paso <= totalPasos) {
         var progreso = paso / totalPasos;
-        var delay = 40 + Math.pow(progreso, 2) * 220;
-        setTimeout(ejecutarPaso, delay);
+        var retardo = 60 + Math.floor(Math.pow(progreso, 2) * 240);
+        setTimeout(ejecutarPaso, retardo);
       } else {
-        // Frenó exactamente en el ganador sorteado
+        /* FINALIZACION DEL SORTEO */
         thumbsElements[indiceGanador].classList.add('ganador');
-        subtitulo.textContent = '¡Imagen seleccionada! Preparando tablero...';
-
         setTimeout(function() {
-          overlay.style.opacity = '0';
+          overlay.remove();
+          self.sorteando = false;
           setTimeout(function() {
-            overlay.remove();
-            self.sorteando = false;
             callback(BANCO_IMAGENES[indiceGanador]);
           }, 300);
         }, 500);
@@ -476,39 +489,18 @@ class JuegoBlocka {
     ejecutarPaso();
   }
 
-  /**
-   * Procesa la imagen: la normaliza a resolución nítida y aplica el filtro.
-   * Guarda copia sin filtro para revelar al ganar.
-   */
-  procesarImagen(img, filtroFn) {
+  /* NORMALIZA LA IMAGEN EN UN CANVAS AUXILIAR */
+  procesarImagen(img) {
     var tamanoBase = Math.max(img.naturalWidth || 600, 600);
-    var canvasAux = document.createElement('canvas');
-    canvasAux.width = tamanoBase;
-    canvasAux.height = tamanoBase;
-    var ctxAux = canvasAux.getContext('2d');
-
-    // Dibujar imagen normalizada a resolucion base de alta fidelidad
-    ctxAux.drawImage(img, 0, 0, tamanoBase, tamanoBase);
-
-    // Guardar copia original para reveal de victoria
     this.canvasOriginal = document.createElement('canvas');
     this.canvasOriginal.width = tamanoBase;
     this.canvasOriginal.height = tamanoBase;
     var ctxOrig = this.canvasOriginal.getContext('2d');
-    ctxOrig.drawImage(canvasAux, 0, 0);
-
-    // Aplicar filtro
-    var imageData = ctxAux.getImageData(0, 0, tamanoBase, tamanoBase);
-    filtroFn(imageData);
-    ctxAux.putImageData(imageData, 0, 0);
-
-    return canvasAux;
+    ctxOrig.drawImage(img, 0, 0, tamanoBase, tamanoBase);
+    return this.canvasOriginal;
   }
 
-  /**
-   * Crea el elemento <canvas> y lo inserta en el contenedor del splash.
-   * Toma el ancho y alto real del contenedor para evitar pixelación o bandas negras.
-   */
+  /* CREA EL ELEMENTO CANVAS EN EL CONTENEDOR */
   crearCanvas() {
     var contenedor = document.getElementById('game-splash-pantalla');
 
@@ -529,35 +521,31 @@ class JuegoBlocka {
     this.conectarEventos();
   }
 
-  /**
-   * Conecta los eventos del canvas: click, contextmenu y mousemove.
-   */
+  /* CONECTA LOS EVENTOS DEL CANVAS */
   conectarEventos() {
     var self = this;
 
-    // Clic izquierdo: rotar antihorario
+    /* CLIC IZQUIERDO ROTAR ANTIHORARIO */
     this.canvas.addEventListener('click', function(e) {
       if (!self.jugando) return;
       self.manejarClic(e, 'izquierda');
     });
 
-    // Clic derecho: rotar horario
+    /* CLIC DERECHO ROTAR HORARIO */
     this.canvas.addEventListener('contextmenu', function(e) {
       e.preventDefault();
       if (!self.jugando) return;
       self.manejarClic(e, 'derecha');
     });
 
-    // Movimiento: feedback de cursor y highlight
+    /* MOVIMIENTO DEL CURSOR */
     this.canvas.addEventListener('mousemove', function(e) {
       if (!self.jugando) return;
       self.manejarMovimiento(e);
     });
   }
 
-  /**
-   * Maneja un clic sobre el canvas: detecta la pieza, la rota y verifica victoria.
-   */
+  /* GESTIONA EL CLIC SOBRE EL CANVAS */
   manejarClic(evento, sentido) {
     if (!this.jugando || !this.tablero) return;
 
@@ -566,25 +554,23 @@ class JuegoBlocka {
 
     if (!pieza || pieza.bloqueada) return;
 
-    // Rotar pieza y redibujar
+    /* ROTAR PIEZA Y REDIBUJAR */
     pieza.rotar(sentido);
     this.redibujar();
 
-    // Actualizar estado del boton de ayuda de forma segura
+    /* ACTUALIZAR ESTADO DEL BOTON DE AYUDA */
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda && typeof this.tablero.hayPiezasParaAyuda === 'function') {
       btnAyuda.disabled = !this.tablero.hayPiezasParaAyuda();
     }
 
-    // Verificar si se resolvio el puzzle
+    /* VERIFICAR SI SE COMPLETO EL PUZZLE */
     if (this.tablero.verificarVictoria()) {
       this.verificarYMostrarVictoria();
     }
   }
 
-  /**
-   * Maneja el movimiento del mouse: cambia cursor y dibuja highlight.
-   */
+  /* GESTIONA EL MOVIMIENTO DEL MOUSE */
   manejarMovimiento(evento) {
     if (!this.jugando || !this.tablero) return;
 
@@ -606,9 +592,7 @@ class JuegoBlocka {
     }
   }
 
-  /**
-   * Convierte coordenadas del viewport a coordenadas logicas del canvas.
-   */
+  /* CALCULA COORDENADAS DEL MOUSE EN EL CANVAS */
   obtenerCoordenadasMouse(evento) {
     var rect = this.canvas.getBoundingClientRect();
     var escalaX = this.canvas.width / rect.width;
@@ -620,15 +604,13 @@ class JuegoBlocka {
     };
   }
 
-  /**
-   * Redibuja el tablero y el highlight de la pieza hover.
-   */
+  /* REDIBUJA EL TABLERO Y EL RESALTE */
   redibujar() {
     if (!this.tablero) return;
 
     this.tablero.dibujar(this.ctx);
 
-    // Highlight naranja sobre la pieza bajo el cursor (si no esta bloqueada)
+    /* RESALTE SOBRE LA PIEZA BAJO EL CURSOR */
     if (this.piezaHover && !this.piezaHover.bloqueada && this.jugando) {
       this.ctx.save();
       this.ctx.strokeStyle = 'rgba(255, 107, 0, 0.7)';
@@ -643,10 +625,7 @@ class JuegoBlocka {
     }
   }
 
-  /**
-   * Ajuste ultra minimo de dimensiones ante resize de ventana o cambio de orientacion.
-   * Solo reajusta si estamos en partida activa y las dimensiones cambiaron.
-   */
+  /* AJUSTE DE DIMENSIONES DEL CANVAS */
   ajustarDimensiones() {
     if (!this.jugando || !this.canvas || !this.tablero) return;
     var contenedor = document.getElementById('game-splash-pantalla');
@@ -664,12 +643,7 @@ class JuegoBlocka {
     }
   }
 
-  /* ---- EXTRA 3: MECANICA DE AYUDITA ---- */
-
-  /**
-   * Ubica y bloquea correctamente una subimagen no resuelta.
-   * Aplica penalizacion de 5 segundos al tiempo.
-   */
+  /* MECANICA DE AYUDITA */
   pedirAyudita() {
     if (!this.jugando || !this.tablero) return;
 
@@ -680,42 +654,40 @@ class JuegoBlocka {
       return;
     }
 
-    // Penalizacion de 5 segundos
+    /* PENALIZACION DE CINCO SEGUNDOS */
     this.tiempoTranscurrido += 5;
 
-    // Si hay tiempo maximo regresivo, restar 5s al restante
+    /* DESCONTAR TIEMPO EN MODO LIMITADO */
     if (this.tiempoMaximo !== null) {
       this.tiempoRestante = Math.max(0, this.tiempoRestante - 5);
     }
 
-    // Feedback visual en el HUD
+    /* RETROALIMENTACION VISUAL */
     this.mostrarFeedbackPenalizacion();
     this.actualizarTimerDOM();
 
-    // Redibujar inmediatamente para reflejar la pieza resuelta y bloqueada
+    /* REDIBUJAR PARA MOSTRAR PIEZA FIJADA */
     this.redibujar();
 
-    // Deshabilitar boton si no quedan piezas por ayudar
+    /* DESHABILITAR BOTON SI NO HAY MAS PIEZAS */
     var btnAyudaEl = document.getElementById('btn-blocka-ayuda');
     if (btnAyudaEl && typeof this.tablero.hayPiezasParaAyuda === 'function') {
       btnAyudaEl.disabled = !this.tablero.hayPiezasParaAyuda();
     }
 
-    // Si la penalizacion agota el tiempo restante en niveles con limite (Extra 4)
+    /* COMPROBAR SI LA PENALIZACION AGOTO EL TIEMPO */
     if (this.tiempoMaximo !== null && this.tiempoRestante <= 0) {
       this.manejarDerrota();
       return;
     }
 
-    // Verificar si esta ayuda completa el puzzle
+    /* VERIFICAR SI SE COMPLETO EL PUZZLE */
     if (this.tablero.verificarVictoria()) {
       this.verificarYMostrarVictoria();
     }
   }
 
-  /**
-   * Muestra un flotador visual "+5s" en rojo sobre el timer del HUD.
-   */
+  /* RETROALIMENTACION VISUAL DE PENALIZACION */
   mostrarFeedbackPenalizacion() {
     var wrapper = document.querySelector('.blocka-timer-wrapper');
     if (!wrapper) return;
@@ -730,11 +702,7 @@ class JuegoBlocka {
     }, 850);
   }
 
-  /* ---- EXTRA 4: TIMER Y LIMITES DE TIEMPO ---- */
-
-  /**
-   * Inicia el temporizador.
-   */
+  /* INICIA EL TEMPORIZADOR */
   iniciarTimer() {
     var self = this;
     this.detenerTimer();
@@ -747,7 +715,7 @@ class JuegoBlocka {
         self.tiempoRestante--;
         self.actualizarTimerDOM();
 
-        // Si se acaba el tiempo, derrota
+        /* DERROTA POR TIEMPO */
         if (self.tiempoRestante <= 0) {
           self.manejarDerrota();
         }
@@ -757,9 +725,7 @@ class JuegoBlocka {
     }, 1000);
   }
 
-  /**
-   * Detiene el temporizador y limpia clases de urgencia.
-   */
+  /* DETIENE EL TEMPORIZADOR */
   detenerTimer() {
     if (this.intervalTimer) {
       clearInterval(this.intervalTimer);
@@ -772,9 +738,7 @@ class JuegoBlocka {
     }
   }
 
-  /**
-   * Actualiza el display del timer en el DOM.
-   */
+  /* ACTUALIZA EL TIEMPO EN EL DOCUMENTO */
   actualizarTimerDOM() {
     var timerEl = document.getElementById('blocka-timer');
     if (!timerEl) return;
@@ -793,26 +757,21 @@ class JuegoBlocka {
     }
   }
 
-  /* ---- VICTORIA ---- */
-
-  /**
-   * Maneja la victoria: detiene timer, revela imagen original,
-   * guarda record y muestra overlay de victoria.
-   */
+  /* GESTIONA LA VICTORIA Y REVELA LA IMAGEN ORIGINAL */
   verificarYMostrarVictoria() {
     this.jugando = false;
     this.detenerTimer();
     this.piezaHover = null;
     this.canvas.style.cursor = 'default';
 
-    // Deshabilitar boton de ayuda
+    /* DESHABILITAR BOTON DE AYUDA */
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda) btnAyuda.disabled = true;
 
-    // Guardar record
+    /* GUARDAR RECORD */
     this.guardarRecord(this.nivelActual);
 
-    // Revelar imagen original sin filtro en el area del puzzle
+    /* REVELAR IMAGEN ORIGINAL */
     if (this.canvasOriginal && this.tablero) {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.fillStyle = '#101310';
@@ -841,13 +800,11 @@ class JuegoBlocka {
       );
     }
 
-    // Mostrar overlay de victoria
+    /* MOSTRAR MENSAJE DE VICTORIA */
     this.mostrarOverlayVictoria();
   }
 
-  /**
-   * Crea y muestra el overlay de victoria con botones de navegacion.
-   */
+  /* MUESTRA EL MENSAJE DE VICTORIA */
   mostrarOverlayVictoria() {
     var self = this;
     var contenedor = document.getElementById('game-splash-pantalla');
@@ -863,7 +820,7 @@ class JuegoBlocka {
     mensaje.textContent = '¡Nivel ' + this.nivelActual + ' completado! — ' + this.tiempoTranscurrido + 's';
     overlay.appendChild(mensaje);
 
-    // Boton siguiente nivel
+    /* BOTON SIGUIENTE NIVEL */
     if (this.nivelActual < NIVELES.length) {
       var btnSiguiente = document.createElement('button');
       btnSiguiente.className = 'blocka-btn-victoria';
@@ -876,7 +833,7 @@ class JuegoBlocka {
       overlay.appendChild(btnSiguiente);
     }
 
-    // Boton volver al menu del juego
+    /* BOTON VOLVER AL MENU */
     var btnMenu = document.createElement('button');
     btnMenu.className = 'blocka-btn-victoria blocka-btn-menu';
     btnMenu.textContent = 'Volver al Menú';
@@ -888,19 +845,13 @@ class JuegoBlocka {
     contenedor.appendChild(overlay);
   }
 
-  /**
-   * Oculta/remueve el overlay de victoria.
-   */
+  /* OCULTA EL MENSAJE DE VICTORIA */
   ocultarOverlayVictoria() {
     var overlay = document.getElementById('blocka-overlay-victoria');
     if (overlay) overlay.remove();
   }
 
-  /* ---- EXTRA 4: ESTADO DE DERROTA POR TIMEOUT ---- */
-
-  /**
-   * Maneja el fin de tiempo: detiene el juego y muestra pantalla de Game Over.
-   */
+  /* GESTIONA LA DERROTA POR TIEMPO AGOTADO */
   manejarDerrota() {
     this.jugando = false;
     this.detenerTimer();
@@ -910,7 +861,7 @@ class JuegoBlocka {
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda) btnAyuda.disabled = true;
 
-    // Oscurecer ligeramente el canvas
+    /* OSCURECER SUPERFICIE DEL CANVAS */
     this.ctx.save();
     this.ctx.fillStyle = 'rgba(0, 0, 0, 0.55)';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -919,9 +870,7 @@ class JuegoBlocka {
     this.mostrarOverlayDerrota();
   }
 
-  /**
-   * Despliega el overlay de Game Over con opcion de reintentar.
-   */
+  /* MUESTRA EL MENSAJE DE DERROTA */
   mostrarOverlayDerrota() {
     var self = this;
     var contenedor = document.getElementById('game-splash-pantalla');
@@ -966,17 +915,13 @@ class JuegoBlocka {
     contenedor.appendChild(overlay);
   }
 
-  /**
-   * Oculta el overlay de derrota.
-   */
+  /* OCULTA EL MENSAJE DE DERROTA */
   ocultarOverlayDerrota() {
     var overlay = document.getElementById('blocka-overlay-derrota');
     if (overlay) overlay.remove();
   }
 
-  /**
-   * Pantalla de fin de juego (tras completar todos los niveles).
-   */
+  /* PANTALLA DE FINALIZACION DE TODOS LOS NIVELES */
   mostrarFinDelJuego() {
     var self = this;
     this.jugando = false;
@@ -986,9 +931,26 @@ class JuegoBlocka {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.fillStyle = '#101310';
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var ratioGrilla = this.tablero.columnas / this.tablero.filas;
+      var imgW = this.canvasOriginal.width;
+      var imgH = this.canvasOriginal.height;
+      var rw, rh, rx, ry;
+      if (ratioGrilla >= 1) {
+        rw = imgW;
+        rh = Math.floor(imgW / ratioGrilla);
+        rx = 0;
+        ry = Math.floor((imgH - rh) / 2);
+      } else {
+        rh = imgH;
+        rw = Math.floor(imgH * ratioGrilla);
+        rx = Math.floor((imgW - rw) / 2);
+        ry = 0;
+      }
+
       this.ctx.drawImage(
         this.canvasOriginal,
-        0, 0, this.canvasOriginal.width, this.canvasOriginal.height,
+        rx, ry, rw, rh,
         this.tablero.offsetX, this.tablero.offsetY, this.tablero.anchoTotal, this.tablero.altoTotal
       );
     }
@@ -1027,11 +989,7 @@ class JuegoBlocka {
     contenedor.appendChild(overlay);
   }
 
-  /* ---- HUD ---- */
-
-  /**
-   * Muestra y actualiza el HUD en la barra de ejecucion.
-   */
+  /* ACTUALIZA EL PANEL DE CONTROL */
   actualizarHUD(numNivel) {
     var hud = document.getElementById('blocka-hud');
     var nivelEl = document.getElementById('blocka-nivel');
@@ -1046,9 +1004,7 @@ class JuegoBlocka {
     this.actualizarTimerDOM();
   }
 
-  /**
-   * Muestra el record del nivel en el HUD.
-   */
+  /* MUESTRA EL RECORD EN EL PANEL DE CONTROL */
   mostrarRecordEnHUD(numNivel) {
     var recordEl = document.getElementById('blocka-record');
     if (!recordEl) return;
@@ -1061,11 +1017,7 @@ class JuegoBlocka {
     }
   }
 
-  /* ---- RECORDS (localStorage) ---- */
-
-  /**
-   * Guarda el record en localStorage si es mejor que el existente.
-   */
+  /* GUARDA EL RECORD EN EL ALMACENAMIENTO LOCAL */
   guardarRecord(nivel) {
     var clave = 'blocka-record-nivel-' + nivel;
     var recordPrevio = localStorage.getItem(clave);
@@ -1077,9 +1029,7 @@ class JuegoBlocka {
     this.mostrarRecordEnHUD(nivel);
   }
 
-  /**
-   * Carga el record de un nivel desde localStorage.
-   */
+  /* CARGA EL RECORD DESDE EL ALMACENAMIENTO LOCAL */
   cargarRecord(nivel) {
     var clave = 'blocka-record-nivel-' + nivel;
     var valor = localStorage.getItem(clave);
@@ -1087,7 +1037,7 @@ class JuegoBlocka {
   }
 }
 
-/* ---- INICIALIZACION ---- */
+/* INICIALIZACION DEL JUEGO AL CARGAR EL DOM */
 document.addEventListener('DOMContentLoaded', function() {
   var juego = new JuegoBlocka();
   juego.iniciar();

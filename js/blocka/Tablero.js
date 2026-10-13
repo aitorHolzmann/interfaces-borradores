@@ -1,25 +1,14 @@
-/* CLASE TABLERO — Grilla de piezas del puzzle.
-   Gestiona la creacion de subimagenes cuadradas, el desorden (scramble),
-   el dibujo completo, el hit-testing, la verificacion de victoria
-   y la mecanica de Ayudita. */
+/* CLASE TABLERO GRILLA DE PIEZAS DEL PUZZLE */
 
 class Tablero {
 
-  /**
-   * @param {Number} filas        Cantidad de filas de la grilla
-   * @param {Number} columnas     Cantidad de columnas de la grilla
-   * @param {Number} [anchoCanvas] Ancho total del canvas en px
-   * @param {Number} [altoCanvas]  Alto total del canvas en px
-   */
   constructor(filas, columnas, anchoCanvas, altoCanvas) {
     this.filas = filas;
     this.columnas = columnas;
     this.anchoCanvas = anchoCanvas || (typeof TAMANO_CANVAS !== 'undefined' ? TAMANO_CANVAS : 480);
     this.altoCanvas = altoCanvas || (typeof TAMANO_CANVAS !== 'undefined' ? TAMANO_CANVAS : 480);
 
-    // Dimension de celda ESTRICTAMENTE CUADRADA para garantizar
-    // simetria perfecta en rotaciones de 90 grados sin invadir celdas vecinas.
-    // Deja 20px de margen interior respecto a los bordes del canvas.
+    /* DIMENSION DE CELDA ESTRICTAMENTE CUADRADA PARA SIMETRIA EN GIROS */
     var padding = 20;
     var maxCeldaX = Math.floor((this.anchoCanvas - padding * 2) / columnas);
     var maxCeldaY = Math.floor((this.altoCanvas - padding * 2) / filas);
@@ -30,17 +19,14 @@ class Tablero {
     this.anchoTotal = this.columnas * this.tamanoCelda;
     this.altoTotal = this.filas * this.tamanoCelda;
 
-    // Offset para centrar la grilla dentro del canvas
+    /* OFFSET PARA CENTRAR LA GRILLA DENTRO DEL CANVAS */
     this.offsetX = Math.floor((this.anchoCanvas - this.anchoTotal) / 2);
     this.offsetY = Math.floor((this.altoCanvas - this.altoTotal) / 2);
 
     this.piezas = [];
   }
 
-  /**
-   * Reajuste rapido de dimensiones del tablero ante un cambio de tamano de ventana.
-   * Actualiza el tamano de celdas y posiciones de piezas conservando su estado y angulo.
-   */
+  /* REAJUSTE DE DIMENSIONES DEL TABLERO ANTE CAMBIO DE VENTANA */
   redimensionar(anchoCanvas, altoCanvas) {
     this.anchoCanvas = anchoCanvas;
     this.altoCanvas = altoCanvas;
@@ -67,17 +53,13 @@ class Tablero {
     }
   }
 
-  /**
-   * Recorta la imagen filtrada en subimagenes cuadradas proporcionales y crea una Pieza por celda.
-   *
-   * @param {HTMLCanvasElement} canvasFiltrado  Canvas con la imagen filtrada completa
-   */
-  crearPiezas(canvasFiltrado) {
+  /* RECORTA SUBIMAGENES Y APLICA FILTROS POR SUBIMAGEN MEDIANTE IMAGEDATA */
+  crearPiezas(canvasBase, filtroConfig) {
     this.piezas = [];
 
     var ratioGrilla = this.columnas / this.filas;
-    var imgW = canvasFiltrado.width;
-    var imgH = canvasFiltrado.height;
+    var imgW = canvasBase.width;
+    var imgH = canvasBase.height;
     var recorteW, recorteH, recorteX, recorteY;
 
     if (ratioGrilla >= 1) {
@@ -94,6 +76,7 @@ class Tablero {
 
     var pasoImgX = recorteW / this.columnas;
     var pasoImgY = recorteH / this.filas;
+    var indicePieza = 0;
 
     for (var f = 0; f < this.filas; f++) {
       for (var c = 0; c < this.columnas; c++) {
@@ -107,27 +90,31 @@ class Tablero {
         var sw = Math.floor(pasoImgX);
         var sh = Math.floor(pasoImgY);
 
-        // Recortar subimagen cuadrada
+        /* DIBUJAR RECORTE BASE EN MINI CANVAS */
         miniCtx.drawImage(
-          canvasFiltrado,
+          canvasBase,
           sx, sy, sw, sh,
           0, 0, this.tamanoCelda, this.tamanoCelda
         );
 
-        // Posicion en el canvas principal
+        /* PROCESAMIENTO DE PIXELES CON IMAGEDATA SEGUN FILTRO */
+        if (typeof filtroConfig === 'function') {
+          var imgData = miniCtx.getImageData(0, 0, this.tamanoCelda, this.tamanoCelda);
+          filtroConfig(imgData, f, c, indicePieza);
+          miniCtx.putImageData(imgData, 0, 0);
+        }
+
         var x = this.offsetX + c * this.tamanoCelda;
         var y = this.offsetY + f * this.tamanoCelda;
 
         var pieza = new Pieza(f, c, x, y, this.tamanoCelda, this.tamanoCelda, miniCanvas);
         this.piezas.push(pieza);
+        indicePieza++;
       }
     }
   }
 
-  /**
-   * Asigna angulos aleatorios de [0, 90, 180, 270] asegurando
-   * que al menos 2 piezas comiencen desordenadas.
-   */
+  /* ASIGNA ANGULOS ALEATORIOS INICIALES */
   desordenar() {
     var angulos = [0, 90, 180, 270];
 
@@ -158,41 +145,37 @@ class Tablero {
     }
   }
 
-  /**
-   * Dibuja todas las piezas y la grilla divisoria en el canvas.
-   */
+  /* DIBUJA TODAS LAS PIEZAS Y LA GRILLA */
   dibujar(ctx) {
     ctx.clearRect(0, 0, this.anchoCanvas, this.altoCanvas);
 
-    // Fondo tapete oscuro elegante para toda la superficie del canvas
+    /* FONDO DE TAPETE OSCURO */
     ctx.fillStyle = '#101310';
     ctx.fillRect(0, 0, this.anchoCanvas, this.altoCanvas);
 
-    // Fondo para el area del tablero de piezas
+    /* FONDO DEL AREA DE JUEGO */
     ctx.fillStyle = '#171c17';
     ctx.fillRect(this.offsetX, this.offsetY, this.anchoTotal, this.altoTotal);
 
-    // Dibujar cada pieza
+    /* DIBUJAR CADA PIEZA */
     for (var i = 0; i < this.piezas.length; i++) {
       this.piezas[i].dibujar(ctx);
     }
 
-    // Dibujar grilla divisoria encima
+    /* GRILLA DIVISORIA */
     this.dibujarGrilla(ctx);
   }
 
-  /**
-   * Dibuja las lineas divisorias de la grilla sobre las piezas.
-   */
+  /* DIBUJA LINEAS DIVISORIAS */
   dibujarGrilla(ctx) {
     ctx.save();
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
     ctx.lineWidth = 2;
 
-    // Marco exterior del tablero
+    /* MARCO EXTERIOR */
     ctx.strokeRect(this.offsetX, this.offsetY, this.anchoTotal, this.altoTotal);
 
-    // Lineas verticales internas
+    /* LINEAS VERTICALES */
     for (var c = 1; c < this.columnas; c++) {
       var x = this.offsetX + c * this.tamanoCelda;
       ctx.beginPath();
@@ -201,7 +184,7 @@ class Tablero {
       ctx.stroke();
     }
 
-    // Lineas horizontales internas
+    /* LINEAS HORIZONTALES */
     for (var f = 1; f < this.filas; f++) {
       var y = this.offsetY + f * this.tamanoCelda;
       ctx.beginPath();
@@ -213,9 +196,7 @@ class Tablero {
     ctx.restore();
   }
 
-  /**
-   * Retorna la pieza que contiene el punto (mx, my), o null si ninguna.
-   */
+  /* BUSQUEDA DE PIEZA BAJO EL CURSOR CON HIT TESTING */
   obtenerPiezaEn(mx, my) {
     for (var i = 0; i < this.piezas.length; i++) {
       if (this.piezas[i].contienePunto(mx, my)) {
@@ -225,9 +206,7 @@ class Tablero {
     return null;
   }
 
-  /**
-   * Retorna true si TODAS las piezas estan en su orientacion correcta (angulo === 0).
-   */
+  /* VERIFICA SI TODAS LAS PIEZAS ESTAN EN ORIENTACION CERO */
   verificarVictoria() {
     for (var i = 0; i < this.piezas.length; i++) {
       if (!this.piezas[i].estaResuelta()) {
@@ -237,11 +216,7 @@ class Tablero {
     return true;
   }
 
-  /**
-   * Mecanica de Ayudita (Extra 3):
-   * Ubica y bloquea correctamente una pieza no resuelta al azar.
-   * Retorna la pieza fijada, o null si ya todas estan resueltas/bloqueadas.
-   */
+  /* MECANICA DE AYUDITA SEGUN EXTRA TRES */
   fijarPiezaAleatoria() {
     var candidatas = [];
     for (var i = 0; i < this.piezas.length; i++) {
@@ -260,9 +235,7 @@ class Tablero {
     return elegida;
   }
 
-  /**
-   * Retorna true si todavia existen piezas sin resolver que puedan recibir ayuda.
-   */
+  /* COMPRUEBA DISPONIBILIDAD DE PIEZAS PARA AYUDA */
   hayPiezasParaAyuda() {
     for (var i = 0; i < this.piezas.length; i++) {
       if (!this.piezas[i].estaResuelta() && !this.piezas[i].bloqueada) {
