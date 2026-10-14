@@ -51,6 +51,7 @@
   position: relative;
   width: 100%;
   height: 500px;
+  overflow: hidden;
 
   display: flex;
   align-items: center;
@@ -69,7 +70,6 @@
 }
 
 /* SPLASH CON FONDO OSCURO TRANSLUCIDO Y BOTON NARANJA JUGAR */
-.area-ejecucion-juego > div:first-child > div,
 .caja-controles-juego {
   padding: 30px 48px;
 
@@ -346,8 +346,10 @@
 
 /* BLOCKA CANVAS DEL JUEGO */
 #game-splash-pantalla canvas {
-  width: 100%;
-  height: 100%;
+  width: 800px;
+  max-width: 100%;
+  height: 500px;
+  margin: 0 auto;
 
   display: block;
 
@@ -459,12 +461,12 @@
 .blocka-splash-contenido {
   width: 100%;
   max-width: 420px;
-  padding: 16px 20px;
+  padding: 12px 20px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 
   background-color: rgba(20, 23, 20, 0.92);
   border: 1px solid var(--color-primario-claro);
@@ -476,10 +478,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
 .blocka-menu-titulo {
+  margin: 0;
+
   color: var(--color-secundario);
   font-size: var(--tamano-h3);
   font-weight: 700;
@@ -488,39 +492,24 @@
 }
 
 .blocka-menu-subtitulo {
+  margin: 0;
+
   color: var(--color-modal-desc);
   font-size: var(--tamano-small);
   text-align: center;
 }
 
-/* LISTA SCROLLEABLE DE NIVELES ENCAPSULACION Y SCROLL VERTICAL */
+/* LISTA DE NIVELES */
 .blocka-lista-niveles {
   width: 100%;
-  max-height: 185px;
-  padding-right: 4px;
-  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.blocka-lista-niveles::-webkit-scrollbar {
-  width: 6px;
-}
-
-.blocka-lista-niveles::-webkit-scrollbar-track {
-  background: var(--color-superficie-oscura);
-  border-radius: var(--radio-sm);
-}
-
-.blocka-lista-niveles::-webkit-scrollbar-thumb {
-  background: var(--color-primario-claro);
-  border-radius: var(--radio-sm);
+  gap: 6px;
 }
 
 .blocka-nivel-card {
-  padding: 8px 12px;
+  padding: 6px 12px;
 
   display: flex;
   justify-content: space-between;
@@ -845,112 +834,50 @@
   gap: 14px;
 }
 
-/* RESPONSIVE HUD BLOCKA PARA PANTALLAS PEQUENAS */
-@media (max-width: 650px) {
-  .area-ejecucion-juego > div:first-child,
-  .pantalla-juego-contenedor {
-    height: 480px;
-    min-height: 460px;
-  }
+/* AVISO DE PANTALLA PEQUENA (SOLO ESCRITORIO) */
+.blocka-aviso-pantalla-pequena {
+  display: none !important;
+}
 
-  /* MODAL COMPACTO PARA QUE NUNCA DESBORDE EN TELEFONO */
-  .blocka-splash-contenido {
-    width: 92%;
-    max-width: 360px;
-    padding: 12px 14px;
-    gap: 8px;
-  }
+@media (max-width: 800px) {
+  .blocka-aviso-pantalla-pequena {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    padding: 24px;
 
-  .blocka-lista-niveles {
-    max-height: 135px;
-    gap: 6px;
-  }
-
-  .blocka-nivel-card {
-    padding: 6px 10px;
-  }
-
-  .btn-jugar-blocka {
-    padding: 9px 24px;
-    font-size: 13px;
-  }
-
-  /* BARRA DE EJECUCION EN DOS FILAS EN MOBILE */
-  .barra-ejecucion {
-    height: auto;
-    min-height: 52px;
-    padding: 10px 14px;
-
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .barra-ejecucion > span#game-barra-titulo {
-    display: block;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
     text-align: center;
-    font-size: 14px;
-    font-weight: 700;
+
+    backdrop-filter: blur(8px);
+    background-color: rgba(14, 16, 14, 0.94);
+    border: 2px solid var(--color-secundario);
+    border-radius: var(--radio-md);
+  }
+
+  .blocka-aviso-pantalla-pequena h3 {
+    margin: 0;
+
     color: var(--color-secundario);
+    font-size: var(--tamano-h3);
+    font-weight: 700;
     letter-spacing: 1px;
+    line-height: 1.3;
   }
 
-  /* FILA UNO EN MOBILE CONTROLES DE PARTIDA ACTIVOS */
-  .blocka-hud {
-    width: 100%;
+  .blocka-aviso-pantalla-pequena p {
+    max-width: 380px;
+    margin: 0;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .blocka-hud-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .blocka-nivel,
-  .blocka-timer {
-    font-size: var(--tamano-small);
-  }
-
-  .btn-blocka-salir,
-  .btn-blocka-ayuda {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-
-  /* FILA DOS EN MOBILE RECORD Y ACCIONES */
-  .barra-ejecucion-acciones {
-    width: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 6px;
-  }
-
-  .blocka-record {
-    color: var(--color-exito);
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  .barra-ejecucion-iconos {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-left: auto;
-  }
-
-  .barra-ejecucion button:not(.btn-blocka-ayuda):not(.btn-blocka-salir),
-  .barra-ejecucion-btn {
-    padding: 6px;
+    color: var(--color-modal-desc);
+    font-size: var(--tamano-body);
+    line-height: 1.5;
   }
 }

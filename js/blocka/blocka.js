@@ -49,12 +49,6 @@ class JuegoBlocka {
       });
     }
 
-    /* REAJUSTE DE DIMENSIONES ANTE CAMBIO DE VENTANA */
-    window.addEventListener('resize', function() {
-      if (self.jugando) {
-        self.ajustarDimensiones();
-      }
-    });
 
     /* HOOKS DE PRUEBA DE ESTADO */
     if (window.location.hash === '#test-sorteo') {
@@ -327,10 +321,6 @@ class JuegoBlocka {
         self.crearCanvas();
       } else {
         self.canvas.style.display = 'block';
-        if (contenedor) {
-          self.canvas.width = contenedor.clientWidth || 800;
-          self.canvas.height = contenedor.clientHeight || 500;
-        }
       }
 
       /* NORMALIZAR IMAGEN ORIGINAL */
@@ -474,8 +464,8 @@ class JuegoBlocka {
 
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'canvas-blocka';
-    this.canvas.width = contenedor.clientWidth || 800;
-    this.canvas.height = contenedor.clientHeight || 500;
+    this.canvas.width = typeof CANVAS_ANCHO !== 'undefined' ? CANVAS_ANCHO : 800;
+    this.canvas.height = typeof CANVAS_ALTO !== 'undefined' ? CANVAS_ALTO : 500;
     this.ctx = this.canvas.getContext('2d');
 
     contenedor.appendChild(this.canvas);
@@ -586,23 +576,6 @@ class JuegoBlocka {
     }
   }
 
-  /* AJUSTE DE DIMENSIONES DEL CANVAS */
-  ajustarDimensiones() {
-    if (!this.jugando || !this.canvas || !this.tablero) return;
-    var contenedor = document.getElementById('game-splash-pantalla');
-    if (!contenedor) return;
-
-    var nuevoAncho = contenedor.clientWidth;
-    var nuevoAlto = contenedor.clientHeight;
-
-    if (nuevoAncho > 0 && nuevoAlto > 0 &&
-        (this.canvas.width !== nuevoAncho || this.canvas.height !== nuevoAlto)) {
-      this.canvas.width = nuevoAncho;
-      this.canvas.height = nuevoAlto;
-      this.tablero.redimensionar(nuevoAncho, nuevoAlto);
-      this.redibujar();
-    }
-  }
 
   /* MECANICA DE AYUDITA */
   pedirAyudita() {

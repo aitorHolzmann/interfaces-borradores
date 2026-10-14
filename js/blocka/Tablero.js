@@ -5,8 +5,8 @@ class Tablero {
   constructor(filas, columnas, anchoCanvas, altoCanvas) {
     this.filas = filas;
     this.columnas = columnas;
-    this.anchoCanvas = anchoCanvas || (typeof TAMANO_CANVAS !== 'undefined' ? TAMANO_CANVAS : 480);
-    this.altoCanvas = altoCanvas || (typeof TAMANO_CANVAS !== 'undefined' ? TAMANO_CANVAS : 480);
+    this.anchoCanvas = anchoCanvas || (typeof CANVAS_ANCHO !== 'undefined' ? CANVAS_ANCHO : 800);
+    this.altoCanvas = altoCanvas || (typeof CANVAS_ALTO !== 'undefined' ? CANVAS_ALTO : 500);
 
     /* DIMENSION DE CELDA ESTRICTAMENTE CUADRADA PARA SIMETRIA EN GIROS */
     var padding = 20;
@@ -26,32 +26,6 @@ class Tablero {
     this.piezas = [];
   }
 
-  /* REAJUSTE DE DIMENSIONES DEL TABLERO ANTE CAMBIO DE VENTANA */
-  redimensionar(anchoCanvas, altoCanvas) {
-    this.anchoCanvas = anchoCanvas;
-    this.altoCanvas = altoCanvas;
-
-    var padding = 20;
-    var maxCeldaX = Math.floor((this.anchoCanvas - padding * 2) / this.columnas);
-    var maxCeldaY = Math.floor((this.altoCanvas - padding * 2) / this.filas);
-    this.tamanoCelda = Math.max(20, Math.min(maxCeldaX, maxCeldaY));
-    this.anchoCelda = this.tamanoCelda;
-    this.altoCelda = this.tamanoCelda;
-
-    this.anchoTotal = this.columnas * this.tamanoCelda;
-    this.altoTotal = this.filas * this.tamanoCelda;
-
-    this.offsetX = Math.floor((this.anchoCanvas - this.anchoTotal) / 2);
-    this.offsetY = Math.floor((this.altoCanvas - this.altoTotal) / 2);
-
-    for (var i = 0; i < this.piezas.length; i++) {
-      var p = this.piezas[i];
-      p.x = this.offsetX + p.columna * this.tamanoCelda;
-      p.y = this.offsetY + p.fila * this.tamanoCelda;
-      p.ancho = this.tamanoCelda;
-      p.alto = this.tamanoCelda;
-    }
-  }
 
   /* RECORTA SUBIMAGENES Y APLICA FILTROS POR SUBIMAGEN MEDIANTE IMAGEDATA */
   crearPiezas(canvasBase, filtroConfig) {
