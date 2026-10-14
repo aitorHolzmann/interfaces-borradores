@@ -27,13 +27,13 @@ Para la promoción del Entregable Nº 3 (y obtener la máxima calificación), la
 
 | Archivo | Tipo | Responsabilidad en la Fase 2 |
 |---|---|---|
-| [`game.html`](file:///home/facha/Documents/FACU/interfaces-borradores/game.html) | HTML5 | Botón `💡 Ayudita (+5s)` en el HUD y reglas actualizadas. |
-| [`css/game.css`](file:///home/facha/Documents/FACU/interfaces-borradores/css/game.css) | CSS3 | Estilos de ruleta de thumbnails, feedback flotante `+5s`, overlays de sorteo/derrota y adaptación responsive. |
-| [`js/blocka/configuracion.js`](file:///home/facha/Documents/FACU/interfaces-borradores/js/blocka/configuracion.js) | JS Data | Arreglo data-driven `NIVELES` con definición de piezas (4, 6, 8), grilla ($F \times C$), filtros y tiempos límites. |
-| [`js/blocka/filtros.js`](file:///home/facha/Documents/FACU/interfaces-borradores/js/blocka/filtros.js) | JS Filtros | Funciones puras de transformación matemática (`escalaDeGrises`, `brillo`, `negativo`). |
-| [`js/blocka/Pieza.js`](file:///home/facha/Documents/FACU/interfaces-borradores/js/blocka/Pieza.js) | JS Clase | Estado `bloqueada`, bloqueo de rotación e indicador gráfico en Canvas (marco verde esmeralda y badge circular con `✓`). |
-| [`js/blocka/Tablero.js`](file:///home/facha/Documents/FACU/interfaces-borradores/js/blocka/Tablero.js) | JS Clase | Grilla dinámica ($F \times C$), scramble seguro y método `fijarPiezaAleatoria()` para la ayudita. |
-| [`js/blocka/blocka.js`](file:///home/facha/Documents/FACU/interfaces-borradores/js/blocka/blocka.js) | JS Orquestador | Orquesta el sorteo animado previo, inicializa el tablero según el nivel, gestiona el botón de ayudita, timer regresivo y pantalla de Game Over. |
+| [`blocka.html`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/blocka.html) | HTML5 | Botón `💡 Ayudita (+5s)` en el HUD y reglas actualizadas. |
+| [`css/game.css`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/css/game.css) | CSS3 | Estilos de ruleta de thumbnails, feedback flotante `+5s`, overlays de sorteo/derrota y adaptación responsive. |
+| [`js/blocka/configuracion.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/configuracion.js) | JS Data | Arreglo data-driven `NIVELES` con definición de piezas (4, 6, 8), grilla ($F \times C$), filtros y tiempos límites. |
+| [`js/blocka/filtros.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/filtros.js) | JS Filtros | Funciones puras de transformación matemática (`escalaDeGrises`, `brillo`, `negativo`). |
+| [`js/blocka/Pieza.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/Pieza.js) | JS Clase | Estado `bloqueada`, bloqueo de rotación e indicador gráfico en Canvas (marco verde esmeralda y badge circular con `✓`). |
+| [`js/blocka/Tablero.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/Tablero.js) | JS Clase | Grilla dinámica ($F \times C$), scramble seguro y método `fijarPiezaAleatoria()` para la ayudita. |
+| [`js/blocka/blocka.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/blocka.js) | JS Orquestador | Orquesta el sorteo animado previo, inicializa el tablero según el nivel, gestiona el botón de ayudita, timer regresivo y pantalla de Game Over. |
 
 ---
 

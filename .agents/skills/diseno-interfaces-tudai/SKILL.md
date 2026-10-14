@@ -21,7 +21,8 @@ Esta skill define los estándares técnicos, restricciones obligatorias y fundam
 > **Prohibición Total de Frameworks y Librerías:**
 > - **Prohibido:** React, Angular, Vue, Svelte, jQuery, etc.
 > - **Prohibido:** Bootstrap, Tailwind CSS, Bulma, Foundation, Sass/SCSS compilado externamente (usar CSS3 nativo con variables `:root`).
-> - **Obligatorio:** **HTML5 semántico**, **CSS3 puro** y **JavaScript Vanilla**.
+> - **Prohibido librerías/motores de canvas o juegos:** Phaser, Pixi.js, Three.js, Konva, Fabric.js, etc.
+> - **Obligatorio:** **HTML5 semántico**, **CSS3 puro**, **JavaScript Vanilla** y **Canvas 2D nativo** (`CanvasRenderingContext2D`, `ImageData`).
 > - **Prohibido Spritesheets:** No utilizar tiras de imágenes con desplazamiento de `background-position`.
 > - **Prohibido GIFs para Loaders:** Todo loader o spinner debe resolverse con CSS3 puro (`@keyframes`, `transform`, `border`, `opacity`).
 
@@ -38,11 +39,12 @@ Al maquetar y codear la plataforma de juegos online, deben cumplirse rigurosamen
    - **Animación obligatoria ante registro exitoso:** Mensaje de éxito animado, spinner de confirmación o transición visual antes de redirigir a la Home.
 2. **Página 2: Home (Portal de Juegos):**
    - Catálogo clasificado por categorías temáticas mediante carruseles horizontales.
-   - Navegación hacia la página de ejecución al clickear la card de "Peg Solitaire".
+   - Navegación hacia la página de ejecución al clickear la card de juego.
    - Fat Footer institucional completo.
-3. **Página 3: Ejecución de Juego (Peg Solitaire Temático):**
-   - Contenedor interactivo destacado para el juego.
-   - Migas de pan (*Breadcrumbs*) funcionales (`Inicio > Categoría > Peg Solitaire`).
+3. **Página 3: Ejecución de Juego (Salas Independientes):**
+   - `blocka.html`: Sala de juego para Blocka (Canvas 2D, HUD interactivo, cronómetro, récord, comentarios y breadcrumbs).
+   - `pegsolitaire.html`: Sala de juego para Peg Solitaire (E2 restaurado / base para E4).
+   - Migas de pan (*Breadcrumbs*) funcionales (`Inicio > Categoría > Juego`).
    - Botón visible para regresar a la Home en todo momento.
    - Ficha multimedia con historia y galería.
    - Módulo de comentarios con formulario interactivo y botones para compartir.
@@ -74,7 +76,21 @@ Implementar al menos **3 animaciones de `hover` con efectos visuales netamente d
 - La Home debe maquetarse bajo filosofía **Mobile First** (media queries `@media (min-width: ...)`):
   - **Mobile:** Menú hamburguesa desplegable, layout monocolumna, carruseles compactos.
   - **Desktop:** Grilla expandida, navegación completa visible.
-- *(Login y Peg Solitaire se diseñan para Desktop).*
+- *(Salas de juego diseñadas prioritariamente para Desktop con mouse).*
+
+### 2.7. Requerimientos de Entregable Nº 3 (Videojuego Blocka + Canvas e ImageData)
+1. **Canvas 2D Puro:** Rompecabezas de imagen descompuesta en piezas rotadas con arquitectura orientada a objetos (`Pieza`, `Tablero`, `JuegoBlocka`).
+2. **Mecánica de Rotación:** Clic izquierdo rota $90^\circ$ antihorario; clic derecho rota $90^\circ$ horario.
+3. **Filtros por Manipulación Directa de Píxeles (`ImageData`):**
+   - Nivel 1: Escala de grises (`0.299R + 0.587G + 0.114B`).
+   - Nivel 2: Brillo (+30%).
+   - Nivel 3: Negativo (`255 - R, 255 - G, 255 - B`).
+4. **Victoria y Revelado:** Quitar filtros y revelar la imagen completa en RGB original con modal de felicitaciones y guardado de récords en `localStorage`.
+5. **Extras Obligatorios/Promocionales:**
+   - Animación de ruleta de thumbnails previa al nivel.
+   - Niveles con diferente cantidad de piezas (4, 6 y 8 piezas).
+   - Botón "Ayudita" (fija pieza correcta +5s de penalidad).
+   - Temporizador límite en niveles avanzados.
 
 ---
 
@@ -106,23 +122,40 @@ Cada decisión de maquetación y estilos debe respetar y justificar los concepto
 
 ```text
 /
-├── index.html                  # Home (Mobile First + Desktop, con pantalla de carga de 5s)
+├── index.html                  # Home (Mobile First + Desktop, con pantalla de carga de 5s y Carrusel 3D)
 ├── login.html                  # Página de Login / Registro con validaciones y animación de éxito
-├── game.html                   # Página de ejecución de juego (Peg Solitaire temático)
+├── blocka.html                 # Sala de juego Blocka (Canvas 2D, HUD, filtros ImageData, récords)
+├── pegsolitaire.html           # Sala de juego Peg Solitaire (E2 restaurado / base para E4)
+├── Plantp3.md                  # Plan maestro y especificación técnica de Blocka
 ├── css/
 │   ├── variables.css           # Paleta de colores, tipografías, sombras y radios (:root)
 │   ├── base.css                # Reset, tipografía global y estilos base
 │   ├── components/             # Botones (3 hovers), cards, carrusel, breadcrumbs, modal
 │   ├── loader.css              # Estilos y @keyframes del loading de 5s
+│   ├── login.css               # Panel de autenticación y animación de éxito
+│   ├── game.css                # Layout de salas de juego, HUD de Blocka, modal de victoria
 │   └── responsive.css          # Breakpoints y adaptabilidad mobile first
 ├── js/
-│   ├── loader.js               # Contador de 0% a 100% en 5s exactos
-│   ├── carousel.js             # Lógica del carrusel con transiciones fluidas
+│   ├── api.js                  # Utilidades y simulación de API
 │   ├── auth.js                 # Validación de formularios y animación de éxito
-│   └── main.js                 # Menú hamburguesa y eventos generales
+│   ├── carousel.js             # Lógica del carrusel principal 3D y transiciones fluidas
+│   ├── loader.js               # Contador de 0% a 100% en 5s exactos
+│   ├── main.js                 # Sidebar, eventos globales y comentarios interactivos
+│   └── blocka/                 # Módulo autocontenido del juego Blocka (Canvas + POO)
+│       ├── configuracion.js    # Data-driven: banco de imágenes, niveles, constantes y récords
+│       ├── filtros.js          # Transformación pura de ImageData (grises, brillo, negativo)
+│       ├── Pieza.js            # Clase ES6: recorte de subimagen, rotación y hit-testing
+│       ├── Tablero.js          # Clase ES6: grilla, desorden, dibujo y validación de victoria
+│       └── blocka.js           # Orquestador del juego: canvas, loop, timer, eventos mouse y HUD
+├── apuntes/                    # Informes técnicos y resúmenes de estudio para coloquios
+│   ├── entregable3-blocka-filtros-canvas.md # Arquitectura Canvas 2D, ImageData y filtros
+│   └── blocka-fase2-extras.md               # Extras: ruleta, timer límite, ayudita y niveles
+├── scripts/
+│   └── preview.sh              # Captura visual headless instantánea (Desktop/Mobile)
 └── assets/
     ├── icons/                  # Iconos SVG nativos
     └── images/                 # Portadas de juegos y capturas
+        └── puzzles/            # Banco de 6+ imágenes para el puzzle Blocka
 ```
 
 ### 4.1. Convención Obligatoria de Código CSS y Flexbox
@@ -162,6 +195,7 @@ Para profundizar en el contenido teórico detallado de la materia, consultar los
 - [Tema 4: Eventos y Canvas POO](../../../teoria/Tema4-Eventos-y-Canvas-POO.md)
 - [Requisitos Entregable 1 (Figma)](../../../teoria/Entregable1-Figma-Diseno-Juegos-Online.md)
 - [Requisitos Entregable 2 (Implementación Web)](../../../teoria/Entregable2-Implementacion-Web-HTML5-CSS3-JS.md)
+- [Requisitos Entregable 3 (Blocka + Filtros)](../../../teoria/Entregable%20N%C2%BA3%20-%20Juego%20+%20Filtros.md)
 
 ---
 

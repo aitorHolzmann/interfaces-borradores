@@ -42,13 +42,13 @@ El Entregable Nº 3 requiere desarrollar sobre la plataforma web existente un vi
 
 | Archivo | Rol y Responsabilidad |
 |---|---|
-| [`game.html`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/game.html) | Estructura semántica, viewport de Canvas dentro del splash, controles del HUD, instrucciones y galería con capturas reales de Blocka. |
-| [`css/game.css`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/css/game.css) | Estilos del splash menu, HUD interactivo, animaciones de sorteo, overlays de victoria y derrota, y reglas responsive mobile-first. |
-| [`js/blocka/configuracion.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/configuracion.js) | Constantes del juego, banco de imágenes y arreglo `NIVELES` data-driven con definición de piezas (4, 6 y 8), grilla, filtros y tiempos límites. |
-| [`js/blocka/filtros.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/filtros.js) | Funciones puras de procesamiento de píxeles: `escalaDeGrises`, `brillo`, `negativo` y `filtroMixto`. |
-| [`js/blocka/Pieza.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/Pieza.js) | Clase individual para cada subimagen: posición $(x, y)$, ángulo, rotación matricial con `save()`, `translate()`, `rotate()` y `restore()`, hit-test geométrico AABB y dibujo del badge de ayudita. |
-| [`js/blocka/Tablero.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/Tablero.js) | Gestión de la grilla de celdas cuadradas, recorte de subimágenes en mini-canvas individuales, aplicación de filtros por subimagen, verificación de victoria y fijación de piezas para la ayudita. |
-| [`js/blocka/blocka.js`](file:///home/esteban/Downloads/interfaces/interfaces-borradores/js/blocka/blocka.js) | Orquestador principal (`JuegoBlocka`): controla ciclo de vida, eventos del mouse, animación de ruleta, inicialización según el nivel, temporizador, persistencia en `localStorage` y overlays. |
+| [`blocka.html`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/blocka.html) | Estructura semántica, viewport de Canvas dentro del splash, controles del HUD, instrucciones y galería con capturas reales de Blocka. |
+| [`css/game.css`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/css/game.css) | Estilos del splash menu, HUD interactivo, animaciones de sorteo, overlays de victoria y derrota, y reglas responsive mobile-first. |
+| [`js/blocka/configuracion.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/configuracion.js) | Constantes del juego, banco de imágenes y arreglo `NIVELES` data-driven con definición de piezas (4, 6 y 8), grilla, filtros y tiempos límites. |
+| [`js/blocka/filtros.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/filtros.js) | Funciones puras de procesamiento de píxeles: `escalaDeGrises`, `brillo`, `negativo` y `filtroMixto`. |
+| [`js/blocka/Pieza.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/Pieza.js) | Clase individual para cada subimagen: posición $(x, y)$, ángulo, rotación matricial con `save()`, `translate()`, `rotate()` y `restore()`, hit-test geométrico AABB y dibujo del badge de ayudita. |
+| [`js/blocka/Tablero.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/Tablero.js) | Gestión de la grilla de celdas cuadradas, recorte de subimágenes en mini-canvas individuales, aplicación de filtros por subimagen, verificación de victoria y fijación de piezas para la ayudita. |
+| [`js/blocka/blocka.js`](file:///home/facha/Documents/FACU/interfaces/interfaces-borradores/js/blocka/blocka.js) | Orquestador principal (`JuegoBlocka`): controla ciclo de vida, eventos del mouse, animación de ruleta, inicialización según el nivel, temporizador, persistencia en `localStorage` y overlays. |
 
 ---
 

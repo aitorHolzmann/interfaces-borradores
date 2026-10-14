@@ -9,37 +9,37 @@ const CATALOGO_CATEGORIAS = [
       {
         titulo: 'Breach Point',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2010.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Street Battle',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2012.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Elite Marksman',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2013.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Firebase Combat',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%2014.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Desert Recon Patrol',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%207.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Geopolitical Struggle & Global Intelligence',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p%209.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       }
     ]
@@ -51,37 +51,37 @@ const CATALOGO_CATEGORIAS = [
       {
         titulo: 'Armada Tactical',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%206.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: true
       },
       {
         titulo: 'Peg Solitaire',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%205.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: true
       },
       {
         titulo: 'Iron Fist Armored Tank',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%204.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: true
       },
       {
         titulo: 'Velocity Extreme Racing',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%203.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: true
       },
       {
         titulo: 'Starfleet Tactical Battlefleet Command',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%207.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: true
       },
       {
         titulo: 'Cybernetic Warfare 2099',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(1)%208.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: true
       }
     ]
@@ -93,37 +93,37 @@ const CATALOGO_CATEGORIAS = [
       {
         titulo: 'Frontline Assault',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%203.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Urban Warfare Operations',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%204.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Special Operations Blackout',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%205.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Sector 4 Drone Recon',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%206.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Air Superiority Dogfight',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%208.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Cyber Strike Infiltration',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_gs6pprgs6pprgs6p(2)%209.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       }
     ]
@@ -135,37 +135,37 @@ const CATALOGO_CATEGORIAS = [
       {
         titulo: 'Lost Horizon Expedition',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%2010.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Mystic Valley Quest',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%203.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Jungle Relic Hunters',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%205.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'The Last Starfarer',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%206.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Forgotten Kingdoms',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%208.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Beyond the Ancient Gate',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu%209.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       }
     ]
@@ -177,37 +177,37 @@ const CATALOGO_CATEGORIAS = [
       {
         titulo: 'Galactic Warfare Hegemony',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%202.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Naval Special Operations Command',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%204.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Armor Tactics Division',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%205.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Siege Commander Alpha',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%206.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Orbital Defense Network',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%207.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       },
       {
         titulo: 'Total Resistance Front',
         imagen: 'assets/images/imagenes_de_cards/Gemini_Generated_Image_q9zukcq9zukcq9zu(1)%208.png',
-        enlace: 'game.html',
+        enlace: 'pegsolitaire.html',
         premium: false
       }
     ]

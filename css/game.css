@@ -474,6 +474,10 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
+#game-splash-pantalla.en-juego .blocka-splash-contenido {
+  display: none;
+}
+
 .blocka-menu-header {
   display: flex;
   flex-direction: column;

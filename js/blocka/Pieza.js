@@ -27,8 +27,11 @@ class Pieza {
 
     /* INDICADOR VISUAL DE PIEZA FIJA BLOQUEADA POR AYUDITA SEGUN EXTRA */
     if (this.bloqueada) {
+      var colorExito = typeof COLOR_CANVAS_BLOQUEADA !== 'undefined' ? COLOR_CANVAS_BLOQUEADA : '#4CAF50';
+      var colorTexto = typeof COLOR_CANVAS_AREA !== 'undefined' ? COLOR_CANVAS_AREA : '#0A0D0A';
+
       ctx.save();
-      ctx.strokeStyle = '#00E676';
+      ctx.strokeStyle = colorExito;
       ctx.lineWidth = 3;
       ctx.strokeRect(this.x + 2, this.y + 2, this.ancho - 4, this.alto - 4);
 
@@ -39,12 +42,12 @@ class Pieza {
 
       ctx.beginPath();
       ctx.arc(badgeX, badgeY, radioBadge, 0, Math.PI * 2);
-      ctx.fillStyle = '#00E676';
+      ctx.fillStyle = colorExito;
       ctx.fill();
       ctx.closePath();
 
       /* TEXTO DE CONFIRMACION DENTRO DEL BADGE */
-      ctx.fillStyle = '#0A0C0A';
+      ctx.fillStyle = colorTexto;
       ctx.font = 'bold 10px sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';

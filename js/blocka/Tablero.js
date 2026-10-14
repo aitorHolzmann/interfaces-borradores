@@ -124,11 +124,11 @@ class Tablero {
     ctx.clearRect(0, 0, this.anchoCanvas, this.altoCanvas);
 
     /* FONDO DE TAPETE OSCURO */
-    ctx.fillStyle = '#101310';
+    ctx.fillStyle = typeof COLOR_CANVAS_FONDO !== 'undefined' ? COLOR_CANVAS_FONDO : '#141714';
     ctx.fillRect(0, 0, this.anchoCanvas, this.altoCanvas);
 
     /* FONDO DEL AREA DE JUEGO */
-    ctx.fillStyle = '#171c17';
+    ctx.fillStyle = typeof COLOR_CANVAS_AREA !== 'undefined' ? COLOR_CANVAS_AREA : '#0A0D0A';
     ctx.fillRect(this.offsetX, this.offsetY, this.anchoTotal, this.altoTotal);
 
     /* DIBUJAR CADA PIEZA */
@@ -143,7 +143,7 @@ class Tablero {
   /* DIBUJA LINEAS DIVISORIAS */
   dibujarGrilla(ctx) {
     ctx.save();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.strokeStyle = typeof COLOR_CANVAS_GRILLA !== 'undefined' ? COLOR_CANVAS_GRILLA : 'rgba(255, 255, 255, 0.15)';
     ctx.lineWidth = 2;
 
     /* MARCO EXTERIOR */

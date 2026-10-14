@@ -77,6 +77,11 @@ class JuegoBlocka {
       setTimeout(function() {
         self.verificarYMostrarVictoria();
       }, 500);
+    } else if (window.location.hash === '#test-final') {
+      this.iniciarPartidaConImagen(5, BANCO_IMAGENES[0], NIVELES[4]);
+      setTimeout(function() {
+        self.verificarYMostrarVictoria();
+      }, 500);
     }
   }
 
@@ -271,6 +276,7 @@ class JuegoBlocka {
   /* CONFIGURA E INICIA UN NIVEL */
   configurarNivel(numNivel) {
     var self = this;
+    this.nivelActual = numNivel;
     var configNivel = NIVELES[numNivel - 1];
 
     if (!configNivel) {
@@ -294,6 +300,7 @@ class JuegoBlocka {
   /* CARGA LA IMAGEN Y CREA EL TABLERO */
   iniciarPartidaConImagen(numNivel, rutaImagen, configNivel) {
     var self = this;
+    this.nivelActual = numNivel;
 
     /* REINICIAR TIEMPOS */
     this.tiempoTranscurrido = 0;
@@ -314,6 +321,12 @@ class JuegoBlocka {
       var contenedor = document.getElementById('game-splash-pantalla');
       if (contenedor) {
         contenedor.classList.add('en-juego');
+        var hijos = contenedor.children;
+        for (var i = 0; i < hijos.length; i++) {
+          if (hijos[i].id !== 'canvas-blocka') {
+            hijos[i].style.display = 'none';
+          }
+        }
       }
 
       /* CREAR O REUTILIZAR CANVAS */
@@ -564,7 +577,7 @@ class JuegoBlocka {
     /* RESALTE SOBRE LA PIEZA BAJO EL CURSOR */
     if (this.piezaHover && !this.piezaHover.bloqueada && this.jugando) {
       this.ctx.save();
-      this.ctx.strokeStyle = 'rgba(255, 107, 0, 0.7)';
+      this.ctx.strokeStyle = typeof COLOR_CANVAS_HOVER !== 'undefined' ? COLOR_CANVAS_HOVER : 'rgba(255, 107, 0, 0.7)';
       this.ctx.lineWidth = 3;
       this.ctx.strokeRect(
         this.piezaHover.x + 1,
@@ -691,6 +704,39 @@ class JuegoBlocka {
     }
   }
 
+  /* DIBUJA LA IMAGEN ORIGINAL SIN FILTROS NI GRILLA EN EL AREA DEL TABLERO */
+  revelarImagenOriginal() {
+    if (!this.canvasOriginal || !this.tablero) return;
+
+    var colorFondo = typeof COLOR_CANVAS_FONDO !== 'undefined' ? COLOR_CANVAS_FONDO : '#141714';
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillStyle = colorFondo;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    var ratioGrilla = this.tablero.columnas / this.tablero.filas;
+    var imgW = this.canvasOriginal.width;
+    var imgH = this.canvasOriginal.height;
+    var rw, rh, rx, ry;
+
+    if (ratioGrilla >= 1) {
+      rw = imgW;
+      rh = Math.floor(imgW / ratioGrilla);
+      rx = 0;
+      ry = Math.floor((imgH - rh) / 2);
+    } else {
+      rh = imgH;
+      rw = Math.floor(imgH * ratioGrilla);
+      rx = Math.floor((imgW - rw) / 2);
+      ry = 0;
+    }
+
+    this.ctx.drawImage(
+      this.canvasOriginal,
+      rx, ry, rw, rh,
+      this.tablero.offsetX, this.tablero.offsetY, this.tablero.anchoTotal, this.tablero.altoTotal
+    );
+  }
+
   /* GESTIONA LA VICTORIA Y REVELA LA IMAGEN ORIGINAL */
   verificarYMostrarVictoria() {
     this.jugando = false;
@@ -706,36 +752,14 @@ class JuegoBlocka {
     this.guardarRecord(this.nivelActual);
 
     /* REVELAR IMAGEN ORIGINAL */
-    if (this.canvasOriginal && this.tablero) {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.ctx.fillStyle = '#101310';
-      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.revelarImagenOriginal();
 
-      var ratioGrilla = this.tablero.columnas / this.tablero.filas;
-      var imgW = this.canvasOriginal.width;
-      var imgH = this.canvasOriginal.height;
-      var rw, rh, rx, ry;
-      if (ratioGrilla >= 1) {
-        rw = imgW;
-        rh = Math.floor(imgW / ratioGrilla);
-        rx = 0;
-        ry = Math.floor((imgH - rh) / 2);
-      } else {
-        rh = imgH;
-        rw = Math.floor(imgH * ratioGrilla);
-        rx = Math.floor((imgW - rw) / 2);
-        ry = 0;
-      }
-
-      this.ctx.drawImage(
-        this.canvasOriginal,
-        rx, ry, rw, rh,
-        this.tablero.offsetX, this.tablero.offsetY, this.tablero.anchoTotal, this.tablero.altoTotal
-      );
+    /* MOSTRAR PANTALLA SEGUN CORRESPONDA */
+    if (this.nivelActual >= NIVELES.length) {
+      this.mostrarFinDelJuego();
+    } else {
+      this.mostrarOverlayVictoria();
     }
-
-    /* MOSTRAR MENSAJE DE VICTORIA */
-    this.mostrarOverlayVictoria();
   }
 
   /* MUESTRA EL MENSAJE DE VICTORIA */
@@ -861,33 +885,7 @@ class JuegoBlocka {
     this.jugando = false;
     this.detenerTimer();
 
-    if (this.canvasOriginal && this.tablero) {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.ctx.fillStyle = '#101310';
-      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-      var ratioGrilla = this.tablero.columnas / this.tablero.filas;
-      var imgW = this.canvasOriginal.width;
-      var imgH = this.canvasOriginal.height;
-      var rw, rh, rx, ry;
-      if (ratioGrilla >= 1) {
-        rw = imgW;
-        rh = Math.floor(imgW / ratioGrilla);
-        rx = 0;
-        ry = Math.floor((imgH - rh) / 2);
-      } else {
-        rh = imgH;
-        rw = Math.floor(imgH * ratioGrilla);
-        rx = Math.floor((imgW - rw) / 2);
-        ry = 0;
-      }
-
-      this.ctx.drawImage(
-        this.canvasOriginal,
-        rx, ry, rw, rh,
-        this.tablero.offsetX, this.tablero.offsetY, this.tablero.anchoTotal, this.tablero.altoTotal
-      );
-    }
+    this.revelarImagenOriginal();
 
     this.ocultarOverlayVictoria();
     this.ocultarOverlayDerrota();

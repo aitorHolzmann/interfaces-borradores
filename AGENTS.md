@@ -2,21 +2,21 @@
 
 > **Materia:** Diseño de Interfaces / Interfaces de Usuario e Interacción (TUDAI / UNCPBA)  
 > **Alumno:** Aitor Holzmann  
-> **Proyecto:** Entregable Nº 2 — Desarrollo e Implementación Web (Plataforma de Juegos Online)  
+> **Proyecto:** Entregable Nº 2 & Entregable Nº 3 — Plataforma Web y Videojuego Blocka (Canvas 2D + Filtros)  
 > **Figma Aprobado (Entregable Nº 1):** [Enlace al Figma](https://www.figma.com/design/LI86LH8D4OyOSsgXW0ePn2/Interfaces) | File Key: `LI86LH8D4OyOSsgXW0ePn2`
 
 ---
 
 ## 1. Misión del Agente
-Eres un **Senior Frontend & UX/UI Engineer** especializado en **JavaScript Vanilla** y **CSS3 nativo**, que asiste como pair programmer. Tu objetivo es implementar en código web con máxima fidelidad el diseño realizado en Figma para el Entregable 1, cumpliendo al 100% con los requisitos técnicos y fundamentos teóricos de la cátedra.
+Eres un **Senior Frontend & UX/UI Engineer** especializado en **JavaScript Vanilla**, **Canvas 2D nativo** y **CSS3 puro**, que asiste como pair programmer. Tu objetivo es implementar en código web con máxima fidelidad el diseño realizado en Figma (Entregable 1), la plataforma interactiva (Entregable 2) y el videojuego Blocka con manipulación de píxeles/ImageData (Entregable 3), cumpliendo al 100% con los requisitos técnicos y fundamentos teóricos de la cátedra.
 
 ---
 
 ## 2. Restricciones Técnicas Inquebrantables (Stack Estricto)
 
-- **Permitido:** **HTML5 semántico**, **CSS3 puro** (usando variables nativas `var(--nombre)` en `:root`) y **JavaScript puro (Vanilla JS)**.
+- **Permitido:** **HTML5 semántico**, **CSS3 puro** (usando variables nativas `var(--nombre)` en `:root`), **JavaScript puro (Vanilla JS)** y **Canvas 2D nativo** (`CanvasRenderingContext2D`, `ImageData`).
 - **PROHIBIDO:** 
-  - Frameworks o librerías JS: **React, Vue, Angular, Svelte, jQuery, etc.**
+  - Frameworks o librerías JS: **React, Vue, Angular, Svelte, jQuery, Phaser, Pixi.js, etc.**
   - Frameworks o utilidades CSS: **Bootstrap, Tailwind CSS, Bulma, Foundation, etc.**
   - Preprocesadores o compiladores con dependencias externas (Sass/SCSS).
   - Tiras de imágenes spritesheet con desplazamiento de `background-position`.
@@ -25,16 +25,35 @@ Eres un **Senior Frontend & UX/UI Engineer** especializado en **JavaScript Vanil
 
 ---
 
-## 3. Resumen de Requerimientos Obligatorios del Entregable 2
+## 3. Resumen de Requerimientos Obligatorios
 
-*(Para la especificación exhaustiva y rúbrica de evaluación, consultar el skill [`.agents/skills/diseno-interfaces-tudai/SKILL.md`](.agents/skills/diseno-interfaces-tudai/SKILL.md) y [`teoria/Entregable2-Implementacion-Web-HTML5-CSS3-JS.md`](teoria/Entregable2-Implementacion-Web-HTML5-CSS3-JS.md))*.
+*(Para la especificación exhaustiva y rúbrica de evaluación, consultar el skill [`.agents/skills/diseno-interfaces-tudai/SKILL.md`](.agents/skills/diseno-interfaces-tudai/SKILL.md), [`Plantp3.md`](Plantp3.md) y [`teoria/`](teoria/))*.
 
-1. **3 Páginas Conectadas:** `index.html` (Home), `login.html` (Auth dual con validación visual en tiempo real y animación de éxito) y `game.html` (Sala de juego Peg Solitaire con comentarios interactivos).
+### 3.1. Base de Plataforma Web (Entregable 2)
+1. **Páginas Conectadas:** `index.html` (Home con catálogo, carruseles y mobile first), `login.html` (Auth dual con validación visual en tiempo real y animación de éxito) y salas de juego independientes.
 2. **Animaciones Hover en Botones (Mínimo 3 distintas):** Escala con sombra elevada, barrido de fondo mediante `::before`, y borde luminiscente / cambio de radio. *(El menú hamburguesa no cuenta).*
 3. **Pantalla de Carga (5s exactos):** Contador 0% a 100% en `loader.js`, animación geométrica CSS pura (`@keyframes`), y desvanecimiento suave.
-4. **Carrusel con Transición Real:** Transiciones fluidas animadas (ej. `carrusel-principal-transicion` fade/slide), prohibidos saltos bruscos.
+4. **Carrusel con Transición Real:** Transiciones fluidas animadas (carrusel principal 3D y carruseles temáticos), prohibidos saltos bruscos.
 5. **Mobile First en la Home:** Media queries progresivas `@media (min-width: ...)`. Base mono-columna en mobile.
 6. **Datos Reales y Sin Lorem Ipsum:** Títulos variados con `text-overflow: ellipsis`, portadas reales.
+
+### 3.2. Videojuego Blocka con Canvas e ImageData (Entregable 3)
+1. **Canvas 2D Interactivo:** Rompecabezas de imágenes descompuestas en subimágenes rotadas (4, 6 u 8 piezas según nivel).
+2. **Mecánica de Rotación:** Clic izquierdo rota $90^\circ$ a la izquierda (antihorario); clic derecho rota $90^\circ$ a la derecha (horario).
+3. **Filtros por Manipulación Directa de Píxeles (`ImageData`):** Aplicados en tiempo de carga/setup del nivel mediante algoritmos puros de píxeles:
+   - Nivel 1: Escala de grises (`0.299R + 0.587G + 0.114B`).
+   - Nivel 2: Brillo (+30%).
+   - Nivel 3: Negativo (`255 - R, 255 - G, 255 - B`).
+4. **Revelado de Victoria:** Al armar la imagen final, se quitan los filtros y se revela la imagen original en RGB completo con feedback visual de victoria y guardado de récords.
+5. **Banco de Imágenes:** Banco de 6+ imágenes (`assets/images/puzzles/`) con selección aleatoria por nivel.
+6. **Salas de Juego Independientes:**
+   - `blocka.html`: Sala de juego dedicada a Blocka (Canvas, HUD, timer, instrucciones, comentarios, breadcrumbs).
+   - `pegsolitaire.html`: Sala de juego de Peg Solitaire (E2 restaurado / base para E4).
+7. **Extras Implementados:**
+   - Ruleta/animación previa de selección de imagen con miniaturas.
+   - Cantidad de subimágenes configurable por nivel (4, 6 y 8 piezas).
+   - Botón "Ayudita": fija una pieza correcta con penalidad de $+5\text{s}$ en el cronómetro.
+   - Temporizador límite de cuenta regresiva para niveles avanzados.
 
 ---
 
@@ -63,33 +82,56 @@ Eres un **Senior Frontend & UX/UI Engineer** especializado en **JavaScript Vanil
 4. **No repetir `font-family` redundante:**  
    - La tipografía base (`var(--fuente-principal)`) ya se hereda desde `body` en `base.css`. Solo especificar `font-family` cuando una clase requiera expresamente una fuente alternativa (ej. `var(--fuente-secundaria)` en botones sociales).
 
+### 4.2. Convenciones de Canvas 2D y Manipulación de Píxeles (Entregable 3)
+
+1. **Manipulación pura de píxeles (`ImageData`):**  
+   - Los filtros deben procesar directamente el buffer `imageData.data` iterando de 4 en 4 bytes (`R = i`, `G = i+1`, `B = i+2`, `A = i+3`).
+   - Prohibido el uso de librerías externas de procesamiento de imágenes o filtros CSS (`filter: grayscale(...)`) para la lógica del juego.
+2. **Cero dependencias de motores de juego:**  
+   - Implementado en JavaScript nativo con POO limpia (`Pieza`, `Tablero`, `JuegoBlocka`).
+3. **Persistencia local de récords:**  
+   - Uso de `localStorage` nativo con prefijos claros (`blocka_record_nivel_X`).
+
 ---
 
 ## 5. Estructura del Proyecto
 
 ```text
 /
-├── index.html                  # Home (Mobile First, con Loader 5s)
+├── index.html                  # Home (Mobile First, con Loader 5s y Carrusel 3D)
 ├── login.html                  # Login / Registro (validación en tiempo real + animación éxito)
-├── game.html                   # Ejecución de Peg Solitaire y comentarios
+├── blocka.html                 # Sala de juego Blocka (Canvas 2D, HUD, filtros ImageData, récords)
+├── pegsolitaire.html           # Sala de juego Peg Solitaire (E2 restaurado / base E4)
+├── Plantp3.md                  # Plan maestro y especificación técnica del TP3 Blocka
 ├── css/
-│   ├── variables.css           # Tokens de diseño (:root)
+│   ├── variables.css           # Tokens de diseño (:root, colores, fuentes, radios)
 │   ├── base.css                # Reset, estilos base y tipografía heredada
-│   ├── components/             # Botones (3 hovers), cards, carruseles, breadcrumbs, formularios...
+│   ├── components/             # Botones (3 hovers), cards, carruseles, breadcrumbs, comentarios...
 │   ├── loader.css              # Estilos y @keyframes del loading de 5s
 │   ├── login.css               # Panel de autenticación y animación de éxito
-│   ├── game.css                # Layout de sala de juego y reglas
-│   └── responsive.css          # Media queries mobile first de la Home
+│   ├── game.css                # Layout de salas de juego, HUD de Blocka, modal de victoria
+│   └── responsive.css          # Media queries mobile first de la Home y vistas
 ├── js/
-│   ├── loader.js               # Contador 0% a 100% en 5000ms exactos
+│   ├── api.js                  # Utilidades y simulación de API
 │   ├── auth.js                 # Validación de formularios y animación de éxito
-│   └── main.js                 # Sidebar, rotación suave del carrusel principal y comentarios
-├── apuntes/                 # Informes técnicos y resúmenes de estudio para coloquios
+│   ├── carousel.js             # Lógica del carrusel principal 3D y rotación suave
+│   ├── loader.js               # Contador 0% a 100% en 5000ms exactos
+│   ├── main.js                 # Sidebar, eventos globales y comentarios interactivos
+│   └── blocka/                 # Módulo autocontenido del juego Blocka (Canvas + POO)
+│       ├── configuracion.js    # Data-driven: banco de imágenes, niveles, constantes y récords
+│       ├── filtros.js          # Transformación pura de ImageData (grises, brillo, negativo)
+│       ├── Pieza.js            # Clase ES6: recorte de subimagen, rotación y hit-testing
+│       ├── Tablero.js          # Clase ES6: grilla, desorden, dibujo y validación de victoria
+│       └── blocka.js           # Orquestador del juego: canvas, loop, timer, eventos mouse y HUD
+├── apuntes/                    # Informes técnicos y resúmenes de estudio para coloquios
+│   ├── entregable3-blocka-filtros-canvas.md # Arquitectura Canvas 2D, ImageData y filtros
+│   └── blocka-fase2-extras.md               # Extras: ruleta, timer límite, ayudita y niveles
 ├── scripts/
 │   └── preview.sh              # Captura visual headless instantánea (Desktop/Mobile)
 └── assets/
     ├── icons/                  # Iconos SVG nativos limpios
     └── images/                 # Portadas de juegos y capturas reales
+        └── puzzles/            # Banco de imágenes para el puzzle Blocka
 ```
 
 ---
