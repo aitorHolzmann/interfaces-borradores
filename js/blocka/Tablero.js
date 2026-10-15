@@ -1,5 +1,3 @@
-/* CLASE TABLERO GRILLA DE PIEZAS DEL PUZZLE */
-
 class Tablero {
 
   constructor(filas, columnas, anchoCanvas, altoCanvas) {
@@ -8,7 +6,7 @@ class Tablero {
     this.anchoCanvas = anchoCanvas || (typeof CANVAS_ANCHO !== 'undefined' ? CANVAS_ANCHO : 800);
     this.altoCanvas = altoCanvas || (typeof CANVAS_ALTO !== 'undefined' ? CANVAS_ALTO : 500);
 
-    /* DIMENSION DE CELDA ESTRICTAMENTE CUADRADA PARA SIMETRIA EN GIROS */
+    // Calcula celdas cuadradas para simetría en los giros
     var padding = 20;
     var maxCeldaX = Math.floor((this.anchoCanvas - padding * 2) / columnas);
     var maxCeldaY = Math.floor((this.altoCanvas - padding * 2) / filas);
@@ -19,15 +17,13 @@ class Tablero {
     this.anchoTotal = this.columnas * this.tamanoCelda;
     this.altoTotal = this.filas * this.tamanoCelda;
 
-    /* OFFSET PARA CENTRAR LA GRILLA DENTRO DEL CANVAS */
     this.offsetX = Math.floor((this.anchoCanvas - this.anchoTotal) / 2);
     this.offsetY = Math.floor((this.altoCanvas - this.altoTotal) / 2);
 
     this.piezas = [];
   }
 
-
-  /* RECORTA SUBIMAGENES Y APLICA FILTROS POR SUBIMAGEN MEDIANTE IMAGEDATA */
+  // Recorta las subimágenes y aplica el filtro correspondiente con ImageData
   crearPiezas(canvasBase, filtroConfig) {
     this.piezas = [];
 
@@ -64,14 +60,12 @@ class Tablero {
         var sw = Math.floor(pasoImgX);
         var sh = Math.floor(pasoImgY);
 
-        /* DIBUJAR RECORTE BASE EN MINI CANVAS */
         miniCtx.drawImage(
           canvasBase,
           sx, sy, sw, sh,
           0, 0, this.tamanoCelda, this.tamanoCelda
         );
 
-        /* PROCESAMIENTO DE PIXELES CON IMAGEDATA SEGUN FILTRO */
         if (typeof filtroConfig === 'function') {
           var imgData = miniCtx.getImageData(0, 0, this.tamanoCelda, this.tamanoCelda);
           filtroConfig(imgData, f, c, indicePieza);
@@ -88,7 +82,7 @@ class Tablero {
     }
   }
 
-  /* ASIGNA ANGULOS ALEATORIOS INICIALES */
+  // Asigna rotaciones aleatorias asegurando que al menos 2 queden desordenadas
   desordenar() {
     var angulos = [0, 90, 180, 270];
 
@@ -119,37 +113,30 @@ class Tablero {
     }
   }
 
-  /* DIBUJA TODAS LAS PIEZAS Y LA GRILLA */
   dibujar(ctx) {
     ctx.clearRect(0, 0, this.anchoCanvas, this.altoCanvas);
 
-    /* FONDO DE TAPETE OSCURO */
     ctx.fillStyle = typeof COLOR_CANVAS_FONDO !== 'undefined' ? COLOR_CANVAS_FONDO : '#141714';
     ctx.fillRect(0, 0, this.anchoCanvas, this.altoCanvas);
 
-    /* FONDO DEL AREA DE JUEGO */
     ctx.fillStyle = typeof COLOR_CANVAS_AREA !== 'undefined' ? COLOR_CANVAS_AREA : '#0A0D0A';
     ctx.fillRect(this.offsetX, this.offsetY, this.anchoTotal, this.altoTotal);
 
-    /* DIBUJAR CADA PIEZA */
     for (var i = 0; i < this.piezas.length; i++) {
       this.piezas[i].dibujar(ctx);
     }
 
-    /* GRILLA DIVISORIA */
     this.dibujarGrilla(ctx);
   }
 
-  /* DIBUJA LINEAS DIVISORIAS */
+  // Dibuja las líneas divisorias entre piezas
   dibujarGrilla(ctx) {
     ctx.save();
     ctx.strokeStyle = typeof COLOR_CANVAS_GRILLA !== 'undefined' ? COLOR_CANVAS_GRILLA : 'rgba(255, 255, 255, 0.15)';
     ctx.lineWidth = 2;
 
-    /* MARCO EXTERIOR */
     ctx.strokeRect(this.offsetX, this.offsetY, this.anchoTotal, this.altoTotal);
 
-    /* LINEAS VERTICALES */
     for (var c = 1; c < this.columnas; c++) {
       var x = this.offsetX + c * this.tamanoCelda;
       ctx.beginPath();
@@ -158,7 +145,6 @@ class Tablero {
       ctx.stroke();
     }
 
-    /* LINEAS HORIZONTALES */
     for (var f = 1; f < this.filas; f++) {
       var y = this.offsetY + f * this.tamanoCelda;
       ctx.beginPath();
@@ -170,7 +156,7 @@ class Tablero {
     ctx.restore();
   }
 
-  /* BUSQUEDA DE PIEZA BAJO EL CURSOR CON HIT TESTING */
+  // Retorna la pieza que contiene el punto del mouse o null
   obtenerPiezaEn(mx, my) {
     for (var i = 0; i < this.piezas.length; i++) {
       if (this.piezas[i].contienePunto(mx, my)) {
@@ -180,7 +166,6 @@ class Tablero {
     return null;
   }
 
-  /* VERIFICA SI TODAS LAS PIEZAS ESTAN EN ORIENTACION CERO */
   verificarVictoria() {
     for (var i = 0; i < this.piezas.length; i++) {
       if (!this.piezas[i].estaResuelta()) {
@@ -190,7 +175,7 @@ class Tablero {
     return true;
   }
 
-  /* MECANICA DE AYUDITA SEGUN EXTRA TRES */
+  // Fija una pieza desordenada aleatoria en su orientación correcta
   fijarPiezaAleatoria() {
     var candidatas = [];
     for (var i = 0; i < this.piezas.length; i++) {
@@ -209,7 +194,6 @@ class Tablero {
     return elegida;
   }
 
-  /* COMPRUEBA DISPONIBILIDAD DE PIEZAS PARA AYUDA */
   hayPiezasParaAyuda() {
     for (var i = 0; i < this.piezas.length; i++) {
       if (!this.piezas[i].estaResuelta() && !this.piezas[i].bloqueada) {

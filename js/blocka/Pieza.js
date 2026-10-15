@@ -1,5 +1,3 @@
-/* CLASE PIEZA SUBIMAGEN INDIVIDUAL DEL PUZZLE CON POSICION Y ROTACION */
-
 class Pieza {
 
   constructor(fila, columna, x, y, ancho, alto, imagen) {
@@ -14,7 +12,7 @@ class Pieza {
     this.bloqueada = false;
   }
 
-  /* DIBUJO DE LA PIEZA CON ROTACION MATRICIAL SEGUN TEMA */
+  // Dibuja la pieza rotada sobre su centro
   dibujar(ctx) {
     var centroX = this.x + this.ancho / 2;
     var centroY = this.y + this.alto / 2;
@@ -25,7 +23,7 @@ class Pieza {
     ctx.drawImage(this.imagen, -this.ancho / 2, -this.alto / 2, this.ancho, this.alto);
     ctx.restore();
 
-    /* INDICADOR VISUAL DE PIEZA FIJA BLOQUEADA POR AYUDITA SEGUN EXTRA */
+    // Indicador de pieza bloqueada por ayudita
     if (this.bloqueada) {
       var colorExito = typeof COLOR_CANVAS_BLOQUEADA !== 'undefined' ? COLOR_CANVAS_BLOQUEADA : '#4CAF50';
       var colorTexto = typeof COLOR_CANVAS_AREA !== 'undefined' ? COLOR_CANVAS_AREA : '#0A0D0A';
@@ -35,7 +33,6 @@ class Pieza {
       ctx.lineWidth = 3;
       ctx.strokeRect(this.x + 2, this.y + 2, this.ancho - 4, this.alto - 4);
 
-      /* BADGE CIRCULAR DE PIEZA RESUELTA EN ESQUINA SUPERIOR DERECHA */
       var radioBadge = 11;
       var badgeX = this.x + this.ancho - radioBadge - 5;
       var badgeY = this.y + radioBadge + 5;
@@ -46,7 +43,6 @@ class Pieza {
       ctx.fill();
       ctx.closePath();
 
-      /* TEXTO DE CONFIRMACION DENTRO DEL BADGE */
       ctx.fillStyle = colorTexto;
       ctx.font = 'bold 10px sans-serif';
       ctx.textAlign = 'center';
@@ -56,7 +52,7 @@ class Pieza {
     }
   }
 
-  /* ROTACION EN SENTIDO INDICADO */
+  // Rota 90 grados según el sentido
   rotar(sentido) {
     if (this.bloqueada) return;
 
@@ -67,12 +63,11 @@ class Pieza {
     }
   }
 
-  /* COMPROBACION DE ORIENTACION CORRECTA */
   estaResuelta() {
     return this.angulo === 0;
   }
 
-  /* HIT TESTING GEOMETRICO DE CAJA DELIMITADORA SEGUN TEMA */
+  // Hit test para saber si el clic cayó sobre esta pieza
   contienePunto(mx, my) {
     return mx >= this.x && mx <= this.x + this.ancho &&
            my >= this.y && my <= this.y + this.alto;

@@ -1,6 +1,4 @@
-/* FILTROS DE IMAGEN FUNCIONES PURAS DE TRANSFORMACION DE PIXELES */
-
-/* ESCALA DE GRISES CON PONDERACION PERCEPTUAL ITU SEGUN TEMA */
+// Escala de grises (ponderación perceptual ITU-R BT.601)
 function escalaDeGrises(imageData) {
   var data = imageData.data;
 
@@ -14,7 +12,7 @@ function escalaDeGrises(imageData) {
   return imageData;
 }
 
-/* AJUSTE DE BRILLO PORCENTUAL SEGUN TEMA */
+// Ajuste de brillo
 function brillo(imageData, factor) {
   var data = imageData.data;
 
@@ -27,7 +25,7 @@ function brillo(imageData, factor) {
   return imageData;
 }
 
-/* NEGATIVO E INVERSION CROMATICA SEGUN TEMA */
+// Negativo
 function negativo(imageData) {
   var data = imageData.data;
 
@@ -40,7 +38,7 @@ function negativo(imageData) {
   return imageData;
 }
 
-/* FILTRO MIXTO POR SUBIMAGEN SEGUN CONSIGNA */
+// Alterna entre los filtros según el índice de la pieza
 function filtroMixto(imageData, fila, columna, indice) {
   var listaFiltros = [
     escalaDeGrises,

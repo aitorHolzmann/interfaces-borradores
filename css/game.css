@@ -1,4 +1,4 @@
-/* PAGINA EJECUCION DE JUEGO GAME CSS FIDELIDAD FIGMA OPTIMIZADO CON OPERADORES RELATIVOS Y ESTRUCTURA DE PARTES */
+/* Estilos de la página de ejecución de juego */
 
 .pagina-juego-main {
   width: 100%;
@@ -622,7 +622,7 @@
   box-shadow: 0 0 14px rgba(255, 107, 0, 0.45);
 }
 
-/* BOTON SALIR EN HUD NIELSEN TRES Y CINCO */
+/* Botón salir en HUD */
 .btn-blocka-salir {
   padding: 6px 12px;
 
@@ -646,7 +646,7 @@
   transform: scale(1.04);
 }
 
-/* BOTON DE AYUDITA EN HUD EXTRA TRES */
+/* Botón de ayudita en HUD */
 .btn-blocka-ayuda {
   padding: 6px 14px;
 
@@ -717,7 +717,7 @@
   100% { opacity: 0; transform: translateY(-16px); }
 }
 
-/* OVERLAY DE SORTEO DE IMAGEN EXTRA UNO */
+/* Overlay de sorteo de imagen */
 .blocka-sorteo-overlay {
   position: absolute;
   top: 0;
@@ -795,7 +795,7 @@
   box-shadow: 0 0 24px rgba(76, 175, 80, 0.9);
 }
 
-/* OVERLAY DE DERROTA EXTRA CUATRO */
+/* Overlay de derrota */
 .blocka-overlay-derrota {
   position: absolute;
   top: 0;

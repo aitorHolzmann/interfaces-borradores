@@ -1,5 +1,3 @@
-/* CLASE JUEGO BLOCKA ORQUESTADOR PRINCIPAL DEL VIDEOJUEGO */
-
 class JuegoBlocka {
 
   constructor() {
@@ -19,15 +17,12 @@ class JuegoBlocka {
     this.piezaHover = null;
   }
 
-  /* PUNTO DE ENTRADA AL CARGAR EL DOCUMENTO */
   iniciar() {
     var self = this;
     window.juego = this;
 
-    /* RENDERIZA EL MENU DINAMICO DE INICIO */
     this.renderizarMenuInicio();
 
-    /* BOTON SALIR EN EL PANEL DE CONTROL */
     var btnSalir = document.getElementById('btn-blocka-salir');
     if (btnSalir) {
       btnSalir.addEventListener('click', function() {
@@ -41,7 +36,6 @@ class JuegoBlocka {
       });
     }
 
-    /* BOTON DE AYUDITA EN EL PANEL DE CONTROL */
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda) {
       btnAyuda.addEventListener('click', function() {
@@ -49,8 +43,7 @@ class JuegoBlocka {
       });
     }
 
-
-    /* HOOKS DE PRUEBA DE ESTADO */
+    // Hooks para testeo visual y previews
     if (window.location.hash === '#test-sorteo') {
       this.animarSorteoImagen(function() {});
     } else if (window.location.hash === '#test-partida') {
@@ -85,7 +78,6 @@ class JuegoBlocka {
     }
   }
 
-  /* RENDERIZA EL MENU DINAMICO DE INICIO */
   renderizarMenuInicio() {
     var self = this;
     var contenedorMenu = document.getElementById('blocka-splash-menu');
@@ -93,7 +85,6 @@ class JuegoBlocka {
 
     contenedorMenu.innerHTML = '';
 
-    /* ENCABEZADO DEL MENU */
     var header = document.createElement('div');
     header.className = 'blocka-menu-header';
 
@@ -109,7 +100,6 @@ class JuegoBlocka {
 
     contenedorMenu.appendChild(header);
 
-    /* LISTA DESPLAZABLE DE NIVELES */
     var listaNiveles = document.createElement('div');
     listaNiveles.className = 'blocka-lista-niveles';
     listaNiveles.setAttribute('role', 'radiogroup');
@@ -190,7 +180,6 @@ class JuegoBlocka {
 
     contenedorMenu.appendChild(listaNiveles);
 
-    /* TOGGLE DE MODO CONTRARRELOJ */
     var toggleLabel = document.createElement('label');
     toggleLabel.className = 'blocka-toggle-timer';
     toggleLabel.title = 'Si se activa, deberás resolver el puzzle antes del tiempo límite del nivel.';
@@ -211,7 +200,6 @@ class JuegoBlocka {
     toggleLabel.appendChild(textoToggle);
     contenedorMenu.appendChild(toggleLabel);
 
-    /* BOTON JUGAR */
     actualizarTextoBoton();
     btnJugar.addEventListener('click', function() {
       self.nivelActual = self.nivelSeleccionado;
@@ -221,7 +209,6 @@ class JuegoBlocka {
     contenedorMenu.appendChild(btnJugar);
   }
 
-  /* VUELVE AL MENU PRINCIPAL DEL JUEGO */
   volverAlMenu() {
     this.detenerTimer();
     this.jugando = false;
@@ -284,25 +271,21 @@ class JuegoBlocka {
       return;
     }
 
-    /* LIMPIAR ESTADO PREVIO */
     this.detenerTimer();
     this.jugando = false;
     this.piezaHover = null;
     this.ocultarOverlayVictoria();
     this.ocultarOverlayDerrota();
 
-    /* SORTEO ANIMADO DE IMAGEN PREVIA */
     this.animarSorteoImagen(function(rutaImagen) {
       self.iniciarPartidaConImagen(numNivel, rutaImagen, configNivel);
     });
   }
 
-  /* CARGA LA IMAGEN Y CREA EL TABLERO */
   iniciarPartidaConImagen(numNivel, rutaImagen, configNivel) {
     var self = this;
     this.nivelActual = numNivel;
 
-    /* REINICIAR TIEMPOS */
     this.tiempoTranscurrido = 0;
     if (this.modoContrarreloj) {
       this.tiempoMaximo = configNivel.tiempoMaximo;
@@ -312,12 +295,10 @@ class JuegoBlocka {
       this.tiempoRestante = null;
     }
 
-    /* CARGAR IMAGEN SORTEADA */
     var img = new Image();
     img.src = rutaImagen;
 
     img.onload = function() {
-      /* CONTENEDOR EN MODO JUEGO */
       var contenedor = document.getElementById('game-splash-pantalla');
       if (contenedor) {
         contenedor.classList.add('en-juego');
@@ -329,35 +310,28 @@ class JuegoBlocka {
         }
       }
 
-      /* CREAR O REUTILIZAR CANVAS */
       if (!self.canvas) {
         self.crearCanvas();
       } else {
         self.canvas.style.display = 'block';
       }
 
-      /* NORMALIZAR IMAGEN ORIGINAL */
       self.procesarImagen(img);
 
-      /* CREAR TABLERO Y SUBIMAGENES CON FILTRO APLICADO SEGUN EL NIVEL */
       self.tablero = new Tablero(configNivel.filas, configNivel.columnas, self.canvas.width, self.canvas.height);
       self.tablero.crearPiezas(self.canvasOriginal, configNivel.filtro);
       self.tablero.desordenar();
 
-      /* DIBUJAR EN EL CANVAS */
       self.redibujar();
 
-      /* HABILITAR BOTON DE AYUDITA */
       var btnAyuda = document.getElementById('btn-blocka-ayuda');
       if (btnAyuda) {
         btnAyuda.disabled = false;
       }
 
-      /* ACTUALIZAR PANEL DE CONTROL */
       self.actualizarHUD(numNivel);
       self.mostrarRecordEnHUD(numNivel);
 
-      /* INICIAR TEMPORIZADOR */
       self.jugando = true;
       self.iniciarTimer();
     };
@@ -367,7 +341,7 @@ class JuegoBlocka {
     };
   }
 
-  /* ANIMACION DE RULETA PARA SELECCION DE IMAGEN */
+  // Sorteo animado de imagen con desaceleración cuadrática
   animarSorteoImagen(callback) {
     var self = this;
     var contenedor = document.getElementById('game-splash-pantalla');
@@ -378,13 +352,11 @@ class JuegoBlocka {
 
     this.sorteando = true;
 
-    /* OCULTAR ELEMENTOS DEL CONTENEDOR */
     var hijos = contenedor.children;
     for (var i = 0; i < hijos.length; i++) {
       hijos[i].style.display = 'none';
     }
 
-    /* CREAR SUPERFICIE DE SORTEO */
     var overlay = document.createElement('div');
     overlay.id = 'blocka-sorteo-overlay';
     overlay.className = 'blocka-sorteo-overlay';
@@ -417,7 +389,6 @@ class JuegoBlocka {
 
     contenedor.appendChild(overlay);
 
-    /* SELECCIONAR INDICE GANADOR */
     var indiceGanador = Math.floor(Math.random() * BANCO_IMAGENES.length);
     var vueltas = 2;
     var totalPasos = vueltas * BANCO_IMAGENES.length + indiceGanador;
@@ -438,7 +409,6 @@ class JuegoBlocka {
         var retardo = 60 + Math.floor(Math.pow(progreso, 2) * 240);
         setTimeout(ejecutarPaso, retardo);
       } else {
-        /* FINALIZACION DEL SORTEO */
         thumbsElements[indiceGanador].classList.add('ganador');
         setTimeout(function() {
           overlay.remove();
@@ -453,7 +423,6 @@ class JuegoBlocka {
     ejecutarPaso();
   }
 
-  /* NORMALIZA LA IMAGEN EN UN CANVAS AUXILIAR */
   procesarImagen(img) {
     var tamanoBase = Math.max(img.naturalWidth || 600, 600);
     this.canvasOriginal = document.createElement('canvas');
@@ -464,7 +433,6 @@ class JuegoBlocka {
     return this.canvasOriginal;
   }
 
-  /* CREA EL ELEMENTO CANVAS EN EL CONTENEDOR */
   crearCanvas() {
     var contenedor = document.getElementById('game-splash-pantalla');
 
@@ -485,31 +453,28 @@ class JuegoBlocka {
     this.conectarEventos();
   }
 
-  /* CONECTA LOS EVENTOS DEL CANVAS */
   conectarEventos() {
     var self = this;
 
-    /* CLIC IZQUIERDO ROTAR ANTIHORARIO */
+    // Clic izquierdo: rotación antihoraria
     this.canvas.addEventListener('click', function(e) {
       if (!self.jugando) return;
       self.manejarClic(e, 'izquierda');
     });
 
-    /* CLIC DERECHO ROTAR HORARIO */
+    // Clic derecho: rotación horaria
     this.canvas.addEventListener('contextmenu', function(e) {
       e.preventDefault();
       if (!self.jugando) return;
       self.manejarClic(e, 'derecha');
     });
 
-    /* MOVIMIENTO DEL CURSOR */
     this.canvas.addEventListener('mousemove', function(e) {
       if (!self.jugando) return;
       self.manejarMovimiento(e);
     });
   }
 
-  /* GESTIONA EL CLIC SOBRE EL CANVAS */
   manejarClic(evento, sentido) {
     if (!this.jugando || !this.tablero) return;
 
@@ -518,23 +483,19 @@ class JuegoBlocka {
 
     if (!pieza || pieza.bloqueada) return;
 
-    /* ROTAR PIEZA Y REDIBUJAR */
     pieza.rotar(sentido);
     this.redibujar();
 
-    /* ACTUALIZAR ESTADO DEL BOTON DE AYUDA */
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda && typeof this.tablero.hayPiezasParaAyuda === 'function') {
       btnAyuda.disabled = !this.tablero.hayPiezasParaAyuda();
     }
 
-    /* VERIFICAR SI SE COMPLETO EL PUZZLE */
     if (this.tablero.verificarVictoria()) {
       this.verificarYMostrarVictoria();
     }
   }
 
-  /* GESTIONA EL MOVIMIENTO DEL MOUSE */
   manejarMovimiento(evento) {
     if (!this.jugando || !this.tablero) return;
 
@@ -556,7 +517,7 @@ class JuegoBlocka {
     }
   }
 
-  /* CALCULA COORDENADAS DEL MOUSE EN EL CANVAS */
+  // Ajusta las coordenadas del mouse a la escala real del canvas
   obtenerCoordenadasMouse(evento) {
     var rect = this.canvas.getBoundingClientRect();
     var escalaX = this.canvas.width / rect.width;
@@ -568,13 +529,11 @@ class JuegoBlocka {
     };
   }
 
-  /* REDIBUJA EL TABLERO Y EL RESALTE */
   redibujar() {
     if (!this.tablero) return;
 
     this.tablero.dibujar(this.ctx);
 
-    /* RESALTE SOBRE LA PIEZA BAJO EL CURSOR */
     if (this.piezaHover && !this.piezaHover.bloqueada && this.jugando) {
       this.ctx.save();
       this.ctx.strokeStyle = typeof COLOR_CANVAS_HOVER !== 'undefined' ? COLOR_CANVAS_HOVER : 'rgba(255, 107, 0, 0.7)';
@@ -589,8 +548,7 @@ class JuegoBlocka {
     }
   }
 
-
-  /* MECANICA DE AYUDITA */
+  // Resuelve y bloquea una pieza al azar aplicando penalización de 5s
   pedirAyudita() {
     if (!this.jugando || !this.tablero) return;
 
@@ -601,40 +559,32 @@ class JuegoBlocka {
       return;
     }
 
-    /* PENALIZACION DE CINCO SEGUNDOS */
     this.tiempoTranscurrido += 5;
 
-    /* DESCONTAR TIEMPO EN MODO LIMITADO */
     if (this.tiempoMaximo !== null) {
       this.tiempoRestante = Math.max(0, this.tiempoRestante - 5);
     }
 
-    /* RETROALIMENTACION VISUAL */
     this.mostrarFeedbackPenalizacion();
     this.actualizarTimerDOM();
 
-    /* REDIBUJAR PARA MOSTRAR PIEZA FIJADA */
     this.redibujar();
 
-    /* DESHABILITAR BOTON SI NO HAY MAS PIEZAS */
     var btnAyudaEl = document.getElementById('btn-blocka-ayuda');
     if (btnAyudaEl && typeof this.tablero.hayPiezasParaAyuda === 'function') {
       btnAyudaEl.disabled = !this.tablero.hayPiezasParaAyuda();
     }
 
-    /* COMPROBAR SI LA PENALIZACION AGOTO EL TIEMPO */
     if (this.tiempoMaximo !== null && this.tiempoRestante <= 0) {
       this.manejarDerrota();
       return;
     }
 
-    /* VERIFICAR SI SE COMPLETO EL PUZZLE */
     if (this.tablero.verificarVictoria()) {
       this.verificarYMostrarVictoria();
     }
   }
 
-  /* RETROALIMENTACION VISUAL DE PENALIZACION */
   mostrarFeedbackPenalizacion() {
     var wrapper = document.querySelector('.blocka-timer-wrapper');
     if (!wrapper) return;
@@ -649,7 +599,6 @@ class JuegoBlocka {
     }, 850);
   }
 
-  /* INICIA EL TEMPORIZADOR */
   iniciarTimer() {
     var self = this;
     this.detenerTimer();
@@ -662,7 +611,6 @@ class JuegoBlocka {
         self.tiempoRestante--;
         self.actualizarTimerDOM();
 
-        /* DERROTA POR TIEMPO */
         if (self.tiempoRestante <= 0) {
           self.manejarDerrota();
         }
@@ -672,7 +620,6 @@ class JuegoBlocka {
     }, 1000);
   }
 
-  /* DETIENE EL TEMPORIZADOR */
   detenerTimer() {
     if (this.intervalTimer) {
       clearInterval(this.intervalTimer);
@@ -685,7 +632,6 @@ class JuegoBlocka {
     }
   }
 
-  /* ACTUALIZA EL TIEMPO EN EL DOCUMENTO */
   actualizarTimerDOM() {
     var timerEl = document.getElementById('blocka-timer');
     if (!timerEl) return;
@@ -737,24 +683,18 @@ class JuegoBlocka {
     );
   }
 
-  /* GESTIONA LA VICTORIA Y REVELA LA IMAGEN ORIGINAL */
   verificarYMostrarVictoria() {
     this.jugando = false;
     this.detenerTimer();
     this.piezaHover = null;
     this.canvas.style.cursor = 'default';
 
-    /* DESHABILITAR BOTON DE AYUDA */
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda) btnAyuda.disabled = true;
 
-    /* GUARDAR RECORD */
     this.guardarRecord(this.nivelActual);
-
-    /* REVELAR IMAGEN ORIGINAL */
     this.revelarImagenOriginal();
 
-    /* MOSTRAR PANTALLA SEGUN CORRESPONDA */
     if (this.nivelActual >= NIVELES.length) {
       this.mostrarFinDelJuego();
     } else {
@@ -762,7 +702,6 @@ class JuegoBlocka {
     }
   }
 
-  /* MUESTRA EL MENSAJE DE VICTORIA */
   mostrarOverlayVictoria() {
     var self = this;
     var contenedor = document.getElementById('game-splash-pantalla');
@@ -778,7 +717,6 @@ class JuegoBlocka {
     mensaje.textContent = '¡Nivel ' + this.nivelActual + ' completado! — ' + this.tiempoTranscurrido + 's';
     overlay.appendChild(mensaje);
 
-    /* BOTON SIGUIENTE NIVEL */
     if (this.nivelActual < NIVELES.length) {
       var btnSiguiente = document.createElement('button');
       btnSiguiente.className = 'blocka-btn-victoria';
@@ -791,7 +729,6 @@ class JuegoBlocka {
       overlay.appendChild(btnSiguiente);
     }
 
-    /* BOTON VOLVER AL MENU */
     var btnMenu = document.createElement('button');
     btnMenu.className = 'blocka-btn-victoria blocka-btn-menu';
     btnMenu.textContent = 'Volver al Menú';
@@ -803,13 +740,11 @@ class JuegoBlocka {
     contenedor.appendChild(overlay);
   }
 
-  /* OCULTA EL MENSAJE DE VICTORIA */
   ocultarOverlayVictoria() {
     var overlay = document.getElementById('blocka-overlay-victoria');
     if (overlay) overlay.remove();
   }
 
-  /* GESTIONA LA DERROTA POR TIEMPO AGOTADO */
   manejarDerrota() {
     this.jugando = false;
     this.detenerTimer();
@@ -819,7 +754,6 @@ class JuegoBlocka {
     var btnAyuda = document.getElementById('btn-blocka-ayuda');
     if (btnAyuda) btnAyuda.disabled = true;
 
-    /* OSCURECER SUPERFICIE DEL CANVAS */
     this.ctx.save();
     this.ctx.fillStyle = 'rgba(0, 0, 0, 0.55)';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -828,7 +762,6 @@ class JuegoBlocka {
     this.mostrarOverlayDerrota();
   }
 
-  /* MUESTRA EL MENSAJE DE DERROTA */
   mostrarOverlayDerrota() {
     var self = this;
     var contenedor = document.getElementById('game-splash-pantalla');
@@ -873,13 +806,11 @@ class JuegoBlocka {
     contenedor.appendChild(overlay);
   }
 
-  /* OCULTA EL MENSAJE DE DERROTA */
   ocultarOverlayDerrota() {
     var overlay = document.getElementById('blocka-overlay-derrota');
     if (overlay) overlay.remove();
   }
 
-  /* PANTALLA DE FINALIZACION DE TODOS LOS NIVELES */
   mostrarFinDelJuego() {
     var self = this;
     this.jugando = false;
@@ -921,7 +852,6 @@ class JuegoBlocka {
     contenedor.appendChild(overlay);
   }
 
-  /* ACTUALIZA EL PANEL DE CONTROL */
   actualizarHUD(numNivel) {
     var hud = document.getElementById('blocka-hud');
     var nivelEl = document.getElementById('blocka-nivel');
@@ -936,7 +866,6 @@ class JuegoBlocka {
     this.actualizarTimerDOM();
   }
 
-  /* MUESTRA EL RECORD EN EL PANEL DE CONTROL */
   mostrarRecordEnHUD(numNivel) {
     var recordEl = document.getElementById('blocka-record');
     if (!recordEl) return;
@@ -949,7 +878,6 @@ class JuegoBlocka {
     }
   }
 
-  /* GUARDA EL RECORD EN EL ALMACENAMIENTO LOCAL */
   guardarRecord(nivel) {
     var clave = 'blocka-record-nivel-' + nivel;
     var recordPrevio = localStorage.getItem(clave);
@@ -961,7 +889,6 @@ class JuegoBlocka {
     this.mostrarRecordEnHUD(nivel);
   }
 
-  /* CARGA EL RECORD DESDE EL ALMACENAMIENTO LOCAL */
   cargarRecord(nivel) {
     var clave = 'blocka-record-nivel-' + nivel;
     var valor = localStorage.getItem(clave);
@@ -969,7 +896,6 @@ class JuegoBlocka {
   }
 }
 
-/* INICIALIZACION DEL JUEGO AL CARGAR EL DOM */
 document.addEventListener('DOMContentLoaded', function() {
   var juego = new JuegoBlocka();
   juego.iniciar();
