@@ -65,4 +65,13 @@
   --color-grilla-blocka: rgba(255, 255, 255, 0.15);
   --color-pieza-hover: rgba(255, 107, 0, 0.5);
   --color-victoria-glow: rgba(76, 175, 80, 0.6);
+
+  /* JUEGO PEG SOLITAIRE */
+  --color-solitaire-ambar: #FFAA00;
+  --color-solitaire-ambar-glow: rgba(255, 170, 0, 0.45);
+  --color-solitaire-bg-overlay: rgba(14, 17, 14, 0.94);
+  --color-solitaire-panel-bg: rgba(20, 24, 20, 0.9);
+  --color-solitaire-borde-panel: rgba(130, 142, 59, 0.35);
+  --color-solitaire-borde-activo: #FF6B00;
+  --color-solitaire-texto-secundario: #C2C8C2;
 }

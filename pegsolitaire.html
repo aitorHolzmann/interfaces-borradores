@@ -89,37 +89,124 @@
       <a href="index.html">Home</a> &gt; <a href="index.html#top" id="game-breadcrumb-categoria">Catálogo</a> &gt; <span id="game-breadcrumb-titulo">Peg Solitaire</span>
     </nav>
 
-    <!-- AREA DE EJECUCION DEL JUEGO X CON SPLASH MINIMALISTA -->
+    <!-- AREA DE EJECUCION DEL JUEGO X CON SPLASH Y CANVAS -->
     <section class="area-ejecucion-juego" aria-label="Área de Juego">
       
       <div id="game-splash-pantalla">
-        <!-- SPLASH CON BOTON NARANJA JUGAR -->
-        <div>
-          <button id="btn-iniciar-partida">
-            Jugar
+        <!-- CANVAS NATIVO 800x500 (SIN SCROLL EN FULL HD) -->
+        <canvas id="canvas-pegsolitaire" width="800" height="500"></canvas>
+
+        <!-- SPLASH MILITAR INICIAL CON BRIEFING Y BOTON JUGAR -->
+        <div class="solitaire-splash-contenido" id="solitaire-splash-menu">
+          <div class="solitaire-splash-badge">OPERACIÓN TÁCTICA</div>
+          <h2 class="solitaire-splash-titulo">PEG SOLITAIRE</h2>
+          <p class="solitaire-splash-desc">
+            Despejá el sector militar mediante saltos ortogonales. Eliminá fichas enemigas adyacentes hasta que quede exactamente una sola pieza en el centro de operaciones.
+          </p>
+          <div class="solitaire-splash-stats-preview">
+            <div class="solitaire-preview-item">
+              <span>TABLERO</span>
+              <strong>33 CASILLAS</strong>
+            </div>
+            <div class="solitaire-preview-item">
+              <span>OBJETIVO</span>
+              <strong>1 FICHA</strong>
+            </div>
+            <div class="solitaire-preview-item">
+              <span>TIEMPO</span>
+              <strong>03:00 MIN</strong>
+            </div>
+          </div>
+          <button id="btn-iniciar-partida" class="btn-solitaire-jugar" title="Iniciar misión en el tablero">
+            DESPLEGAR MISIÓN
           </button>
+        </div>
+
+        <!-- MODAL DE FIN DE PARTIDA (VICTORIA / DERROTA) -->
+        <div class="solitaire-modal-fin" id="modal-fin-partida" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-fin-titulo">
+          <div class="solitaire-modal-contenido">
+            <div class="solitaire-modal-icono" id="modal-fin-icono">🎖️</div>
+            <h3 id="modal-fin-titulo">¡VICTORIA TÁCTICA!</h3>
+            <p id="modal-fin-mensaje">Has despejado el sector militar con éxito.</p>
+            
+            <div class="solitaire-modal-stats">
+              <div class="solitaire-stat-item">
+                <span class="solitaire-stat-label">TIEMPO</span>
+                <span class="solitaire-stat-valor" id="modal-fin-tiempo">01:45</span>
+              </div>
+              <div class="solitaire-stat-item">
+                <span class="solitaire-stat-label">FICHAS RESTANTES</span>
+                <span class="solitaire-stat-valor" id="modal-fin-fichas">1 Ficha</span>
+              </div>
+            </div>
+
+            <div class="solitaire-modal-botones">
+              <button type="button" id="btn-modal-reintentar" class="btn-solitaire-modal-accion">Jugar de Nuevo</button>
+              <button type="button" class="btn-solitaire-modal-secundario" onclick="window.location.href='index.html'">Volver al Home</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVISO DE PANTALLA PEQUENA (SOLO ESCRITORIO CON MOUSE) -->
+        <div class="solitaire-aviso-pantalla-pequena" aria-hidden="true">
+          <h3>PANTALLA DE ESCRITORIO REQUERIDA</h3>
+          <p>PEG SOLITAIRE está diseñado para jugarse en pantalla de escritorio con mouse (vía Drag &amp; Drop de precisión). Agrandá la ventana para jugar.</p>
         </div>
       </div>
 
       <!-- BARRA DE EJECUCION INFERIOR -->
       <div class="barra-ejecucion">
-        <span id="game-barra-titulo">Peg Solitaire</span>
+        <span id="game-barra-titulo">PEG SOLITAIRE</span>
 
-        <div>
-          <!-- ICONO GUARDAR EN FAVORITOS -->
-          <button id="btn-guardar-juego" title="Guardar">
-            <img src="assets/icons/icon-save.svg" alt="Guardar">
+        <!-- HUD DE JUEGO (OCULTO EN SPLASH, VISIBLE EN JUEGO) -->
+        <div class="solitaire-hud" id="solitaire-hud" style="display: none;">
+          <button type="button" id="btn-solitaire-salir" class="btn-solitaire-salir" title="Salir al menú principal">
+            ← Salir
           </button>
+          
+          <div class="solitaire-hud-info">
+            <span class="solitaire-hud-fichas" id="solitaire-fichas-restantes">32 Fichas</span>
+            <div class="solitaire-timer-wrapper">
+              <span class="solitaire-timer" id="solitaire-timer">03:00</span>
+            </div>
+          </div>
 
-          <!-- ICONO COMPARTIR -->
-          <button id="btn-compartir-juego" title="Compartir">
-            <img src="assets/icons/icon-share.svg" alt="Compartir">
-          </button>
+          <!-- SELECTOR DE SKINS TEMATICOS -->
+          <div class="solitaire-skin-selector" aria-label="Seleccionar diseño de ficha">
+            <span class="solitaire-skin-label">SKIN:</span>
+            <button type="button" class="solitaire-btn-skin activo" data-skin="medalla" title="Medallas Militares">
+              <img src="assets/images/pegsolitaire/ficha-medalla.png" alt="Medalla">
+            </button>
+            <button type="button" class="solitaire-btn-skin" data-skin="granada" title="Granadas Tácticas">
+              <img src="assets/images/pegsolitaire/ficha-granada.png" alt="Granada">
+            </button>
+            <button type="button" class="solitaire-btn-skin" data-skin="insignia" title="Insignias de Rango">
+              <img src="assets/images/pegsolitaire/ficha-insignia.png" alt="Insignia">
+            </button>
+          </div>
 
-          <!-- ICONO PANTALLA COMPLETA -->
-          <button id="btn-fullscreen" title="Pantalla Completa">
-            <img src="assets/icons/icon-fullscreen.svg" alt="Pantalla Completa">
+          <button type="button" id="btn-solitaire-reiniciar" class="btn-solitaire-reiniciar" title="Reiniciar partida actual">
+            ↺ Reiniciar
           </button>
+        </div>
+
+        <div class="barra-ejecucion-acciones">
+          <div class="barra-ejecucion-iconos">
+            <!-- ICONO GUARDAR EN FAVORITOS -->
+            <button id="btn-guardar-juego" title="Guardar">
+              <img src="assets/icons/icon-save.svg" alt="Guardar">
+            </button>
+
+            <!-- ICONO COMPARTIR -->
+            <button id="btn-compartir-juego" title="Compartir">
+              <img src="assets/icons/icon-share.svg" alt="Compartir">
+            </button>
+
+            <!-- ICONO PANTALLA COMPLETA -->
+            <button id="btn-fullscreen" title="Pantalla Completa">
+              <img src="assets/icons/icon-fullscreen.svg" alt="Pantalla Completa">
+            </button>
+          </div>
         </div>
       </div>
 
@@ -332,5 +419,13 @@
 
   <script src="js/api.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- PEG SOLITAIRE — Módulo MVC (Scripts Clásicos) -->
+  <script src="js/pegsolitaire/configuracion.js"></script>
+  <script src="js/pegsolitaire/SolitaireModel.js"></script>
+  <script src="js/pegsolitaire/Ficha.js"></script>
+  <script src="js/pegsolitaire/Casillero.js"></script>
+  <script src="js/pegsolitaire/TableroView.js"></script>
+  <script src="js/pegsolitaire/pegsolitaire.js"></script>
 </body>
 </html>
